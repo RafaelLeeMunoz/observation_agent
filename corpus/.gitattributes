@@ -1,0 +1,2 @@
+# Keep the email files byte-for-byte identical to the originals (no line-ending conversion).
+* -text
