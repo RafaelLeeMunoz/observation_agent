@@ -1,0 +1,10 @@
+# Code, docs and notebooks: LF in the repository and in every checkout, whatever the machine's
+# core.autocrlf setting is. corpus/ has its own .gitattributes (`* -text`), which takes precedence
+# there: the evidence is never converted.
+* text=auto eol=lf
+
+# Binary outputs
+*.sqlite binary
+*.png    binary
+*.jpg    binary
+*.pdf    binary
