@@ -24,12 +24,13 @@ The assignment brief is `README.md`. The full plan and milestones are in `PLAN.m
 - **Protect the Pro budget.** Develop on a small dev slice of about 200 messages. Never run the model over the full corpus without asking first.
 - Keep each stage restartable: outputs are cached by a fingerprint of their inputs plus the prompt or config version.
 - Prefer small, plain modules with tests over clever code.
+- Never edit a test, a raw file or a verification rule just to make a run pass. Fix the cause, or log the failure and ask.
 
 ## Environment
 
 - Windows, with GitHub Desktop for commits. Use paths that work on Windows (pathlib, no hard-coded `/`).
-- Python 3.11+, with dependencies in `requirements.txt`.
-- Run the tests with `python -m pytest -q`.
+- Python 3.12 in a virtual environment at `.venv/` (git-ignored), with dependencies from `requirements.txt`. **All Python commands use `.venv\Scripts\python`**, never a bare `python`, e.g. `.venv\Scripts\python -m pip install -r requirements.txt`.
+- Run the tests with `.venv\Scripts\python -m pytest -q`.
 
 ## Planned layout
 
@@ -41,7 +42,7 @@ notebooks/         exploration only (Milestone 1)
 .claude/commands/  observe.md (the one command)
 .claude/agents/    extractor, synthesizer, reviewer, artifact-writer
 .claude/settings.json  pre-approved permissions + hooks for unattended runs
-data/              cache, SQLite DB, batch files (git-ignored except the final run)
+data/              cache, SQLite DB, batch files (fully git-ignored; final-run outputs go in output/)
 output/            report, artifacts, dashboard data, run logs (committed for the final run)
 private/           working notes, including DEVLOG.md (git-ignored, never committed)
 ```
