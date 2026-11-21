@@ -1,0 +1,17 @@
+# Private working notes (never committed)
+private/
+
+# Pipeline cache, SQLite DB, batch files
+data/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local virtual environment
+.venv/
+
+# Machine-local Claude Code settings
+.claude/settings.local.json
