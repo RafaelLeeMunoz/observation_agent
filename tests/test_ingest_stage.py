@@ -79,6 +79,15 @@ def test_a_code_change_changes_the_fingerprint(make_corpus, tmp_path):
     assert ingest.fingerprint(corpus, src) != before
 
 
+def test_database_and_ledger_with_the_same_stem_do_not_clobber_each_other(make_corpus, tmp_path, capsys):
+    # Found in M3: both temp files used to be '<stem>.tmp', so 'x.sqlite' + 'x.csv' collided.
+    corpus = make_corpus({"mb/inbox/1": email()})
+    args = ["--corpus", str(corpus), "--db", str(tmp_path / "x.sqlite"), "--ledger", str(tmp_path / "x.csv")]
+    assert _run(args, capsys) == (0, False)
+    assert (tmp_path / "x.sqlite").exists() and (tmp_path / "x.csv").exists()
+    assert _run(args, capsys) == (0, True)
+
+
 def test_ignored_files_and_manifest_are_part_of_the_fingerprint(make_corpus):
     corpus = make_corpus({"mb/inbox/1": email()})
     before = ingest.fingerprint(corpus)

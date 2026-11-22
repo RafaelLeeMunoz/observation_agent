@@ -45,6 +45,23 @@ def make_corpus(tmp_path):
     return _make
 
 
+@pytest.fixture
+def ingested(make_corpus, tmp_path):
+    """ingested({...}) -> a store.Store over a synthetic corpus, built by the real ingest stage."""
+    from src import store
+
+    def _make(files: dict[str, str]):
+        corpus = make_corpus(files)
+        db = tmp_path / "ingest.sqlite"
+        assert ingest.main(["--corpus", str(corpus), "--db", str(db), "--ledger", str(tmp_path / "ledger.csv")]) == 0
+        return store.load(db, root=corpus.parent)
+    return _make
+
+
+BATCH_CFG = {"chars_per_token": 4, "token_budget": 24000, "hard_cap_tokens": 40000, "recipients_shown": 10}
+VERIFY_CFG = {"min_quote_chars": 25, "canary_min_quotes": 5, "canary_max_fail_rate": 0.20}
+
+
 @pytest.fixture(scope="session")
 def corpus_result():
     """The real corpus, ingested once per test session (offline)."""

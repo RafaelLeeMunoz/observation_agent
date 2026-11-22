@@ -110,7 +110,7 @@ class QuotedDate:
 
 _SENT = re.compile(r"^[ \t>]*(?:Sent|Date):[ \t]*(.+?)\s*$", re.I | re.M)
 _QP_SPACE = re.compile(r"=(09|20)")       # quoted-printable tab/space left in some Outlook headers
-_LOTUS = re.compile(r"(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})\s+(\d{1,2}):(\d{2})\s*(AM|PM)", re.I)
+_LOTUS = re.compile(r"(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)", re.I)
 # 'Friday, May 04, 2001 9:36 AM', 'November 15, 2001 9:05:12 PM GMT', 'Thursday, October 4, 2001 5:26:59 GMT'
 _OUTLOOK = re.compile(
     r"^(?:([A-Za-z]+),\s+)?([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)?(?:\s+[A-Z]{2,4})?$",
@@ -147,8 +147,10 @@ def _outlook(value: str) -> datetime | None:
 
 
 def _lotus(match: re.Match) -> tuple[datetime, tuple[Reading, ...]] | None:
-    mo, dd, yy, hh, mi, ampm = match.groups()
+    mo, dd, yy, hh, mi, ss, ampm = match.groups()
     hm = _clock(hh, mi, ampm)
+    if ss is not None and not 0 <= int(ss) <= 59:
+        return None
     if hm is None:
         return None
     readings: tuple[Reading, ...] = ()
@@ -162,7 +164,7 @@ def _lotus(match: re.Match) -> tuple[datetime, tuple[Reading, ...]] | None:
     else:
         year = int(yy)
     try:
-        return datetime(year, int(mo), int(dd), hm[0], hm[1]), readings
+        return datetime(year, int(mo), int(dd), hm[0], hm[1], int(ss or 0)), readings
     except ValueError:
         return None
 

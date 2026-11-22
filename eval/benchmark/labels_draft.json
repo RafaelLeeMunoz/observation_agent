@@ -1,0 +1,129 @@
+{
+ "version": "bench-v1",
+ "status": "draft",
+ "drafted_by": "Claude (Opus 5.5), from data/batches/bench/b001.txt only, before any extractor run and without seeing the user's blind labels",
+ "reviewed_by_user": false,
+ "field_notes": {
+  "outcome": "observations | business_no_process_signal | not_business | ambiguous | cannot_interpret",
+  "action_state": "requested | done | unclear",
+  "recurrence": "yes | no | unclear: does THIS message's text show the work recurs (not what we know from other emails)",
+  "stall_signal": "none | follow_up | waiting | correction | rework | escalation",
+  "stall_basis": "text | dates | none: what supports the stall",
+  "author": "whose words the quote is (the quoted block's author for quoted text)",
+  "must_not": "conclusions an extractor must not draw from this message"
+ },
+ "messages": {
+  "farmer-d/logistics/579": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/579#1", "quote": "- CALPINE DAILY GAS NOMINATION 1.doc", "activity": "send the daily gas nomination to Enron", "actors": ["rickya@calpine.com", "robert.lloyd@enron.com"], "author": "rickya@calpine.com", "action_state": "done", "recurrence": "yes", "recurrence_basis": "the attachment and subject name a daily nomination", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": ["state volumes or problems: the nomination itself is an attachment that is not in the text"]},
+  "farmer-d/logistics/622": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/622#1", "quote": "Daren is there a deal in CPR which may not have fed over to OSS?", "activity": "find the deal behind measured flow that has no deal in OSS (meter revision)", "actors": ["stella.morris@enron.com", "daren.farmer@enron.com"], "author": "stella.morris@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "farmer-d/logistics/622#2", "quote": "I checked MIPs and there is a measurement statement that supports the flow rate of 7,394 MMBTu.", "activity": "check the measurement statement for the meter", "actors": ["stella.morris@enron.com"], "author": "stella.morris@enron.com", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": ["claim this meter problem happens every month"]},
+  "farmer-d/logistics/670": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/670#1", "quote": "The above meter is non-allocatable and was off system, actuals at meter #8693.", "activity": "resolve the meter revision (meter is non-allocatable; actuals at another meter)", "actors": ["Stella L Morris", "Charlotte Hawkins"], "author": "Stella L Morris (quoted block)", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "correction", "stall_basis": "text"},
+    {"id": "farmer-d/logistics/670#2", "quote": "Yes should be, right Howard?", "activity": "confirm with a colleague that the revision is complete", "actors": ["stella.morris@enron.com", "howard.camp@enron.com"], "author": "stella.morris@enron.com", "action_state": "unclear", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": ["attribute the quoted resolution to the reply's sender as new work: it is Stella's earlier message, quoted"]},
+  "farmer-d/logistics/673": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/673#1", "quote": "Here is a followup to the memo sent on 12/31/99.", "activity": "follow up on unresolved nomination and pathing issues for the month", "actors": ["mandy.mackinnon@enron.com", "pat.clynes@enron.com", "daren.farmer@enron.com"], "author": "mandy.mackinnon@enron.com", "action_state": "requested", "recurrence": "yes", "recurrence_basis": "a follow-up to an earlier memo on the same open items", "stall_signal": "follow_up", "stall_basis": "text"},
+    {"id": "farmer-d/logistics/673#2", "quote": "I viewed prior month transactions and pathed appropriately.", "activity": "path deals left unpathed for the new month, then have them reviewed", "actors": ["mandy.mackinnon@enron.com"], "author": "mandy.mackinnon@enron.com", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "farmer-d/logistics/673#3", "quote": "We need to know the rate and whether one of the expense contracts needs to be amended for this transaction, we are not legally covered.", "activity": "get the transport rate and decide whether to amend an expense contract", "actors": ["mandy.mackinnon@enron.com"], "author": "mandy.mackinnon@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "waiting", "stall_basis": "text"},
+    {"id": "farmer-d/logistics/673#4", "quote": "This issue has been left unsresolved since October 99.", "activity": "resolve the supply shortfall against sales requirements", "actors": ["mandy.mackinnon@enron.com"], "author": "mandy.mackinnon@enron.com", "action_state": "requested", "recurrence": "yes", "recurrence_basis": "unresolved since October, i.e. across several months", "stall_signal": "waiting", "stall_basis": "text"}],
+   "must_not": ["count each listed pipeline issue as a separate recurring process without more evidence"]},
+  "farmer-d/logistics/675": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/675#1", "quote": "Please take the initiative to get these things done.", "activity": "manager escalates the unresolved issues to the team", "actors": ["pat.clynes@enron.com", "mandy.mackinnon@enron.com"], "author": "pat.clynes@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "escalation", "stall_basis": "text"}],
+   "must_not": ["attribute the quoted memo to Pat Clynes: it is Mandy MacKinnon's"]},
+  "farmer-d/logistics/734": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/734#1", "quote": "If you want, you can nom whatever volume is on the deal ticket and the economics will work out correctly.", "activity": "advise how to nominate against a tiered-pricing deal ticket", "actors": ["kenneth.seaman@enron.com", "robert.lloyd@enron.com"], "author": "kenneth.seaman@enron.com", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "farmer-d/logistics/734#2", "quote": "Only 15,000 of the 20000 is pathed.", "activity": "flag that part of a term deal is not pathed", "actors": ["kenneth.seaman@enron.com"], "author": "kenneth.seaman@enron.com", "action_state": "unclear", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "farmer-d/logistics/736": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/736#1", "quote": "the term deal agreed to by Lyondell {via nomination} is only for 15.0.", "activity": "reconcile the nominated volume with the deal ticket", "actors": ["Robert E Lloyd", "Kenneth Seaman"], "author": "Robert E Lloyd (quoted block)", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "correction", "stall_basis": "text"}],
+   "must_not": ["treat Kenneth's frustration with Robert as a measured process delay"]},
+  "farmer-d/logistics/765": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/765#1", "quote": "Please create a one month baseload firm deal ticket for the remaining days of the month", "activity": "create a deal ticket when a new well starts delivering", "actors": ["vance.taylor@enron.com", "tom.acton@enron.com"], "author": "vance.taylor@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "farmer-d/logistics/765#2", "quote": "Susan will create a committed reserves firm ticket for the remaining term of the deal once our geologists have gathered enough data", "activity": "create the long-term ticket once reserves are forecast", "actors": ["Susan", "vance.taylor@enron.com"], "author": "vance.taylor@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "farmer-d/logistics/777": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/777#1", "quote": "The new Sitara ticket # is 165331", "activity": "deal ticket created as requested", "actors": ["tom.acton@enron.com", "vance.taylor@enron.com"], "author": "tom.acton@enron.com", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": ["count this as a separate occurrence from the request in farmer-d/logistics/765: same piece of work"]},
+  "farmer-d/logistics/880": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/880#1", "quote": "- CALPINE DAILY GAS NOMINATION 1.doc", "activity": "send the daily gas nomination to Enron", "actors": ["rickya@calpine.com"], "author": "rickya@calpine.com", "action_state": "done", "recurrence": "yes", "recurrence_basis": "the attachment and subject name a daily nomination", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": ["state volumes: the nomination is an attachment that is not in the text"]},
+  "farmer-d/logistics/902": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/902#1", "quote": "Do you want to arrange a buyback for this activity.", "activity": "decide whether to arrange a buyback when a customer stops taking nominated gas", "actors": ["robert.lloyd@enron.com", "gary.lamphier@enron.com"], "author": "robert.lloyd@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "farmer-d/logistics/903": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/903#1", "quote": "Gary agreed to let the deficiency volumes hit the buyback that is set presently.", "activity": "buyback decision for deficiency volumes", "actors": ["robert.lloyd@enron.com", "gary.lamphier@enron.com"], "author": "robert.lloyd@enron.com", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "farmer-d/logistics/905": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/905#1", "quote": "Please zero out the volumes until further notice.", "activity": "zero out the nominated volumes (force majeure), replacing the buyback decision", "actors": ["gary.lamphier@enron.com", "robert.lloyd@enron.com"], "author": "gary.lamphier@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "correction", "stall_basis": "text"}],
+   "must_not": []},
+  "farmer-d/logistics/916": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/916#1", "quote": "We need to get together this afternoon at 2:00 PM in room 3745 to discuss how we will schedule and allocate the HPLR Liquids", "activity": "meet to decide how to schedule and allocate gas at a meter", "actors": ["howard.camp@enron.com", "karry.kendall@enron.com", "daren.farmer@enron.com", "clem.cernosek@enron.com"], "author": "howard.camp@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "farmer-d/logistics/917": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/917#1", "quote": "getting this King Ranch issue cleaned up for the prior months and correct on a go forward basis", "activity": "clean up scheduling and allocation for prior months and going forward (unaccounted-for gas)", "actors": ["rita.wynne@enron.com", "Brenda"], "author": "rita.wynne@enron.com", "action_state": "requested", "recurrence": "yes", "recurrence_basis": "unaccounted-for volume is tracked monthly ('on a bad month, no more than 100,000')", "stall_signal": "escalation", "stall_basis": "text"}],
+   "must_not": ["state an hours or dollar impact; the message gives a volume, not effort"]},
+  "farmer-d/logistics/924": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/924#1", "quote": "The Cilco volumes are different than the confirmed volumes to Cilco.", "activity": "reconcile storage withdrawals with confirmed volumes and fix the difference", "actors": ["kenny.soignet@enron.com", "daren.farmer@enron.com", "aimee.lannou@enron.com", "george.grant@enron.com"], "author": "kenny.soignet@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "correction", "stall_basis": "text"},
+    {"id": "farmer-d/logistics/924#2", "quote": "Also, the nomination for the current month is 7,327 mmbtu instead of 7,000 mmbtu per day.", "activity": "correct the monthly nomination volume", "actors": ["kenny.soignet@enron.com"], "author": "kenny.soignet@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "correction", "stall_basis": "text"},
+    {"id": "farmer-d/logistics/924#3", "quote": "Attached is the worksheet that I have been using to verify Cilco's storage balance with Vonda Seckler from Cilco.", "activity": "verify the customer's storage balance with the customer", "actors": ["Lisa Kinsey", "Vonda Seckler"], "author": "Lisa Kinsey (quoted block)", "action_state": "done", "recurrence": "yes", "recurrence_basis": "'I have been using' the worksheet: an ongoing check", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "farmer-d/logistics/934": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/934#1", "quote": "Yes, they are taken care of.", "activity": "storage variances corrected", "actors": ["george.grant@enron.com", "daren.farmer@enron.com"], "author": "george.grant@enron.com", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "farmer-d/logistics/934#2", "quote": "in the future we need to devise some sort of communication from Lisa Kinsey", "activity": "set up a way for customer storage changes to reach the team and the withdrawal report", "actors": ["george.grant@enron.com"], "author": "george.grant@enron.com", "action_state": "requested", "recurrence": "yes", "recurrence_basis": "'in the future ... if there is a change with Cilco': expected to happen again", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "farmer-d/logistics/934#3", "quote": "Are you looking into these variances?", "activity": "chase whether the variances are being worked", "actors": ["Daren J Farmer", "George Grant"], "author": "Daren J Farmer (quoted block)", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "follow_up", "stall_basis": "text"}],
+   "must_not": []},
+  "farmer-d/logistics/933": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/933#1", "quote": "There are two Storage deals that are using the same contract number.", "activity": "decide which of two deals sharing a contract is correct and cut the other", "actors": ["karie.hastings@enron.com", "julie.meyers@enron.com"], "author": "karie.hastings@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "waiting", "stall_basis": "text"}],
+   "must_not": []},
+  "farmer-d/logistics/965": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/965#1", "quote": "Can you cut off deal 47472 going forward?", "activity": "cut off the wrong storage deal", "actors": ["karie.hastings@enron.com", "julie.meyers@enron.com"], "author": "karie.hastings@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "correction", "stall_basis": "text"},
+    {"id": "farmer-d/logistics/965#2", "quote": "Deal number 60747 should be the good deal.", "activity": "determine the correct deal from the contract's firmness", "actors": ["Tommy J Yanowski"], "author": "Tommy J Yanowski (quoted block)", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": ["count this as a new occurrence separate from farmer-d/logistics/933: it is the same deal clean-up, six days later"]},
+  "farmer-d/logistics/995": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/995#1", "quote": "Can you see if it is feasible to activate these two days in Sitara so that I can clear my exceptions for Volume Management?", "activity": "extend a deal to cover days with metered flow so volume exceptions clear", "actors": ["jackie.young@enron.com", "daren.farmer@enron.com"], "author": "jackie.young@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "correction", "stall_basis": "text"}],
+   "must_not": []},
+  "farmer-d/logistics/1000": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/1000#1", "quote": "he will put the OBA in the mail either tonight or first thing Monday.", "activity": "get the operational balancing agreement from the pipeline", "actors": ["jackie.young@enron.com", "Ray Calles (TETCO)"], "author": "jackie.young@enron.com", "action_state": "requested", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "waiting", "stall_basis": "text"}],
+   "must_not": []},
+  "farmer-d/logistics/1027": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/1027#1", "quote": "As we spoke about by phone, here is the nomination, Thanks.", "activity": "send the daily gas nomination to Enron", "actors": ["rickya@calpine.com"], "author": "rickya@calpine.com", "action_state": "done", "recurrence": "yes", "recurrence_basis": "the attachment and subject name a daily nomination", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "farmer-d/logistics/1056": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/1056#1", "quote": "5031 at TVille I-.02 for May", "activity": "send next month's volume estimates for a customer", "actors": ["ami.chokshi@enron.com", "daren.farmer@enron.com"], "author": "ami.chokshi@enron.com", "action_state": "done", "recurrence": "yes", "recurrence_basis": "estimates 'for May' while April's are known: a month-ahead estimate", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "farmer-d/logistics/1056#2", "quote": "These are my estimates. The volumes for April at T-ville and Colorado RS are either spot or April only.", "activity": "send next month's volume estimates for a customer", "actors": ["Ami Chokshi"], "author": "Ami Chokshi (quoted block, her own earlier message)", "action_state": "done", "recurrence": "yes", "recurrence_basis": "month-ahead estimate", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "farmer-d/logistics/1057": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/1057#1", "quote": "Total 5031+2100+2100+7000 = 16231", "activity": "revise the month-ahead estimate total with another station", "actors": ["ami.chokshi@enron.com"], "author": "ami.chokshi@enron.com", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "", "stall_signal": "correction", "stall_basis": "text"}],
+   "must_not": ["compute or restate the totals as model output: numbers come from the text only"]},
+  "giron-d/sent/693": {"outcome": "not_business", "activities": [], "must_not": ["any business observation: personal message to family"]},
+  "giron-d/sent/692": {"outcome": "not_business", "activities": [], "must_not": ["treat 'I will not be running a book' as a business process: it is said in a personal context"]},
+  "giron-d/sent/668": {"outcome": "not_business", "activities": [], "must_not": ["any observation: a forwarded joke chain"]},
+  "giron-d/inbox/176": {"outcome": "not_business", "activities": [], "must_not": ["treat the bounced-mail notice as an IT process: it wraps a personal note"]},
+  "giron-d/inbox/209": {"outcome": "not_business", "activities": [], "must_not": ["any observation: personal football-ticket arrangement"]},
+  "giron-d/inbox/212": {"outcome": "not_business", "activities": [], "must_not": ["any observation: personal ticket arrangement"]},
+  "giron-d/inbox/215": {"outcome": "not_business", "activities": [], "must_not": ["any observation: personal ticket arrangement"]},
+  "giron-d/inbox/216": {"outcome": "not_business", "activities": [], "must_not": ["any observation: personal ticket arrangement"]},
+  "giron-d/inbox/264": {"outcome": "observations", "activities": [
+    {"id": "giron-d/inbox/264#1", "quote": "Please let me know (and reply all in your response) if one or both dates work.", "activity": "schedule a customer meeting on gas supply", "actors": ["csulzer@grenergy.com", "c..giron@enron.com", "Janet Bowers", "Jo Lewis"], "author": "csulzer@grenergy.com", "action_state": "requested", "recurrence": "no", "recurrence_basis": "a single meeting proposal", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "giron-d/inbox/264#2", "quote": "I will put together an agenda of the items for discussion.", "activity": "prepare the meeting agenda", "actors": ["csulzer@grenergy.com"], "author": "csulzer@grenergy.com", "action_state": "requested", "recurrence": "no", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": ["claim recurring meeting scheduling from one proposal"]},
+  "giron-d/inbox/265": {"outcome": "observations", "activities": [
+    {"id": "giron-d/inbox/265#1", "quote": "Either date works fine for me right now.", "activity": "reply with availability for the customer meeting", "actors": ["janet.bowers@enron.com"], "author": "janet.bowers@enron.com", "action_state": "done", "recurrence": "no", "recurrence_basis": "", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": []},
+  "williams-w3/sent_items/144": {"outcome": "business_no_process_signal", "activities": [], "must_not": ["turn a forwarded news story on the credit downgrade into a process"]},
+  "williams-w3/sent_items/141": {"outcome": "not_business", "activities": [], "must_not": ["attribute the quoted Bloomberg article to Bill Williams as work"]},
+  "farmer-d/logistics/3221": {"outcome": "observations", "activities": [
+    {"id": "farmer-d/logistics/3221#1", "quote": "Please pull your own meters out of this and confirm back to me by close of business Thursday.", "activity": "each scheduler confirms their meters from the full-month position by a deadline", "actors": ["daren.farmer@enron.com", "darron.giron@enron.com", "bill.williams@enron.com", "michelle.lokay@enron.com"], "author": "daren.farmer@enron.com", "action_state": "requested", "recurrence": "yes", "recurrence_basis": "a full-month position: monthly by its nature", "stall_signal": "none", "stall_basis": "none"},
+    {"id": "farmer-d/logistics/3221#2", "quote": "Pasting the full month position below since the attachment keeps bouncing off the gateway.", "activity": "resend the position in the body because the attachment bounces", "actors": ["daren.farmer@enron.com"], "author": "daren.farmer@enron.com", "action_state": "done", "recurrence": "unclear", "recurrence_basis": "'keeps bouncing' says it happened more than once", "stall_signal": "rework", "stall_basis": "text"}],
+   "must_not": ["count the 3,600 table rows as 3,600 events or workflows", "quote or restate the code summary as email evidence", "claim variance problems from the summary without code-computed row evidence"]},
+  "williams-w3/inbox/128": {"outcome": "business_no_process_signal", "activities": [], "must_not": ["turn an IT phone-number announcement into a process"]},
+  "lokay-m/sent_items/143": {"outcome": "not_business", "activities": [], "must_not": ["any observation: forwarded jokes"]},
+  "lokay-m/sent_items/144": {"outcome": "not_business", "activities": [], "must_not": ["any observation: forwarded jokes"]},
+  "giron-d/sent/795": {"outcome": "observations", "activities": [
+    {"id": "giron-d/sent/795#1", "quote": "Confirmed on my end. Same volumes as yesterday, no changes to the path.", "activity": "confirm the daily nomination", "actors": ["darron.giron@enron.com", "mary.poorman@enron.com"], "author": "darron.giron@enron.com", "action_state": "done", "recurrence": "yes", "recurrence_basis": "'same volumes as yesterday': a daily confirmation", "stall_signal": "none", "stall_basis": "none"}],
+   "must_not": ["assign this message a date: it has no Date header"]}
+ }
+}

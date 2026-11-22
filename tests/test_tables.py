@@ -55,6 +55,38 @@ def test_variance_check_passes_and_catches_a_bad_row():
     assert parse(broken)[0].summary["variance_check"]["failed_rows"] == [3]
 
 
+def test_summary_shows_the_distribution_and_cites_rows():
+    t, text = parse(BODY)
+    v = t.summary["columns"]["VARIANCE"]
+    assert (v["negative"], v["zero"], v["positive"]) == (0, 1, 3)
+    assert v["quantiles"] == {"p10": 0, "p25": 0, "p50": 580, "p75": 1160, "p90": 1740}    # nearest rank, n = 4
+    top = v["largest_abs"][0]
+    assert top["row_no"] == 4 and top["value"] == 1740
+    row = t.rows[top["row_no"] - 1]
+    assert text[row.start:row.end].strip() == top["raw"]           # a citable raw line at known offsets
+    assert "nearest-rank" in t.summary["calculations"]["quantiles"]
+    assert "never events" in t.summary["evidence_note"]
+
+
+def test_summary_counts_months_and_rows_dated_after_the_message_was_sent():
+    from datetime import date
+    info = tables.parse_table("Subject: x\r\n\r\n" + BODY, 14, date(2001, 3, 15)).summary["columns"]["FLOW_DATE"]
+    assert info["months"] == 4                                    # Jan, Feb, Mar, Apr 2001
+    assert (info["sent_on"], info["after_sent"], info["after_sent_first_rows"]) == ("2001-03-15", 1, [4])
+    assert "after_sent" not in parse(BODY)[0].summary["columns"]["FLOW_DATE"]     # no usable Date: no count
+    assert "months" in tables.CALCULATIONS and "after_sent" in tables.CALCULATIONS
+
+
+def test_ingest_counts_table_dates_against_the_senders_own_calendar_day(make_corpus):
+    # Sent 20 Nov 2001 at 17:48 -0800, which is already 21 Nov in UTC; one row is dated 21 Nov.
+    rows = "\r\n".join(f"  {1000000 + i}  HPL   TXU-{i:04d}   {21 if i == 7 else 20}/11/2001   "
+                       f"   {i * 3:,}   {i:,}   +{i * 2:,}  PENDING    METER-{i:06d}" for i in range(1000))
+    corpus = make_corpus({"mb/logistics/1": email(body="Team,\r\n\r\n" + HEADER + rows + "\r\n\r\nDaren\r\n",
+                                                  date="Tue, 20 Nov 2001 17:48:09 -0800 (PST)")})
+    info = ingest.build(corpus).messages["mb/logistics/1"].table.summary["columns"]["FLOW_DATE"]
+    assert (info["sent_on"], info["after_sent"], info["after_sent_first_rows"]) == ("2001-11-20", 1, [8])
+
+
 def test_a_malformed_row_is_reported_not_dropped():
     body = BODY.replace("  PENDING    METER-000021", "")        # row 4 loses two columns
     t, _ = parse(body)

@@ -1,0 +1,75 @@
+{
+ "instructions": "Label each message yourself BEFORE reading labels.json. outcome is one of observations, business_no_process_signal, not_business, ambiguous, cannot_interpret. For each activity copy a quote exactly from the email.",
+ "messages": {
+  "farmer-d/logistics/880": {
+   "original_path": "corpus/farmer-d/logistics/880.",
+   "subject": "Calpine Daily Gas Nomination",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "farmer-d/logistics/924": {
+   "original_path": "corpus/farmer-d/logistics/924.",
+   "subject": "CILCO STORAGE",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "farmer-d/logistics/934": {
+   "original_path": "corpus/farmer-d/logistics/934.",
+   "subject": "Re: CILCO STORAGE",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "farmer-d/logistics/995": {
+   "original_path": "corpus/farmer-d/logistics/995.",
+   "subject": "98-6892 for 3/15/2000 and 3/23/2000",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "farmer-d/logistics/1000": {
+   "original_path": "corpus/farmer-d/logistics/1000.",
+   "subject": "Re: 98-6892 for 3/15/2000 and 3/23/2000",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "farmer-d/logistics/1056": {
+   "original_path": "corpus/farmer-d/logistics/1056.",
+   "subject": "So Union",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "farmer-d/logistics/1057": {
+   "original_path": "corpus/farmer-d/logistics/1057.",
+   "subject": "So Union",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "giron-d/sent/668": {
+   "original_path": "corpus/giron-d/sent/668.",
+   "subject": "Fw: Must have been the Mexican Food",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "giron-d/inbox/264": {
+   "original_path": "corpus/giron-d/inbox/264.",
+   "subject": "Potential Houston Meeting Dates",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  },
+  "giron-d/inbox/265": {
+   "original_path": "corpus/giron-d/inbox/265.",
+   "subject": "RE: Potential Houston Meeting Dates",
+   "outcome": "",
+   "activities": [],
+   "notes": ""
+  }
+ }
+}

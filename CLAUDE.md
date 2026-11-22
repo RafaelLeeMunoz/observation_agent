@@ -25,6 +25,7 @@ The assignment brief is `README.md`. The full plan and milestones are in `PLAN.m
 - **Protect the Pro budget.** Develop on a small dev slice of about 200 messages. Never run the model over the full corpus without asking first.
 - Keep each stage restartable: outputs are cached by a fingerprint of their inputs plus the prompt or config version.
 - Prefer small, plain modules with tests over clever code.
+- **Commits:** one branch per milestone (e.g. `m3-thin-slice`), created from `main` when the user asks for a commit. The user reviews and merges it into `main` in GitHub Desktop. Never commit straight to `main`.
 - Never edit a test, a raw file or a verification rule just to make a run pass. Fix the cause, or log the failure and ask.
 - Read corpus files only through `src/rawio.py` (raw bytes, no newline translation, `20.` names work on Windows). Every stored offset is a raw-byte offset; opening a file in text mode would silently shift them.
 
@@ -40,6 +41,10 @@ The assignment brief is `README.md`. The full plan and milestones are in `PLAN.m
 corpus/            raw emails (read-only) + MANIFEST.csv
 src/               deterministic Python: ingest, dedupe, threads, batch, verify, score, report, serve
 tests/             pytest, no model calls
+tools/             dev tooling (mutation_check.py: each rule must be caught by its intended test)
+eval/              benchmark labels (user-reviewed) and the blind-label file
+config/            settings.yaml (every tunable number), devslice.json (slice, benchmark, blind set, holdout)
+schemas/           JSON Schemas for model output
 notebooks/         exploration only (Milestone 1)
 .claude/commands/  observe.md (the one command)
 .claude/agents/    extractor, synthesizer, reviewer, artifact-writer

@@ -29,8 +29,9 @@ MARKERS = {
     "lotus_from_on":    r"^[ \t>]*From:[^\n]*\bon \d{1,2}/\d{1,2}/\d{2,4}\s+\d{1,2}:\d{2}",
     "outlook_block":    r"^[ \t>]*From:[^\n]*\r?\n[ \t>]*(Sent|Date):",
     # Lotus reply header: a name, then 'MM/DD/YYYY HH:MM AM' (or 'MM/DD/YY', as 1999 mail prints it), then To:.
+    # Lotus internet-mail replies add seconds: '"KRISTI GIRON" <...> on 08/23/2000 01:40:40 PM'.
     # Spotting the header needs no reading of the year.
-    "lotus_name_date":  r"^[ \t]*[^\n]*?\s\d{2}/\d{2}/(\d{4}|\d{2})\s+\d{2}:\d{2}\s*(AM|PM)\s*\r?\n(\s*\r?\n){0,3}[ \t]*To:",
+    "lotus_name_date":  r"^[ \t]*[^\n]*?\s\d{2}/\d{2}/(\d{4}|\d{2})\s+\d{2}:\d{2}(:\d{2})?\s*(AM|PM)\s*\r?\n(\s*\r?\n){0,3}[ \t]*To:",
     "gt_quote":         r"^[ \t]*>",
     # An internet-mail header block with no 'Sent:' line ('Fwd:' forwards, bounce notices):
     # a From: line, then To/Cc/Sent/Date or folded continuation lines, then a Subject: line.
@@ -43,7 +44,7 @@ INDEX_PREFIX = 64          # candidate lookup uses the first 64 normalized chars
 
 _HDR_LINE = re.compile(r"^[ \t>]*(From|Sent|To|Cc|Bcc|Subject|Date|Importance)\s*:.*$", re.I | re.M)
 _MARKER_LINE = re.compile(r"^.*(Original Message|Forwarded by).*$", re.I | re.M)
-_NAME_DATE_LINE = re.compile(r"^[^\n]*\d{2}/\d{2}/(\d{4}|\d{2})\s+\d{2}:\d{2}\s*(AM|PM)\s*$", re.I | re.M)
+_NAME_DATE_LINE = re.compile(r"^[^\n]*\d{2}/\d{2}/(\d{4}|\d{2})\s+\d{2}:\d{2}(:\d{2})?\s*(AM|PM)\s*$", re.I | re.M)
 _GT = re.compile(r"^[ \t]*>+ ?", re.M)
 _FROM = re.compile(r"^[ \t>]*From:[ \t]*(.+?)\s*$", re.I | re.M)
 _FROM_TAIL = re.compile(r"(\s+on\s+\d{1,2}/\d{1,2}/\d{2,4}.*|\s{2,}\d{1,2}/\d{1,2}/\d{4}.*)$", re.I)
@@ -96,8 +97,26 @@ def first_marker(body: str) -> tuple[int, str] | None:
     return best
 
 
-def _block_content(raw: str) -> str:
+_SUBJECT_LINE = re.compile(r"^[ \t]*Subject\s*:[^\n]*\n?", re.I | re.M)
+# Every Lotus header in the corpus has its Subject: line within 51 lines (long To: lists wrap).
+HEADER_MAX_LINES = 60
+
+
+def _drop_quoted_header(s: str) -> str:
+    """Drop the quoted message's whole header, up to and including its Subject: line, when that
+    line comes within the first lines of the block. This takes the Lotus author line ("Mandy
+    MacKinnon@ECT") and wrapped header lines (a long cc: list continued on the next line) with it;
+    left in, they stop the block from ever matching the original message it quotes."""
+    m = _SUBJECT_LINE.search(s)
+    if m and s.count("\n", 0, m.start()) < HEADER_MAX_LINES:
+        return s[m.end():]
+    return s
+
+
+def _block_content(raw: str, kind: str = "") -> str:
+    """The block's text for matching: no '>' marks, quoted header or marker lines."""
     s = _GT.sub("", raw)
+    s = _drop_quoted_header(s)
     s = _HDR_LINE.sub("", s)
     s = _MARKER_LINE.sub("", s)
     s = _NAME_DATE_LINE.sub("", s)
@@ -148,7 +167,7 @@ def split_body(text: str, body_start: int) -> tuple[int, list[QuotedBlock]]:
     # its own header together with its text.
     merged = [cuts[0]]
     for c in cuts[1:]:
-        if _block_content(quoted[merged[-1]:c]) == "":
+        if _block_content(quoted[merged[-1]:c], kinds.get(merged[-1], first[1])) == "":
             continue
         merged.append(c)
     cuts = merged
@@ -158,7 +177,7 @@ def split_body(text: str, body_start: int) -> tuple[int, list[QuotedBlock]]:
         blocks.append(QuotedBlock(
             index=i, kind=kinds.get(a, first[1]), start=q_start + a, end=q_start + b,
             from_raw=_block_from(raw, kinds.get(a, "")), date_source=parse_quoted_date(raw),
-            content=_block_content(raw)))
+            content=_block_content(raw, kinds.get(a, first[1]))))
     return q_start, blocks
 
 

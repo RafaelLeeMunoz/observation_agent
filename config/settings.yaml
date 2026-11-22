@@ -1,0 +1,21 @@
+# Pipeline settings. Values marked "M3" are starting points to be measured in M3 and set in M4.
+
+batch:
+  chars_per_token: 4          # token estimate = characters / 4
+  token_budget: 24000         # M3: target estimated tokens per batch
+  hard_cap_tokens: 40000      # a thread over this is split at message boundaries
+  recipients_shown: 10        # To/Cc addresses shown to Claude; the rest become "(+N more)"
+
+extract:
+  prompt_version: extract-v6
+  model: haiku                # M3 starting point; compared with a stronger model on the benchmark
+
+verify:
+  min_quote_chars: 25         # whitespace-normalized
+  canary_min_quotes: 5        # the canary needs at least this many checked quotes ...
+  canary_max_fail_rate: 0.20  # ... and stops the run above this failure rate
+
+devslice:
+  target_messages: 200
+  benchmark_messages: 40
+  holdout_messages: 30        # outside the slice; never shown during prompt development (M4: run once)

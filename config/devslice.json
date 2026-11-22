@@ -1,0 +1,1205 @@
+{
+ "version": "devslice-v1",
+ "rule": "whole threads; hard cases, then negatives, then ordinary threads in sha256(thread_id) order",
+ "messages": 202,
+ "threads": [
+  {
+   "thread_id": "t:farmer-d/logistics/579",
+   "reason": "calpine daily notice (recurring, same body on different days)",
+   "keys": [
+    "farmer-d/logistics/579"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/622",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/622",
+    "farmer-d/logistics/670"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/673",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/673",
+    "farmer-d/logistics/675"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/734",
+   "reason": "clock-shifted Lotus mail (header 7-8 h behind)",
+   "keys": [
+    "farmer-d/logistics/734",
+    "farmer-d/logistics/736"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/765",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/765",
+    "farmer-d/logistics/777"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/880",
+   "reason": "calpine daily notice (recurring, same body on different days)",
+   "keys": [
+    "farmer-d/logistics/880"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/902",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/902",
+    "farmer-d/logistics/903",
+    "farmer-d/logistics/905"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/916",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/916",
+    "farmer-d/logistics/917"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/924",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/924",
+    "farmer-d/logistics/934"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/933",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/933",
+    "farmer-d/logistics/965"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/995",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/995",
+    "farmer-d/logistics/1000"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1027",
+   "reason": "calpine daily notice (recurring, same body on different days)",
+   "keys": [
+    "farmer-d/logistics/1027"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1056",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1056",
+    "farmer-d/logistics/1057"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1066",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1066",
+    "farmer-d/logistics/1067"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1134",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1134",
+    "farmer-d/logistics/1136"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1144",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1144",
+    "farmer-d/logistics/1145"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1149",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1149",
+    "farmer-d/logistics/1152",
+    "farmer-d/logistics/1156"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1191",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1191",
+    "farmer-d/logistics/1194"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1209",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1209",
+    "farmer-d/logistics/1214"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/748",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/748",
+    "giron-d/sent/747"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/706",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/706",
+    "giron-d/sent/699"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/693",
+   "reason": "logged reading: two_digit_year",
+   "keys": [
+    "giron-d/sent/693",
+    "giron-d/sent/692"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:giron-d/sent/668",
+   "reason": "logged reading: date_not_read",
+   "keys": [
+    "giron-d/sent/668"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:giron-d/sent/665",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/665",
+    "giron-d/sent/654"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/659",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/659",
+    "giron-d/sent/657",
+    "giron-d/sent/658"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1418",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1418",
+    "farmer-d/logistics/1419"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1439",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1439",
+    "farmer-d/logistics/1442",
+    "farmer-d/logistics/1444"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1445",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1445",
+    "farmer-d/logistics/1447"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/596",
+   "reason": "clock-shifted Lotus mail (header 7-8 h behind)",
+   "keys": [
+    "giron-d/sent/596",
+    "giron-d/sent/585"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/595",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/595",
+    "giron-d/sent/590",
+    "giron-d/sent/586"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/573",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/573",
+    "giron-d/sent/569"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1483",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1483",
+    "farmer-d/logistics/1487"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/539",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/539",
+    "giron-d/sent/535"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1520",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1520",
+    "farmer-d/logistics/1522"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1530",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1530",
+    "farmer-d/logistics/1532",
+    "farmer-d/logistics/1533"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/456",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/456",
+    "giron-d/sent/452",
+    "giron-d/sent/447"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/405",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/405",
+    "giron-d/sent/404"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1961",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1961",
+    "farmer-d/logistics/1963"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/394",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/394",
+    "giron-d/sent/393"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/1979",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/1979",
+    "farmer-d/logistics/1980"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/327",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/327",
+    "giron-d/sent/326",
+    "giron-d/sent/325",
+    "giron-d/sent/322",
+    "giron-d/sent/317"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/279",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/279",
+    "giron-d/sent/275"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/179",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/179",
+    "giron-d/sent/178",
+    "giron-d/sent/176"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/2109",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/2109",
+    "farmer-d/logistics/2111"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/133",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/133",
+    "giron-d/sent/132"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/195",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/195",
+    "farmer-d/logistics/194"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/83",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/83",
+    "giron-d/sent/81"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/179",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/179",
+    "farmer-d/logistics/178",
+    "farmer-d/logistics/177",
+    "farmer-d/logistics/176"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/45",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/sent/45",
+    "giron-d/sent/37",
+    "giron-d/sent/38",
+    "giron-d/sent/36",
+    "giron-d/sent/35"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/156",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/156",
+    "farmer-d/logistics/155"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/176",
+   "reason": "negative: personal forward from outside Enron",
+   "keys": [
+    "giron-d/inbox/176"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/116",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/116",
+    "farmer-d/logistics/114",
+    "farmer-d/logistics/112"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/525",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/525",
+    "williams-w3/sent_items/524"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/469",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/469",
+    "williams-w3/sent_items/467"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/396",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/396",
+    "williams-w3/sent_items/394"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/380",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/380",
+    "williams-w3/sent_items/375"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/338",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/338",
+    "williams-w3/sent_items/336"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/333",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/333",
+    "williams-w3/sent_items/332"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/292",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/292",
+    "williams-w3/sent_items/290"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/209",
+   "reason": "longest multi-message thread (batch budget)",
+   "keys": [
+    "giron-d/inbox/209",
+    "giron-d/inbox/212",
+    "giron-d/inbox/215",
+    "giron-d/inbox/216"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/62",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/62",
+    "farmer-d/logistics/60"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/221",
+   "reason": "negative: personal forward from outside Enron",
+   "keys": [
+    "giron-d/inbox/221"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/232",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/232",
+    "williams-w3/sent_items/231",
+    "williams-w3/sent_items/230"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/221",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/221",
+    "williams-w3/sent_items/220"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/53",
+   "reason": "ordinary thread",
+   "keys": [
+    "farmer-d/logistics/53",
+    "farmer-d/logistics/52"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/254",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/inbox/254",
+    "giron-d/inbox/257"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/264",
+   "reason": "logged reading: address_recovered",
+   "keys": [
+    "giron-d/inbox/264",
+    "giron-d/inbox/265"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/144",
+   "reason": "quoted-printable encoded message",
+   "keys": [
+    "williams-w3/sent_items/144",
+    "williams-w3/sent_items/141"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/135",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/135",
+    "williams-w3/sent_items/134"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/402",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/inbox/402",
+    "giron-d/inbox/451"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/96",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/96",
+    "williams-w3/sent_items/94",
+    "williams-w3/sent_items/90",
+    "williams-w3/sent_items/89"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/272",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/inbox/272",
+    "giron-d/inbox/391"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/388",
+   "reason": "negative: personal forward from outside Enron",
+   "keys": [
+    "giron-d/inbox/388"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/389",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/inbox/389",
+    "giron-d/inbox/393"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:farmer-d/logistics/3221",
+   "reason": "giant table message (sent as prose + code summary)",
+   "keys": [
+    "farmer-d/logistics/3221"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/79",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/79",
+    "williams-w3/sent_items/78"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/inbox/128",
+   "reason": "negative: company-wide broadcast",
+   "keys": [
+    "williams-w3/inbox/128"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:lokay-m/sent_items/60",
+   "reason": "ordinary thread",
+   "keys": [
+    "lokay-m/sent_items/60",
+    "lokay-m/sent_items/59"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/32",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/32",
+    "williams-w3/inbox/114"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/161",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/inbox/161",
+    "giron-d/inbox/160",
+    "giron-d/inbox/159"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:lokay-m/sent_items/45",
+   "reason": "ordinary thread",
+   "keys": [
+    "lokay-m/sent_items/45",
+    "lokay-m/sent_items/44",
+    "lokay-m/sent_items/20"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/inbox/103",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/inbox/103",
+    "williams-w3/sent_items/17"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/98",
+   "reason": "negative: company-wide broadcast",
+   "keys": [
+    "giron-d/inbox/98"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/13",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/13",
+    "williams-w3/inbox/95"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/54",
+   "reason": "negative: company-wide broadcast",
+   "keys": [
+    "giron-d/inbox/54"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/inbox/50",
+   "reason": "ordinary thread",
+   "keys": [
+    "giron-d/inbox/50",
+    "giron-d/inbox/49",
+    "giron-d/inbox/48"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/inbox/59",
+   "reason": "quoted-printable encoded message",
+   "keys": [
+    "williams-w3/inbox/59",
+    "williams-w3/inbox/58"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/sent_items/2",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/sent_items/2",
+    "williams-w3/inbox/39"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/inbox/12",
+   "reason": "ordinary thread",
+   "keys": [
+    "williams-w3/inbox/12",
+    "williams-w3/inbox/10"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:lokay-m/sent_items/125",
+   "reason": "ordinary thread",
+   "keys": [
+    "lokay-m/sent_items/125",
+    "lokay-m/sent_items/127"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:lokay-m/sent_items/143",
+   "reason": "quote linked to an original in another thread (one event, two threads)",
+   "keys": [
+    "lokay-m/sent_items/143"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:lokay-m/sent_items/144",
+   "reason": "original of a quote kept and linked in another thread",
+   "keys": [
+    "lokay-m/sent_items/144"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:lokay-m/sent_items/153",
+   "reason": "ordinary thread",
+   "keys": [
+    "lokay-m/sent_items/153",
+    "lokay-m/inbox/31"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:giron-d/sent/795",
+   "reason": "date problem (missing)",
+   "keys": [
+    "giron-d/sent/795"
+   ],
+   "benchmark": true
+  },
+  {
+   "thread_id": "t:lokay-m/inbox/50",
+   "reason": "date problem (out_of_range)",
+   "keys": [
+    "lokay-m/inbox/50"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:lokay-m/inbox/74",
+   "reason": "date problem (out_of_range)",
+   "keys": [
+    "lokay-m/inbox/74"
+   ],
+   "benchmark": false
+  },
+  {
+   "thread_id": "t:williams-w3/inbox/142",
+   "reason": "date problem (invalid)",
+   "keys": [
+    "williams-w3/inbox/142"
+   ],
+   "benchmark": false
+  }
+ ],
+ "keys": [
+  "farmer-d/logistics/579",
+  "farmer-d/logistics/622",
+  "farmer-d/logistics/670",
+  "farmer-d/logistics/673",
+  "farmer-d/logistics/675",
+  "farmer-d/logistics/734",
+  "farmer-d/logistics/736",
+  "farmer-d/logistics/765",
+  "farmer-d/logistics/777",
+  "farmer-d/logistics/880",
+  "farmer-d/logistics/902",
+  "farmer-d/logistics/903",
+  "farmer-d/logistics/905",
+  "farmer-d/logistics/916",
+  "farmer-d/logistics/917",
+  "farmer-d/logistics/924",
+  "farmer-d/logistics/934",
+  "farmer-d/logistics/933",
+  "farmer-d/logistics/965",
+  "farmer-d/logistics/995",
+  "farmer-d/logistics/1000",
+  "farmer-d/logistics/1027",
+  "farmer-d/logistics/1056",
+  "farmer-d/logistics/1057",
+  "farmer-d/logistics/1066",
+  "farmer-d/logistics/1067",
+  "farmer-d/logistics/1134",
+  "farmer-d/logistics/1136",
+  "farmer-d/logistics/1144",
+  "farmer-d/logistics/1145",
+  "farmer-d/logistics/1149",
+  "farmer-d/logistics/1152",
+  "farmer-d/logistics/1156",
+  "farmer-d/logistics/1191",
+  "farmer-d/logistics/1194",
+  "farmer-d/logistics/1209",
+  "farmer-d/logistics/1214",
+  "giron-d/sent/748",
+  "giron-d/sent/747",
+  "giron-d/sent/706",
+  "giron-d/sent/699",
+  "giron-d/sent/693",
+  "giron-d/sent/692",
+  "giron-d/sent/668",
+  "giron-d/sent/665",
+  "giron-d/sent/654",
+  "giron-d/sent/659",
+  "giron-d/sent/657",
+  "giron-d/sent/658",
+  "farmer-d/logistics/1418",
+  "farmer-d/logistics/1419",
+  "farmer-d/logistics/1439",
+  "farmer-d/logistics/1442",
+  "farmer-d/logistics/1444",
+  "farmer-d/logistics/1445",
+  "farmer-d/logistics/1447",
+  "giron-d/sent/596",
+  "giron-d/sent/585",
+  "giron-d/sent/595",
+  "giron-d/sent/590",
+  "giron-d/sent/586",
+  "giron-d/sent/573",
+  "giron-d/sent/569",
+  "farmer-d/logistics/1483",
+  "farmer-d/logistics/1487",
+  "giron-d/sent/539",
+  "giron-d/sent/535",
+  "farmer-d/logistics/1520",
+  "farmer-d/logistics/1522",
+  "farmer-d/logistics/1530",
+  "farmer-d/logistics/1532",
+  "farmer-d/logistics/1533",
+  "giron-d/sent/456",
+  "giron-d/sent/452",
+  "giron-d/sent/447",
+  "giron-d/sent/405",
+  "giron-d/sent/404",
+  "farmer-d/logistics/1961",
+  "farmer-d/logistics/1963",
+  "giron-d/sent/394",
+  "giron-d/sent/393",
+  "farmer-d/logistics/1979",
+  "farmer-d/logistics/1980",
+  "giron-d/sent/327",
+  "giron-d/sent/326",
+  "giron-d/sent/325",
+  "giron-d/sent/322",
+  "giron-d/sent/317",
+  "giron-d/sent/279",
+  "giron-d/sent/275",
+  "giron-d/sent/179",
+  "giron-d/sent/178",
+  "giron-d/sent/176",
+  "farmer-d/logistics/2109",
+  "farmer-d/logistics/2111",
+  "giron-d/sent/133",
+  "giron-d/sent/132",
+  "farmer-d/logistics/195",
+  "farmer-d/logistics/194",
+  "giron-d/sent/83",
+  "giron-d/sent/81",
+  "farmer-d/logistics/179",
+  "farmer-d/logistics/178",
+  "farmer-d/logistics/177",
+  "farmer-d/logistics/176",
+  "giron-d/sent/45",
+  "giron-d/sent/37",
+  "giron-d/sent/38",
+  "giron-d/sent/36",
+  "giron-d/sent/35",
+  "farmer-d/logistics/156",
+  "farmer-d/logistics/155",
+  "giron-d/inbox/176",
+  "farmer-d/logistics/116",
+  "farmer-d/logistics/114",
+  "farmer-d/logistics/112",
+  "williams-w3/sent_items/525",
+  "williams-w3/sent_items/524",
+  "williams-w3/sent_items/469",
+  "williams-w3/sent_items/467",
+  "williams-w3/sent_items/396",
+  "williams-w3/sent_items/394",
+  "williams-w3/sent_items/380",
+  "williams-w3/sent_items/375",
+  "williams-w3/sent_items/338",
+  "williams-w3/sent_items/336",
+  "williams-w3/sent_items/333",
+  "williams-w3/sent_items/332",
+  "williams-w3/sent_items/292",
+  "williams-w3/sent_items/290",
+  "giron-d/inbox/209",
+  "giron-d/inbox/212",
+  "giron-d/inbox/215",
+  "giron-d/inbox/216",
+  "farmer-d/logistics/62",
+  "farmer-d/logistics/60",
+  "giron-d/inbox/221",
+  "williams-w3/sent_items/232",
+  "williams-w3/sent_items/231",
+  "williams-w3/sent_items/230",
+  "williams-w3/sent_items/221",
+  "williams-w3/sent_items/220",
+  "farmer-d/logistics/53",
+  "farmer-d/logistics/52",
+  "giron-d/inbox/254",
+  "giron-d/inbox/257",
+  "giron-d/inbox/264",
+  "giron-d/inbox/265",
+  "williams-w3/sent_items/144",
+  "williams-w3/sent_items/141",
+  "williams-w3/sent_items/135",
+  "williams-w3/sent_items/134",
+  "giron-d/inbox/402",
+  "giron-d/inbox/451",
+  "williams-w3/sent_items/96",
+  "williams-w3/sent_items/94",
+  "williams-w3/sent_items/90",
+  "williams-w3/sent_items/89",
+  "giron-d/inbox/272",
+  "giron-d/inbox/391",
+  "giron-d/inbox/388",
+  "giron-d/inbox/389",
+  "giron-d/inbox/393",
+  "farmer-d/logistics/3221",
+  "williams-w3/sent_items/79",
+  "williams-w3/sent_items/78",
+  "williams-w3/inbox/128",
+  "lokay-m/sent_items/60",
+  "lokay-m/sent_items/59",
+  "williams-w3/sent_items/32",
+  "williams-w3/inbox/114",
+  "giron-d/inbox/161",
+  "giron-d/inbox/160",
+  "giron-d/inbox/159",
+  "lokay-m/sent_items/45",
+  "lokay-m/sent_items/44",
+  "lokay-m/sent_items/20",
+  "williams-w3/inbox/103",
+  "williams-w3/sent_items/17",
+  "giron-d/inbox/98",
+  "williams-w3/sent_items/13",
+  "williams-w3/inbox/95",
+  "giron-d/inbox/54",
+  "giron-d/inbox/50",
+  "giron-d/inbox/49",
+  "giron-d/inbox/48",
+  "williams-w3/inbox/59",
+  "williams-w3/inbox/58",
+  "williams-w3/sent_items/2",
+  "williams-w3/inbox/39",
+  "williams-w3/inbox/12",
+  "williams-w3/inbox/10",
+  "lokay-m/sent_items/125",
+  "lokay-m/sent_items/127",
+  "lokay-m/sent_items/143",
+  "lokay-m/sent_items/144",
+  "lokay-m/sent_items/153",
+  "lokay-m/inbox/31",
+  "giron-d/sent/795",
+  "lokay-m/inbox/50",
+  "lokay-m/inbox/74",
+  "williams-w3/inbox/142"
+ ],
+ "benchmark_keys": [
+  "farmer-d/logistics/579",
+  "farmer-d/logistics/622",
+  "farmer-d/logistics/670",
+  "farmer-d/logistics/673",
+  "farmer-d/logistics/675",
+  "farmer-d/logistics/734",
+  "farmer-d/logistics/736",
+  "farmer-d/logistics/765",
+  "farmer-d/logistics/777",
+  "farmer-d/logistics/880",
+  "farmer-d/logistics/902",
+  "farmer-d/logistics/903",
+  "farmer-d/logistics/905",
+  "farmer-d/logistics/916",
+  "farmer-d/logistics/917",
+  "farmer-d/logistics/924",
+  "farmer-d/logistics/934",
+  "farmer-d/logistics/933",
+  "farmer-d/logistics/965",
+  "farmer-d/logistics/995",
+  "farmer-d/logistics/1000",
+  "farmer-d/logistics/1027",
+  "farmer-d/logistics/1056",
+  "farmer-d/logistics/1057",
+  "giron-d/sent/693",
+  "giron-d/sent/692",
+  "giron-d/sent/668",
+  "giron-d/inbox/176",
+  "giron-d/inbox/209",
+  "giron-d/inbox/212",
+  "giron-d/inbox/215",
+  "giron-d/inbox/216",
+  "giron-d/inbox/264",
+  "giron-d/inbox/265",
+  "williams-w3/sent_items/144",
+  "williams-w3/sent_items/141",
+  "farmer-d/logistics/3221",
+  "williams-w3/inbox/128",
+  "lokay-m/sent_items/143",
+  "lokay-m/sent_items/144",
+  "giron-d/sent/795"
+ ],
+ "blind_keys": [
+  "farmer-d/logistics/880",
+  "farmer-d/logistics/924",
+  "farmer-d/logistics/934",
+  "farmer-d/logistics/995",
+  "farmer-d/logistics/1000",
+  "farmer-d/logistics/1056",
+  "farmer-d/logistics/1057",
+  "giron-d/sent/668",
+  "giron-d/inbox/264",
+  "giron-d/inbox/265"
+ ],
+ "holdout_threads": [
+  "t:lokay-m/inbox/69",
+  "t:farmer-d/logistics/1163",
+  "t:williams-w3/sent_items/389",
+  "t:giron-d/sent/299",
+  "t:farmer-d/logistics/1528",
+  "t:farmer-d/logistics/830",
+  "t:williams-w3/sent_items/379",
+  "t:giron-d/sent/160",
+  "t:williams-w3/sent_items/268",
+  "t:farmer-d/logistics/1042",
+  "t:giron-d/inbox/314",
+  "t:giron-d/sent/218",
+  "t:farmer-d/logistics/779",
+  "t:williams-w3/sent_items/359",
+  "t:giron-d/sent/555",
+  "t:farmer-d/logistics/982",
+  "t:williams-w3/inbox/121",
+  "t:williams-w3/inbox/77",
+  "t:farmer-d/logistics/1224",
+  "t:giron-d/sent/604",
+  "t:giron-d/sent/61",
+  "t:giron-d/sent/152",
+  "t:giron-d/sent/375",
+  "t:farmer-d/logistics/824"
+ ],
+ "holdout_keys": [
+  "lokay-m/inbox/69",
+  "lokay-m/inbox/53",
+  "lokay-m/sent_items/164",
+  "farmer-d/logistics/1163",
+  "williams-w3/sent_items/389",
+  "giron-d/sent/299",
+  "farmer-d/logistics/1528",
+  "farmer-d/logistics/830",
+  "williams-w3/sent_items/379",
+  "giron-d/sent/160",
+  "williams-w3/sent_items/268",
+  "farmer-d/logistics/1042",
+  "giron-d/inbox/314",
+  "giron-d/sent/218",
+  "farmer-d/logistics/779",
+  "williams-w3/sent_items/359",
+  "giron-d/sent/555",
+  "farmer-d/logistics/982",
+  "williams-w3/inbox/121",
+  "williams-w3/inbox/77",
+  "farmer-d/logistics/1224",
+  "farmer-d/logistics/1225",
+  "farmer-d/logistics/1227",
+  "giron-d/sent/604",
+  "giron-d/sent/602",
+  "giron-d/sent/61",
+  "giron-d/sent/152",
+  "giron-d/sent/375",
+  "giron-d/sent/373",
+  "farmer-d/logistics/824"
+ ]
+}

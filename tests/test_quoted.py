@@ -46,6 +46,61 @@ def test_lotus_reply_header_with_a_two_digit_year_is_a_marker():
     assert text[slice(*blocks[0].date_offsets)] == "12/16/99 12:27 PM"
 
 
+def test_lotus_internet_reply_header_with_seconds_is_a_marker():
+    # giron-d/sent/692: quoted text used to stay in "new text" because the time has seconds.
+    body = ("I think we can.\r\n\r\nDG\r\n\r\n\r\n\"KRISTI GIRON\" <KRISTI.GIRON@cfisd.net> on 08/23/2000 01:40:40 PM\r\n"
+            "To: <Darron.C.Giron@enron.com>\r\ncc:  \r\nSubject: Re: baseball\r\n\r\n\r\nLET'S TALK ABOUT BASEBALL.\r\n")
+    text = "S: x\r\n\r\n" + body
+    end, blocks = split_body(text, 8)
+    assert text[8:end].strip() == "I think we can.\r\n\r\nDG"
+    b = blocks[0]
+    assert b.kind == "lotus_name_date" and b.from_raw == '"KRISTI GIRON" <KRISTI.GIRON@cfisd.net>'
+    assert b.quoted_date == datetime(2000, 8, 23, 13, 40, 40)
+    assert b.content == "LET'S TALK ABOUT BASEBALL."
+
+
+def test_lotus_author_line_is_not_part_of_the_block_text():
+    # farmer-d/logistics/675 quoting 673: the name line "Mandy MacKinnon@ECT" used to block the match.
+    body = ("Please act.\r\n\r\nMandy MacKinnon@ECT\r\n01/11/2000 07:38 PM\r\nTo: Pat Clynes/Corp/Enron@ENRON\r\n"
+            "cc:  \r\n\r\nSubject: Unresolved Issues\r\n\r\n" + LONG + "\r\n")
+    text = "S: x\r\n\r\n" + body
+    _, blocks = split_body(text, 8)
+    assert blocks[0].content == quoted.norm_ws(LONG)
+
+
+def test_wrapped_header_lines_are_not_part_of_the_block_text():
+    # farmer-d/logistics/917 quoting 916: a cc: list wrapped onto a second line used to stay in.
+    body = ("Thanks all.\r\n\r\nHoward B Camp\r\n03/20/2000 08:46 AM\r\nTo: Karry Kendall/HOU/ECT@ECT, Clem \r\n"
+            "Cernosek/HOU/ECT@ECT\r\ncc: Stella L Morris/HOU/ECT@ECT, Rita \r\nWynne/HOU/ECT@ECT \r\n"
+            "Subject: HPLR Liquids\r\n\r\n" + LONG + "\r\n")
+    text = "S: x\r\n\r\n" + body
+    _, blocks = split_body(text, 8)
+    assert blocks[0].content == quoted.norm_ws(LONG)
+
+
+def test_a_long_wrapped_to_list_still_counts_as_header():
+    # farmer-d/logistics/1077: the To: list wraps over ~50 lines before Subject:.
+    to_lines = "".join(f"Person{i:02d} Name/HOU/ECT@ECT, \r\n" for i in range(40))
+    body = ("FYI\r\n\r\nMario Parra Cardoso@ENRON\r\n04/27/2000 11:42 AM\r\nTo: " + to_lines +
+            "cc:  \r\nSubject: Press release\r\n\r\n" + LONG + "\r\n")
+    text = "S: x\r\n\r\n" + body
+    _, blocks = split_body(text, 8)
+    assert blocks[0].content == quoted.norm_ws(LONG)
+
+
+def test_same_thread_original_with_a_lotus_header_is_skipped_end_to_end(make_corpus):
+    corpus = make_corpus({
+        "mb/inbox/1": email(subject="Unresolved Issues", body=LONG + "\r\n", message_id="<1@x>"),
+        "mb/inbox/2": email(subject="Re: Unresolved Issues", message_id="<2@x>", sender="b@enron.com", to="a@enron.com",
+                            date="Tue, 5 Feb 2002 09:00:00 -0800",
+                            body="Please act.\r\n\r\nMandy MacKinnon@ECT\r\n02/04/2002 01:47 PM\r\nTo: Pat Clynes, Daren \r\n"
+                                 "Farmer\r\ncc:  \r\n\r\nSubject: Unresolved Issues\r\n\r\n" + LONG + "\r\n"),
+    })
+    r = ingest.build(corpus)
+    (b,) = r.messages["mb/inbox/2"].blocks
+    assert b.skip_reason == "original_in_thread:mb/inbox/1"
+
+
 def test_outlook_original_appointment_is_a_marker():
     # williams-w3/inbox/73: a forwarded meeting request.
     body = "FYI\r\n\r\n -----Original Appointment-----\r\nFrom: \tBill\r\nSent:\tMon 1/7/2002 9:00 AM\r\nText.\r\n"

@@ -112,8 +112,9 @@ def _lines_with_offsets(text: str, start: int):
         pos += len(line)
 
 
-def parse_table(text: str, body_start: int) -> TableResult | None:
-    """Parse the first header + dashes table in the body. Returns None if there is none."""
+def parse_table(text: str, body_start: int, sent_on: date | None = None) -> TableResult | None:
+    """Parse the first header + dashes table in the body. Returns None if there is none.
+    sent_on is the day the message was sent (its Date header's own calendar day), if known."""
     lines = list(_lines_with_offsets(text[body_start:], body_start))
     header_i = next((i for i in range(len(lines) - 1)
                      if lines[i][1].strip() and _DASHES.match(lines[i + 1][1])), None)
@@ -174,29 +175,63 @@ def parse_table(text: str, body_start: int) -> TableResult | None:
             else:
                 values[c] = v          # text, or an ambiguous/invalid date kept as written
         result.rows.append(Row(n, off, off + len(line), line, values))
-    result.summary = summarize(result, date_info)
+    result.summary = summarize(result, date_info, sent_on)
     return result
 
 
-def summarize(t: TableResult, date_info: dict) -> dict:
+QUANTILES = (10, 25, 50, 75, 90)
+TOP_N = 5
+
+# Exactly how each summary figure is computed (shown with the summary, so nothing is a black box).
+CALCULATIONS = {
+    "min / max / sum": "over every row's parsed value",
+    "negative / zero / positive": "count of rows with value < 0, = 0, > 0",
+    "quantiles": "nearest-rank: the value at position ceil(p/100 * n) of the sorted values (p = 10,25,50,75,90)",
+    "largest_abs": f"the {TOP_N} rows with the largest absolute value, ties broken by row number; each has its "
+                   "row number and the raw line, which sits at known byte offsets in the file",
+    "months": "date columns: how many distinct calendar months (year and month) the parsed dates fall in",
+    "after_sent": "date columns: rows dated later than the day the message was sent (its Date header, as printed "
+                  f"in the sender's time zone), with the first {TOP_N} row numbers; absent if the message has no "
+                  "usable Date",
+}
+
+
+def _nearest_rank(sorted_vals: list[int], p: int) -> int:
+    k = max(1, -(-p * len(sorted_vals) // 100))          # ceil(p * n / 100), at least 1
+    return sorted_vals[k - 1]
+
+
+def summarize(t: TableResult, date_info: dict, sent_on: date | None = None) -> dict:
     cols = {}
     for c in t.columns:
         kind = t.column_types[c]
         vals = [r.values[c] for r in t.rows]
         info: dict = {"type": kind}
         if kind == "int":
-            info.update(min=min(vals), max=max(vals), sum=sum(vals))
+            s = sorted(vals)
+            top = sorted(t.rows, key=lambda r: (-abs(r.values[c]), r.row_no))[:TOP_N]
+            info.update(min=min(vals), max=max(vals), sum=sum(vals),
+                        negative=sum(v < 0 for v in vals), zero=sum(v == 0 for v in vals),
+                        positive=sum(v > 0 for v in vals),
+                        quantiles={f"p{p}": _nearest_rank(s, p) for p in QUANTILES},
+                        largest_abs=[{"row_no": r.row_no, "value": r.values[c], "raw": r.raw.strip()} for r in top])
         elif kind.startswith("date"):
             info.update(date_info[c])
             if kind.endswith((DAY_MONTH, MONTH_DAY)):
-                info.update(min=min(vals), max=max(vals))
+                info.update(min=min(vals), max=max(vals), months=len({v[:7] for v in vals}))
+                if sent_on is not None:
+                    later = [r.row_no for r in t.rows if r.values[c] > sent_on.isoformat()]
+                    info.update(sent_on=sent_on.isoformat(), after_sent=len(later), after_sent_first_rows=later[:TOP_N])
         else:
             distinct = Counter(vals)
             info["distinct"] = len(distinct)
             if len(distinct) <= 20:
                 info["counts"] = dict(sorted(distinct.items()))
         cols[c] = info
-    summary = {"row_count": len(t.rows), "bad_rows": len(t.bad_rows), "columns": cols}
+    summary = {"row_count": len(t.rows), "bad_rows": len(t.bad_rows), "columns": cols,
+               "calculations": CALCULATIONS,
+               "evidence_note": "rows are data records, never events; any number taken from this table is "
+                                "computed by code and cites row numbers"}
     if {"SCHEDULED", "ACTUAL", "VARIANCE"} <= set(t.columns):
         summary["variance_check"] = variance_check(t.rows)
     return summary

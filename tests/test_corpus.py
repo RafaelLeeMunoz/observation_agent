@@ -70,38 +70,40 @@ def test_r2_duplicates(corpus_result):
 def test_r3_quoted_text(corpus_result):
     msgs = corpus_result.messages.values()
     with_quotes = [m for m in msgs if m.blocks]
-    # 1,640: M1 found 1,630; M2 added 3 Lotus replies with two-digit-year headers, and the review
-    # added 7 more (Outlook "Original Appointment" and Sent-less header blocks in Fwd:/bounce mail).
-    assert len(with_quotes) == 1640
+    # 1,670: M1 found 1,630; M2 added 3 Lotus replies with two-digit-year headers; the review added
+    # 7 ("Original Appointment", Sent-less header blocks); the benchmark reading added 30 (Lotus
+    # internet-reply headers with seconds: '"X" <addr> on 08/23/2000 01:40:40 PM' + To:).
+    assert len(with_quotes) == 1670
     body = sum(len(m.body) for m in msgs)
     quoted = sum(len(m.text) - m.new_text_end for m in with_quotes)
-    assert round(100 * quoted / body, 1) == 59.2
+    assert round(100 * quoted / body, 1) == 59.9
     for m in with_quotes:
         assert "".join(m.text[b.start:b.end] for b in m.blocks) == m.text[m.new_text_end:]
     blocks = [b for m in corpus_result.unique for b in m.blocks]
-    assert len(blocks) == 3968
+    assert len(blocks) == 4079
     reasons = Counter((b.skip_reason or "kept").split(":")[0] for b in blocks)
-    # R3 as revised in the review: skip only when the same text is in the same thread.
-    assert (reasons["original_in_thread"], reasons["repeat_in_thread"]) == (143, 345)
-    assert (corpus_result.skipped_originals, corpus_result.skipped_repeats) == (143, 345)
+    # R3: skip only when the same text is in the same thread. 143 -> 281 originals after block
+    # text stopped including the quoted header (author line, wrapped cc: lines) when matching.
+    assert (reasons["original_in_thread"], reasons["repeat_in_thread"]) == (281, 305)
+    assert (corpus_result.skipped_originals, corpus_result.skipped_repeats) == (281, 305)
     linked = [b for b in blocks if b.links]
-    assert len(linked) == 193 and not any(b.skip_reason for b in linked)
-    assert (corpus_result.linked_to_original, corpus_result.linked_copies) == (38, 162)
-    assert len({b.first_seen for b in linked}) == 90
-    assert sum(1 for b in linked if "#" not in b.first_seen) == 38            # anchored on an original
+    assert len(linked) == 159 and not any(b.skip_reason for b in linked)
+    assert (corpus_result.linked_to_original, corpus_result.linked_copies) == (57, 113)
+    assert len({b.first_seen for b in linked}) == 99
+    assert sum(1 for b in linked if "#" not in b.first_seen) == 57            # anchored on an original
     long_blocks = [b for m in corpus_result.unique for b in m.blocks
                    if len(" ".join(m.text[b.start:b.end].split())) >= 80]
-    assert round(100 * sum(1 for b in long_blocks if b.quoted_date) / len(long_blocks), 1) == 95.1
+    assert round(100 * sum(1 for b in long_blocks if b.quoted_date) / len(long_blocks), 1) == 95.6
 
 
 def test_no_silent_readings(corpus_result):
     """Every non-literal reading, and every date that couldn't be read, is logged with why."""
     rd = corpus_result.readings
-    assert Counter(x.rule for x in rd) == {"two_digit_year": 127, "quoted_printable_space": 31,
-                                           "address_recovered": 12, "date_not_read": 11, "column_format": 4}
-    assert len({x.key for x in rd}) == 80
+    assert Counter(x.rule for x in rd) == {"two_digit_year": 132, "quoted_printable_space": 30,
+                                           "address_recovered": 12, "date_not_read": 7, "column_format": 4}
+    assert len({x.key for x in rd}) == 78
     assert Counter((x.certainty, x.outcome) for x in rd) == {
-        ("inferred", "read"): 140, ("exact", "read"): 34, ("none", "not_read"): 11}
+        ("inferred", "read"): 145, ("exact", "read"): 33, ("none", "not_read"): 7}
     for x in rd:
         assert x.written in corpus_result.messages[x.key].text[x.start:x.end]
         assert x.why
@@ -135,7 +137,7 @@ def test_r5_threads(corpus_result):
     th = corpus_result.threads
     assert len(th) == 2736
     assert sum(1 for t in th if len(t.keys) > 1) == 348
-    assert sum(1 for t in th if not t.starts_with_root) == 1317
+    assert sum(1 for t in th if not t.starts_with_root) == 1318
     assert sum(1 for t in th if t.subject_norm == "calpine daily gas nomination") == 18
     assert sum(1 for m in corpus_result.unique if m.subject_norm == "") == 107
     assert all(t.inferred for t in th)

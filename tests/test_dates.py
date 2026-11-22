@@ -128,6 +128,11 @@ def test_two_digit_year_is_read_and_flagged_with_why():
     assert qd("Name\r\n06/25/01 02:47 PM\r\nTo: x") == datetime(2001, 6, 25, 14, 47)
 
 
+def test_lotus_date_with_seconds():
+    assert qd('"X" <x@y.com> on 08/23/2000 01:40:40 PM\r\nTo: z') == datetime(2000, 8, 23, 13, 40, 40)
+    assert qd('"X" <x@y.com> on 08/23/2000 01:40:61 PM\r\nTo: z') is None          # no 61st second
+
+
 def test_two_digit_year_outside_the_window_gives_no_date():
     assert parse_quoted_date("Name\r\n12/16/87 12:27 PM\r\nTo: x") is None
     assert parse_quoted_date("Name\r\n12/16/03 12:27 PM\r\nTo: x") is None

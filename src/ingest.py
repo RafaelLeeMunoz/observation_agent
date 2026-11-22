@@ -29,7 +29,7 @@ from .textutil import has_reply_prefix, norm_ws, sort_key, subject_norm
 
 # The cache fingerprint covers the corpus bytes, this version string AND the source code of every
 # module in src/, so a code change can never reuse stale output even if nobody bumps the version.
-INGEST_VERSION = "m2.3"
+INGEST_VERSION = "m2.4"
 SRC_DIR = Path(__file__).resolve().parent
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -391,7 +391,8 @@ def build(corpus: Path = DEFAULT_CORPUS) -> IngestResult:
     for m in unique:
         if tables.needs_special_handling(m.body):
             if tables.table_share(m.body) >= tables.TABLE_SHARE:
-                m.table = tables.parse_table(m.text, m.body_start)
+                local = m.parsed_date.local
+                m.table = tables.parse_table(m.text, m.body_start, local.date() if local else None)
             if m.table:
                 m.special_handling = "table_parsed"
             else:
@@ -473,7 +474,7 @@ def write_db(r: IngestResult, path: Path, fingerprint: str, ledger_sha256: str) 
     """Write atomically (temp file, then replace). meta records whether reconciliation passed and
     the ledger file's hash, so a failed or half-written run can never look like a valid cache."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
+    tmp = path.with_name(path.name + ".tmp")        # 'ingest.sqlite.tmp': never collides with the ledger's
     tmp.unlink(missing_ok=True)
     con = sqlite3.connect(tmp)
     con.executescript(SCHEMA)
@@ -624,7 +625,7 @@ def main(argv: list[str] | None = None) -> int:
     rec = r.reconciliation()
     # Ledger first (to a temp file), then the database that records the ledger's hash, then the
     # ledger moves into place. A crash anywhere leaves a mismatch, so the next run rebuilds.
-    tmp_ledger = args.ledger.with_suffix(".tmp")
+    tmp_ledger = args.ledger.with_name(args.ledger.name + ".tmp")
     ledger.write_csv(r.ledger_rows(), tmp_ledger)
     write_db(r, args.db, fp, rawio.sha256_file(tmp_ledger))
     tmp_ledger.replace(args.ledger)
