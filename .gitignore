@@ -15,3 +15,10 @@ __pycache__/
 
 # Machine-local Claude Code settings
 .claude/settings.local.json
+
+# Dashboard process record and server log (machine-local, rewritten on every start)
+output/server.json
+output/logs/server.log
+
+# Cross-process lock files next to shared logs (src/filelock.py)
+.shared.lock

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "grounder-v1",
+  "title": "Grounder output for one packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packet_id", "attempt_id", "verdicts"],
+  "properties": {
+    "packet_id": {"type": "string"},
+    "attempt_id": {"type": "string", "description": "Echo the attempt id you were given; stale files are refused."},
+    "verdicts": {
+      "description": "One verdict for every claim in the packet, exactly once.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "verdict", "sentence_ids", "reason"],
+        "properties": {
+          "claim_id": {"type": "string"},
+          "verdict": {"enum": ["supported", "unsupported", "unsure"]},
+          "sentence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"},
+                           "description": "The sentences that show the signal (1 to 3) when supported; [] otherwise."},
+          "reason": {"type": "string", "description": "One short line."}
+        }
+      }
+    }
+  }
+}

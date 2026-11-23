@@ -1,0 +1,96 @@
+{
+ "inputs": {
+  "dev_batches": {
+   "b001": {
+    "est_tokens": 23426,
+    "seconds": 420.148,
+    "claims": 50
+   },
+   "b002": {
+    "est_tokens": 18813,
+    "seconds": 230.448,
+    "claims": 23
+   },
+   "b003": {
+    "est_tokens": 23321,
+    "seconds": 149.273,
+    "claims": 5
+   },
+   "b004": {
+    "est_tokens": 9724,
+    "seconds": 199.578,
+    "claims": 9
+   }
+  },
+  "seconds_per_est_token_mean": 0.013275689389511717,
+  "seconds_per_est_token_worst": 0.02052426984779926,
+  "grounder_seconds_per_claim": 1.5212183908045978,
+  "grounder_min_seconds": 11.803,
+  "headless_start_overhead_s": 1.4731249999999991,
+  "synth_seconds_dev": 31.2,
+  "act_seconds_dev": [
+   17.1
+  ],
+  "full_batches": 49,
+  "full_est_tokens": 1153257,
+  "dev_observations": 323,
+  "full_to_dev_ratio": 15.318752988682855
+ },
+ "assumptions": [
+  "full-corpus batches extract at the dev slice's seconds per est token (mean), or all at the slowest dev batch's rate (pessimistic)",
+  "claims per est token as in the dev slice",
+  "synthesis of the full list takes the dev synthesis time x the observation ratio, split into per-mailbox calls run in parallel plus one merge (not yet built or measured)",
+  "artifacts: up to 6 in parallel, each as long as the slowest measured dev artifact",
+  "the Pro plan sustains the given number of parallel sessions without throttling: measured only up to 8"
+ ],
+ "scenarios": {
+  "mean/4 workers": {
+   "extract_and_ground_s": 4381.3,
+   "fixed_s": 177.8,
+   "total_min": 76.0,
+   "under_30_min": false
+  },
+  "mean/8 workers": {
+   "extract_and_ground_s": 2192.9,
+   "fixed_s": 177.8,
+   "total_min": 39.5,
+   "under_30_min": false
+  },
+  "mean/12 workers": {
+   "extract_and_ground_s": 1553.6,
+   "fixed_s": 177.8,
+   "total_min": 28.9,
+   "under_30_min": true
+  },
+  "mean/16 workers": {
+   "extract_and_ground_s": 1235.1,
+   "fixed_s": 177.8,
+   "total_min": 23.5,
+   "under_30_min": true
+  },
+  "pessimistic/4 workers": {
+   "extract_and_ground_s": 6476.0,
+   "fixed_s": 177.8,
+   "total_min": 110.9,
+   "under_30_min": false
+  },
+  "pessimistic/8 workers": {
+   "extract_and_ground_s": 3351.8,
+   "fixed_s": 177.8,
+   "total_min": 58.8,
+   "under_30_min": false
+  },
+  "pessimistic/12 workers": {
+   "extract_and_ground_s": 2377.2,
+   "fixed_s": 177.8,
+   "total_min": 42.6,
+   "under_30_min": false
+  },
+  "pessimistic/16 workers": {
+   "extract_and_ground_s": 1885.5,
+   "fixed_s": 177.8,
+   "total_min": 34.4,
+   "under_30_min": false
+  }
+ }
+}

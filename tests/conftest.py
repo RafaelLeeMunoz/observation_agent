@@ -59,7 +59,8 @@ def ingested(make_corpus, tmp_path):
 
 
 BATCH_CFG = {"chars_per_token": 4, "token_budget": 24000, "hard_cap_tokens": 40000, "recipients_shown": 10}
-VERIFY_CFG = {"min_quote_chars": 25, "canary_min_quotes": 5, "canary_max_fail_rate": 0.20}
+VERIFY_CFG = {"min_quote_chars": 25, "canary_min_quotes": 5, "canary_max_fail_rate": 0.20,
+              "evidence_flag_min_signals": 5, "evidence_flag_max_fail_rate": 0.20}
 
 
 @pytest.fixture(scope="session")

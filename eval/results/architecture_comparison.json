@@ -1,0 +1,2226 @@
+{
+ "yardstick": {
+  "evidence_matches": true,
+  "negatives_match": true,
+  "labels_freeze": {
+   "freeze": "bench-v1 r89 / score-v6 / rules-v5",
+   "matches": true,
+   "differs": []
+  }
+ },
+ "architectures": {
+  "clean-C": [
+   {
+    "run": "C1",
+    "file": "data\\extract\\bench_runs\\haiku_v8c_b001.json",
+    "activities_found": 46,
+    "activities": 50,
+    "precision": "55/56",
+    "precision_one_to_one": "46/56",
+    "action_state_agreement": "39/46",
+    "stall_agreement": "34/46",
+    "stall_any_agreement": "39/46",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 8,
+      "extracted": 10,
+      "both": 8
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 6,
+      "both": 4
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 6,
+      "both": 6
+     },
+     "rework": {
+      "labelled": 0,
+      "extracted": 0,
+      "both": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/673#5",
+     "farmer-d/logistics/734#2",
+     "farmer-d/logistics/3221#2"
+    ],
+    "e2e": "0/30",
+    "any_evidence": "0/30",
+    "categories": {
+     "published_supported": 0,
+     "published_other_passage": 0,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 0,
+     "correct_not_grounded": 20,
+     "signal_missed": 8,
+     "activity_missed": 2
+    },
+    "published_precision": "0/0 (0 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [],
+    "unlabelled": [],
+    "negatives_published": [],
+    "withheld_correctly": [
+     "farmer-d/logistics/673#2 follow_up (not_grounded)",
+     "farmer-d/logistics/765#3 waiting (not_grounded)",
+     "farmer-d/logistics/965#1 follow_up (not_grounded)",
+     "giron-d/inbox/265#1 waiting (not_grounded)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#5 follow_up": "activity_missed",
+     "farmer-d/logistics/673#6 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#7 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#8 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#9 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/675#1 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/965#1 correction": "signal_missed"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 0,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 0,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 0,
+     "valid": 0,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 0,
+     "activity_signal_pairs": 0,
+     "on_unlabelled_observations": 0,
+     "counted": 0,
+     "correct": 0,
+     "false_on_labelled_activities": 0
+    },
+    "grounder_outcomes_per_claim": {},
+    "correct_claims_not_published": 0,
+    "correct_claims_never_checked": 20,
+    "extraction_from": null,
+    "extraction_cost": {
+     "tokens_reported": 99804,
+     "seconds": 178.9,
+     "notional_usd": null,
+     "harness": "in-session subagent",
+     "model": "confirmed",
+     "prompt_sha256": "ef76350212d383ad323cd8b9cd6c49c62e46221c68569691f1703d15fae678f4",
+     "prompt_version": "extract-v8c"
+    },
+    "grounding_cost": null
+   },
+   {
+    "run": "C2",
+    "file": "data\\extract\\bench_runs\\haiku_v8c2_b001.json",
+    "activities_found": 46,
+    "activities": 50,
+    "precision": "54/56",
+    "precision_one_to_one": "46/56",
+    "action_state_agreement": "38/46",
+    "stall_agreement": "32/46",
+    "stall_any_agreement": "36/46",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 9,
+      "extracted": 3,
+      "both": 3
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 4,
+      "both": 3
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 7,
+      "both": 7
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/622#2",
+     "farmer-d/logistics/673#2",
+     "farmer-d/logistics/765#3"
+    ],
+    "e2e": "0/30",
+    "any_evidence": "0/30",
+    "categories": {
+     "published_supported": 0,
+     "published_other_passage": 0,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 0,
+     "correct_not_grounded": 15,
+     "signal_missed": 15,
+     "activity_missed": 0
+    },
+    "published_precision": "0/0 (0 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [],
+    "unlabelled": [],
+    "negatives_published": [],
+    "withheld_correctly": [
+     "farmer-d/logistics/670#2 waiting (not_grounded)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "signal_missed",
+     "farmer-d/logistics/673#5 follow_up": "signal_missed",
+     "farmer-d/logistics/673#6 follow_up": "signal_missed",
+     "farmer-d/logistics/673#7 follow_up": "signal_missed",
+     "farmer-d/logistics/673#8 follow_up": "signal_missed",
+     "farmer-d/logistics/673#9 follow_up": "signal_missed",
+     "farmer-d/logistics/675#1 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/965#1 correction": "correct_not_grounded"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 0,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 0,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 0,
+     "valid": 0,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 0,
+     "activity_signal_pairs": 0,
+     "on_unlabelled_observations": 0,
+     "counted": 0,
+     "correct": 0,
+     "false_on_labelled_activities": 0
+    },
+    "grounder_outcomes_per_claim": {},
+    "correct_claims_not_published": 0,
+    "correct_claims_never_checked": 15,
+    "extraction_from": null,
+    "extraction_cost": {
+     "tokens_reported": 109041,
+     "seconds": 198.4,
+     "notional_usd": null,
+     "harness": "in-session subagent",
+     "model": "confirmed",
+     "prompt_sha256": "ef76350212d383ad323cd8b9cd6c49c62e46221c68569691f1703d15fae678f4",
+     "prompt_version": "extract-v8c"
+    },
+    "grounding_cost": null
+   },
+   {
+    "run": "C3h",
+    "file": "data\\extract\\bench_runs\\haiku_v8c3h_b001.json",
+    "activities_found": 47,
+    "activities": 50,
+    "precision": "55/56",
+    "precision_one_to_one": "47/56",
+    "action_state_agreement": "40/47",
+    "stall_agreement": "34/47",
+    "stall_any_agreement": "41/47",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 9,
+      "extracted": 9,
+      "both": 8
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 8,
+      "both": 5
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 6,
+      "both": 6
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/622#2",
+     "farmer-d/logistics/673#2",
+     "farmer-d/logistics/924#3"
+    ],
+    "e2e": "0/30",
+    "any_evidence": "0/30",
+    "categories": {
+     "published_supported": 0,
+     "published_other_passage": 0,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 0,
+     "correct_not_grounded": 21,
+     "signal_missed": 9,
+     "activity_missed": 0
+    },
+    "published_precision": "0/0 (0 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [],
+    "unlabelled": [],
+    "negatives_published": [],
+    "withheld_correctly": [
+     "farmer-d/logistics/673#9 waiting (not_grounded)",
+     "farmer-d/logistics/765#3 waiting (not_grounded)",
+     "farmer-d/logistics/902#1 waiting (not_grounded)",
+     "farmer-d/logistics/917#1 follow_up (not_grounded)",
+     "farmer-d/logistics/965#1 waiting (not_grounded)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#5 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#6 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#7 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#8 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/673#9 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/675#1 follow_up": "correct_not_grounded",
+     "farmer-d/logistics/965#1 correction": "signal_missed"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 0,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 0,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 0,
+     "valid": 0,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 0,
+     "activity_signal_pairs": 0,
+     "on_unlabelled_observations": 0,
+     "counted": 0,
+     "correct": 0,
+     "false_on_labelled_activities": 0
+    },
+    "grounder_outcomes_per_claim": {},
+    "correct_claims_not_published": 0,
+    "correct_claims_never_checked": 21,
+    "extraction_from": null,
+    "extraction_cost": {
+     "tokens_reported": 325098,
+     "seconds": 185.6,
+     "notional_usd": 0.06691761,
+     "harness": "headless",
+     "model": "confirmed",
+     "prompt_sha256": "ef76350212d383ad323cd8b9cd6c49c62e46221c68569691f1703d15fae678f4",
+     "prompt_version": "extract-v8c"
+    },
+    "grounding_cost": null
+   }
+  ],
+  "H": [
+   {
+    "run": "H1",
+    "file": "data\\extract\\bench_runs\\haiku_v8h_b001.json",
+    "activities_found": 44,
+    "activities": 50,
+    "precision": "51/52",
+    "precision_one_to_one": "44/52",
+    "action_state_agreement": "38/44",
+    "stall_agreement": "35/44",
+    "stall_any_agreement": "39/44",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 8,
+      "extracted": 9,
+      "both": 8
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 5,
+      "both": 5
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 7,
+      "both": 7
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/622#2",
+     "farmer-d/logistics/673#5",
+     "farmer-d/logistics/734#2",
+     "farmer-d/logistics/765#3",
+     "farmer-d/logistics/880#1"
+    ],
+    "e2e": "17/30",
+    "any_evidence": "22/30",
+    "categories": {
+     "published_supported": 17,
+     "published_other_passage": 5,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 0,
+     "correct_not_grounded": 0,
+     "signal_missed": 7,
+     "activity_missed": 1
+    },
+    "published_precision": "22/25 (24 activity-signal pairs + 1 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [
+     "farmer-d/logistics/673#2 follow_up",
+     "farmer-d/logistics/1000#1 follow_up"
+    ],
+    "unlabelled": [
+     "farmer-d/logistics/965 waiting"
+    ],
+    "negatives_published": [],
+    "withheld_correctly": [],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "published_supported",
+     "farmer-d/logistics/673#5 follow_up": "activity_missed",
+     "farmer-d/logistics/673#6 follow_up": "published_supported",
+     "farmer-d/logistics/673#7 follow_up": "published_supported",
+     "farmer-d/logistics/673#8 follow_up": "published_supported",
+     "farmer-d/logistics/673#9 follow_up": "published_supported",
+     "farmer-d/logistics/675#1 follow_up": "published_other_passage",
+     "farmer-d/logistics/965#1 correction": "signal_missed"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 17,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 17,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 8,
+      "published_supported": 7,
+      "published_total": 10,
+      "published_false": 2,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 5,
+      "published_supported": 3,
+      "published_total": 6,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 1
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 8,
+      "published_supported": 6,
+      "published_total": 8,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 1,
+      "published_supported": 1,
+      "published_total": 1,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 26,
+     "valid": 26,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 26,
+     "activity_signal_pairs": 24,
+     "on_unlabelled_observations": 1,
+     "counted": 25,
+     "correct": 22,
+     "false_on_labelled_activities": 2
+    },
+    "grounder_outcomes_per_claim": {},
+    "correct_claims_not_published": 0,
+    "correct_claims_never_checked": 0,
+    "extraction_from": null,
+    "extraction_cost": {
+     "tokens_reported": 264040,
+     "seconds": 215.9,
+     "notional_usd": 0.10182321,
+     "harness": "headless",
+     "model": "confirmed",
+     "prompt_sha256": "fd011926b7ef5fd4ac5d18f7939fbdc875afbda2986a7d1fb6b1c0b158e21252",
+     "prompt_version": "extract-v8h"
+    },
+    "grounding_cost": null
+   },
+   {
+    "run": "H2",
+    "file": "data\\extract\\bench_runs\\haiku_v8h2_b001.json",
+    "activities_found": 46,
+    "activities": 50,
+    "precision": "52/53",
+    "precision_one_to_one": "46/53",
+    "action_state_agreement": "40/46",
+    "stall_agreement": "37/46",
+    "stall_any_agreement": "42/46",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 9,
+      "extracted": 9,
+      "both": 9
+     },
+     "waiting": {
+      "labelled": 7,
+      "extracted": 4,
+      "both": 3
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 7,
+      "both": 7
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/673#2",
+     "farmer-d/logistics/765#3",
+     "farmer-d/logistics/1056#2"
+    ],
+    "e2e": "20/30",
+    "any_evidence": "21/30",
+    "categories": {
+     "published_supported": 20,
+     "published_other_passage": 1,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 0,
+     "correct_not_grounded": 0,
+     "signal_missed": 8,
+     "activity_missed": 1
+    },
+    "published_precision": "21/23 (23 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [
+     "farmer-d/logistics/670#2 waiting",
+     "farmer-d/logistics/1000#1 follow_up"
+    ],
+    "unlabelled": [],
+    "negatives_published": [
+     "farmer-d/logistics/670#2 waiting"
+    ],
+    "withheld_correctly": [],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "published_supported",
+     "farmer-d/logistics/673#5 follow_up": "published_supported",
+     "farmer-d/logistics/673#6 follow_up": "published_supported",
+     "farmer-d/logistics/673#7 follow_up": "published_supported",
+     "farmer-d/logistics/673#8 follow_up": "published_supported",
+     "farmer-d/logistics/673#9 follow_up": "published_supported",
+     "farmer-d/logistics/675#1 follow_up": "published_other_passage",
+     "farmer-d/logistics/965#1 correction": "signal_missed"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 20,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 20,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 9,
+      "published_supported": 8,
+      "published_total": 10,
+      "published_false": 1,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 3,
+      "published_supported": 3,
+      "published_total": 4,
+      "published_false": 1,
+      "published_on_unlabelled_obs": 0
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 8,
+      "published_supported": 8,
+      "published_total": 8,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 1,
+      "published_supported": 1,
+      "published_total": 1,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 25,
+     "valid": 25,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 25,
+     "activity_signal_pairs": 23,
+     "on_unlabelled_observations": 0,
+     "counted": 23,
+     "correct": 21,
+     "false_on_labelled_activities": 2
+    },
+    "grounder_outcomes_per_claim": {},
+    "correct_claims_not_published": 0,
+    "correct_claims_never_checked": 0,
+    "extraction_from": null,
+    "extraction_cost": {
+     "tokens_reported": 378027,
+     "seconds": 227.4,
+     "notional_usd": 0.14851498,
+     "harness": "headless",
+     "model": "confirmed",
+     "prompt_sha256": "fd011926b7ef5fd4ac5d18f7939fbdc875afbda2986a7d1fb6b1c0b158e21252",
+     "prompt_version": "extract-v8h"
+    },
+    "grounding_cost": null
+   }
+  ],
+  "I": [
+   {
+    "run": "I1",
+    "file": "data\\ground\\verified\\I_v8c.json",
+    "activities_found": 46,
+    "activities": 50,
+    "precision": "55/56",
+    "precision_one_to_one": "46/56",
+    "action_state_agreement": "39/46",
+    "stall_agreement": "34/46",
+    "stall_any_agreement": "39/46",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 8,
+      "extracted": 10,
+      "both": 8
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 6,
+      "both": 4
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 6,
+      "both": 6
+     },
+     "rework": {
+      "labelled": 0,
+      "extracted": 0,
+      "both": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/673#5",
+     "farmer-d/logistics/734#2",
+     "farmer-d/logistics/3221#2"
+    ],
+    "e2e": "19/30",
+    "any_evidence": "19/30",
+    "categories": {
+     "published_supported": 19,
+     "published_other_passage": 0,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 1,
+     "correct_not_grounded": 0,
+     "signal_missed": 8,
+     "activity_missed": 2
+    },
+    "published_precision": "19/21 (21 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [
+     "farmer-d/logistics/673#2 follow_up",
+     "farmer-d/logistics/765#3 waiting"
+    ],
+    "unlabelled": [],
+    "negatives_published": [],
+    "withheld_correctly": [
+     "farmer-d/logistics/965#1 follow_up (unsupported)",
+     "giron-d/inbox/265#1 waiting (unsupported)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "published_supported",
+     "farmer-d/logistics/673#5 follow_up": "activity_missed",
+     "farmer-d/logistics/673#6 follow_up": "published_supported",
+     "farmer-d/logistics/673#7 follow_up": "published_supported",
+     "farmer-d/logistics/673#8 follow_up": "published_supported",
+     "farmer-d/logistics/673#9 follow_up": "published_supported",
+     "farmer-d/logistics/675#1 follow_up": "published_supported",
+     "farmer-d/logistics/965#1 correction": "signal_missed"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 18,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 19,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 8,
+      "published_supported": 8,
+      "published_total": 9,
+      "published_false": 1,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 3,
+      "published_supported": 3,
+      "published_total": 4,
+      "published_false": 1,
+      "published_on_unlabelled_obs": 0
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 8,
+      "published_supported": 8,
+      "published_total": 8,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 38,
+     "valid": 38,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 22,
+     "activity_signal_pairs": 21,
+     "on_unlabelled_observations": 0,
+     "counted": 21,
+     "correct": 19,
+     "false_on_labelled_activities": 2
+    },
+    "grounder_outcomes_per_claim": {
+     "published": 22,
+     "unresolved": 1,
+     "unsupported": 2
+    },
+    "correct_claims_not_published": 1,
+    "correct_claims_never_checked": 0,
+    "extraction_from": "C1",
+    "extraction_cost": null,
+    "grounding_cost": {
+     "tokens_reported": 60106,
+     "seconds": 33.9,
+     "notional_usd": 0.00916197,
+     "claims": 25,
+     "prompt_sha256": "a9bc0940b19310d05472ade353b0fc45f44bcb12977bad2be6c7333fb63786fb",
+     "packet_sha256": "b4b5c05f20bba9bfc6ab1fd3b848783891c1d02766dcaa5513bfa847370c891f",
+     "model": null
+    }
+   },
+   {
+    "run": "I2",
+    "file": "data\\ground\\verified\\I_v8c2.json",
+    "activities_found": 46,
+    "activities": 50,
+    "precision": "54/56",
+    "precision_one_to_one": "46/56",
+    "action_state_agreement": "38/46",
+    "stall_agreement": "32/46",
+    "stall_any_agreement": "36/46",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 9,
+      "extracted": 3,
+      "both": 3
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 4,
+      "both": 3
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 7,
+      "both": 7
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/622#2",
+     "farmer-d/logistics/673#2",
+     "farmer-d/logistics/765#3"
+    ],
+    "e2e": "13/30",
+    "any_evidence": "14/30",
+    "categories": {
+     "published_supported": 13,
+     "published_other_passage": 1,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 1,
+     "correct_not_grounded": 0,
+     "signal_missed": 15,
+     "activity_missed": 0
+    },
+    "published_precision": "14/16 (14 activity-signal pairs + 2 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [],
+    "unlabelled": [
+     "farmer-d/logistics/673 follow_up",
+     "farmer-d/logistics/965 waiting"
+    ],
+    "negatives_published": [],
+    "withheld_correctly": [
+     "farmer-d/logistics/670#2 waiting (unsupported)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "signal_missed",
+     "farmer-d/logistics/673#5 follow_up": "signal_missed",
+     "farmer-d/logistics/673#6 follow_up": "signal_missed",
+     "farmer-d/logistics/673#7 follow_up": "signal_missed",
+     "farmer-d/logistics/673#8 follow_up": "signal_missed",
+     "farmer-d/logistics/673#9 follow_up": "signal_missed",
+     "farmer-d/logistics/675#1 follow_up": "published_supported",
+     "farmer-d/logistics/965#1 correction": "published_supported"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 12,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 13,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 3,
+      "published_supported": 3,
+      "published_total": 4,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 1
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 2,
+      "published_supported": 2,
+      "published_total": 3,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 1
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 8,
+      "published_supported": 7,
+      "published_total": 8,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 1,
+      "published_supported": 1,
+      "published_total": 1,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 30,
+     "valid": 30,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 17,
+     "activity_signal_pairs": 14,
+     "on_unlabelled_observations": 2,
+     "counted": 16,
+     "correct": 14,
+     "false_on_labelled_activities": 0
+    },
+    "grounder_outcomes_per_claim": {
+     "unsupported": 1,
+     "published": 17,
+     "unresolved": 1
+    },
+    "correct_claims_not_published": 1,
+    "correct_claims_never_checked": 0,
+    "extraction_from": "C2",
+    "extraction_cost": null,
+    "grounding_cost": {
+     "tokens_reported": 56100,
+     "seconds": 28.9,
+     "notional_usd": 0.0077862800000000005,
+     "claims": 19,
+     "prompt_sha256": "a9bc0940b19310d05472ade353b0fc45f44bcb12977bad2be6c7333fb63786fb",
+     "packet_sha256": "701cd1e4af9b3bb9509977ed1d64ea45871c3c7b0e9bd23913fd847bd821c457",
+     "model": "confirmed"
+    }
+   },
+   {
+    "run": "I2r",
+    "file": "data\\ground\\verified\\I_v8c2r.json",
+    "activities_found": 46,
+    "activities": 50,
+    "precision": "54/56",
+    "precision_one_to_one": "46/56",
+    "action_state_agreement": "38/46",
+    "stall_agreement": "32/46",
+    "stall_any_agreement": "36/46",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 9,
+      "extracted": 3,
+      "both": 3
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 4,
+      "both": 3
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 7,
+      "both": 7
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/622#2",
+     "farmer-d/logistics/673#2",
+     "farmer-d/logistics/765#3"
+    ],
+    "e2e": "13/30",
+    "any_evidence": "14/30",
+    "categories": {
+     "published_supported": 13,
+     "published_other_passage": 1,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 1,
+     "correct_not_grounded": 0,
+     "signal_missed": 15,
+     "activity_missed": 0
+    },
+    "published_precision": "14/16 (14 activity-signal pairs + 2 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [],
+    "unlabelled": [
+     "farmer-d/logistics/673 follow_up",
+     "farmer-d/logistics/965 waiting"
+    ],
+    "negatives_published": [],
+    "withheld_correctly": [
+     "farmer-d/logistics/670#2 waiting (unsupported)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "signal_missed",
+     "farmer-d/logistics/673#5 follow_up": "signal_missed",
+     "farmer-d/logistics/673#6 follow_up": "signal_missed",
+     "farmer-d/logistics/673#7 follow_up": "signal_missed",
+     "farmer-d/logistics/673#8 follow_up": "signal_missed",
+     "farmer-d/logistics/673#9 follow_up": "signal_missed",
+     "farmer-d/logistics/675#1 follow_up": "published_other_passage",
+     "farmer-d/logistics/965#1 correction": "published_supported"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 13,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 13,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 3,
+      "published_supported": 2,
+      "published_total": 4,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 1
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 2,
+      "published_supported": 2,
+      "published_total": 3,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 1
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 8,
+      "published_supported": 8,
+      "published_total": 8,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 1,
+      "published_supported": 1,
+      "published_total": 1,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 31,
+     "valid": 31,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 17,
+     "activity_signal_pairs": 14,
+     "on_unlabelled_observations": 2,
+     "counted": 16,
+     "correct": 14,
+     "false_on_labelled_activities": 0
+    },
+    "grounder_outcomes_per_claim": {
+     "unsupported": 1,
+     "published": 17,
+     "unresolved": 1
+    },
+    "correct_claims_not_published": 1,
+    "correct_claims_never_checked": 0,
+    "extraction_from": "C2",
+    "extraction_cost": null,
+    "grounding_cost": {
+     "tokens_reported": 58135,
+     "seconds": 32.6,
+     "notional_usd": 0.00850393,
+     "claims": 19,
+     "prompt_sha256": "a9bc0940b19310d05472ade353b0fc45f44bcb12977bad2be6c7333fb63786fb",
+     "packet_sha256": "ed84860754ea86250c23e856a2e93af644bb3a6132d635b46a65f69d33b5e5fb",
+     "model": "confirmed"
+    }
+   },
+   {
+    "run": "I3",
+    "file": "data\\ground\\verified\\I_v8c3h.json",
+    "activities_found": 47,
+    "activities": 50,
+    "precision": "55/56",
+    "precision_one_to_one": "47/56",
+    "action_state_agreement": "40/47",
+    "stall_agreement": "34/47",
+    "stall_any_agreement": "41/47",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 9,
+      "extracted": 9,
+      "both": 8
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 8,
+      "both": 5
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 6,
+      "both": 6
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/622#2",
+     "farmer-d/logistics/673#2",
+     "farmer-d/logistics/924#3"
+    ],
+    "e2e": "20/30",
+    "any_evidence": "20/30",
+    "categories": {
+     "published_supported": 20,
+     "published_other_passage": 0,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 1,
+     "correct_not_grounded": 0,
+     "signal_missed": 9,
+     "activity_missed": 0
+    },
+    "published_precision": "20/22 (22 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [
+     "farmer-d/logistics/765#3 waiting",
+     "farmer-d/logistics/917#1 follow_up"
+    ],
+    "unlabelled": [],
+    "negatives_published": [],
+    "withheld_correctly": [
+     "farmer-d/logistics/673#9 waiting (unsupported)",
+     "farmer-d/logistics/902#1 waiting (unsupported)",
+     "farmer-d/logistics/965#1 waiting (unsupported)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "published_supported",
+     "farmer-d/logistics/673#5 follow_up": "published_supported",
+     "farmer-d/logistics/673#6 follow_up": "published_supported",
+     "farmer-d/logistics/673#7 follow_up": "published_supported",
+     "farmer-d/logistics/673#8 follow_up": "published_supported",
+     "farmer-d/logistics/673#9 follow_up": "published_supported",
+     "farmer-d/logistics/675#1 follow_up": "published_supported",
+     "farmer-d/logistics/965#1 correction": "signal_missed"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 19,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 20,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 8,
+      "published_supported": 8,
+      "published_total": 9,
+      "published_false": 1,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 4,
+      "published_supported": 4,
+      "published_total": 5,
+      "published_false": 1,
+      "published_on_unlabelled_obs": 0
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 7,
+      "published_supported": 7,
+      "published_total": 7,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 1,
+      "published_supported": 1,
+      "published_total": 1,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 44,
+     "valid": 44,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 24,
+     "activity_signal_pairs": 22,
+     "on_unlabelled_observations": 0,
+     "counted": 22,
+     "correct": 20,
+     "false_on_labelled_activities": 2
+    },
+    "grounder_outcomes_per_claim": {
+     "published": 24,
+     "unsupported": 3,
+     "unresolved": 1
+    },
+    "correct_claims_not_published": 1,
+    "correct_claims_never_checked": 0,
+    "extraction_from": "C3h",
+    "extraction_cost": null,
+    "grounding_cost": {
+     "tokens_reported": 61491,
+     "seconds": 41.4,
+     "notional_usd": 0.01008806,
+     "claims": 28,
+     "prompt_sha256": "a9bc0940b19310d05472ade353b0fc45f44bcb12977bad2be6c7333fb63786fb",
+     "packet_sha256": "d09e3ebd1521ee43663d057a10cdaf68ba7a8becf027aeb32e800b2d06018622",
+     "model": "confirmed"
+    }
+   }
+  ],
+  "J-all (H+grounder)": [
+   {
+    "run": "J1",
+    "file": "data\\ground\\verified\\IH_v8h.json",
+    "activities_found": 44,
+    "activities": 50,
+    "precision": "51/52",
+    "precision_one_to_one": "44/52",
+    "action_state_agreement": "38/44",
+    "stall_agreement": "35/44",
+    "stall_any_agreement": "39/44",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 8,
+      "extracted": 9,
+      "both": 8
+     },
+     "waiting": {
+      "labelled": 8,
+      "extracted": 5,
+      "both": 5
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 7,
+      "both": 7
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/622#2",
+     "farmer-d/logistics/673#5",
+     "farmer-d/logistics/734#2",
+     "farmer-d/logistics/765#3",
+     "farmer-d/logistics/880#1"
+    ],
+    "e2e": "20/30",
+    "any_evidence": "21/30",
+    "categories": {
+     "published_supported": 20,
+     "published_other_passage": 1,
+     "correct_unsupported": 1,
+     "correct_rejected": 0,
+     "correct_unresolved": 0,
+     "correct_not_grounded": 0,
+     "signal_missed": 7,
+     "activity_missed": 1
+    },
+    "published_precision": "21/22 (22 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [
+     "farmer-d/logistics/673#2 follow_up"
+    ],
+    "unlabelled": [],
+    "negatives_published": [],
+    "withheld_correctly": [
+     "farmer-d/logistics/1000#1 follow_up (unsupported)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "published_supported",
+     "farmer-d/logistics/673#5 follow_up": "activity_missed",
+     "farmer-d/logistics/673#6 follow_up": "published_supported",
+     "farmer-d/logistics/673#7 follow_up": "published_supported",
+     "farmer-d/logistics/673#8 follow_up": "published_supported",
+     "farmer-d/logistics/673#9 follow_up": "published_supported",
+     "farmer-d/logistics/675#1 follow_up": "published_supported",
+     "farmer-d/logistics/965#1 correction": "signal_missed"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 19,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 20,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 8,
+      "published_supported": 7,
+      "published_total": 9,
+      "published_false": 1,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 4,
+      "published_supported": 4,
+      "published_total": 4,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 8,
+      "published_supported": 8,
+      "published_total": 8,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 1,
+      "published_supported": 1,
+      "published_total": 1,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 43,
+     "valid": 43,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 23,
+     "activity_signal_pairs": 22,
+     "on_unlabelled_observations": 0,
+     "counted": 22,
+     "correct": 21,
+     "false_on_labelled_activities": 1
+    },
+    "grounder_outcomes_per_claim": {
+     "published": 23,
+     "unresolved": 1,
+     "unsupported": 2
+    },
+    "correct_claims_not_published": 1,
+    "correct_claims_never_checked": 0,
+    "extraction_from": "H1",
+    "extraction_cost": null,
+    "grounding_cost": {
+     "tokens_reported": 94776,
+     "seconds": 46.7,
+     "notional_usd": 0.01184733,
+     "claims": 26,
+     "prompt_sha256": "a9bc0940b19310d05472ade353b0fc45f44bcb12977bad2be6c7333fb63786fb",
+     "packet_sha256": "398edfd63f59e9083d31ab8b7d6fecefb633816eaaa68b72eba565e142b51402",
+     "model": "confirmed"
+    }
+   },
+   {
+    "run": "J2",
+    "file": "data\\ground\\verified\\IH_v8h2.json",
+    "activities_found": 46,
+    "activities": 50,
+    "precision": "52/53",
+    "precision_one_to_one": "46/53",
+    "action_state_agreement": "40/46",
+    "stall_agreement": "37/46",
+    "stall_any_agreement": "42/46",
+    "stall_signals": {
+     "follow_up": {
+      "labelled": 9,
+      "extracted": 9,
+      "both": 9
+     },
+     "waiting": {
+      "labelled": 7,
+      "extracted": 4,
+      "both": 3
+     },
+     "correction": {
+      "labelled": 11,
+      "extracted": 7,
+      "both": 7
+     },
+     "rework": {
+      "labelled": 1,
+      "extracted": 1,
+      "both": 1
+     },
+     "escalation": {
+      "labelled": 1,
+      "extracted": 0,
+      "both": 0
+     }
+    },
+    "unadjudicated_low_meaning": 0,
+    "missed": [
+     "farmer-d/logistics/579#1",
+     "farmer-d/logistics/673#2",
+     "farmer-d/logistics/765#3",
+     "farmer-d/logistics/1056#2"
+    ],
+    "e2e": "21/30",
+    "any_evidence": "21/30",
+    "categories": {
+     "published_supported": 21,
+     "published_other_passage": 0,
+     "correct_unsupported": 0,
+     "correct_rejected": 0,
+     "correct_unresolved": 0,
+     "correct_not_grounded": 0,
+     "signal_missed": 8,
+     "activity_missed": 1
+    },
+    "published_precision": "21/22 (22 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": [
+     "farmer-d/logistics/670#2 waiting"
+    ],
+    "unlabelled": [],
+    "negatives_published": [
+     "farmer-d/logistics/670#2 waiting"
+    ],
+    "withheld_correctly": [
+     "farmer-d/logistics/1000#1 follow_up (unsupported)"
+    ],
+    "context_dependent": {
+     "farmer-d/logistics/670#1 correction": "signal_missed",
+     "farmer-d/logistics/673#3 follow_up": "published_supported",
+     "farmer-d/logistics/673#5 follow_up": "published_supported",
+     "farmer-d/logistics/673#6 follow_up": "published_supported",
+     "farmer-d/logistics/673#7 follow_up": "published_supported",
+     "farmer-d/logistics/673#8 follow_up": "published_supported",
+     "farmer-d/logistics/673#9 follow_up": "published_supported",
+     "farmer-d/logistics/675#1 follow_up": "published_supported",
+     "farmer-d/logistics/965#1 correction": "signal_missed"
+    },
+    "accessibility": {
+     "H": {
+      "accessible_entries": 28,
+      "published_supported_among_accessible": 20,
+      "inaccessible": [
+       "farmer-d/logistics/670#1 correction",
+       "farmer-d/logistics/675#1 follow_up"
+      ]
+     },
+     "I": {
+      "accessible_entries": 30,
+      "published_supported_among_accessible": 21,
+      "inaccessible": []
+     }
+    },
+    "by_signal": {
+     "follow_up": {
+      "labelled": 9,
+      "published_correct": 9,
+      "published_supported": 9,
+      "published_total": 9,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "waiting": {
+      "labelled": 8,
+      "published_correct": 3,
+      "published_supported": 3,
+      "published_total": 4,
+      "published_false": 1,
+      "published_on_unlabelled_obs": 0
+     },
+     "correction": {
+      "labelled": 11,
+      "published_correct": 8,
+      "published_supported": 8,
+      "published_total": 8,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "rework": {
+      "labelled": 1,
+      "published_correct": 1,
+      "published_supported": 1,
+      "published_total": 1,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     },
+     "escalation": {
+      "labelled": 1,
+      "published_correct": 0,
+      "published_supported": 0,
+      "published_total": 0,
+      "published_false": 0,
+      "published_on_unlabelled_obs": 0
+     }
+    },
+    "citations": {
+     "checked": 45,
+     "valid": 45,
+     "all_valid": true
+    },
+    "published_counts": {
+     "claims": 24,
+     "activity_signal_pairs": 22,
+     "on_unlabelled_observations": 0,
+     "counted": 22,
+     "correct": 21,
+     "false_on_labelled_activities": 1
+    },
+    "grounder_outcomes_per_claim": {
+     "published": 24,
+     "unsupported": 1
+    },
+    "correct_claims_not_published": 0,
+    "correct_claims_never_checked": 0,
+    "extraction_from": "H2",
+    "extraction_cost": null,
+    "grounding_cost": {
+     "tokens_reported": 59794,
+     "seconds": 33.0,
+     "notional_usd": 0.008844770000000002,
+     "claims": 25,
+     "prompt_sha256": "a9bc0940b19310d05472ade353b0fc45f44bcb12977bad2be6c7333fb63786fb",
+     "packet_sha256": "dc5fb5e87d80cbf86e8fa50aea6b0874ebe0127305e00f9c3895cf02e054adeb",
+     "model": "confirmed"
+    }
+   }
+  ]
+ },
+ "consistency": {
+  "clean-C": {
+   "activities": 50,
+   "found_in_both": 43,
+   "found_in_one_only": [
+    "farmer-d/logistics/3221#2",
+    "farmer-d/logistics/622#2",
+    "farmer-d/logistics/673#2",
+    "farmer-d/logistics/673#5",
+    "farmer-d/logistics/734#2",
+    "farmer-d/logistics/765#3"
+   ],
+   "same_state": "37/43",
+   "same_published_signals": "43/43",
+   "same_claimed_signals": "33/43",
+   "same_evidence_category": "20/30"
+  },
+  "H": {
+   "activities": 50,
+   "found_in_both": 42,
+   "found_in_one_only": [
+    "farmer-d/logistics/1056#2",
+    "farmer-d/logistics/622#2",
+    "farmer-d/logistics/673#2",
+    "farmer-d/logistics/673#5",
+    "farmer-d/logistics/734#2",
+    "farmer-d/logistics/880#1"
+   ],
+   "same_state": "36/42",
+   "same_published_signals": "36/42",
+   "same_claimed_signals": "36/42",
+   "same_evidence_category": "23/30"
+  },
+  "I": {
+   "activities": 50,
+   "found_in_both": 43,
+   "found_in_one_only": [
+    "farmer-d/logistics/3221#2",
+    "farmer-d/logistics/622#2",
+    "farmer-d/logistics/673#2",
+    "farmer-d/logistics/673#5",
+    "farmer-d/logistics/734#2",
+    "farmer-d/logistics/765#3"
+   ],
+   "same_state": "37/43",
+   "same_published_signals": "34/43",
+   "same_claimed_signals": "33/43",
+   "same_evidence_category": "17/30"
+  },
+  "J-all (H+grounder)": {
+   "activities": 50,
+   "found_in_both": 42,
+   "found_in_one_only": [
+    "farmer-d/logistics/1056#2",
+    "farmer-d/logistics/622#2",
+    "farmer-d/logistics/673#2",
+    "farmer-d/logistics/673#5",
+    "farmer-d/logistics/734#2",
+    "farmer-d/logistics/880#1"
+   ],
+   "same_state": "36/42",
+   "same_published_signals": "36/42",
+   "same_claimed_signals": "36/42",
+   "same_evidence_category": "24/30"
+  },
+  "grounder repeat (same input)": {
+   "activities": 50,
+   "found_in_both": 46,
+   "found_in_one_only": [],
+   "same_state": "46/46",
+   "same_published_signals": "46/46",
+   "same_claimed_signals": "46/46",
+   "same_evidence_category": "28/30"
+  }
+ },
+ "J_offline": {
+  "H1": {
+   "none": {
+    "selection": {
+     "strategy": "none",
+     "claims_sent": 0,
+     "claims_total": 26,
+     "messages_sent": 0,
+     "sections_needed": 0
+    },
+    "end_to_end_published_signal_recall": "17/30",
+    "published_correct_any_evidence": "22/30",
+    "published_precision": "22/25 (24 activity-signal pairs + 1 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 2,
+    "negative_claims_published": 0,
+    "published_on_unlabelled": 1,
+    "skipped_and_published_false": [
+     {
+      "id": "farmer-d/logistics/673#2",
+      "obs_id": "b001-o7",
+      "signal": "follow_up",
+      "negative_claim": false
+     },
+     {
+      "id": "farmer-d/logistics/1000#1",
+      "obs_id": "b001-o41",
+      "signal": "follow_up",
+      "negative_claim": false
+     }
+    ],
+    "skipped_and_published_unlabelled": [
+     {
+      "obs_id": "b001-o38",
+      "msg_key": "farmer-d/logistics/965",
+      "signal": "waiting",
+      "task": "check storage deals 47472 and 60747 and cut off or kill deal 60747 if needed"
+     }
+    ],
+    "skipped_and_weakly_evidenced": [
+     "farmer-d/logistics/673#3 waiting",
+     "farmer-d/logistics/673#7 waiting",
+     "farmer-d/logistics/675#1 follow_up",
+     "farmer-d/logistics/917#1 correction",
+     "farmer-d/logistics/965#2 correction"
+    ],
+    "hard_cases_claimed": 6,
+    "hard_cases_selected": 0,
+    "negative_claims_claimed": 0,
+    "negative_claims_sent": 0,
+    "citations_valid": true
+   },
+   "unpublished": {
+    "selection": {
+     "strategy": "unpublished",
+     "claims_sent": 0,
+     "claims_total": 26,
+     "messages_sent": 0,
+     "sections_needed": 0
+    },
+    "end_to_end_published_signal_recall": "17/30",
+    "published_correct_any_evidence": "22/30",
+    "published_precision": "22/25 (24 activity-signal pairs + 1 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 2,
+    "negative_claims_published": 0,
+    "published_on_unlabelled": 1,
+    "skipped_and_published_false": [
+     {
+      "id": "farmer-d/logistics/673#2",
+      "obs_id": "b001-o7",
+      "signal": "follow_up",
+      "negative_claim": false
+     },
+     {
+      "id": "farmer-d/logistics/1000#1",
+      "obs_id": "b001-o41",
+      "signal": "follow_up",
+      "negative_claim": false
+     }
+    ],
+    "skipped_and_published_unlabelled": [
+     {
+      "obs_id": "b001-o38",
+      "msg_key": "farmer-d/logistics/965",
+      "signal": "waiting",
+      "task": "check storage deals 47472 and 60747 and cut off or kill deal 60747 if needed"
+     }
+    ],
+    "skipped_and_weakly_evidenced": [
+     "farmer-d/logistics/673#3 waiting",
+     "farmer-d/logistics/673#7 waiting",
+     "farmer-d/logistics/675#1 follow_up",
+     "farmer-d/logistics/917#1 correction",
+     "farmer-d/logistics/965#2 correction"
+    ],
+    "hard_cases_claimed": 6,
+    "hard_cases_selected": 0,
+    "negative_claims_claimed": 0,
+    "negative_claims_sent": 0,
+    "citations_valid": true
+   },
+   "context": {
+    "selection": {
+     "strategy": "context",
+     "claims_sent": 22,
+     "claims_total": 26,
+     "messages_sent": 12,
+     "sections_needed": 14
+    },
+    "end_to_end_published_signal_recall": "20/30",
+    "published_correct_any_evidence": "22/30",
+    "published_precision": "22/23 (23 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 1,
+    "negative_claims_published": 0,
+    "published_on_unlabelled": 0,
+    "skipped_and_published_false": [],
+    "skipped_and_published_unlabelled": [],
+    "skipped_and_weakly_evidenced": [
+     "farmer-d/logistics/965#2 correction"
+    ],
+    "hard_cases_claimed": 6,
+    "hard_cases_selected": 6,
+    "negative_claims_claimed": 0,
+    "negative_claims_sent": 0,
+    "citations_valid": true
+   },
+   "risky": {
+    "selection": {
+     "strategy": "risky",
+     "claims_sent": 23,
+     "claims_total": 26,
+     "messages_sent": 13,
+     "sections_needed": 15
+    },
+    "end_to_end_published_signal_recall": "19/30",
+    "published_correct_any_evidence": "21/30",
+    "published_precision": "21/22 (22 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 1,
+    "negative_claims_published": 0,
+    "published_on_unlabelled": 0,
+    "skipped_and_published_false": [],
+    "skipped_and_published_unlabelled": [],
+    "skipped_and_weakly_evidenced": [
+     "farmer-d/logistics/965#2 correction"
+    ],
+    "hard_cases_claimed": 6,
+    "hard_cases_selected": 6,
+    "negative_claims_claimed": 0,
+    "negative_claims_sent": 0,
+    "citations_valid": true
+   },
+   "all": {
+    "selection": {
+     "strategy": "all",
+     "claims_sent": 26,
+     "claims_total": 26,
+     "messages_sent": 14,
+     "sections_needed": 16
+    },
+    "end_to_end_published_signal_recall": "20/30",
+    "published_correct_any_evidence": "21/30",
+    "published_precision": "21/22 (22 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 1,
+    "negative_claims_published": 0,
+    "published_on_unlabelled": 0,
+    "skipped_and_published_false": [],
+    "skipped_and_published_unlabelled": [],
+    "skipped_and_weakly_evidenced": [],
+    "hard_cases_claimed": 6,
+    "hard_cases_selected": 6,
+    "negative_claims_claimed": 0,
+    "negative_claims_sent": 0,
+    "citations_valid": true
+   }
+  },
+  "H2": {
+   "none": {
+    "selection": {
+     "strategy": "none",
+     "claims_sent": 0,
+     "claims_total": 25,
+     "messages_sent": 0,
+     "sections_needed": 0
+    },
+    "end_to_end_published_signal_recall": "20/30",
+    "published_correct_any_evidence": "21/30",
+    "published_precision": "21/23 (23 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 2,
+    "negative_claims_published": 1,
+    "published_on_unlabelled": 0,
+    "skipped_and_published_false": [
+     {
+      "id": "farmer-d/logistics/670#2",
+      "obs_id": "b001-o3",
+      "signal": "waiting",
+      "negative_claim": true
+     },
+     {
+      "id": "farmer-d/logistics/1000#1",
+      "obs_id": "b001-o43",
+      "signal": "follow_up",
+      "negative_claim": false
+     }
+    ],
+    "skipped_and_published_unlabelled": [],
+    "skipped_and_weakly_evidenced": [
+     "farmer-d/logistics/675#1 follow_up"
+    ],
+    "hard_cases_claimed": 7,
+    "hard_cases_selected": 0,
+    "negative_claims_claimed": 1,
+    "negative_claims_sent": 0,
+    "citations_valid": true
+   },
+   "unpublished": {
+    "selection": {
+     "strategy": "unpublished",
+     "claims_sent": 0,
+     "claims_total": 25,
+     "messages_sent": 0,
+     "sections_needed": 0
+    },
+    "end_to_end_published_signal_recall": "20/30",
+    "published_correct_any_evidence": "21/30",
+    "published_precision": "21/23 (23 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 2,
+    "negative_claims_published": 1,
+    "published_on_unlabelled": 0,
+    "skipped_and_published_false": [
+     {
+      "id": "farmer-d/logistics/670#2",
+      "obs_id": "b001-o3",
+      "signal": "waiting",
+      "negative_claim": true
+     },
+     {
+      "id": "farmer-d/logistics/1000#1",
+      "obs_id": "b001-o43",
+      "signal": "follow_up",
+      "negative_claim": false
+     }
+    ],
+    "skipped_and_published_unlabelled": [],
+    "skipped_and_weakly_evidenced": [
+     "farmer-d/logistics/675#1 follow_up"
+    ],
+    "hard_cases_claimed": 7,
+    "hard_cases_selected": 0,
+    "negative_claims_claimed": 1,
+    "negative_claims_sent": 0,
+    "citations_valid": true
+   },
+   "context": {
+    "selection": {
+     "strategy": "context",
+     "claims_sent": 20,
+     "claims_total": 25,
+     "messages_sent": 11,
+     "sections_needed": 14
+    },
+    "end_to_end_published_signal_recall": "21/30",
+    "published_correct_any_evidence": "21/30",
+    "published_precision": "21/22 (22 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 1,
+    "negative_claims_published": 1,
+    "published_on_unlabelled": 0,
+    "skipped_and_published_false": [],
+    "skipped_and_published_unlabelled": [],
+    "skipped_and_weakly_evidenced": [],
+    "hard_cases_claimed": 7,
+    "hard_cases_selected": 7,
+    "negative_claims_claimed": 1,
+    "negative_claims_sent": 1,
+    "citations_valid": true
+   },
+   "risky": {
+    "selection": {
+     "strategy": "risky",
+     "claims_sent": 21,
+     "claims_total": 25,
+     "messages_sent": 12,
+     "sections_needed": 15
+    },
+    "end_to_end_published_signal_recall": "21/30",
+    "published_correct_any_evidence": "21/30",
+    "published_precision": "21/22 (22 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 1,
+    "negative_claims_published": 1,
+    "published_on_unlabelled": 0,
+    "skipped_and_published_false": [],
+    "skipped_and_published_unlabelled": [],
+    "skipped_and_weakly_evidenced": [],
+    "hard_cases_claimed": 7,
+    "hard_cases_selected": 7,
+    "negative_claims_claimed": 1,
+    "negative_claims_sent": 1,
+    "citations_valid": true
+   },
+   "all": {
+    "selection": {
+     "strategy": "all",
+     "claims_sent": 25,
+     "claims_total": 25,
+     "messages_sent": 14,
+     "sections_needed": 16
+    },
+    "end_to_end_published_signal_recall": "21/30",
+    "published_correct_any_evidence": "21/30",
+    "published_precision": "21/22 (22 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+    "published_false": 1,
+    "negative_claims_published": 1,
+    "published_on_unlabelled": 0,
+    "skipped_and_published_false": [],
+    "skipped_and_published_unlabelled": [],
+    "skipped_and_weakly_evidenced": [],
+    "hard_cases_claimed": 7,
+    "hard_cases_selected": 7,
+    "negative_claims_claimed": 1,
+    "negative_claims_sent": 1,
+    "citations_valid": true
+   }
+  }
+ }
+}

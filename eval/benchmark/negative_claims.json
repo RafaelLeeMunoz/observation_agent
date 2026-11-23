@@ -1,0 +1,167 @@
+{
+ "version": "negative-v1",
+ "status": "approved",
+ "drafted_by": "Claude (Opus 5.5), 22 Nov 2026, from the benchmark messages only (holdout not read)",
+ "labels": "approved labels after review entry 89 (freeze bench-v1 r89)",
+ "meaning": "Plausible stall signals the approved labels do NOT carry, each with the passage a model is likely to cite. A grounder or evidence check should reject them; one that publishes them has a false positive the quote check cannot catch (the quotes exist). Reviewed separately from evidence_spans.json. Never shown to a model (fence).",
+ "approval": {
+  "when": "2026-11-22",
+  "by": "user",
+  "user_words": "I've reviewed the Phase 2 evidence-support draft. I approve the overall structure ... Once these targeted checks are complete, present any actual remaining label conflicts. If none remain, finalize the evidence set and proceed to implementing and evaluating H, I and J.",
+  "scope": "the six unsupported claims the user listed (917#1 escalation, 673#9, 265#1, 670#2, 673#5 waiting, 3221#1 rework)"
+ },
+ "claims": [
+  {
+   "id": "farmer-d/logistics/917#1",
+   "signal": "escalation",
+   "why": "a status update to Brenda and her expectations passed down; she takes no step on the problem (review entry 87)",
+   "rule": "rules.json history 4 (status updates and communicating expectations are not escalation)",
+   "spans": [
+    {
+     "quote": "I spoke with Brenda on Friday to give her an update of our progress and one of the things that she stressed and wanted passed on to the team was the expectations that King Ranch would be clean",
+     "role": "what a model might cite",
+     "msg_key": "farmer-d/logistics/917",
+     "start": 1165,
+     "end": 1359,
+     "region": "new_text",
+     "block": null,
+     "author": "rita.wynne@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null
+    }
+   ]
+  },
+  {
+   "id": "farmer-d/logistics/673#9",
+   "signal": "waiting",
+   "why": "an ownership question and a missing sale that is itself the work to do; nothing says the next step waits on someone or something (review entry 88)",
+   "rule": "rules.json history 5 (waiting needs a stated outstanding dependency; a request or question alone does not)",
+   "spans": [
+    {
+     "quote": "Who is this assigned to? I thought Carlos was handling this one, but I could be wrong.",
+     "role": "what a model might cite",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 1299,
+     "end": 1390,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null
+    },
+    {
+     "quote": "we seem to have 10,000 with transport contract to move this gas on and no sale to broker to.",
+     "role": "what a model might cite",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 1146,
+     "end": 1242,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null
+    }
+   ]
+  },
+  {
+   "id": "giron-d/inbox/265#1",
+   "signal": "waiting",
+   "why": "a preference and a request for Carl's view; no stated dependency (review entry 86)",
+   "rule": "rules.json history 5 (waiting needs a stated outstanding dependency; a request or question alone does not)",
+   "spans": [
+    {
+     "quote": "I also would like Jean Adams to be available. Let me know what you think.",
+     "role": "what a model might cite",
+     "msg_key": "giron-d/inbox/265",
+     "start": 912,
+     "end": 986,
+     "region": "new_text",
+     "block": null,
+     "author": "janet.bowers@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null
+    }
+   ]
+  },
+  {
+   "id": "farmer-d/logistics/670#2",
+   "signal": "waiting",
+   "why": "a hedged answer that asks Howard to confirm; a question, not a stated dependency (review entry 84)",
+   "rule": "rules.json history 5 (waiting needs a stated outstanding dependency; a request or question alone does not)",
+   "spans": [
+    {
+     "quote": "Yes should be, right Howard?",
+     "role": "what a model might cite",
+     "msg_key": "farmer-d/logistics/670",
+     "start": 564,
+     "end": 592,
+     "region": "new_text",
+     "block": null,
+     "author": "stella.morris@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null
+    }
+   ]
+  },
+  {
+   "id": "farmer-d/logistics/673#5",
+   "signal": "waiting",
+   "why": "a request for review; nothing says the work is held up (review entry 85)",
+   "rule": "rules.json history 5 (waiting needs a stated outstanding dependency; a request or question alone does not)",
+   "spans": [
+    {
+     "quote": "Someone needs to review for accuracy.",
+     "role": "what a model might cite",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 1620,
+     "end": 1659,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null
+    },
+    {
+     "quote": "Resolved but needs to be verified.",
+     "role": "what a model might cite",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 1737,
+     "end": 1771,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null
+    }
+   ]
+  },
+  {
+   "id": "farmer-d/logistics/3221#1",
+   "signal": "rework",
+   "why": "the re-send is 3221#2's work and carries 3221#2's rework; 3221#1 (each scheduler confirms their meters) shows no rework",
+   "rule": "attribution: evidence for one activity does not support a signal on another activity in the same message",
+   "spans": [
+    {
+     "quote": "Pasting the full month position below since the attachment keeps bouncing off the gateway.",
+     "role": "what a model might cite",
+     "msg_key": "farmer-d/logistics/3221",
+     "start": 633,
+     "end": 723,
+     "region": "new_text",
+     "block": null,
+     "author": "daren.farmer@enron.com",
+     "scope": "context",
+     "visibility": "batch",
+     "via_block": null
+    }
+   ]
+  }
+ ]
+}

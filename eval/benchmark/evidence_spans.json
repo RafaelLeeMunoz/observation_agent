@@ -1,0 +1,1023 @@
+{
+ "version": "evidence-v1",
+ "status": "approved",
+ "drafted_by": "Claude (Opus 5.5), 22 Nov 2026, from the benchmark messages only (holdout not read)",
+ "labels": "approved labels after review entry 89 (freeze bench-v1 r89)",
+ "meaning": "One entry per positive stall signal in labels.json: the passage(s) that show it. support 'supports': the passages show the signal for this activity; 'uncertain': they do not settle it (see note). Each span records its message, raw-byte offsets, region and author (code fills them: python -m src.evidence_bench resolve), whether it lies inside the activity's labelled span ('activity'), elsewhere in the same message ('context') or in another message of the thread whose copy this message's batch hides ('other_message', with 'visibility' linked_original and the hidden block in 'via_block'), and which other entries cite the same text ('shared_with'). A quote that exists is not proof: these spans are the reference for whether a model's evidence supports the signal. Draft: not ground truth until the user approves it.",
+ "approval": {
+  "when": "2026-11-22",
+  "by": "user",
+  "user_words": "I've reviewed the Phase 2 evidence-support draft. I approve the overall structure ... Once these targeted checks are complete, present any actual remaining label conflicts. If none remain, finalize the evidence set and proceed to implementing and evaluating H, I and J.",
+  "scope": "approved after the targeted checks: 670#1 correction and 675#1 follow_up kept as context-dependent (cross_message_context, provisionally supported, links confirmed in the store); 673#6 waiting passages moved to the stated conditions; 673#6 and 673#7 waiting reviewed and kept; no remaining stall-label conflict. Labels and the benchmark freeze unchanged."
+ },
+ "entries": [
+  {
+   "id": "farmer-d/logistics/622#1",
+   "signal": "correction",
+   "support": "supports",
+   "note": "Stella identifies measured flow with no deal behind it",
+   "spans": [
+    {
+     "quote": "there is flow of 7,394 in 8/98, however, there is nothing to indicate this is gas that was received on HPL in OSS.",
+     "role": "the inconsistency",
+     "msg_key": "farmer-d/logistics/622",
+     "start": 597,
+     "end": 712,
+     "region": "new_text",
+     "block": null,
+     "author": "stella.morris@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "Daren is there a deal in CPR which may not have fed over to OSS?",
+     "role": "asks for its cause",
+     "msg_key": "farmer-d/logistics/622",
+     "start": 816,
+     "end": 880,
+     "region": "new_text",
+     "block": null,
+     "author": "stella.morris@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/670#1",
+   "signal": "correction",
+   "support": "supports",
+   "note": "context-dependent, provisionally supported (user, 22 Nov 2026). The resolution in 670 ('The above meter is non-allocatable and was off system, actuals at meter #8693.') has no error wording; the inconsistency it resolves is Stella's 12/28/99 message, shown in 622 and hidden in 670's batch. Same business issue, checked: 670 is in 622's thread and carries its subject ('Re: Revision - Black Marlin - meter 986782 for 8/98 - UA4'); Stella's 01/11/2000 11:09 AM note sits directly above her forward of the 12/28/99 05:55 PM message, which the store links to 622 (622 was sent 28 Dec 1999 09:55 -0800, 17:55 UTC); 'the above meter' is meter 986782.",
+   "spans": [
+    {
+     "quote": "The above meter is non-allocatable and was off system, actuals at meter #8693.",
+     "role": "the resolution",
+     "msg_key": "farmer-d/logistics/670",
+     "start": 1154,
+     "end": 1232,
+     "region": "block:2",
+     "block": 2,
+     "author": "Stella L Morris",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "there is nothing to indicate this is gas that was received on HPL in OSS.",
+     "role": "the inconsistency it resolves: shown in 622, hidden in 670 (same quoted text)",
+     "in_message": "farmer-d/logistics/622",
+     "msg_key": "farmer-d/logistics/622",
+     "start": 639,
+     "end": 712,
+     "region": "new_text",
+     "block": null,
+     "author": "stella.morris@enron.com",
+     "scope": "other_message",
+     "shared_with": [],
+     "visibility": "linked_original",
+     "via_block": 4,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "cross_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/673#3",
+   "signal": "waiting",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "We have no rate. We need to know the rate and whether one of the expense contracts needs to be amended for this transaction, we are not legally covered.",
+     "role": "the missing input the next step needs",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 2183,
+     "end": 2338,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/673#3",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "relies on the memo's opening line, which applies to every open item it lists (review entry 78)",
+   "spans": [
+    {
+     "quote": "Here is a followup to the memo sent on 12/31/99.",
+     "role": "the memo comes back to the 12/31/99 memo's open items (shared by every item)",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 512,
+     "end": 560,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "context",
+     "shared_with": [
+      "farmer-d/logistics/673#4 follow_up",
+      "farmer-d/logistics/673#5 follow_up",
+      "farmer-d/logistics/673#6 follow_up",
+      "farmer-d/logistics/673#7 follow_up",
+      "farmer-d/logistics/673#8 follow_up",
+      "farmer-d/logistics/673#9 follow_up",
+      "farmer-d/logistics/675#1 follow_up"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "same_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/673#3",
+   "signal": "correction",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "There is a transaction for January that is once again not on our point specific transport contracts.",
+     "role": "the inconsistency",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 2001,
+     "end": 2102,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/673#4",
+   "signal": "waiting",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Volume Management cannot allocate was is not pathed and nominated.",
+     "role": "the stated dependency",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 1901,
+     "end": 1970,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/673#4",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Here is a followup to the memo sent on 12/31/99.",
+     "role": "shared",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 512,
+     "end": 560,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "context",
+     "shared_with": [
+      "farmer-d/logistics/673#3 follow_up",
+      "farmer-d/logistics/673#5 follow_up",
+      "farmer-d/logistics/673#6 follow_up",
+      "farmer-d/logistics/673#7 follow_up",
+      "farmer-d/logistics/673#8 follow_up",
+      "farmer-d/logistics/673#9 follow_up",
+      "farmer-d/logistics/675#1 follow_up"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "We still do not have enough supply to meet our sales requirement.",
+     "role": "the item itself is chased again ('still')",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 1777,
+     "end": 1842,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/673#5",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "only the shared opening line shows the follow-up; the item's own text ('Resolved but needs to be verified.') states its status",
+   "spans": [
+    {
+     "quote": "Here is a followup to the memo sent on 12/31/99.",
+     "role": "shared",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 512,
+     "end": 560,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "context",
+     "shared_with": [
+      "farmer-d/logistics/673#3 follow_up",
+      "farmer-d/logistics/673#4 follow_up",
+      "farmer-d/logistics/673#6 follow_up",
+      "farmer-d/logistics/673#7 follow_up",
+      "farmer-d/logistics/673#8 follow_up",
+      "farmer-d/logistics/673#9 follow_up",
+      "farmer-d/logistics/675#1 follow_up"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "same_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/673#6",
+   "signal": "waiting",
+   "support": "supports",
+   "note": "waiting rests on the stated conditions (whether someone else resolves it; the open assignment), not on the deferral sentence alone",
+   "spans": [
+    {
+     "quote": "If it is left unresolved, I will get it pathed when I return.",
+     "role": "her step depends on whether someone else resolves it",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 2588,
+     "end": 2653,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true,
+     "shared_with": []
+    },
+    {
+     "quote": "If we haven't figured out the assignement then I will get to it asap.",
+     "role": "and on the assignment question",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 2691,
+     "end": 2761,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true,
+     "shared_with": []
+    },
+    {
+     "quote": "This can wait until we get back next week.",
+     "role": "the deferral (alone it would not be waiting)",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 2543,
+     "end": 2586,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true,
+     "shared_with": []
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/673#6",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "relies on the memo's opening line, which applies to every open item it lists (review entry 78)",
+   "spans": [
+    {
+     "quote": "Here is a followup to the memo sent on 12/31/99.",
+     "role": "shared",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 512,
+     "end": 560,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "context",
+     "shared_with": [
+      "farmer-d/logistics/673#3 follow_up",
+      "farmer-d/logistics/673#4 follow_up",
+      "farmer-d/logistics/673#5 follow_up",
+      "farmer-d/logistics/673#7 follow_up",
+      "farmer-d/logistics/673#8 follow_up",
+      "farmer-d/logistics/673#9 follow_up",
+      "farmer-d/logistics/675#1 follow_up"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "same_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/673#7",
+   "signal": "waiting",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "I can find old notes and try to get this pathed if necessary. Someone just needs to let me know.",
+     "role": "she waits for an answer before acting",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 739,
+     "end": 840,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/673#7",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "relies on the memo's opening line, which applies to every open item it lists (review entry 78)",
+   "spans": [
+    {
+     "quote": "Here is a followup to the memo sent on 12/31/99.",
+     "role": "shared",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 512,
+     "end": 560,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "context",
+     "shared_with": [
+      "farmer-d/logistics/673#3 follow_up",
+      "farmer-d/logistics/673#4 follow_up",
+      "farmer-d/logistics/673#5 follow_up",
+      "farmer-d/logistics/673#6 follow_up",
+      "farmer-d/logistics/673#8 follow_up",
+      "farmer-d/logistics/673#9 follow_up",
+      "farmer-d/logistics/675#1 follow_up"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "same_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/673#8",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "relies on the memo's opening line, which applies to every open item it lists (review entry 78)",
+   "spans": [
+    {
+     "quote": "Here is a followup to the memo sent on 12/31/99.",
+     "role": "shared",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 512,
+     "end": 560,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "context",
+     "shared_with": [
+      "farmer-d/logistics/673#3 follow_up",
+      "farmer-d/logistics/673#4 follow_up",
+      "farmer-d/logistics/673#5 follow_up",
+      "farmer-d/logistics/673#6 follow_up",
+      "farmer-d/logistics/673#7 follow_up",
+      "farmer-d/logistics/673#9 follow_up",
+      "farmer-d/logistics/675#1 follow_up"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "same_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/673#9",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "relies on the memo's opening line, which applies to every open item it lists (review entry 78)",
+   "spans": [
+    {
+     "quote": "Here is a followup to the memo sent on 12/31/99.",
+     "role": "shared",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 512,
+     "end": 560,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "context",
+     "shared_with": [
+      "farmer-d/logistics/673#3 follow_up",
+      "farmer-d/logistics/673#4 follow_up",
+      "farmer-d/logistics/673#5 follow_up",
+      "farmer-d/logistics/673#6 follow_up",
+      "farmer-d/logistics/673#7 follow_up",
+      "farmer-d/logistics/673#8 follow_up",
+      "farmer-d/logistics/675#1 follow_up"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "same_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/675#1",
+   "signal": "escalation",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Lets get this job done or I will find people who want to get it done.",
+     "role": "the manager steps in on the memo's unresolved items",
+     "msg_key": "farmer-d/logistics/675",
+     "start": 1651,
+     "end": 1721,
+     "region": "new_text",
+     "block": null,
+     "author": "pat.clynes@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "Please take the initiative to get these things done.",
+     "role": "the demand",
+     "msg_key": "farmer-d/logistics/675",
+     "start": 1411,
+     "end": 1463,
+     "region": "new_text",
+     "block": null,
+     "author": "pat.clynes@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/675#1",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "context-dependent, provisionally supported (user, 22 Nov 2026). Pat's own words press for 'these things' but do not themselves return to an earlier request; the follow-up is Mandy's memo, shown in 673 and hidden in 675's batch. Same outstanding items, checked: 675 is 'Re: Unresolved Issues for Jan 1.- Followup' from Pat to Mandy, in 673's thread; its only quoted block (Mandy, 01/11/2000 07:38 PM) is linked in the store to 673, sent 11 Jan 2000 11:38 -0800 (19:38 UTC); 'these things' has no other referent in Pat's message.",
+   "spans": [
+    {
+     "quote": "I am counting on you and the others (Seniors in the group) to get these things done.",
+     "role": "Pat presses for the open items",
+     "msg_key": "farmer-d/logistics/675",
+     "start": 1465,
+     "end": 1550,
+     "region": "new_text",
+     "block": null,
+     "author": "pat.clynes@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "Here is a followup to the memo sent on 12/31/99.",
+     "role": "the memo Pat answers, shown in 673, hidden in 675",
+     "in_message": "farmer-d/logistics/673",
+     "msg_key": "farmer-d/logistics/673",
+     "start": 512,
+     "end": 560,
+     "region": "new_text",
+     "block": null,
+     "author": "mandy.mackinnon@enron.com",
+     "scope": "other_message",
+     "shared_with": [
+      "farmer-d/logistics/673#3 follow_up",
+      "farmer-d/logistics/673#4 follow_up",
+      "farmer-d/logistics/673#5 follow_up",
+      "farmer-d/logistics/673#6 follow_up",
+      "farmer-d/logistics/673#7 follow_up",
+      "farmer-d/logistics/673#8 follow_up",
+      "farmer-d/logistics/673#9 follow_up"
+     ],
+     "visibility": "linked_original",
+     "via_block": 0,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "cross_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/736#1",
+   "signal": "correction",
+   "support": "supports",
+   "note": "'however ... is only for 15.0' states the mismatch; the 20,000 it contradicts is Ken's message, shown in 734 and hidden in 736's batch",
+   "spans": [
+    {
+     "quote": "the term deal agreed to by Lyondell {via nomination} is only for 15.0.",
+     "role": "the mismatch Robert points out",
+     "msg_key": "farmer-d/logistics/736",
+     "start": 800,
+     "end": 871,
+     "region": "block:1",
+     "block": 1,
+     "author": "Robert E Lloyd",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "For Feb there is a base deal for 5000/day and a term deal for 20,000/day.",
+     "role": "the ticket Robert contradicts, shown in 734, hidden in 736",
+     "in_message": "farmer-d/logistics/734",
+     "msg_key": "farmer-d/logistics/734",
+     "start": 666,
+     "end": 740,
+     "region": "new_text",
+     "block": null,
+     "author": "kenneth.seaman@enron.com",
+     "scope": "other_message",
+     "shared_with": [],
+     "visibility": "linked_original",
+     "via_block": 2,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/765#2",
+   "signal": "waiting",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Susan will create a committed reserves firm ticket for the remaining term of the deal once our geologists have gathered enough data to forecast the reserves of this well",
+     "role": "the condition",
+     "msg_key": "farmer-d/logistics/765",
+     "start": 1299,
+     "end": 1470,
+     "region": "new_text",
+     "block": null,
+     "author": "vance.taylor@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/917#1",
+   "signal": "correction",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "As you all know, that number is way too high and should be a lot lower (on a bad month, no more than 100,000 mmbuts).",
+     "role": "the incorrect result",
+     "msg_key": "farmer-d/logistics/917",
+     "start": 1531,
+     "end": 1649,
+     "region": "new_text",
+     "block": null,
+     "author": "rita.wynne@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "getting this King Ranch issue cleaned up for the prior months and correct on a go forward basis.",
+     "role": "the fix asked for",
+     "msg_key": "farmer-d/logistics/917",
+     "start": 1066,
+     "end": 1163,
+     "region": "new_text",
+     "block": null,
+     "author": "rita.wynne@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/924#1",
+   "signal": "correction",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "The Cilco volumes are different than the confirmed volumes to Cilco.",
+     "role": "the inconsistency",
+     "msg_key": "farmer-d/logistics/924",
+     "start": 687,
+     "end": 755,
+     "region": "new_text",
+     "block": null,
+     "author": "kenny.soignet@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "Please let me know the best way to correct the problem.",
+     "role": "the fix asked for",
+     "msg_key": "farmer-d/logistics/924",
+     "start": 990,
+     "end": 1045,
+     "region": "new_text",
+     "block": null,
+     "author": "kenny.soignet@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/924#2",
+   "signal": "correction",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Also, the nomination for the current month is 7,327 mmbtu instead of 7,000 mmbtu per day.",
+     "role": "the wrong number",
+     "msg_key": "farmer-d/logistics/924",
+     "start": 1112,
+     "end": 1202,
+     "region": "new_text",
+     "block": null,
+     "author": "kenny.soignet@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/934#3",
+   "signal": "follow_up",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Are you looking into these variances?",
+     "role": "Daren chases the variances Kenny raised (quoted block)",
+     "msg_key": "farmer-d/logistics/934",
+     "start": 964,
+     "end": 1001,
+     "region": "block:0",
+     "block": 0,
+     "author": "Daren J Farmer",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/933#1",
+   "signal": "waiting",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Let me know when you get back in the office and look at it.",
+     "role": "the wait for a person",
+     "msg_key": "farmer-d/logistics/933",
+     "start": 795,
+     "end": 855,
+     "region": "new_text",
+     "block": null,
+     "author": "karie.hastings@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/933#1",
+   "signal": "correction",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "There are two Storage deals that are using the same contract number.",
+     "role": "the inconsistency",
+     "msg_key": "farmer-d/logistics/933",
+     "start": 603,
+     "end": 671,
+     "region": "new_text",
+     "block": null,
+     "author": "karie.hastings@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/965#1",
+   "signal": "correction",
+   "support": "supports",
+   "note": "the request alone does not say the deal is wrong; Tommy's forwarded reason does",
+   "spans": [
+    {
+     "quote": "Can you cut off deal 47472 going forward?",
+     "role": "the fix asked for",
+     "msg_key": "farmer-d/logistics/965",
+     "start": 548,
+     "end": 589,
+     "region": "new_text",
+     "block": null,
+     "author": "karie.hastings@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "Since it doesn't agree with the firmness of the contract, I would probably cut off that deal going forward.",
+     "role": "why the deal is wrong (shared with 965#2, quoted block)",
+     "msg_key": "farmer-d/logistics/965",
+     "start": 1243,
+     "end": 1352,
+     "region": "block:1",
+     "block": 1,
+     "author": "Tommy J Yanowski",
+     "scope": "context",
+     "shared_with": [
+      "farmer-d/logistics/965#2 correction"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "same_message_context"
+  },
+  {
+   "id": "farmer-d/logistics/965#2",
+   "signal": "correction",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Storage deal 47472 is a firm storage deal.",
+     "role": "the deal",
+     "msg_key": "farmer-d/logistics/965",
+     "start": 1199,
+     "end": 1241,
+     "region": "block:1",
+     "block": 1,
+     "author": "Tommy J Yanowski",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "Since it doesn't agree with the firmness of the contract, I would probably cut off that deal going forward.",
+     "role": "the mismatch with the contract",
+     "msg_key": "farmer-d/logistics/965",
+     "start": 1243,
+     "end": 1352,
+     "region": "block:1",
+     "block": 1,
+     "author": "Tommy J Yanowski",
+     "scope": "activity",
+     "shared_with": [
+      "farmer-d/logistics/965#1 correction"
+     ],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/995#1",
+   "signal": "correction",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "the above meter has flow for 3/15 (71 dec.) and 3/23 (35 dec.) but the deal (Sitara #213005) doesn't cover these two days.",
+     "role": "the inconsistency",
+     "msg_key": "farmer-d/logistics/995",
+     "start": 513,
+     "end": 637,
+     "region": "new_text",
+     "block": null,
+     "author": "jackie.young@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/1000#1",
+   "signal": "waiting",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Ray Calles (TETCO) told me today that he will put the OBA in the mail either tonight or first thing Monday.",
+     "role": "the outstanding delivery",
+     "msg_key": "farmer-d/logistics/1000",
+     "start": 474,
+     "end": 582,
+     "region": "new_text",
+     "block": null,
+     "author": "jackie.young@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "Don't we have an OBA at this point now?",
+     "role": "shows it is needed (quoted block)",
+     "msg_key": "farmer-d/logistics/1000",
+     "start": 749,
+     "end": 788,
+     "region": "block:0",
+     "block": 0,
+     "author": "Daren J Farmer",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": false
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/1056#2",
+   "signal": "waiting",
+   "support": "supports",
+   "note": "the wait belongs to Ami's earlier, quoted estimate; the forward above it supplies the T-ville May figure (1056#1), so it does not outlast that message",
+   "spans": [
+    {
+     "quote": "Janet does not know about next month yet.",
+     "role": "the missing input",
+     "msg_key": "farmer-d/logistics/1056",
+     "start": 927,
+     "end": 968,
+     "region": "block:1",
+     "block": 1,
+     "author": "Ami Chokshi",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    },
+    {
+     "quote": "So, 5000 total is a safe assumption.",
+     "role": "the stand-in used meanwhile",
+     "msg_key": "farmer-d/logistics/1056",
+     "start": 969,
+     "end": 1005,
+     "region": "block:1",
+     "block": 1,
+     "author": "Ami Chokshi",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  },
+  {
+   "id": "farmer-d/logistics/3221#2",
+   "signal": "rework",
+   "support": "supports",
+   "note": "",
+   "spans": [
+    {
+     "quote": "Pasting the full month position below since the attachment keeps bouncing off the gateway.",
+     "role": "re-sent because of a delivery problem",
+     "msg_key": "farmer-d/logistics/3221",
+     "start": 633,
+     "end": 723,
+     "region": "new_text",
+     "block": null,
+     "author": "daren.farmer@enron.com",
+     "scope": "activity",
+     "shared_with": [],
+     "visibility": "batch",
+     "via_block": null,
+     "author_named_in_label": true
+    }
+   ],
+   "basis": "own_text"
+  }
+ ],
+ "access": {
+  "note": "Which passages each architecture can reach. Scores for H, I and J count a reference passage only where that architecture can see it, and report cross-message entries separately; a model is never marked wrong for missing text it could not see. No architecture ever sees these files or labels.json (fence).",
+  "clean-C": "no evidence (claims only)",
+  "H": "the activity's own message as batched (scope activity and context; visibility batch); its evidence quotes are verified in the observation's own message",
+  "I": "the grounder packet: the observation's message plus, for each hidden quoted block, the linked original message (visibility batch and linked_original)",
+  "J": "as I, for the claims its selection sends to the grounder; the rest as H"
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "type": "result",
+ "subtype": "success",
+ "is_error": false,
+ "num_turns": 4,
+ "duration_ms": 510647,
+ "duration_api_ms": 7544,
+ "total_cost_usd": 0.007524830000000001,
+ "permission_denials": [],
+ "modelUsage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 8,
+   "outputTokens": 1495,
+   "cacheReadInputTokens": 176373,
+   "cacheCreationInputTokens": 25064,
+   "webSearchRequests": 0,
+   "costUSD": 0.007524830000000001,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 540,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 25064,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "result": "The `dev` run finished and the dashboard is up.\n\n**Coverage:** 202 of 202 messages in the slice were read (`complete: true`). Dispositions: 146 observations, 46 not business, 8 business with no process signal, 2 ambiguous.\n\n**Running total:** $29.25\n\n**Ranked opportunities:**\n1. Unallocated or unmatched meter volume resolution: $10.60\n2. Extending an expired deal to cover flowing gas: $7.07\n3. Monthly transport usage ticket entry: $2.94\n4. Sitara deal price correction: $2.19\n5. Calpine daily gas nomination file: $2.19\n6. Booking correction for Canadian and cross-counterparty deals: $2.13\n7. Gas price quote for a customer: $2.13\n\n**Artifact:** one artifact was produced, `P4-checklist`. The pipeline printed its name only, not a file path. The act stage also raised a `numbers_lint` flag on packet a001: figures in the model's prose (1, 2, 20, 21, 3, 31, 4, 5) were not computed by code and need checking against the source. The pipeline did not block on it.\n\n**Dashboard:** http://127.0.0.1:8765/ (detached, pid 3616)\n\n**Run log:** `output/dev/logs/runlog.jsonl`",
+ "note": "trimmed by hand from the claude -p --output-format json report of: claude -p \"/observe dev\" (PowerShell, 23 Nov 2026); account and session metadata removed",
+ "timing": "start 01:08:51 end 01:17:23 seconds 511.6"
+}

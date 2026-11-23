@@ -1,0 +1,18 @@
+{
+ "name": "bench-v1 r89 / score-v6 / rules-v5",
+ "when": "2026-11-22",
+ "by": "user",
+ "user_words": "Once the approved labels and scoring decisions are recorded: 1. Renew approval of the revised benchmark. 2. Freeze its label version and scoring rules.",
+ "labels_review_entry": 89,
+ "labels_sha256": "46509a624afda43893f669da6168029ffafadf43686d58e4476e551f3dcadf9f",
+ "rules_version": "rules-v5",
+ "rules_sha256": "0721e40b0946a96707c7f46bfaa3ecc60e0497718b9436f075b5e6a33084770c",
+ "score_version": "score-v6",
+ "bench_py_sha256": "abadf7cb7d685a425c15c4bcf113eee6582d9ae823e5d87373651fc13d9a1e51",
+ "adjudications_at_freeze": {
+  "version": "adj-v1",
+  "entries": 16,
+  "sha256": "12e1086dcdc9c1efa7d351f416b3feb8231c7835514d8ec420b48b19dca2fc49"
+ },
+ "note": "The yardstick for the clean-C, H, I and J comparisons. Scores report freeze.matches; one that does not match is not comparable. Match adjudications are judgments on model output, not part of the yardstick: new runs add entries for their own doubtful matches (unadjudicated_low_meaning must be 0 before a recall is final), and existing entries are never edited."
+}

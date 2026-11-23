@@ -12,5 +12,16 @@
         ]
       }
     ]
+  },
+  "permissions": {
+    "allow": [
+      "Skill(observe)",
+      "Bash(.venv/Scripts/python -m src.ingest:*)",
+      "Bash(.venv/Scripts/python -m src.pipeline:*)",
+      "Bash(.venv/Scripts/python -m src.serve:*)",
+      "Bash(.venv\\Scripts\\python -m src.ingest:*)",
+      "Bash(.venv\\Scripts\\python -m src.pipeline:*)",
+      "Bash(.venv\\Scripts\\python -m src.serve:*)"
+    ]
   }
 }

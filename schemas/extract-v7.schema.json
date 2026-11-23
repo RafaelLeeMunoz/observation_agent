@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "extract-v7",
+  "title": "Extractor output for one batch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["batch_id", "attempt_id", "messages", "observations"],
+  "properties": {
+    "batch_id": {"type": "string"},
+    "attempt_id": {"type": "string", "description": "Echo the attempt id you were given; stale files are refused."},
+    "messages": {
+      "description": "Every msg_key in the batch, exactly once (the read receipt).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["msg_key", "disposition", "reason", "work_items"],
+        "properties": {
+          "msg_key": {"type": "string"},
+          "disposition": {"enum": ["observations", "business_no_process_signal", "not_business",
+                                   "ambiguous", "cannot_interpret"]},
+          "reason": {"type": "string", "description": "Required (non-empty) unless disposition is observations."},
+          "work_items": {"type": "integer", "minimum": 0,
+                         "description": "How many distinct pieces of business work the message shows; equals its number of observations (0 unless disposition is observations)."}
+        }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["obs_id", "msg_key", "task", "process_hint", "actors", "action_state", "trigger", "output",
+                     "stall_signals", "stall_evidence", "quote", "confidence", "limitations"],
+        "properties": {
+          "obs_id": {"type": "string"},
+          "msg_key": {"type": "string"},
+          "task": {"type": "string", "description": "Short verb phrase, e.g. 'confirm monthly meter volumes'."},
+          "process_hint": {"type": "string"},
+          "actors": {"type": "array", "items": {"type": "string"}},
+          "action_state": {"enum": ["requested", "planned", "done", "unclear"]},
+          "trigger": {"type": "string"},
+          "output": {"type": "string"},
+          "stall_signals": {"type": "array", "uniqueItems": true,
+                            "items": {"enum": ["follow_up", "waiting", "correction", "rework", "escalation"]},
+                            "description": "Every stall signal the text shows for this piece of work; [] for none."},
+          "stall_evidence": {"type": "array",
+                             "description": "One entry per signal in stall_signals ([] for none): the sentence that shows it, copied exactly from the same message. May repeat text used by other observations.",
+                             "items": {"type": "object", "additionalProperties": false, "required": ["signal", "quote"],
+                                       "properties": {
+                                         "signal": {"enum": ["follow_up", "waiting", "correction", "rework", "escalation"]},
+                                         "quote": {"type": "string", "description": "Copied exactly from the message text, at least 25 characters."}}}},
+          "quote": {"type": "string", "description": "Copied exactly from the message text, at least 25 characters."},
+          "confidence": {"enum": ["high", "medium", "low"]},
+          "limitations": {"type": "string", "description": "What the quote does not show; empty if nothing."}
+        }
+      }
+    }
+  }
+}

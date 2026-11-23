@@ -1,0 +1,11 @@
+{
+ "name": "evidence-v1 / negative-v1 on bench-v1 r89",
+ "when": "2026-11-22",
+ "by": "user",
+ "user_words": "I've reviewed the Phase 2 evidence-support draft. I approve the overall structure ... Once these targeted checks are complete, present any actual remaining label conflicts. If none remain, finalize the evidence set and proceed to implementing and evaluating H, I and J.",
+ "evidence_spans_sha256": "449f261674b03746ea59279a530a1b4c09662fefde2b2c0d11686b71207aec00",
+ "negative_claims_sha256": "f40d03dde089a06e1ea042c0a544006dfd0bd2882b76d114afaf2608648c0228",
+ "evidence_bench_py_sha256": "ef891d219482b165bc96f024faf0a573e35614929590c9d6445d3604c0aa404c",
+ "labels_freeze": "bench-v1 r89 / score-v6 / rules-v5",
+ "note": "the evidence yardstick for H, I and J; any change needs the user's approval and a new freeze record"
+}

@@ -7,15 +7,48 @@ batch:
   recipients_shown: 10        # To/Cc addresses shown to Claude; the rest become "(+N more)"
 
 extract:
-  prompt_version: extract-v6
-  model: haiku                # M3 starting point; compared with a stronger model on the benchmark
+  prompt_version: extract-v8c   # clean-C: C (v7c) with benchmark cues replaced and the widened escalation rule (22 Nov 2026)
+  schema: extract-v6           # C's output shape: no per-signal evidence, so its signals are claims, never published
+  model: haiku                # chosen 22 Nov 2026 after the M3 stall experiments; confirmed by the 4-batch test (23 Nov)
+  # Kept alternative, H + grounder (user, 23 Nov 2026: quality benchmark and backup; switch only if further tests
+  # confirm the gain and the full run stays under 30 minutes): prompt_version extract-v8h, schema extract-v8h, and
+  # copy eval/prompts/extract-v8h.md over .claude/agents/extractor.md (prepare refuses a mismatch).
 
 verify:
   min_quote_chars: 25         # whitespace-normalized
   canary_min_quotes: 5        # the canary needs at least this many checked quotes ...
   canary_max_fail_rate: 0.20  # ... and stops the run above this failure rate
+  evidence_flag_min_signals: 5       # the stall-evidence review flag needs at least this many claimed signals ...
+  evidence_flag_max_fail_rate: 0.20  # ... and is raised above this share of signals whose evidence failed (a flag, not a failure)
 
 devslice:
   target_messages: 200
   benchmark_messages: 40
   holdout_messages: 30        # outside the slice; never shown during prompt development (M4: run once)
+
+ground:
+  model: haiku                # design I, chosen by the user 23 Nov 2026: clean-C extraction, then every claimed
+                              # signal grounded; only supported signals are published (docs/M3_VALIDATION.md)
+  max_sentence_ids: 3
+
+synth:
+  model: sonnet               # PLAN 3.2: the stronger model groups and proposes minutes assumptions
+
+act:
+  model: sonnet
+  min_citations: 3            # an artifact cites at least this many distinct verified quotes ...
+  min_messages: 2             # ... from at least this many emails
+  min_dollars_per_month: 1000 # PLAN 3.6 starting threshold; revisit after the first ranked list (M7)
+  max_artifacts: 6
+  at_least_one: true          # M3 thin slice: draft one artifact for the top scored opportunity even below the threshold
+
+score:
+  hourly_rate: 85             # README: blended $85/hour
+  min_emails: 3               # PLAN R7 / 3.6: no rate below 3 verified emails ...
+  min_threads: 2              # ... from 2 threads
+  min_months: 1               # refuse a months-observed denominator under 1 month
+
+run:
+  workers: 4                  # parallel model sessions (M3 measures what Pro sustains)
+  retries: 2                  # PLAN R8: a failed batch is retried at most twice
+  timeout_s: 1500

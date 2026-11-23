@@ -13,7 +13,7 @@ hooks:
 ---
 
 You read one batch file of emails and record the business work you can see in them. Code checks
-everything you write, so be exact rather than generous.
+every quote against the email, so copy quotes exactly.
 
 ## Safety
 
@@ -57,16 +57,16 @@ For each observation give:
 - `obs_id`: `<batch_id>-o<n>`, numbered from 1
 - `msg_key`: the key of the message the quote comes from (from its `⟦MESSAGE ...⟧` line)
 - `task`: a short verb phrase, e.g. "confirm monthly meter volumes". If it names a month or a
-  date, copy it as the email writes it ("October 99", "Jan 1"): never add, change or work out a
+  date, copy it as the email writes it ("Sept 97", "Feb 3"): never add, change or work out a
   year. Code reads dates and supplies years
 - `process_hint`: the recurring process it belongs to, in a few words, e.g. "monthly volume confirmation"
 - `actors`: people or roles involved, as written in the email (addresses or names). If the work is
   described in a `QUOTED BLOCK`, the actors are the people in that quoted message, not the person
   who forwarded or replied to it
 - `action_state`: `requested` (someone asks for it), `planned` (announced for later, or waiting on
-  a condition: "we will request", "once the data is in"), `done` (the text says it was done), or
-  `unclear`. Use `done` only when the text says the step is finished: "should be", "needs to be
-  verified" or a reply that still leaves something open is not done
+  a condition: "we plan to ask", "once the data is in"), `done` (the text says it was done), or
+  `unclear`. Use `done` only when the text says the step is finished: "ought to be fine", "still has to be
+  checked" or a reply that still leaves something open is not done
 - `trigger`: what started it, from the text; "" if not shown
 - `output`: what it produces, from the text; "" if not shown
 - `stall_signals`: a list of the signals below that the text shows for this item; `[]` for none
@@ -87,24 +87,32 @@ not a failure.
 ## Stall signals
 
 `stall_signals` lists what this message shows about friction on this one piece of work: every
-signal the text shows, often none, sometimes two. They are signals, not findings: never write that a
+signal the text shows. They are signals, not findings: never write that a
 process is slow, stuck or a bottleneck.
 
-- `waiting`: the text says this work is on hold or blocked until something else happens: an
-  answer, an approval, data, a person being back, a condition ("until legal signs off", "once the
-  data is in", "does not know yet"). A request on its own is not waiting.
-- `follow_up`: someone chases earlier work that has not happened yet ("following up on", "we
-  still need", "any update on").
-- `correction`: something wrong is being fixed or flagged to be fixed: a wrong number, date,
-  volume, deal, entry or routing.
-- `rework`: work already done or sent is done or sent again because of a problem ("re-sending",
-  "had to rebuild", "the attachment keeps bouncing").
-- `escalation`: an issue is pushed to a manager, a senior person or another team to get it
-  resolved.
-Use `[]` for ordinary progress, a routine request or update, or a plan changed because new facts
-arrived.
+- `waiting`: the work is explicitly waiting for something its next step needs: a response, input,
+  an approval, a decision, a person or a condition ("until legal signs off", "once the data is
+  in", "has not heard back"). It need not be overdue. A future action on its own is not waiting,
+  and a request on its own is not waiting.
+- `follow_up`: the text comes back to an earlier request, submission, issue or pending action to
+  get an update, a confirmation, a response or a resolution ("following up on", "we still need",
+  "any update on"). It does not need to show that the work never happened.
+- `correction`: an error, an inconsistency or an incorrect result (a wrong number, date, volume,
+  deal, entry or routing) is identified, corrected or asked to be corrected. An ordinary change
+  because of new information is not a correction.
+- `rework`: earlier work is or must be repeated, rebuilt or redone because of a problem
+  ("re-sending", "had to rebuild", "the upload keeps failing"). Routine iterations and new
+  versions are not rework.
+- `escalation`: an unresolved or problematic matter is taken outside the normal workflow to get it
+  resolved: raised up the chain of command, taken in hand by someone with authority who steps in on
+  that specific problem (down the chain), or brought to a subject-matter expert because normal
+  handling could not resolve it. Routine supervision, normal expert consultation, routine routing
+  and hand-offs, copied managers, status updates and communicating expectations are not escalation.
 
-List each signal the text shows; do not pick one when two are there. A message that chases several
+A plan changed because new facts arrived is not a stall.
+
+Consider each of the five signals on its own for every item, and list every signal the text
+supports; do not pick one when two are there. A message that chases several
 open items gives each of them `follow_up`, beside any signal of its own. A stall described in a
 `QUOTED BLOCK` belongs to that quoted message and its author, like the work itself.
 
@@ -133,6 +141,13 @@ One sentence each (state, stall signals):
   (`done`, `["rework"]`)
 - "The counterparty still hasn't returned the signed annex, so I am asking our commercial lead to
   step in." (`requested`, `["escalation"]`)
+- "Because the desk has not been able to settle the Waha dispute, I am stepping in: send every message
+  on it to me from now on." (`requested`, `["escalation"]`: a manager steps in on a specific unresolved
+  problem)
+- "Nobody on the desk can work out how the new tariff applies, so I have asked the rates specialist to
+  take it on." (`requested`, `["escalation"]`: normal handling could not resolve it)
+- "The VP asked me to remind everyone that month-end nominations are due by the 25th." (`requested`,
+  `[]`: communicating expectations is not escalation)
 - "Because the plant moved its maintenance window earlier, we shifted the delivery start to
   Friday." (`done`, `[]`: new facts, not friction)
 - "Please send me the March meter readings by Thursday." (`requested`, `[]`: a request alone
@@ -154,7 +169,7 @@ List every message in the batch exactly once in `messages`, in any order, with i
 ## Output
 
 Write exactly one JSON object to the output path you are given, matching
-`schemas/extract.schema.json`. Copy the `batch_id` and `attempt_id` you were given exactly:
+`schemas/extract-v6.schema.json`. Copy the `batch_id` and `attempt_id` you were given exactly:
 
 ```json
 {"batch_id": "b001", "attempt_id": "b001-a1f3c9",

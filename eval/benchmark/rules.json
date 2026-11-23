@@ -1,0 +1,107 @@
+{
+ "version": "rules-v5",
+ "note": "The stall-signal rules that the benchmark labels and the extractor prompt both follow. Every change is a history entry with the user's words, the text before and after, the prompt that carries it and the labels it touched. tests/test_prompt.py checks that the active prompt states every current definition word for word and that the history leads to the current text.",
+ "signals": {
+  "waiting": "the work is explicitly waiting for something its next step needs: a response, input, an approval, a decision, a person or a condition (\"until legal signs off\", \"once the data is in\", \"has not heard back\"). It need not be overdue. A future action on its own is not waiting, and a request on its own is not waiting.",
+  "follow_up": "the text comes back to an earlier request, submission, issue or pending action to get an update, a confirmation, a response or a resolution (\"following up on\", \"we still need\", \"any update on\"). It does not need to show that the work never happened.",
+  "correction": "an error, an inconsistency or an incorrect result (a wrong number, date, volume, deal, entry or routing) is identified, corrected or asked to be corrected. An ordinary change because of new information is not a correction.",
+  "rework": "earlier work is or must be repeated, rebuilt or redone because of a problem (\"re-sending\", \"had to rebuild\", \"the upload keeps failing\"). Routine iterations and new versions are not rework.",
+  "escalation": "an unresolved or problematic matter is taken outside the normal workflow to get it resolved: raised up the chain of command, taken in hand by someone with authority who steps in on that specific problem (down the chain), or brought to a subject-matter expert because normal handling could not resolve it. Routine supervision, normal expert consultation, routine routing and hand-offs, copied managers, status updates and communicating expectations are not escalation."
+ },
+ "interpretations": {
+  "waiting": "Applying the waiting definition to labels: the text must state an outstanding dependency (an input, decision, person, delivery or condition the next step needs and does not have yet); a request or a question alone does not establish waiting."
+ },
+ "history": [
+  {
+   "n": 1,
+   "when": "2026-11-22",
+   "by": "user",
+   "kind": "baseline",
+   "user_words": "Haiku, as recommended",
+   "change": "the five definitions as written in prompt C (extract-v7c, sha256 74095d5d...), chosen after the stall experiments",
+   "after": {
+    "waiting": "the work is explicitly waiting for something its next step needs: a response, input, an approval, a decision, a person or a condition (\"until legal signs off\", \"once the data is in\", \"does not know yet\"). It need not be overdue. A future action on its own is not waiting, and a request on its own is not waiting.",
+    "follow_up": "the text comes back to an earlier request, submission, issue or pending action to get an update, a confirmation, a response or a resolution (\"following up on\", \"we still need\", \"any update on\"). It does not need to show that the work never happened.",
+    "correction": "an error, an inconsistency or an incorrect result (a wrong number, date, volume, deal, entry or routing) is identified, corrected or asked to be corrected. An ordinary change because of new information is not a correction.",
+    "rework": "earlier work is or must be repeated, rebuilt or redone because of a problem (\"re-sending\", \"had to rebuild\", \"the attachment keeps bouncing\"). Routine iterations and new versions are not rework.",
+    "escalation": "an unresolved matter or a problem is raised to someone with more authority or responsibility, to get them to step in. Routine routing, normal hand-offs and copied managers are not escalation."
+   },
+   "prompt": "extract-v7c",
+   "labels": "approved labels after review entry 81"
+  },
+  {
+   "n": 2,
+   "when": "2026-11-22",
+   "by": "user",
+   "kind": "example",
+   "signals": [
+    "waiting",
+    "rework"
+   ],
+   "user_words": "Accept the clean-C prompt-leak cleanup and versioning.",
+   "change": "benchmark phrases in the definitions replaced by made-up ones; meaning unchanged: waiting 'does not know yet' -> 'has not heard back' (near 1056), rework 'the attachment keeps bouncing' -> 'the upload keeps failing' (3221)",
+   "before": {
+    "waiting": "the work is explicitly waiting for something its next step needs: a response, input, an approval, a decision, a person or a condition (\"until legal signs off\", \"once the data is in\", \"does not know yet\"). It need not be overdue. A future action on its own is not waiting, and a request on its own is not waiting.",
+    "rework": "earlier work is or must be repeated, rebuilt or redone because of a problem (\"re-sending\", \"had to rebuild\", \"the attachment keeps bouncing\"). Routine iterations and new versions are not rework."
+   },
+   "after": {
+    "waiting": "the work is explicitly waiting for something its next step needs: a response, input, an approval, a decision, a person or a condition (\"until legal signs off\", \"once the data is in\", \"has not heard back\"). It need not be overdue. A future action on its own is not waiting, and a request on its own is not waiting.",
+    "rework": "earlier work is or must be repeated, rebuilt or redone because of a problem (\"re-sending\", \"had to rebuild\", \"the upload keeps failing\"). Routine iterations and new versions are not rework."
+   },
+   "prompt": "extract-v8c",
+   "labels": "none"
+  },
+  {
+   "n": 3,
+   "when": "2026-11-22",
+   "by": "user",
+   "kind": "definition",
+   "signals": [
+    "escalation"
+   ],
+   "user_words": "Let's broaden this like mentioned so it can count going up the chain of command, down the chain of command, or to an SME.",
+   "before": {
+    "escalation": "an unresolved matter or a problem is raised to someone with more authority or responsibility, to get them to step in. Routine routing, normal hand-offs and copied managers are not escalation."
+   },
+   "after": {
+    "escalation": "an unresolved matter or a problem is taken beyond the people handling it to get it resolved: raised up the chain of command, pressed down the chain by someone with authority (a manager demanding that it gets done), or brought to a subject-matter expert because the people handling it could not resolve it. Routine routing, normal hand-offs, copied managers, status updates and ordinary questions to the person who owns the work are not escalation."
+   },
+   "prompt": "extract-v8c, version 971850a2... (never run; superseded by entry 4)",
+   "labels": "675#1 and 917#1 reviewed one by one: 675#1 kept ('Keep escalation on 675#1'); 917#1 pending"
+  },
+  {
+   "n": 4,
+   "when": "2026-11-22",
+   "by": "user",
+   "kind": "definition",
+   "signals": [
+    "escalation"
+   ],
+   "user_words": "I support escalation moving upward, downward or involving a subject-matter expert, but only when an unresolved or problematic matter requires intervention outside the normal workflow. Routine supervision, normal expert consultation, status updates and communication of expectations do not qualify.",
+   "before": {
+    "escalation": "an unresolved matter or a problem is taken beyond the people handling it to get it resolved: raised up the chain of command, pressed down the chain by someone with authority (a manager demanding that it gets done), or brought to a subject-matter expert because the people handling it could not resolve it. Routine routing, normal hand-offs, copied managers, status updates and ordinary questions to the person who owns the work are not escalation."
+   },
+   "after": {
+    "escalation": "an unresolved or problematic matter is taken outside the normal workflow to get it resolved: raised up the chain of command, taken in hand by someone with authority who steps in on that specific problem (down the chain), or brought to a subject-matter expert because normal handling could not resolve it. Routine supervision, normal expert consultation, routine routing and hand-offs, copied managers, status updates and communicating expectations are not escalation."
+   },
+   "prompt": "extract-v8c, version ef763502...",
+   "labels": "917#1 re-reviewed under this text (pending the user's decision); no other benchmark activity qualifies (screened 22 Nov)"
+  },
+  {
+   "n": 5,
+   "when": "2026-11-22",
+   "by": "user",
+   "kind": "interpretation",
+   "signals": [
+    "waiting"
+   ],
+   "user_words": "Remove `waiting` from giron-d/inbox/265#1, 670#2 and 673#5 under our explicit-dependency rule.",
+   "before": null,
+   "after": {
+    "waiting": "Applying the waiting definition to labels: the text must state an outstanding dependency (an input, decision, person, delivery or condition the next step needs and does not have yet); a request or a question alone does not establish waiting."
+   },
+   "prompt": "no prompt change: the definition already says a request on its own is not waiting",
+   "labels": "review entries 84-86 (265#1, 670#2, 673#5); 673#9 and 1056#2 pending the user's decision"
+  }
+ ]
+}

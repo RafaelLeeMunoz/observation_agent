@@ -1,4 +1,6 @@
 """Benchmark scoring: labels must cite real text; scoring is deterministic and conservative."""
+from pathlib import Path
+
 import pytest
 
 from src import bench, verify
@@ -30,11 +32,14 @@ def labels():
         "mb/inbox/2": {"outcome": "not_business", "activities": [], "must_not": []}}}
 
 
-def extraction(st, b, quotes, disp2="not_business"):
+def extraction(st, b, quotes, disp2="not_business", tasks=None):
     obs = []
     for i, (q, state, *sigs) in enumerate(quotes, 1):
-        obs.append({"obs_id": f"b001-o{i}", "msg_key": "mb/inbox/1", "task": "t", "process_hint": "p", "actors": [],
+        task = tasks[i - 1] if tasks else "t"
+        obs.append({"obs_id": f"b001-o{i}", "msg_key": "mb/inbox/1", "task": task, "process_hint": "p", "actors": [],
                     "action_state": state, "trigger": "", "output": "", "stall_signals": sigs[0] if sigs else [],
+                    # each signal's evidence is the observation's own quote, so these tests score signals only
+                    "stall_evidence": [{"signal": s, "quote": q} for s in (sigs[0] if sigs else [])],
                     "quote": q, "confidence": "high", "limitations": ""})
     import json
     doc = {"batch_id": "b001", "attempt_id": "a", "observations": obs, "messages": [
@@ -55,8 +60,8 @@ def test_label_quotes_must_verify_and_every_message_needs_a_label(setup):
 
 
 def test_label_states_are_the_extractor_schema_states(setup):
-    from src import schema
-    props = schema.load("extract.schema.json")["properties"]["observations"]["items"]["properties"]
+    from src import config, schema
+    props = schema.load(f"{config.load()['extract']['schema']}.schema.json")["properties"]["observations"]["items"]["properties"]
     assert bench.STATES == tuple(props["action_state"]["enum"]) and "planned" in bench.STATES
     assert bench.STALLS == tuple(props["stall_signals"]["items"]["enum"])
     st, _ = setup
@@ -131,6 +136,8 @@ def test_recall_counts_only_quotes_that_overlap_the_labelled_span(setup):
     assert (s["activities"], s["activities_found"], s["recall"]) == (2, 1, 0.5)
     assert s["action_state_agreement"] == "1/1" and s["unmatched_for_review"] == []
     assert s["missed"] == ["mb/inbox/1#2"] and s["disagreements"] == []          # named, not just counted
+    s = bench.score(lab, spans, [extraction(st, b, [(B, "requested")])], st, VERIFY_CFG)
+    assert s["missed"] == ["mb/inbox/1#1"]                     # a quote of B credits #2, not the first activity
 
 
 def test_an_activity_may_have_several_spans_but_two_activities_never_share_text(setup):
@@ -162,7 +169,62 @@ def test_score_v2_measures_complete_messages_precision_duplicates_and_confusion(
     assert s["state_confusion"] == {"requested -> requested": 1} and s["stall_confusion"] == {"none -> none": 1}
     s = bench.score(lab, spans, [extraction(st, b, [(A + " " + B, "requested")])], st, VERIFY_CFG)
     assert s["observations_spanning_activities"] == [{"obs_id": "b001-o1", "ids": ["mb/inbox/1#1", "mb/inbox/1#2"]}]
-    assert (s["complete_messages"], s["messages_fully_right"]) == ("1/1", "2/2")
+    # score-v4: the spanning quote is listed, but credits only one activity, so the message stays incomplete
+    assert s["activities_found"] == 1 and (s["complete_messages"], s["messages_fully_right"]) == ("0/1", "1/2")
+
+
+def test_one_quote_credits_only_the_activity_it_overlaps_most(setup):
+    st, b = setup
+    lab = labels()
+    _, spans = bench.check_labels(lab, st, ["mb/inbox/1", "mb/inbox/2"], VERIFY_CFG)
+    # a quote with all of B and only the last words of A: credited to #2 (B) alone
+    s = bench.score(lab, spans, [extraction(st, b, [(A[-30:] + " " + B, "requested")])], st, VERIFY_CFG)
+    assert s["activities_found"] == 1 and s["missed"] == ["mb/inbox/1#1"]
+    # two observations on one activity: both still credit it (a duplicate), neither is lost
+    s = bench.score(lab, spans, [extraction(st, b, [(A, "requested"), (A, "done")])], st, VERIFY_CFG)
+    assert s["duplicate_hits"] == [{"id": "mb/inbox/1#1", "obs_ids": ["b001-o1", "b001-o2"]}]
+
+
+def test_a_duplicate_is_judged_on_the_copy_with_the_most_evidence_never_on_order_or_answer(setup):
+    st, b = setup
+    lab = labels()
+    _, spans = bench.check_labels(lab, st, ["mb/inbox/1", "mb/inbox/2"], VERIFY_CFG)
+    full, frag = (A, "done"), (A[:32], "requested")       # the full sentence has the WRONG state
+    for quotes in ([frag, full], [full, frag]):           # same result whichever copy comes first
+        s = bench.score(lab, spans, [extraction(st, b, quotes)], st, VERIFY_CFG)
+        judged = s["credited_obs"]["mb/inbox/1#1"]
+        assert judged == f"b001-o{quotes.index(full) + 1}"            # most overlap with the label span
+        assert s["action_state_agreement"] == "0/1"                   # not the copy that happens to be right
+        assert s["duplicate_observations"] == [{"obs_id": f"b001-o{quotes.index(frag) + 1}",
+                                                "activity": "mb/inbox/1#1", "credited_obs_id": judged}]
+        assert s["activities_found"] == 1 and s["precision_one_to_one"] == "1/2" and s["precision"] == "2/2"
+
+
+def test_tied_duplicates_are_broken_by_source_position_not_output_order(setup):
+    st, b = setup
+    lab = labels()
+    _, spans = bench.check_labels(lab, st, ["mb/inbox/1", "mb/inbox/2"], VERIFY_CFG)
+    early, late = (A[:30], "requested"), (A[3:33], "done")     # same overlap (30 chars), same task words
+    for quotes in ([early, late], [late, early]):
+        s = bench.score(lab, spans, [extraction(st, b, quotes)], st, VERIFY_CFG)
+        assert s["credited_obs"]["mb/inbox/1#1"] == f"b001-o{quotes.index(early) + 1}"
+
+
+def test_a_broad_quote_credits_one_activity_the_one_its_task_describes(setup):
+    st, b = setup
+    lab = labels()
+    acts = lab["messages"]["mb/inbox/1"]["activities"]
+    acts[0]["activity"], acts[1]["activity"] = "confirm the Katy hub nominations", "send the corrected meter list"
+    _, spans = bench.check_labels(lab, st, ["mb/inbox/1", "mb/inbox/2"], VERIFY_CFG)
+    broad = A[-30:] + " " + B                              # overlaps B far more than A
+    s = bench.score(lab, spans, [extraction(st, b, [(broad, "requested")], tasks=["confirm Katy nominations"])],
+                    st, VERIFY_CFG)
+    assert s["credited_obs"] == {"mb/inbox/1#1": "b001-o1"} and s["missed"] == ["mb/inbox/1#2"]
+    assert s["matched_by_meaning"] == [{"obs_id": "b001-o1", "credited": "mb/inbox/1#1", "most_overlap": "mb/inbox/1#2"}]
+    # with no words in common, the evidence decides, and it still credits only one activity
+    s = bench.score(lab, spans, [extraction(st, b, [(broad, "requested")])], st, VERIFY_CFG)
+    assert s["credited_obs"] == {"mb/inbox/1#2": "b001-o1"} and s["matched_by_meaning"] == []
+    assert bench.meaning("Confirms the nominations", "confirm nomination") == 1.0
 
 
 def test_stall_signals_are_scored_as_sets_with_per_signal_counts(setup):
@@ -201,3 +263,68 @@ def test_outcomes_disagreements_and_unmatched_observations_are_reported(setup):
                                    "extracted": "done / none"}]
     assert [u["quote"] for u in s["unmatched_for_review"]] == [B]       # listed for the user, not auto-scored
     assert all(s["invariants"].values())
+
+
+def test_stall_classification_scores_claims_and_published_signals_are_counted_apart(setup):
+    st, b = setup
+    lab = labels()
+    lab["messages"]["mb/inbox/1"]["activities"][0]["stall_signals"] = ["waiting"]
+    _, spans = bench.check_labels(lab, st, ["mb/inbox/1", "mb/inbox/2"], VERIFY_CFG)
+    res = extraction(st, b, [(A, "requested", ["waiting"])])
+    (o,) = res["observations"]
+    o["stall_signals"] = []                     # as the verifier leaves it when the signal is not grounded
+    s = bench.score(lab, spans, [res], st, VERIFY_CFG)
+    assert s["stall_signals"]["waiting"] == {"labelled": 1, "extracted": 1, "both": 1}        # the claim
+    assert s["published_stall_signals"]["waiting"] == {"labelled": 1, "published": 0, "both": 0}
+    assert s["stall_agreement"] == "1/1"
+
+
+def test_matches_whose_task_shares_few_words_are_listed_for_review_and_still_scored(setup):
+    st, b = setup
+    lab = labels()
+    acts = lab["messages"]["mb/inbox/1"]["activities"]
+    acts[0]["activity"], acts[1]["activity"] = "confirm the Katy hub nominations", "send the corrected meter list"
+    _, spans = bench.check_labels(lab, st, ["mb/inbox/1", "mb/inbox/2"], VERIFY_CFG)
+    res = extraction(st, b, [(A, "requested"), (B, "requested")], tasks=["notify scheduling", "send corrected meter list"])
+    s = bench.score(lab, spans, [res], st, VERIFY_CFG)
+    assert s["activities_found"] == 2                                       # the score does not change ...
+    assert [m["activity"] for m in s["low_meaning_matches"]] == ["mb/inbox/1#1"]   # ... the doubtful one is listed
+
+
+def test_a_person_judged_wrong_match_earns_no_credit_and_unjudged_doubts_are_counted(setup):
+    st, b = setup
+    lab = labels()
+    acts = lab["messages"]["mb/inbox/1"]["activities"]
+    acts[0]["activity"], acts[1]["activity"] = "confirm the Katy hub nominations", "send the corrected meter list"
+    _, spans = bench.check_labels(lab, st, ["mb/inbox/1", "mb/inbox/2"], VERIFY_CFG)
+    res = extraction(st, b, [(A, "requested"), (B, "requested")], tasks=["notify scheduling", "send corrected meter list"])
+    s = bench.score(lab, spans, [res], st, VERIFY_CFG)
+    assert s["activities_found"] == 2 and s["unadjudicated_low_meaning"] == 1        # doubtful, not yet judged
+    o1 = res["observations"][0]
+    adj = {"n": 1, "activity": "mb/inbox/1#1", "msg_key": "mb/inbox/1", "task": o1["task"], "quote": o1["quote"],
+           "reason": "a different piece of work"}
+    s = bench.score(lab, spans, [res], st, VERIFY_CFG, [{**adj, "decision": "no_credit"}])
+    assert s["activities_found"] == 1 and s["missed"] == ["mb/inbox/1#1"] and s["unadjudicated_low_meaning"] == 0
+    assert [x["obs_id"] for x in s["adjudicated_no_credit"]] == ["b001-o1"] and s["precision_one_to_one"] == "1/2"
+    s = bench.score(lab, spans, [res], st, VERIFY_CFG, [{**adj, "decision": "credit"}])
+    assert s["activities_found"] == 2 and s["unadjudicated_low_meaning"] == 0
+    assert s["low_meaning_matches"][0]["adjudication"] == 1
+    # a judgment is tied to the exact task and quote: a reworded observation is a new case
+    s = bench.score(lab, spans, [res], st, VERIFY_CFG, [{**adj, "task": "something else", "decision": "no_credit"}])
+    assert s["activities_found"] == 2 and s["unadjudicated_low_meaning"] == 1
+
+
+def test_a_score_says_whether_it_was_made_with_the_frozen_benchmark(tmp_path, monkeypatch):
+    import hashlib, json
+    lab = tmp_path / "labels.json"
+    lab.write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(bench, "FREEZE", tmp_path / "freeze.json")
+    assert bench.freeze_status(lab)["matches"] is False                               # no freeze record
+    fz = {"name": "t", "labels_sha256": hashlib.sha256(b"{}").hexdigest(),
+          "rules_sha256": hashlib.sha256((bench.ROOT / "eval" / "benchmark" / "rules.json").read_bytes()).hexdigest(),
+          "bench_py_sha256": hashlib.sha256(Path(bench.__file__).read_bytes()).hexdigest(),
+          "score_version": bench.SCORE_VERSION}
+    (tmp_path / "freeze.json").write_text(json.dumps(fz), encoding="utf-8")
+    assert bench.freeze_status(lab) == {"freeze": "t", "matches": True, "differs": []}
+    lab.write_text('{"x": 1}', encoding="utf-8")                                        # a label edit
+    assert bench.freeze_status(lab)["differs"] == ["labels_sha256"]

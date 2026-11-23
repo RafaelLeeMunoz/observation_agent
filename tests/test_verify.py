@@ -46,7 +46,7 @@ def setup(ingested):
 def obs(n, key, quote, **kw):
     base = {"obs_id": f"b001-o{n}", "msg_key": key, "task": "confirm nominations", "process_hint": "daily noms",
             "actors": ["a@enron.com"], "action_state": "requested", "trigger": "", "output": "",
-            "stall_signals": [], "quote": quote, "confidence": "high", "limitations": ""}
+            "stall_signals": [], "stall_evidence": [], "quote": quote, "confidence": "high", "limitations": ""}
     return {**base, **kw}
 
 
@@ -261,6 +261,15 @@ def test_item_count_mismatch_and_overlapping_quotes_are_flagged_not_failed(setup
     assert run(setup, [obs(1, "mb/inbox/1", q)])["flags"] == []                  # counts agree: no flag
 
 
+@pytest.mark.parametrize("task", ["", "   ", "\t\r\n"])
+def test_an_empty_task_is_flagged_not_failed(setup, task):
+    q = LONG.strip()
+    r = run(setup, [obs(1, "mb/inbox/1", q, task=task)])
+    assert r["status"] == "verified" and len(r["observations"]) == 1           # the quote still stands
+    assert r["flags"] == [{"kind": "empty_task", "msg_key": "mb/inbox/1", "obs_id": "b001-o1"}]
+    assert run(setup, [obs(1, "mb/inbox/1", q, task="confirm noms")])["flags"] == []
+
+
 def test_a_verified_batch_marks_its_messages_read(setup):
     st, b = setup
     r = run(setup, [obs(1, "mb/inbox/1", LONG.strip())])
@@ -281,3 +290,163 @@ def test_publish_gate_reverifies_against_the_raw_file(setup):
     assert verify.reverify(o, st, VERIFY_CFG)
     assert not verify.reverify(dict(o, start=o["start"] + 1), st, VERIFY_CFG)
     assert not verify.reverify(dict(o, quote="Please confirm the nominations for Waha tomorrow"), st, VERIFY_CFG)
+
+
+# --- stall evidence (schema extract-v7) ---
+
+KATY = LONG.strip()
+CUTOFF = "so scheduling can release the volumes before the pipeline cutoff."       # inside KATY
+METER = "The meter list for Katy needs the new numbers added before month end."  # a '>' block in 3
+WAHA = "Can you confirm the volumes for the Waha hub by Friday afternoon?"       # c@enron.com's quoted message in 3
+
+
+def ev(*pairs):
+    return [{"signal": s, "quote": q} for s, q in pairs]
+
+
+def test_a_signal_is_published_only_with_one_verified_evidence_quote(setup):
+    o = obs(1, "mb/inbox/1", KATY, stall_signals=["waiting", "follow_up"], stall_evidence=ev(("waiting", CUTOFF)))
+    r = run(setup, [o])
+    assert r["status"] == "verified"                                              # never a batch failure
+    (v,) = r["observations"]
+    assert v["stall_signals"] == ["waiting"] and v["stall_signals_claimed"] == ["waiting", "follow_up"]
+    (e,) = v["stall_evidence"]
+    assert setup[0].messages["mb/inbox/1"].text[e["start"]:e["end"]] == CUTOFF and e["inside_own_quote"] is True
+    assert r["rejected_evidence"] == [{"obs_id": "b001-o1", "msg_key": "mb/inbox/1", "signal": "follow_up",
+                                       "quote": None, "problem": "mismatch", "reason": "no evidence quote for this signal"}]
+    assert {"kind": "stall_evidence_mismatch", "obs_id": "b001-o1", "msg_key": "mb/inbox/1"} in r["flags"]
+
+
+def test_signal_and_evidence_sets_must_match_one_to_one(setup):
+    dup = obs(1, "mb/inbox/1", KATY, stall_signals=["waiting"], stall_evidence=ev(("waiting", CUTOFF), ("waiting", KATY)))
+    r = run(setup, [dup])
+    assert r["observations"][0]["stall_signals"] == [] and "2 evidence quotes for one signal" in r["rejected_evidence"][0]["reason"]
+    extra = obs(1, "mb/inbox/1", KATY, stall_signals=["waiting"], stall_evidence=ev(("waiting", CUTOFF), ("correction", KATY)))
+    r = run(setup, [extra])
+    assert r["observations"][0]["stall_signals"] == ["waiting"]                  # the listed signal stands
+    assert [(x["signal"], x["problem"]) for x in r["rejected_evidence"]] == [("correction", "unlisted")]
+    assert r["evidence"]["evidence_for_unlisted_signals"] == 1 and r["evidence"]["signals_dropped"] == 0
+
+
+def test_evidence_that_fails_verification_drops_its_signal_and_is_logged(setup):
+    o = obs(1, "mb/inbox/1", KATY, stall_signals=["waiting", "correction"],
+            stall_evidence=ev(("waiting", "the pipeline cutoff was moved to Friday by legal"), ("correction", "cutoff.")))
+    r = run(setup, [o])
+    assert r["observations"][0]["stall_signals"] == [] and len(r["observations"]) == 1   # the work itself stands
+    assert [(x["signal"], x["problem"], x["reason"]) for x in r["rejected_evidence"]] == [
+        ("waiting", "unverified", "not found in the raw file"),
+        ("correction", "unverified", "too short (under 25 characters)")]
+    assert not [f for f in r["flags"] if f["kind"] == "stall_evidence_mismatch"]   # a failed quote, not a mismatch
+
+
+def test_evidence_may_be_shared_and_overlap_and_keeps_its_own_author(setup):
+    a = obs(1, "mb/inbox/3", "I will update the meter list this week.", stall_signals=["waiting"],
+            stall_evidence=ev(("waiting", METER)))
+    b = obs(2, "mb/inbox/3", WAHA, stall_signals=["follow_up", "waiting"], stall_evidence=ev(("follow_up", METER), ("waiting", WAHA)))
+    r = run(setup, [a, b])
+    assert [v["stall_signals"] for v in r["observations"]] == [["waiting"], ["follow_up", "waiting"]]
+    assert r["evidence"] == {"signals_claimed": 3, "signals_verified": 3, "signals_ungrounded": 0, "signals_dropped": 0,
+                             "evidence_for_unlisted_signals": 0, "evidence_inside_own_quote": 1, "evidence_spans_shared": 1}
+    assert not [f for f in r["flags"] if f["kind"] == "overlapping_quotes"]       # the no-overlap rule is for `quote`
+    waha = r["observations"][1]["stall_evidence"][1]
+    assert waha["evidence_kind"] == "quoted" and "c@enron.com" in waha["evidence_author"]
+
+
+@pytest.mark.parametrize("found,flagged", [(2, True), (4, False)])
+def test_a_batch_losing_too_much_evidence_is_flagged_for_review(setup, found, flagged):
+    sigs = ["follow_up", "waiting", "correction", "rework", "escalation"]        # 5 claimed: the minimum sample
+    o = obs(1, "mb/inbox/1", KATY, stall_signals=sigs, stall_evidence=ev(*[(s, CUTOFF) for s in sigs[:found]]))
+    r = run(setup, [o])
+    assert r["status"] == "verified"
+    assert any(f["kind"] == "stall_evidence_rejection_rate" for f in r["flags"]) is flagged   # 3/5 > 20%; 1/5 is not
+
+
+def test_the_publish_gate_rechecks_evidence_quotes(setup):
+    st, _ = setup
+    r = run(setup, [obs(1, "mb/inbox/1", KATY, stall_signals=["waiting"], stall_evidence=ev(("waiting", CUTOFF)))])
+    v = r["observations"][0]
+    assert verify.reverify(v, st, VERIFY_CFG)
+    v["stall_evidence"][0]["start"] += 1                                         # a stored offset gone wrong
+    assert not verify.reverify(v, st, VERIFY_CFG)
+
+
+def test_clean_c_output_is_verified_against_its_own_schema_and_its_signals_stay_claims(setup):
+    """extract-v6 (clean-C) has no per-signal evidence: its signals are kept as claims, never published."""
+    st, b = setup
+    o = obs(1, "mb/inbox/1", LONG.strip(), stall_signals=["waiting", "follow_up"])
+    del o["stall_evidence"]
+    text = output(b, [o])
+    r = verify.verify_batch(text, b, st, VERIFY_CFG, attempt_id="b001-test-1", schema_name="extract-v6")
+    assert r["status"] == "verified" and r["schema"] == "extract-v6"
+    (v,) = r["observations"]
+    assert v["stall_signals"] == [] and v["stall_signals_claimed"] == ["waiting", "follow_up"]
+    assert v["signal_grounding"] == "none" and v["stall_evidence"] == []
+    assert r["evidence"]["signals_claimed"] == 2 and r["evidence"]["signals_ungrounded"] == 2
+    assert r["evidence"]["signals_verified"] == 0 and r["rejected_evidence"] == []
+    # versions are never mixed: the same output fails the evidence schema, which requires stall_evidence
+    r7 = verify.verify_batch(text, b, st, VERIFY_CFG, attempt_id="b001-test-1", schema_name="extract-v7")
+    assert r7["status"] == "failed" and any("stall_evidence" in e for e in r7["errors"])
+
+
+# --- design H: evidence last (schema extract-v8h) ---
+
+def h_obs(n, key, quote, signals):
+    o = obs(n, key, quote, stall_signals=signals)
+    o.pop("stall_evidence")
+    return o
+
+
+def h_run(setup, observations, evidence):
+    st, b = setup
+    return verify.verify_batch(output(b, observations, signal_evidence=evidence), b, st, VERIFY_CFG,
+                               attempt_id="b001-test-1", schema_name="extract-v8h")
+
+
+def hev(oid, sig, quote="", status="quoted", reason="r"):
+    return {"obs_id": oid, "signal": sig, "status": status, "quote": quote, "reason": reason}
+
+
+def test_h_publishes_a_signal_only_with_a_verified_quote_and_keeps_unresolved_claims(setup):
+    q = LONG.strip()
+    r = h_run(setup, [h_obs(1, "mb/inbox/1", q, ["waiting", "follow_up", "correction"])],
+              [hev("b001-o1", "waiting", "release the volumes before the pipeline cutoff"),
+               hev("b001-o1", "follow_up", status="unresolved", reason="nothing chases an earlier request"),
+               hev("b001-o1", "correction", "release the volumes before the pipeline cutoff tomorrow")])   # not in the file
+    (o,) = r["observations"]
+    assert r["status"] == "verified" and o["stall_signals"] == ["waiting"]
+    assert o["stall_signals_claimed"] == ["waiting", "follow_up", "correction"]
+    assert {x["signal"]: x["outcome"] for x in o["signal_outcomes"]} == \
+        {"waiting": "published", "follow_up": "unresolved", "correction": "rejected"}
+    (pe,) = o["published_evidence"]
+    st, _ = setup
+    assert st.messages["mb/inbox/1"].text[pe["start"]:pe["end"]] == pe["quote_raw"]
+    assert {x["signal"]: x["problem"] for x in r["rejected_evidence"]} == {"follow_up": "unresolved", "correction": "unverified"}
+    assert r["evidence"]["signals_unresolved"] == 1 and r["evidence"]["signals_dropped"] == 1
+
+
+def test_h_a_claimed_signal_with_no_or_two_entries_is_rejected_and_stray_entries_are_logged(setup):
+    q = LONG.strip()
+    r = h_run(setup, [h_obs(1, "mb/inbox/1", q, ["waiting", "follow_up"])],
+              [hev("b001-o1", "follow_up", "release the volumes before the pipeline cutoff"),
+               hev("b001-o1", "follow_up", "Please confirm the nominations for the Katy hub"),
+               hev("b001-o1", "rework", "Please confirm the nominations for the Katy hub"),        # not claimed
+               hev("b001-o9", "waiting", "Please confirm the nominations for the Katy hub")])      # no such observation
+    (o,) = r["observations"]
+    assert o["stall_signals"] == [] and {x["outcome"] for x in o["signal_outcomes"]} == {"rejected"}
+    assert sorted(x["problem"] for x in r["rejected_evidence"]) == ["mismatch", "mismatch", "unlisted", "unlisted"]
+
+
+def test_h_evidence_must_be_in_the_observations_own_message_as_batched(setup):
+    # mb/inbox/2 quotes mb/inbox/1, but its copy is hidden from the batch: H cannot cite it there
+    r = h_run(setup, [h_obs(1, "mb/inbox/2", "sent the corrected\r\nnominations to scheduling", ["correction"])],
+              [hev("b001-o1", "correction", "release the volumes before the pipeline cutoff")])
+    (o,) = r["observations"]
+    assert o["stall_signals"] == [] and o["signal_outcomes"][0]["outcome"] == "rejected"
+    assert "not shown" in o["signal_outcomes"][0]["reason"]
+
+
+def test_h_output_without_signal_evidence_fails_its_schema(setup):
+    st, b = setup
+    r = verify.verify_batch(output(b, [h_obs(1, "mb/inbox/1", LONG.strip(), [])]), b, st, VERIFY_CFG,
+                            attempt_id="b001-test-1", schema_name="extract-v8h")
+    assert r["status"] == "failed" and any("signal_evidence" in e for e in r["errors"])

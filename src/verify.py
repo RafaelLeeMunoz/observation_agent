@@ -209,12 +209,14 @@ def check_quote(m: store.StoredMessage, quote: str, min_chars: int) -> dict:
 
 # --- a whole batch ---
 
-def verify_batch(staged_text: str, batch: dict, st: store.Store, vcfg: dict, attempt_id: str | None = None) -> dict:
+def verify_batch(staged_text: str, batch: dict, st: store.Store, vcfg: dict, attempt_id: str | None = None,
+                 schema_name: str = "extract-v7") -> dict:
     """Return the verification result for one batch (pure: no files written).
 
     `attempt_id` is the id handed to the extractor for this attempt; output carrying any other id
     is a stale or foreign file and fails the batch."""
     res = {"batch_id": batch["batch_id"], "attempt_id": attempt_id, "fingerprint": batch["fingerprint"],
+           "schema": schema_name,
            "status": "failed", "errors": [], "messages": [], "observations": [], "rejected": [],
            "verified_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     try:
@@ -222,7 +224,14 @@ def verify_batch(staged_text: str, batch: dict, st: store.Store, vcfg: dict, att
     except json.JSONDecodeError as e:
         res["errors"].append(f"invalid JSON: {e}")
         return res
-    errs = schema.validate(data, schema.load("extract.schema.json"))
+    sch = schema.load(f"{schema_name}.schema.json")
+    # extract-v7 carries a verified evidence quote per signal; extract-v6 (clean-C) does not, so its
+    # signals are claims only: kept in stall_signals_claimed, never published (grounding "none")
+    grounded = "stall_evidence" in sch["properties"]["observations"]["items"]["properties"]
+    # extract-v8h (design H): evidence comes last, in a top-level `signal_evidence` list, one entry per
+    # claimed (obs_id, signal): quoted (verified here) or unresolved (kept, with the model's reason)
+    evidence_last = "signal_evidence" in sch["properties"]
+    errs = schema.validate(data, sch)
     if errs:
         res["errors"] += [f"schema: {e}" for e in errs[:20]]
         return res
@@ -261,30 +270,170 @@ def verify_batch(staged_text: str, batch: dict, st: store.Store, vcfg: dict, att
         return res
 
     res["messages"] = data["messages"]
+    res["rejected_evidence"] = []
     for o in data["observations"]:
         m = st.messages[o["msg_key"]]
         chk = check_quote(m, o["quote"], vcfg["min_quote_chars"])
         if chk.pop("ok"):
-            res["observations"].append({**o, **chk, "original_path": m.original_path})
+            if evidence_last:
+                ev, ev_rejected = check_signal_evidence(o, data["signal_evidence"], m, chk, vcfg["min_quote_chars"])
+            elif grounded:
+                ev, ev_rejected = check_evidence(o, m, chk, vcfg["min_quote_chars"])
+                ev["signal_grounding"] = "quote"
+            else:
+                ev, ev_rejected = {"stall_signals": [], "stall_signals_claimed": list(o["stall_signals"]),
+                                   "stall_evidence": [], "signal_grounding": "none"}, []
+            res["observations"].append({**o, **chk, **ev, "original_path": m.original_path})
+            res["rejected_evidence"] += [{"obs_id": o["obs_id"], "msg_key": o["msg_key"], **r} for r in ev_rejected]
         else:
             res["rejected"].append({"obs_id": o["obs_id"], "msg_key": o["msg_key"], "quote": o["quote"],
                                     "reason": chk["reason"]})
+    if evidence_last:                                  # entries naming no verified observation's claim
+        known = {(o["obs_id"], sg) for o in res["observations"] for sg in o["stall_signals_claimed"]}
+        lost = {x["obs_id"] for x in res["rejected"]}
+        key_of = {o["obs_id"]: o["msg_key"] for o in data["observations"]}
+        for e in data["signal_evidence"]:
+            if (e["obs_id"], e["signal"]) not in known:
+                res["rejected_evidence"].append({"obs_id": e["obs_id"], "msg_key": key_of.get(e["obs_id"], ""),
+                                                 "signal": e["signal"],
+                                                 "quote": e.get("quote"), "problem": UNLISTED,
+                                                 "reason": "its observation's quote failed" if e["obs_id"] in lost
+                                                 else "evidence for an observation or signal that was not claimed"})
     checked = len(res["observations"]) + len(res["rejected"])
     res["quotes"] = {"checked": checked, "verified": len(res["observations"]), "rejected": len(res["rejected"])}
-    res["flags"] = review_flags(data, res["observations"])
+    res["evidence"] = evidence_stats(res["observations"], res["rejected_evidence"])
+    if evidence_last:
+        res["evidence"]["signals_unresolved"] = sum(r["problem"] == UNRESOLVED for r in res["rejected_evidence"])
+    res["flags"] = review_flags(data, res["observations"]) + evidence_flags(res, vcfg)
     res["status"] = "verified"
     return res
 
 
+# --- stall evidence (schema extract-v7) ---
+
+_EVIDENCE_FIELDS = ("start", "end", "quote_raw", "match_kind", "region", "block", "evidence_date", "date_basis",
+                    "anchor", "evidence_kind", "evidence_author", "original", "original_status", "readings")
+MISMATCH, UNVERIFIED, UNLISTED = "mismatch", "unverified", "unlisted"
+
+
+def check_evidence(o: dict, m: store.StoredMessage, own: dict, min_chars: int) -> tuple[dict, list[dict]]:
+    """Each claimed stall signal needs exactly one evidence quote that verifies in the same message.
+
+    Returns (fields for the verified observation, rejected evidence). The verified observation's
+    `stall_signals` holds only signals whose evidence verified; what the model claimed is kept in
+    `stall_signals_claimed`, and every dropped signal is logged with its quote, a `problem`
+    (mismatch: no or several evidence quotes; unverified: the quote failed; unlisted: evidence for
+    a signal not claimed) and the reason. Evidence may overlap the observation's own quote and other
+    observations' quotes or evidence: the no-overlap rule is for `quote` only."""
+    claimed = list(o["stall_signals"])
+    entries = o.get("stall_evidence", [])
+    verified, rejected = [], []
+    for s in claimed:
+        mine = [e for e in entries if e["signal"] == s]
+        if not mine:
+            rejected.append({"signal": s, "quote": None, "problem": MISMATCH,
+                             "reason": "no evidence quote for this signal"})
+            continue
+        if len(mine) > 1:
+            rejected.append({"signal": s, "quote": [e["quote"] for e in mine], "problem": MISMATCH,
+                             "reason": f"{len(mine)} evidence quotes for one signal (exactly one is allowed)"})
+            continue
+        chk = check_quote(m, mine[0]["quote"], min_chars)
+        if not chk.pop("ok"):
+            rejected.append({"signal": s, "quote": mine[0]["quote"], "problem": UNVERIFIED, "reason": chk["reason"]})
+            continue
+        verified.append({"signal": s, "quote": mine[0]["quote"], **{k: chk[k] for k in _EVIDENCE_FIELDS},
+                         "inside_own_quote": own["start"] <= chk["start"] and chk["end"] <= own["end"]})
+    for s in sorted({e["signal"] for e in entries} - set(claimed)):
+        rejected.append({"signal": s, "quote": [e["quote"] for e in entries if e["signal"] == s],
+                         "problem": UNLISTED, "reason": "evidence for a signal that is not in stall_signals"})
+    return ({"stall_signals": [e["signal"] for e in verified], "stall_signals_claimed": claimed,
+             "stall_evidence": verified}, rejected)
+
+
+PUBLISHED, UNRESOLVED, REJECTED = "published", "unresolved", "rejected"
+
+
+def check_signal_evidence(o: dict, entries: list[dict], m: store.StoredMessage, own: dict,
+                          min_chars: int) -> tuple[dict, list[dict]]:
+    """Design H: each claimed signal of a verified observation needs exactly one `signal_evidence` entry.
+
+    quoted + the quote verifies in the observation's own message -> published with that evidence;
+    unresolved (the model could not quote support) -> kept as unresolved, with its reason;
+    no entry, several entries, or a quote that fails -> rejected. Nothing is dropped silently: every
+    claimed signal gets a `signal_outcomes` record, and every non-published one is also returned for the
+    rejection log."""
+    claimed = list(o["stall_signals"])
+    verified, outcomes, rejected = [], [], []
+    for sg in claimed:
+        mine = [e for e in entries if e["obs_id"] == o["obs_id"] and e["signal"] == sg]
+        if len(mine) != 1:
+            why = "no signal_evidence entry for this signal" if not mine else f"{len(mine)} entries for one signal"
+            outcomes.append({"signal": sg, "outcome": REJECTED, "reason": why})
+            rejected.append({"signal": sg, "quote": [e.get("quote") for e in mine] or None, "problem": MISMATCH,
+                             "reason": why})
+            continue
+        e = mine[0]
+        if e["status"] == "unresolved":
+            outcomes.append({"signal": sg, "outcome": UNRESOLVED, "reason": e.get("reason", "")})
+            rejected.append({"signal": sg, "quote": None, "problem": UNRESOLVED, "reason": e.get("reason", "")})
+            continue
+        chk = check_quote(m, e.get("quote", ""), min_chars)
+        if not chk.pop("ok"):
+            outcomes.append({"signal": sg, "outcome": REJECTED, "reason": chk["reason"]})
+            rejected.append({"signal": sg, "quote": e.get("quote"), "problem": UNVERIFIED, "reason": chk["reason"]})
+            continue
+        verified.append({"signal": sg, "quote": e["quote"], **{k: chk[k] for k in _EVIDENCE_FIELDS},
+                         "inside_own_quote": own["start"] <= chk["start"] and chk["end"] <= own["end"]})
+        outcomes.append({"signal": sg, "outcome": PUBLISHED, "reason": e.get("reason", "")})
+    return ({"stall_signals": [e["signal"] for e in verified], "stall_signals_claimed": claimed,
+             "stall_evidence": verified, "signal_outcomes": outcomes, "signal_grounding": "evidence_last",
+             "published_evidence": [{"signal": e["signal"], "msg_key": m.key, "start": e["start"], "end": e["end"],
+                                     "quote_raw": e["quote_raw"], "source": "extractor_quote"} for e in verified]},
+            rejected)
+
+
+def evidence_stats(observations: list[dict], rejected: list[dict]) -> dict:
+    """Counts for the run log and the benchmark report (code-computed, never model-stated)."""
+    ev = [(o["msg_key"], e["start"], e["end"]) for o in observations for e in o.get("stall_evidence", [])]
+    shared = {span for span in ev if ev.count(span) > 1}
+    return {"signals_claimed": sum(len(o.get("stall_signals_claimed", o["stall_signals"])) for o in observations),
+            "signals_verified": len(ev),
+            # claimed under a schema with no evidence field (clean-C): not checked, so not published
+            "signals_ungrounded": sum(len(o.get("stall_signals_claimed", [])) for o in observations
+                                      if o.get("signal_grounding") == "none"),
+            "signals_dropped": sum(r["problem"] in (MISMATCH, UNVERIFIED) for r in rejected),
+            "evidence_for_unlisted_signals": sum(r["problem"] == UNLISTED for r in rejected),
+            "evidence_inside_own_quote": sum(e["inside_own_quote"] for o in observations
+                                             for e in o.get("stall_evidence", [])),
+            "evidence_spans_shared": len(shared)}
+
+
+def evidence_flags(res: dict, vcfg: dict) -> list[dict]:
+    """Review flags, never failures: an observation whose evidence does not match its signals one to
+    one, and a batch where too many claimed signals lost their evidence."""
+    mism = sorted({(r["obs_id"], r["msg_key"]) for r in res["rejected_evidence"] if r["problem"] in (MISMATCH, UNLISTED)})
+    out = [{"kind": "stall_evidence_mismatch", "obs_id": oid, "msg_key": key} for oid, key in mism]
+    st = res["evidence"]
+    if st["signals_claimed"] >= vcfg["evidence_flag_min_signals"] and \
+            st["signals_dropped"] / st["signals_claimed"] > vcfg["evidence_flag_max_fail_rate"]:
+        out.append({"kind": "stall_evidence_rejection_rate", "signals_claimed": st["signals_claimed"],
+                    "signals_dropped": st["signals_dropped"]})
+    return out
+
+
 def review_flags(data: dict, verified: list[dict]) -> list[dict]:
     """Listed for review, never failures: a message whose stated item count differs from the
-    observations written for it, and two observations of one message whose quotes overlap."""
+    observations written for it, an observation with an empty or blank `task` (the schema only
+    requires a string), and two observations of one message whose quotes overlap."""
     per_msg: dict[str, int] = {}
     for o in data["observations"]:
         per_msg[o["msg_key"]] = per_msg.get(o["msg_key"], 0) + 1
     flags = [{"kind": "work_items_mismatch", "msg_key": x["msg_key"], "work_items": x["work_items"],
               "observations": per_msg.get(x["msg_key"], 0)}
              for x in data["messages"] if "work_items" in x and x["work_items"] != per_msg.get(x["msg_key"], 0)]
+    flags += [{"kind": "empty_task", "msg_key": o["msg_key"], "obs_id": o["obs_id"]}
+              for o in data["observations"] if not o["task"].strip()]
     flags += [{"kind": "overlapping_quotes", "msg_key": a["msg_key"], "obs_ids": [a["obs_id"], b["obs_id"]]}
               for i, a in enumerate(verified) for b in verified[i + 1:]
               if a["msg_key"] == b["msg_key"] and a["start"] < b["end"] and b["start"] < a["end"]]
@@ -300,9 +449,12 @@ def canary_tripped(res: dict, vcfg: dict) -> bool:
 def reverify(obs: dict, st: store.Store, vcfg: dict) -> bool:
     """Publish gate: re-check a verified observation against the raw file (zero tolerance)."""
     m = st.messages[obs["msg_key"]]
-    chk = check_quote(m, obs["quote"], vcfg["min_quote_chars"])
-    return bool(chk.get("ok")) and chk["start"] == obs["start"] and chk["end"] == obs["end"] \
-        and m.text[obs["start"]:obs["end"]] == obs["quote_raw"]
+
+    def same(rec: dict) -> bool:
+        chk = check_quote(m, rec["quote"], vcfg["min_quote_chars"])
+        return bool(chk.get("ok")) and chk["start"] == rec["start"] and chk["end"] == rec["end"] \
+            and m.text[rec["start"]:rec["end"]] == rec["quote_raw"]
+    return same(obs) and all(same(e) for e in obs.get("stall_evidence", []))
 
 
 def apply_to_status(res: dict, batch: dict, status: dict[str, str]) -> list[str]:

@@ -23,7 +23,7 @@ def staged(p, attempt_id, quote=QUOTE):
            "messages": [{"msg_key": "mb/inbox/1", "disposition": "observations", "reason": "", "work_items": 1}],
            "observations": [{"obs_id": "b001-o1", "msg_key": "mb/inbox/1", "task": "confirm noms",
                              "process_hint": "daily noms", "actors": [], "action_state": "requested",
-                             "trigger": "", "output": "", "stall_signals": [], "quote": quote,
+                             "trigger": "", "output": "", "stall_signals": [], "stall_evidence": [], "quote": quote,
                              "confidence": "high", "limitations": ""}]}
     p.staging.mkdir(parents=True, exist_ok=True)
     (p.staging / "b001.json").write_text(json.dumps(doc), encoding="utf-8")
@@ -54,6 +54,48 @@ def test_the_harness_reported_usage_is_stored_with_the_run(env):
     assert res["usage"] == {"subagent_tokens": 72932, "tool_uses": 3, "source": "harness report for the subagent"}
     log = [json.loads(l) for l in (p.logs / "runlog.jsonl").read_text().splitlines()]
     assert log[-1]["usage"]["subagent_tokens"] == 72932
+
+
+def test_the_model_that_answered_is_recorded_beside_the_one_asked_for(env):
+    st, p = env
+    rec = extract.prepare(p, "bench", "b001", "haiku", "extract-v2")
+    staged(p, rec["attempt_id"])
+    session = p.root / "projects" / "s1.jsonl"
+    t = session.with_suffix("") / "subagents" / "agent-a1.jsonl"
+    t.parent.mkdir(parents=True)
+    t.write_text(json.dumps({"type": "assistant", "message": {"model": "claude-haiku-5-5"}}) + "\n", encoding="utf-8")
+    p.fence.mkdir(parents=True)
+    (p.fence / "1.json").write_text(json.dumps({"agent_type": "extractor", "agent_id": "a1", "tool": "Read",
+                                                "path": rec["batch_file"], "decision": "allow",
+                                                "transcript_path": str(session)}), encoding="utf-8")
+    res = extract.finalize(p, "bench", "b001", st, VERIFY_CFG)
+    assert res["model"] == "haiku" and res["model_observed"]["status"] == "confirmed"
+    log = [json.loads(l) for l in (p.logs / "runlog.jsonl").read_text().splitlines()]
+    assert log[-1]["model_observed"]["models"] == {"claude-haiku-5-5": 1}
+
+
+def test_each_attempt_records_the_hash_of_the_exact_prompt_it_ran_with(env):
+    import hashlib
+    st, p = env
+    prompt = p.root / ".claude" / "agents" / "extractor.md"
+    prompt.parent.mkdir(parents=True)
+    prompt.write_bytes(b"prompt A\n")
+    rec_a = extract.prepare(p, "bench", "b001", "haiku", "extract-v7b")
+    staged(p, rec_a["attempt_id"])
+    res = extract.finalize(p, "bench", "b001", st, VERIFY_CFG)
+    assert rec_a["prompt_sha256"] == res["prompt_sha256"] == hashlib.sha256(b"prompt A\n").hexdigest()
+    prompt.write_bytes(b"prompt B\n")                                           # same version label, new text
+    assert extract.prepare(p, "bench", "b001", "haiku", "extract-v7b")["prompt_sha256"] != rec_a["prompt_sha256"]
+    log = [json.loads(l) for l in (p.logs / "runlog.jsonl").read_text().splitlines()]
+    assert log[-1]["prompt_sha256"] == rec_a["prompt_sha256"]
+
+
+def test_without_a_fence_record_the_model_answered_is_unknown(env):
+    st, p = env
+    rec = extract.prepare(p, "bench", "b001", "haiku", "extract-v2")
+    staged(p, rec["attempt_id"])
+    res = extract.finalize(p, "bench", "b001", st, VERIFY_CFG)
+    assert res["status"] == "verified" and res["model_observed"]["status"] == "unknown"
 
 
 def test_prepare_moves_earlier_output_aside(env):

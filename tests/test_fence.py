@@ -29,6 +29,12 @@ def call(tool, path, agent_type="extractor"):
     ("Read", "data/batches/bench/../../../src/verify.py", False),                # climbs out
     ("Read", "corpus/farmer-d/logistics/670.txt", False),
     ("Read", "README.md", False),
+    # the gold standard is never visible to a model under evaluation
+    ("Read", "eval/benchmark/labels.json", False),
+    ("Read", "eval/benchmark/evidence_spans.json", False),
+    ("Read", "eval/benchmark/negative_claims.json", False),
+    ("Read", "eval/benchmark/match_adjudications.json", False),
+    ("Read", "data/extract/bench_runs/haiku_v8c_score_v6.json", False),
     ("Write", "data/extract/staging/b001.json", True),
     ("Write", ROOT / "data" / "extract" / "staging" / "b012.json", True),
     ("Write", "data/extract/staging/accepted/b001.json", False),                 # a sub-folder
@@ -64,6 +70,18 @@ def test_the_hook_command_denies_in_the_format_claude_code_reads_and_logs_each_d
     assert [(r["decision"], r["mode"]) for r in log] == [("deny", "frontmatter"), ("allow", "frontmatter")]
 
 
+def test_each_decision_records_where_the_run_transcript_is(tmp_path):
+    import os
+    env = {**os.environ, "FENCE_LOG_DIR": str(tmp_path / "fence")}
+    p = {**call("Read", "data/batches/bench/b001.txt"), "agent_id": "a1", "session_id": "s1",
+         "transcript_path": "C:/x/s1.jsonl", "tool_response": "email text must never be logged"}
+    subprocess.run([sys.executable, "-I", str(ROOT / "tools" / "fence_hook.py"), "--agent", "extractor"],
+                   input=json.dumps(p).encode(), capture_output=True, check=True, env=env)
+    (rec,) = [json.loads(f.read_text()) for f in (tmp_path / "fence").iterdir()]
+    assert rec["transcript_path"] == "C:/x/s1.jsonl" and rec["session_id"] == "s1"
+    assert "email text" not in json.dumps(rec)
+
+
 def test_two_hooks_firing_at_once_both_keep_their_record(tmp_path):
     import os
     env = {**os.environ, "FENCE_LOG_DIR": str(tmp_path / "fence")}
@@ -75,3 +93,61 @@ def test_two_hooks_firing_at_once_both_keep_their_record(tmp_path):
         p.communicate(payload)
     recs = [json.loads(p.read_text()) for p in (tmp_path / "fence").iterdir()]
     assert len(recs) == 10 and all(r["decision"] == "deny" for r in recs)        # none lost, none torn
+
+
+@pytest.mark.parametrize("tool, path, ok", [
+    ("Read", "data/ground/packets/haiku_v8c/g001.txt", True),
+    ("Read", ROOT / "data" / "ground" / "packets" / "dev" / "g004.txt", True),
+    ("Read", "data/ground/packets/haiku_v8c/g001.manifest.json", False),      # offsets and claims map: code only
+    ("Read", "data/ground/packets/g001.txt", False),                           # not inside a run folder
+    ("Read", "data/ground/packets/x/../../../../README.md", False),
+    ("Read", "data/batches/bench/b001.txt", False),                            # the extractor's input, not its own
+    ("Read", "data/extract/bench_runs/haiku_v8c_b001.json", False),
+    ("Read", "eval/benchmark/labels.json", False),                             # the gold standard, never
+    ("Read", "eval/benchmark/evidence_spans.json", False),
+    ("Read", "eval/benchmark/negative_claims.json", False),
+    ("Read", "corpus/farmer-d/logistics/673.txt", False),
+    ("Write", "data/ground/staging/g001.json", True),
+    ("Write", "data/ground/staging/accepted/g001.json", False),
+    ("Write", "data/ground/verified/g001.json", False),
+    ("Write", "data/extract/staging/b001.json", False),                        # the extractor's output
+    ("Write", ".claude/agents/grounder.md", False),
+])
+def test_the_grounder_reads_only_packet_files_and_writes_only_its_output(tool, path, ok):
+    enforced, decision, _ = fence.decide(call(tool, path, agent_type="grounder"))
+    assert enforced and decision == ("allow" if ok else "deny")
+
+
+def test_the_extractor_cannot_use_the_grounders_paths_and_the_grounder_has_no_other_tool():
+    assert fence.decide(call("Read", "data/ground/packets/haiku_v8c/g001.txt"))[1] == "deny"
+    assert fence.decide(call("Write", "data/ground/staging/g001.json"))[1] == "deny"
+    for tool in ("Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "Agent"):
+        assert fence.decide(call(tool, "data/ground/staging/g001.json", agent_type="grounder"))[:2] == (True, "deny")
+    assert fence.decide(call("Write", "src/verify.py", agent_type=None), agent="grounder")[:2] == (True, "deny")
+
+
+def test_the_grounder_agent_has_only_read_and_write_and_registers_the_fence():
+    text = (ROOT / ".claude" / "agents" / "grounder.md").read_text(encoding="utf-8")
+    front = text.split("---")[1]
+    assert "tools: Read, Write\n" in front and "--agent grounder" in front and "onFailure: block" in front
+
+
+@pytest.mark.parametrize("agent, tool, path, ok", [
+    ("synthesizer", "Read", "data/synth/inputs/dev/s001.txt", True),
+    ("synthesizer", "Write", "data/synth/staging/s001.json", True),
+    ("synthesizer", "Read", "data/extract/verified/b001.json", False),         # only its code-built input
+    ("synthesizer", "Read", "corpus/farmer-d/logistics/673.txt", False),
+    ("synthesizer", "Write", "data/synth/verified/s001.json", False),
+    ("synthesizer", "Read", "eval/benchmark/labels.json", False),
+    ("artifact-writer", "Read", "data/act/packets/dev/a001.txt", True),
+    ("artifact-writer", "Write", "data/act/staging/a001.md", True),
+    ("artifact-writer", "Write", "output/artifacts/a001.md", False),           # code publishes, never the model
+    ("artifact-writer", "Write", "data/act/staging/a001.json", False),
+    ("artifact-writer", "Read", "data/synth/staging/s001.json", False),
+    ("artifact-writer", "Read", "eval/benchmark/evidence_spans.json", False),
+])
+def test_the_synthesizer_and_artifact_writer_are_fenced_to_their_own_paths(agent, tool, path, ok):
+    enforced, decision, _ = fence.decide(call(tool, path, agent_type=agent))
+    assert enforced and decision == ("allow" if ok else "deny")
+    for t in ("Bash", "Edit", "WebFetch"):
+        assert fence.decide(call(t, path, agent_type=agent))[:2] == (True, "deny")
