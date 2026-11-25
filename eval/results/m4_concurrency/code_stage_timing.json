@@ -1,0 +1,118 @@
+{
+ "dev_last_run_stages": [
+  {
+   "stage": "start",
+   "status": null,
+   "seconds": null,
+   "t": 0.0
+  },
+  {
+   "stage": "batch",
+   "status": "ok",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "quality_plan",
+   "status": null,
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "extract",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "ground",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "extract",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "ground",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "extract",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "ground",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "extract",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "ground",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "model_stages",
+   "status": null,
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "synth",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "score",
+   "status": "ok",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "act",
+   "status": "cache_hit",
+   "seconds": null,
+   "t": 0.1
+  },
+  {
+   "stage": "done",
+   "status": "ok",
+   "seconds": 0.1,
+   "t": 0.1
+  }
+ ],
+ "events_build_farmer_d": {
+  "observations": 1587,
+  "events": 215,
+  "seconds": 0.0
+ },
+ "dashboard_dev": {
+  "first_200_s": 0.57,
+  "pages": {
+   "/": {
+    "seconds": 0.017,
+    "bytes": 11604
+   },
+   "/coverage": {
+    "seconds": 0.033,
+    "bytes": 442813
+   }
+  }
+ }
+}

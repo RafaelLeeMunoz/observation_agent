@@ -1,0 +1,28 @@
+[
+ {
+  "stage": "extract",
+  "name": "b013",
+  "attempt": "b013-d85af55c-3",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:34:56Z",
+  "finished_at_utc": "2026-11-23T22:39:46Z",
+  "wall_seconds": 290.6,
+  "output_tokens": 76671,
+  "fence_records": 3
+ },
+ {
+  "stage": "ground",
+  "name": "b013",
+  "attempt": "g113-c937d9ea-1",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:39:46Z",
+  "finished_at_utc": "2026-11-23T22:40:18Z",
+  "wall_seconds": 31.3,
+  "output_tokens": 7152,
+  "fence_records": 2
+ }
+]

@@ -24,15 +24,27 @@ SLICE_NOTE = ("These outputs test the pipeline on a ~200-message development sli
 
 
 def _coverage(r, st: store.Store, b: dict, extracted: dict, missing: list[str]) -> dict:
-    status = json.loads((r.root / "data" / "extract" / "status.json").read_text(encoding="utf-8")) \
-        if (r.root / "data" / "extract" / "status.json").exists() else {}
+    # R8: a message is read when the verified output of its batch, as used by this run, lists it (its read receipt).
+    # Coverage is taken from those receipts, never from a side file: after the M4 per-slice move the slice's
+    # status.json did not exist yet, and an offline rerun reported 0 of 202 read (found 23 Nov 2026).
+    status = json.loads(r.ex.status.read_text(encoding="utf-8")) if r.ex.status.exists() else {}   # this slice's own
     keys = b["keys"]
     per_batch = {k: x["batch_id"] for x in b["batches"] for k in x["keys"]}
-    read = [k for k in keys if per_batch[k] in extracted and status.get(k) == "read"]
-    disp = Counter()
+    disp, receipts = Counter(), set()
     for bid, p in sorted(extracted.items()):
         for m in json.loads(Path(p).read_text(encoding="utf-8"))["messages"]:
             disp[m["disposition"]] += 1
+            if per_batch.get(m["msg_key"]) == bid:
+                receipts.add(m["msg_key"])
+    read = [k for k in keys if k in receipts]
+    read_set = set(read)
+
+    def analysis(k):
+        if k in read_set:
+            return "read"
+        if k in per_batch:
+            return "failed" if status.get(k) == "failed" else "batched"
+        return "not_in_slice"
     ledger = []
     with (r.root / "data" / "ledger.csv").open(encoding="utf-8", newline="") as f:
         for row in csv.DictReader(f):
@@ -44,12 +56,12 @@ def _coverage(r, st: store.Store, b: dict, extracted: dict, missing: list[str]) 
             "corpus_copies": sum(1 for x in ledger if (x.get("ingest_status") or "").startswith("duplicate_of")),
             "ledger": [{**{k: x.get(k) for k in ("key", "original_path", "ingest_status", "date_status", "thread_id",
                                                   "special_handling", "readings")},
-                        "in_slice": x.get("key") in in_slice, "analysis": status.get(x.get("key"), "not_in_slice")}
+                        "in_slice": x.get("key") in in_slice, "analysis": analysis(x.get("key"))}
                        for x in ledger]}
 
 
 def build(r, st: store.Store, b: dict, extracted: dict, grounded: dict, obs: list[dict], synth_res: dict,
-          evs: list[dict], sc: dict, qindex: dict, artifacts: list[dict], missing: list[str]) -> dict:
+          evs: list[dict], sc: dict, qindex: dict, artifacts: list[dict], missing: list[str], selection: dict | None = None) -> dict:
     out = r.out
     procs = {p["process_id"]: p for p in synth_res["processes"]}
     cov = _coverage(r, st, b, extracted, missing)
@@ -77,7 +89,8 @@ def build(r, st: store.Store, b: dict, extracted: dict, grounded: dict, obs: lis
                                        for a in artifacts if a.get("process_id") == o["process_id"] and a.get("path")), None)})
     data = {"version": REPORT_VERSION, "slice": r.slice, "label": SLICE_LABEL if r.slice != "all" else "",
             "generated_at": __import__("datetime").datetime.now().isoformat(timespec="seconds"),
-            "total": sc["claims"]["total"], "claims": sc["claims"], "opportunities": opps,
+            "total": sc["claims"]["total"], "total_range": sc.get("total_range"), "claims": sc["claims"], "opportunities": opps,
+            "artifact_selection": ({k: selection[k] for k in ("mode", "top_n", "selected", "skipped") if k in selection} if selection else None),
             "events": evs, "observations": {k: {f: v.get(f) for f in ("obs_id", "msg_key", "task", "action_state", "actors",
                                                                       "quote_raw", "start", "end", "evidence_kind",
                                                                       "evidence_author", "evidence_date", "date_basis",
@@ -96,25 +109,31 @@ def build(r, st: store.Store, b: dict, extracted: dict, grounded: dict, obs: lis
         lines += [f"> **{data['label'][0].upper() + data['label'][1:]}.** {SLICE_NOTE}", ""]
         (out / "README.md").write_text(f"# Output of the `{r.slice}` slice: a pipeline test\n\n**{data['label'][0].upper() + data['label'][1:]}.** "
                                        f"{SLICE_NOTE}\n\nWritten by `src/report.py` on every run of the slice.\n", encoding="utf-8")
-    lines += [f"Running total (overlap-adjusted): **{sc['claims']['total']['display']}** per month "
-              f"(estimated: events observed x minutes assumed x $85/hour).", "",
-              "| Rank | Process | Events | Emails | Threads | Months observed | Minutes/event (assumed) | $/month | Confidence |",
-              "|---|---|---|---|---|---|---|---|---|"]
+    tr = sc.get("total_range")
+    rng = (f" Range **{sc['claims'][tr['low']]['display']} to {sc['claims'][tr['high']]['display']}** per month at the low and high end "
+           f"of each minutes-per-event assumption (the events counted and the $85/hour rate are not varied)." if tr else "")
+    lines += [f"Running total (overlap-adjusted), central estimate: **{sc['claims']['total']['display']}** per month "
+              f"(estimated: events observed x minutes assumed x $85/hour).{rng}", "",
+              "| Rank | Process | Events | Emails | Threads | Months observed | Minutes/event (assumed) | $/month (central) | $/month range | Confidence |",
+              "|---|---|---|---|---|---|---|---|---|---|"]
     for o in opps:
         c = sc["claims"]
         if o["status"] == "scored":
             lines.append(f"| {o['rank']} | {o['name']} | {o['events']} | {o['emails']} | {o['threads']} | "
                          f"{c[o['claims']['months']]['display']} | {c[o['claims']['minutes']]['display']} | "
-                         f"{c[o['claims']['dollars']]['display']} | {o['confidence']} |")
+                         f"{c[o['claims']['dollars']]['display']} | {score.money(Decimal(o['dollars_low']))} to "
+                         f"{score.money(Decimal(o['dollars_high']))} | {o['confidence']} |")
         else:
             lines.append(f"| - | {o['name']} | {o['events']} | {o['emails']} | {o['threads']} | - | - | "
-                         f"no rate: {o['status'].replace('_', ' ')} | {o['confidence']} |")
+                         f"no rate: {o['status'].replace('_', ' ')} | - | {o['confidence']} |")
     lines += ["", "## Observed, counted, assumed", "",
               "- **Observed:** each event rests on verified quotes (exact raw bytes, original file names).",
               "- **Counted by code:** events (one per process per thread, quoted copies once), months observed "
               "(union of mailbox windows), events per month.",
               "- **Assumed:** minutes saved per event (proposed by the synthesizer with a reason; low-high range shown) "
-              "and the $85/hour rate.", "- **Estimated:** hours and dollars = counted x assumed.", "",
+              "and the $85/hour rate.", "- **Estimated:** hours and dollars = counted x assumed. The central estimate uses the base "
+              "minutes; the range uses the low and the high minutes of each process and nothing else (no bound is invented for the "
+              "events counted or the rate).", "",
               f"Coverage: {cov['read']}/{cov['messages_in_slice']} slice messages read; dispositions {cov['dispositions']}.", ""]
     for a in artifacts:
         if a.get("path"):
@@ -123,6 +142,8 @@ def build(r, st: store.Store, b: dict, extracted: dict, grounded: dict, obs: lis
     (out / "report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     return {"coverage": {k: cov[k] for k in ("messages_in_slice", "read", "complete", "dispositions")},
             "total": sc["claims"]["total"]["display"],
+            "total_range": ({"low": sc["claims"][tr["low"]]["display"], "high": sc["claims"][tr["high"]]["display"],
+                             "basis": "low and high minutes per event only"} if tr else None),
             "opportunities_ranked": [(o.get("rank"), o["name"], o["status"],
                                       sc["claims"].get(o["claims"].get("dollars", ""), {}).get("display")) for o in opps],
             "artifacts": [a.get("name") for a in artifacts]}

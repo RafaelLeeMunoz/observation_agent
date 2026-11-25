@@ -1,0 +1,75 @@
+{
+ "observations_a": 4767,
+ "observations_b": 4599,
+ "matched_observation_pairs": 3604,
+ "observation_jaccard": 0.625,
+ "messages_with_obs_a": 2273,
+ "messages_with_obs_b": 2238,
+ "messages_both": 2222,
+ "message_level_agreement": 0.979,
+ "message_jaccard": 0.971,
+ "threads_with_obs_a": 1927,
+ "threads_with_obs_b": 1900,
+ "thread_jaccard": 0.97,
+ "threads_found_only_by_a": 43,
+ "threads_found_only_by_b": 16,
+ "per_mailbox": {
+  "farmer-d": {
+   "messages_with_obs_a": 1098,
+   "messages_with_obs_b": 1095,
+   "message_jaccard": 0.988,
+   "thread_jaccard": 0.987,
+   "threads_only_a": 7,
+   "threads_only_b": 5
+  },
+  "giron-d": {
+   "messages_with_obs_a": 541,
+   "messages_with_obs_b": 522,
+   "message_jaccard": 0.943,
+   "thread_jaccard": 0.944,
+   "threads_only_a": 21,
+   "threads_only_b": 6
+  },
+  "lokay-m": {
+   "messages_with_obs_a": 145,
+   "messages_with_obs_b": 142,
+   "message_jaccard": 0.979,
+   "thread_jaccard": 0.984,
+   "threads_only_a": 2,
+   "threads_only_b": 0
+  },
+  "williams-w3": {
+   "messages_with_obs_a": 489,
+   "messages_with_obs_b": 479,
+   "message_jaccard": 0.96,
+   "thread_jaccard": 0.959,
+   "threads_only_a": 13,
+   "threads_only_b": 5
+  }
+ },
+ "examples_only_a": [
+  "t:farmer-d/logistics/1118",
+  "t:farmer-d/logistics/1361",
+  "t:farmer-d/logistics/1382",
+  "t:farmer-d/logistics/1465",
+  "t:farmer-d/logistics/184",
+  "t:farmer-d/logistics/725",
+  "t:farmer-d/logistics/844",
+  "t:giron-d/inbox/102"
+ ],
+ "examples_only_b": [
+  "t:farmer-d/logistics/1157",
+  "t:farmer-d/logistics/1537",
+  "t:farmer-d/logistics/767",
+  "t:farmer-d/logistics/773",
+  "t:farmer-d/logistics/955",
+  "t:giron-d/inbox/189",
+  "t:giron-d/inbox/278",
+  "t:giron-d/inbox/382"
+ ],
+ "criteria": {
+  "R2 message-level agreement >= 0.90": "pass",
+  "R3 thread Jaccard >= 0.80": "pass",
+  "R4 observation Jaccard >= 0.60": "pass"
+ }
+}

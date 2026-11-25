@@ -1,0 +1,421 @@
+{
+ "name": "C",
+ "workers": 16,
+ "batches": [
+  "b001",
+  "b007",
+  "b012",
+  "b019",
+  "b021",
+  "b028",
+  "b032",
+  "b039",
+  "b041",
+  "b048",
+  "b052",
+  "b059",
+  "b061",
+  "b068",
+  "b073",
+  "b079"
+ ],
+ "at": "2026-11-23T19:21:37+00:00",
+ "wall_s": 311.8,
+ "exit_code": 0,
+ "stopped": null,
+ "complete": true,
+ "model_stages": {
+  "n_extracted": 16,
+  "n_grounded": 16,
+  "failed_extract": [],
+  "failed_ground": [],
+  "unfinished": [],
+  "ground_unfinished": [],
+  "peak_in_flight": 16,
+  "session_kinds": {
+   "ok": 32
+  },
+  "fence_self_checks": 7,
+  "fence_self_check_flags": [],
+  "canary": {
+   "batch": "b028",
+   "checked": 34,
+   "verified": 34,
+   "rejected": 0,
+   "tripped": false
+  },
+  "sentinels_checked": {
+   "b021": {
+    "checked": 58,
+    "verified": 58,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b041": {
+    "checked": 51,
+    "verified": 51,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b048": {
+    "checked": 56,
+    "verified": 56,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b019": {
+    "checked": 74,
+    "verified": 74,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b061": {
+    "checked": 63,
+    "verified": 63,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b059": {
+    "checked": 75,
+    "verified": 74,
+    "rejected": 1,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b001": {
+    "checked": 74,
+    "verified": 74,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   }
+  },
+  "cumulative": {
+   "checked": 1009,
+   "rejected": 2
+  },
+  "flags": []
+ },
+ "cache_hits": 0,
+ "sessions": {
+  "extract": {
+   "sessions": 16,
+   "kinds": {
+    "ok": 16
+   },
+   "seconds": {
+    "min": 95.1,
+    "max": 272.1,
+    "mean": 180.0,
+    "sum": 2879.3
+   },
+   "first_wave_start_spread_s": 0.0,
+   "measured_over_predicted": {
+    "mean": 0.9,
+    "max": 1.35
+   },
+   "self_checks": 7,
+   "rows": [
+    {
+     "batch": "b028",
+     "seconds": 95.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 22940,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b068",
+     "seconds": 128.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 32516,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b021",
+     "seconds": 132.2,
+     "messages": 33,
+     "kind": "ok",
+     "output_tokens": 33070,
+     "self_checks": 0,
+     "predicted_s": 167.9
+    },
+    {
+     "batch": "b073",
+     "seconds": 140.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 36420,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b041",
+     "seconds": 140.2,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 35881,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b079",
+     "seconds": 143.3,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 36695,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b048",
+     "seconds": 171.6,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 42633,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b052",
+     "seconds": 173.0,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 44329,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b032",
+     "seconds": 173.5,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 44216,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b039",
+     "seconds": 196.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 50320,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b019",
+     "seconds": 206.6,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 52803,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b007",
+     "seconds": 218.0,
+     "messages": 39,
+     "kind": "ok",
+     "output_tokens": 56055,
+     "self_checks": 1,
+     "predicted_s": 196.5
+    },
+    {
+     "batch": "b061",
+     "seconds": 221.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 57415,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b059",
+     "seconds": 227.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 57051,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b001",
+     "seconds": 239.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 60333,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b012",
+     "seconds": 272.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 71457,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    }
+   ]
+  },
+  "ground": {
+   "sessions": 16,
+   "kinds": {
+    "ok": 16
+   },
+   "seconds": {
+    "min": 9.2,
+    "max": 43.6,
+    "mean": 26.8,
+    "sum": 429.5
+   },
+   "first_wave_start_spread_s": 177.0,
+   "measured_over_predicted": null,
+   "self_checks": 0,
+   "rows": [
+    {
+     "batch": "b028",
+     "seconds": 15.7,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 2896,
+     "self_checks": 0
+    },
+    {
+     "batch": "b068",
+     "seconds": 9.2,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 1161,
+     "self_checks": 0
+    },
+    {
+     "batch": "b073",
+     "seconds": 16.6,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 3084,
+     "self_checks": 0
+    },
+    {
+     "batch": "b021",
+     "seconds": 24.9,
+     "messages": 33,
+     "kind": "ok",
+     "output_tokens": 5028,
+     "self_checks": 0
+    },
+    {
+     "batch": "b041",
+     "seconds": 17.5,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 3098,
+     "self_checks": 0
+    },
+    {
+     "batch": "b079",
+     "seconds": 24.7,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5098,
+     "self_checks": 0
+    },
+    {
+     "batch": "b052",
+     "seconds": 23.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 4502,
+     "self_checks": 0
+    },
+    {
+     "batch": "b032",
+     "seconds": 25.3,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5267,
+     "self_checks": 0
+    },
+    {
+     "batch": "b048",
+     "seconds": 38.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 8517,
+     "self_checks": 0
+    },
+    {
+     "batch": "b039",
+     "seconds": 27.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5922,
+     "self_checks": 0
+    },
+    {
+     "batch": "b019",
+     "seconds": 30.5,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 6853,
+     "self_checks": 0
+    },
+    {
+     "batch": "b061",
+     "seconds": 27.0,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5613,
+     "self_checks": 0
+    },
+    {
+     "batch": "b059",
+     "seconds": 26.7,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5263,
+     "self_checks": 0
+    },
+    {
+     "batch": "b007",
+     "seconds": 43.6,
+     "messages": 39,
+     "kind": "ok",
+     "output_tokens": 10068,
+     "self_checks": 0
+    },
+    {
+     "batch": "b001",
+     "seconds": 38.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 8554,
+     "self_checks": 0
+    },
+    {
+     "batch": "b012",
+     "seconds": 39.3,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 9110,
+     "self_checks": 0
+    }
+   ]
+  }
+ },
+ "processes": {
+  "samples": 61,
+  "peak_processes": 32,
+  "peak_working_set_mb": 5597
+ }
+}

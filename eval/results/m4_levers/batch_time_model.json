@@ -1,0 +1,157 @@
+{
+ "model": {
+  "seconds": "10.2 + 4.78 * messages",
+  "a": 10.15,
+  "b": 4.779,
+  "residual_sd_s": 35.8,
+  "points": [
+   {
+    "batch": "M3 dev b001",
+    "messages": 77,
+    "seconds": 420.148
+   },
+   {
+    "batch": "M3 dev b002",
+    "messages": 53,
+    "seconds": 230.448
+   },
+   {
+    "batch": "M3 dev b003",
+    "messages": 44,
+    "seconds": 149.273
+   },
+   {
+    "batch": "M3 dev b004",
+    "messages": 28,
+    "seconds": 199.578
+   },
+   {
+    "batch": "D1 b001",
+    "messages": 41,
+    "seconds": 192.3
+   },
+   {
+    "batch": "M1 b001",
+    "messages": 15,
+    "seconds": 95.1
+   },
+   {
+    "batch": "M1 b002",
+    "messages": 13,
+    "seconds": 78.1
+   },
+   {
+    "batch": "M1 b003",
+    "messages": 13,
+    "seconds": 84.4
+   },
+   {
+    "batch": "M2 b001",
+    "messages": 15,
+    "seconds": 100.0
+   },
+   {
+    "batch": "M2 b002",
+    "messages": 13,
+    "seconds": 62.1
+   },
+   {
+    "batch": "M2 b003",
+    "messages": 13,
+    "seconds": 31.3
+   },
+   {
+    "batch": "S1 b001",
+    "messages": 28,
+    "seconds": 165.4
+   },
+   {
+    "batch": "S1 b002",
+    "messages": 13,
+    "seconds": 72.8
+   }
+  ]
+ },
+ "layouts": {
+  "None": {
+   "batches": 49,
+   "max_messages_in_a_batch": 90,
+   "predicted_slowest_batch_s": 440,
+   "sum_of_batch_s": 15789,
+   "minutes_by_workers": {
+    "8": 38.3,
+    "12": 26.3,
+    "16": 20.9
+   },
+   "minutes_by_workers_slow_case": {
+    "8": 42.5,
+    "12": 28.7,
+    "16": 23.3
+   }
+  },
+  "40": {
+   "batches": 81,
+   "max_messages_in_a_batch": 40,
+   "predicted_slowest_batch_s": 201,
+   "sum_of_batch_s": 16114,
+   "minutes_by_workers": {
+    "8": 34.7,
+    "12": 23.5,
+    "16": 17.9
+   },
+   "minutes_by_workers_slow_case": {
+    "8": 41.2,
+    "12": 27.7,
+    "16": 21.5
+   }
+  },
+  "30": {
+   "batches": 108,
+   "max_messages_in_a_batch": 30,
+   "predicted_slowest_batch_s": 154,
+   "sum_of_batch_s": 16388,
+   "minutes_by_workers": {
+    "8": 35.7,
+    "12": 23.0,
+    "16": 17.9
+   },
+   "minutes_by_workers_slow_case": {
+    "8": 44.0,
+    "12": 28.4,
+    "16": 22.1
+   }
+  },
+  "20": {
+   "batches": 162,
+   "max_messages_in_a_batch": 20,
+   "predicted_slowest_batch_s": 106,
+   "sum_of_batch_s": 16936,
+   "minutes_by_workers": {
+    "8": 36.3,
+    "12": 24.5,
+    "16": 18.9
+   },
+   "minutes_by_workers_slow_case": {
+    "8": 48.8,
+    "12": 32.9,
+    "16": 25.5
+   }
+  },
+  "15": {
+   "batches": 217,
+   "max_messages_in_a_batch": 15,
+   "predicted_slowest_batch_s": 82,
+   "sum_of_batch_s": 17495,
+   "minutes_by_workers": {
+    "8": 36.8,
+    "12": 24.5,
+    "16": 18.9
+   },
+   "minutes_by_workers_slow_case": {
+    "8": 53.6,
+    "12": 35.7,
+    "16": 27.3
+   }
+  }
+ }
+}

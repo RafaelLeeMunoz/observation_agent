@@ -4,6 +4,9 @@ batch:
   chars_per_token: 4          # token estimate = characters / 4
   token_budget: 24000         # M3: target estimated tokens per batch
   hard_cap_tokens: 40000      # a thread over this is split at message boundaries
+  max_messages: null          # M4 2a lever: also start a new batch past this many messages; threads stay whole
+  max_messages_by_slice:      # user, 23 Nov 2026: provisional soft cap for step 2b on the production slice only
+    all: 40                   # (dev and the frozen bench keep their layouts); not final until 2b validates it
   recipients_shown: 10        # To/Cc addresses shown to Claude; the rest become "(+N more)"
 
 extract:
@@ -33,22 +36,55 @@ ground:
 
 synth:
   model: sonnet               # PLAN 3.2: the stronger model groups and proposes minutes assumptions
+  chunk_token_budget: 40000   # M4 1d: a list over this is split by mailbox (and by date if allowed); the parts merged
+  date_split: false           # user, 23 Nov 2026: NOT approved for production until M4 step 2b validates it
+  min_assigned_share: 0.15    # user, 24 Nov 2026 (provisional): a part whose counted assigned observations are under this share fails the attempt
+  catch_all_share: 0.25       # no process may hold more than this share of a part (a catch-all cannot satisfy the floor; the largest seen is 10.8 percent)
+  coverage_min_observations: 40   # parts with fewer observations are exempt from the floor
+  size_split:                 # user, 24 Nov 2026: a mailbox over `over_observations` is synthesized as date chunks of whole threads
+    enabled: true             # (at most about `max_chunk_observations` each) and the chunks are joined by the merger. false = whole-mailbox synthesis
+    over_observations: 1000   # (the fallback; the old behaviour). Measured: farmer-d (2,433 observations) whole 221 events, three chunks 560;
+                              # giron-d (1,085) whole 216 events, two chunks 280. williams-w3 (999) and lokay-m (250) stay whole and look uniform.
+    max_chunk_observations: 850
+  positional:                 # user, 24 Nov 2026: does a synthesis look at all of its input? Each part is cut into `segments` equal
+    segments: 3               # consecutive segments (input order, by date). A segment with a counted share under `warn_share` is a warning
+    warn_share: 0.05          # (logged and carried to the report); under `fail_share` it fails the attempt (0 = warning only); a share under
+    fail_share: 0.02          # `decay_ratio` times the best segment's share is a warning too. Segments under `min_segment_observations`
+    min_segment_observations: 40   # are not checked. Measured thirds counted: every healthy part 17.7 to 65 percent (9 parts);
+                                   # blind: farmer-d whole 59, 0 and 0, giron-d whole 41, 41 and 9.7 (a decay warning; its chunks 49, 49 and 51).
+    decay_ratio: 0.25
+  max_attempts: 4             # user, 24 Nov 2026: raised from 3 to 4 for the validation phase (every first synthesis attempt failed a structural
+                              # check, 2 of 5 chunks failed their second as well); reassess after measuring how often a fourth attempt is needed
+                              # (tools/attempt_report.py). Option A (24 Nov 2026): at most this many attempts per synthesis part and for the merge; the
+                              # validation errors of a failed attempt go into the next attempt's run instruction; then the run stops
+  merge_model: sonnet         # M4 1d: the merger joins the parts' groups into one list of processes
 
 act:
   model: sonnet
   min_citations: 3            # an artifact cites at least this many distinct verified quotes ...
   min_messages: 2             # ... from at least this many emails
-  min_dollars_per_month: 1000 # PLAN 3.6 starting threshold; revisit after the first ranked list (M7)
-  max_artifacts: 6
-  at_least_one: true          # M3 thin slice: draft one artifact for the top scored opportunity even below the threshold
+  selection: top_n            # user, 24 Nov 2026: top_n = the most valuable opportunities that pass the evidence rules below (fewer if fewer pass);
+                              # threshold = the earlier fixed-dollar rule (rollback: set this to threshold and min_dollars_per_month to 1000)
+  top_n: 5                    # how many artifacts at most (top_n mode)
+  min_dollars_per_month: 0    # top_n: an optional floor under the central estimate (0 = none); threshold: the threshold itself
+  min_confidence: medium      # top_n: the opportunity's confidence (score.confidence) must be at least this (low, medium, high)
+  min_events: 3               # top_n: at least this many distinct events
+  parallel: 5                 # artifacts are drafted this many at a time
+  max_artifacts: 6            # threshold mode only
+  at_least_one: false         # threshold mode only: draft one for the top opportunity even below the threshold
 
 score:
   hourly_rate: 85             # README: blended $85/hour
   min_emails: 3               # PLAN R7 / 3.6: no rate below 3 verified emails ...
   min_threads: 2              # ... from 2 threads
   min_months: 1               # refuse a months-observed denominator under 1 month
+  min_events: 2               # M4 1d (user decision 4): a process is recurring only with at least 2 distinct events
 
 run:
-  workers: 4                  # parallel model sessions (M3 measures what Pro sustains)
-  retries: 2                  # PLAN R8: a failed batch is retried at most twice
+  workers: 24                 # parallel model sessions (user, 23 Nov 2026: 24 provisionally frozen; sets A-D measured 8, 12, 16 and 24)
+  retries: 2                  # PLAN R8: a bad output or a timeout is retried at most twice
   timeout_s: 1500
+  rate_limit_retries: 3       # M4 1c: a temporary refusal (rate limited, overloaded) is retried after a back-off ...
+  rate_limit_backoff_s: 30    # ... of 30, 60, 120 s, and never spends one of the `retries`
+  breaker_consecutive: 3      # M4 1c: stop the run cleanly after this many sessions in a row end in an error ...
+  breaker_max_output_tokens: 100   # ... with at most this many output tokens, whatever the CLI's message says

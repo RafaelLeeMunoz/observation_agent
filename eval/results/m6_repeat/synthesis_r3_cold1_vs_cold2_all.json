@@ -1,0 +1,171 @@
+{
+ "mailboxes": null,
+ "a": {
+  "events": 1078,
+  "processes": 129,
+  "scored": 116,
+  "dollars": "1385.787952414334882017508147"
+ },
+ "b": {
+  "events": 954,
+  "processes": 109,
+  "scored": 97,
+  "dollars": "1202.884430645481995355108374"
+ },
+ "threads_counted_a": 1065,
+ "threads_counted_b": 943,
+ "thread_jaccard": 0.678,
+ "events_ratio_b_over_a": 0.885,
+ "dollars_ratio_b_over_a": 0.868,
+ "matched_processes": 85,
+ "processes_a_unmatched": 44,
+ "processes_b_unmatched": 24,
+ "share_of_a_events_in_matched_processes": 0.795,
+ "share_of_b_events_in_matched_processes": 0.852,
+ "matches": [
+  {
+   "a": "Extend or create a deal for meter flow with no val",
+   "b": "Extend or create a deal for meter flow with no dea",
+   "shared_threads": 69,
+   "jaccard": 0.83
+  },
+  {
+   "a": "Absence and desk coverage arrangement",
+   "b": "Absence coverage arrangements",
+   "shared_threads": 29,
+   "jaccard": 0.76
+  },
+  {
+   "a": "Unattached meter volume write-off or deal approval",
+   "b": "Unbooked meter volume write-off or deal approval",
+   "shared_threads": 27,
+   "jaccard": 0.96
+  },
+  {
+   "a": "Flip Canadian-entity deals to FT-US/CAND-ERMS book",
+   "b": "Flip deals to the correct book",
+   "shared_threads": 23,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Counterparty invoice or price discrepancy against ",
+   "b": "Deal price and data correction",
+   "shared_threads": 21,
+   "jaccard": 0.36
+  },
+  {
+   "a": "Calpine daily gas nomination",
+   "b": "Customer nomination file intake",
+   "shared_threads": 18,
+   "jaccard": 0.42
+  },
+  {
+   "a": "Monthly hours and activity survey return",
+   "b": "Monthly hours and activity survey",
+   "shared_threads": 17,
+   "jaccard": 0.94
+  },
+  {
+   "a": "Move terminated counterparty deals to bankruptcy b",
+   "b": "Bulk deal move after terminations",
+   "shared_threads": 17,
+   "jaccard": 0.81
+  },
+  {
+   "a": "Hiring and interview coordination",
+   "b": "Hiring and candidate handling",
+   "shared_threads": 17,
+   "jaccard": 0.61
+  },
+  {
+   "a": "Weekly California capacity report",
+   "b": "Weekly California capacity and price report",
+   "shared_threads": 16,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Performance review and feedback preparation",
+   "b": "Performance review inputs",
+   "shared_threads": 16,
+   "jaccard": 0.59
+  },
+  {
+   "a": "Nomination versus flow review and revision",
+   "b": "Nomination revision after volume change",
+   "shared_threads": 14,
+   "jaccard": 0.67
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   23,
+   "Deal ticket correction"
+  ],
+  [
+   21,
+   "Customer nomination file intake and change"
+  ],
+  [
+   14,
+   "Set up accounting arrangement so a meter can be allocate"
+  ],
+  [
+   14,
+   "Netco and UBS book, curve and access setup"
+  ],
+  [
+   13,
+   "Resolve meter flow with no contract or on strangers gas"
+  ],
+  [
+   7,
+   "Daily P&L explanations and top-level amounts"
+  ],
+  [
+   6,
+   "Real-time deal entry in Enpower and CAPS"
+  ],
+  [
+   6,
+   "Pipeline volume variance and reconciliation"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   18,
+   "System access requests"
+  ],
+  [
+   17,
+   "Volume and allocation variance clearing"
+  ],
+  [
+   11,
+   "Imbalance tracking and payback"
+  ],
+  [
+   9,
+   "Real-time group meeting scheduling"
+  ],
+  [
+   9,
+   "Outage and maintenance nomination adjustments"
+  ],
+  [
+   7,
+   "Deal entry and position corrections"
+  ],
+  [
+   7,
+   "Accounting arrangement setup"
+  ],
+  [
+   6,
+   "Weekend on-call notes"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "pass"
+ }
+}

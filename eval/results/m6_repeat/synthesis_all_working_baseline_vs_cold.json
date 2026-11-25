@@ -1,0 +1,171 @@
+{
+ "mailboxes": null,
+ "a": {
+  "events": 744,
+  "processes": 100,
+  "scored": 93,
+  "dollars": "1152.721400361205016779442682"
+ },
+ "b": {
+  "events": 1078,
+  "processes": 129,
+  "scored": 116,
+  "dollars": "1385.787952414334882017508147"
+ },
+ "threads_counted_a": 726,
+ "threads_counted_b": 1065,
+ "thread_jaccard": 0.508,
+ "events_ratio_b_over_a": 1.449,
+ "dollars_ratio_b_over_a": 1.202,
+ "matched_processes": 72,
+ "processes_a_unmatched": 28,
+ "processes_b_unmatched": 57,
+ "share_of_a_events_in_matched_processes": 0.794,
+ "share_of_b_events_in_matched_processes": 0.565,
+ "matches": [
+  {
+   "a": "Flip deals into the Canadian settlement book befor",
+   "b": "Flip Canadian-entity deals to FT-US/CAND-ERMS book",
+   "shared_threads": 23,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Meeting scheduling and rescheduling",
+   "b": "Meeting scheduling and announcements",
+   "shared_threads": 23,
+   "jaccard": 0.66
+  },
+  {
+   "a": "Hiring needs, candidate review and interviews",
+   "b": "Hiring and interview coordination",
+   "shared_threads": 22,
+   "jaccard": 0.69
+  },
+  {
+   "a": "Wrong-recipient and contact record correction",
+   "b": "Misdirected email for the wrong Bill Williams",
+   "shared_threads": 18,
+   "jaccard": 0.86
+  },
+  {
+   "a": "Performance review and year-end accomplishments",
+   "b": "Performance review and feedback preparation",
+   "shared_threads": 17,
+   "jaccard": 0.65
+  },
+  {
+   "a": "Weekly California capacity report",
+   "b": "Weekly California capacity report",
+   "shared_threads": 16,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Out-of-office coverage and time-off requests",
+   "b": "Absence and desk coverage arrangement",
+   "shared_threads": 15,
+   "jaccard": 0.38
+  },
+  {
+   "a": "Move deals into bankruptcy books after counterpart",
+   "b": "Move terminated counterparty deals to bankruptcy b",
+   "shared_threads": 14,
+   "jaccard": 0.7
+  },
+  {
+   "a": "Daily real-time position and length reporting",
+   "b": "Daily position reporting and coverage",
+   "shared_threads": 13,
+   "jaccard": 0.72
+  },
+  {
+   "a": "Monthly auditor P&L and deal testing support",
+   "b": "Auditor P&L and deal support requests",
+   "shared_threads": 12,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Congestion revenue reporting and settlement",
+   "b": "Congestion revenue reporting and reconciliation",
+   "shared_threads": 11,
+   "jaccard": 0.79
+  },
+  {
+   "a": "Counterparty daily nomination intake and confirmat",
+   "b": "Customer nomination file intake and change",
+   "shared_threads": 11,
+   "jaccard": 0.38
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   27,
+   "Fix meter flow without active deal coverage"
+  ],
+  [
+   10,
+   "Volume variance reconciliation with pipelines and interc"
+  ],
+  [
+   10,
+   "Accounting arrangement and track ID setup"
+  ],
+  [
+   9,
+   "Forward the daily credit report to book admins"
+  ],
+  [
+   8,
+   "Position manager and SAR variance correction"
+  ],
+  [
+   7,
+   "El Paso lending and parking schedule entry"
+  ],
+  [
+   6,
+   "FERC order and price cap questions"
+  ],
+  [
+   6,
+   "EES daily sheet and spin reporting"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   77,
+   "Extend or create a deal for meter flow with no valid dea"
+  ],
+  [
+   37,
+   "Counterparty invoice or price discrepancy against the de"
+  ],
+  [
+   27,
+   "Unattached meter volume write-off or deal approval"
+  ],
+  [
+   23,
+   "Deal ticket correction"
+  ],
+  [
+   21,
+   "Meter shut-in and pipeline outage notices"
+  ],
+  [
+   18,
+   "Nomination versus flow review and revision"
+  ],
+  [
+   18,
+   "Monthly hours and activity survey return"
+  ],
+  [
+   18,
+   "Calpine daily gas nomination"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "fail",
+  "R6 >= 70 percent of events in matched processes (both runs)": "fail"
+ }
+}

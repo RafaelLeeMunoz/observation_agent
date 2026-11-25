@@ -1,0 +1,171 @@
+{
+ "mailboxes": null,
+ "a": {
+  "events": 1078,
+  "processes": 129,
+  "scored": 116,
+  "dollars": "1385.787952414334882017508147"
+ },
+ "b": {
+  "events": 1301,
+  "processes": 116,
+  "scored": 96,
+  "dollars": "1355.295307165010653220197903"
+ },
+ "threads_counted_a": 1065,
+ "threads_counted_b": 1261,
+ "thread_jaccard": 0.682,
+ "events_ratio_b_over_a": 1.207,
+ "dollars_ratio_b_over_a": 0.978,
+ "matched_processes": 72,
+ "processes_a_unmatched": 57,
+ "processes_b_unmatched": 44,
+ "share_of_a_events_in_matched_processes": 0.683,
+ "share_of_b_events_in_matched_processes": 0.663,
+ "matches": [
+  {
+   "a": "Extend or create a deal for meter flow with no val",
+   "b": "Deal coverage for flow without a valid deal",
+   "shared_threads": 74,
+   "jaccard": 0.74
+  },
+  {
+   "a": "Absence and desk coverage arrangement",
+   "b": "Absence and desk coverage hand-off",
+   "shared_threads": 29,
+   "jaccard": 0.71
+  },
+  {
+   "a": "Unattached meter volume write-off or deal approval",
+   "b": "Unaccounted-for volume booking or write-off",
+   "shared_threads": 27,
+   "jaccard": 0.71
+  },
+  {
+   "a": "Counterparty invoice or price discrepancy against ",
+   "b": "Invoice and payment matching to deals",
+   "shared_threads": 25,
+   "jaccard": 0.35
+  },
+  {
+   "a": "Flip Canadian-entity deals to FT-US/CAND-ERMS book",
+   "b": "Deal flips to the settlement book",
+   "shared_threads": 23,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Performance review and feedback preparation",
+   "b": "Performance review preparation",
+   "shared_threads": 23,
+   "jaccard": 0.82
+  },
+  {
+   "a": "Meter shut-in and pipeline outage notices",
+   "b": "Pipeline and meter outage notices",
+   "shared_threads": 22,
+   "jaccard": 0.79
+  },
+  {
+   "a": "Meeting scheduling and announcements",
+   "b": "Meeting scheduling and rooms",
+   "shared_threads": 20,
+   "jaccard": 0.47
+  },
+  {
+   "a": "Monthly hours and activity survey return",
+   "b": "Activity and hours surveys",
+   "shared_threads": 18,
+   "jaccard": 0.9
+  },
+  {
+   "a": "Hiring and interview coordination",
+   "b": "Hiring and interview scheduling",
+   "shared_threads": 18,
+   "jaccard": 0.58
+  },
+  {
+   "a": "Weekly California capacity report",
+   "b": "Weekly California capacity report",
+   "shared_threads": 16,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Misdirected email for the wrong Bill Williams",
+   "b": "Misdirected email and address correction",
+   "shared_threads": 16,
+   "jaccard": 0.76
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   23,
+   "Deal ticket correction"
+  ],
+  [
+   21,
+   "Customer nomination file intake and change"
+  ],
+  [
+   18,
+   "Calpine daily gas nomination"
+  ],
+  [
+   16,
+   "Daily credit report forwarding"
+  ],
+  [
+   14,
+   "Unallocated gas variance clearing"
+  ],
+  [
+   14,
+   "Set up accounting arrangement so a meter can be allocate"
+  ],
+  [
+   14,
+   "Netco and UBS book, curve and access setup"
+  ],
+  [
+   13,
+   "Resolve meter flow with no contract or on strangers gas"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   74,
+   "Gas nomination and volume file intake"
+  ],
+  [
+   69,
+   "Deal ticket term correction"
+  ],
+  [
+   46,
+   "Volume and imbalance reconciliation"
+  ],
+  [
+   36,
+   "Meter volume reallocation"
+  ],
+  [
+   28,
+   "System and access requests"
+  ],
+  [
+   13,
+   "Desk equipment and IT support requests"
+  ],
+  [
+   13,
+   "Deal pathing in the scheduling system"
+  ],
+  [
+   10,
+   "Short position coverage and booking"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "fail"
+ }
+}

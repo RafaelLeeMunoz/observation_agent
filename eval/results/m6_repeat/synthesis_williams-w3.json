@@ -1,0 +1,173 @@
+{
+ "mailboxes": [
+  "williams-w3"
+ ],
+ "a": {
+  "events": 223,
+  "processes": 35,
+  "scored": 33,
+  "dollars": "374.2305857531494527252825229"
+ },
+ "b": {
+  "events": 203,
+  "processes": 31,
+  "scored": 29,
+  "dollars": "364.8396049312385505238952574"
+ },
+ "threads_counted_a": 214,
+ "threads_counted_b": 200,
+ "thread_jaccard": 0.605,
+ "events_ratio_b_over_a": 0.91,
+ "dollars_ratio_b_over_a": 0.975,
+ "matched_processes": 22,
+ "processes_a_unmatched": 13,
+ "processes_b_unmatched": 9,
+ "share_of_a_events_in_matched_processes": 0.749,
+ "share_of_b_events_in_matched_processes": 0.828,
+ "matches": [
+  {
+   "a": "Wrong-recipient and contact record correction",
+   "b": "Misdirected email for the wrong Bill Williams",
+   "shared_threads": 18,
+   "jaccard": 0.86
+  },
+  {
+   "a": "Daily real-time position and length reporting",
+   "b": "Daily position reporting and coverage",
+   "shared_threads": 13,
+   "jaccard": 0.72
+  },
+  {
+   "a": "Congestion revenue reporting and settlement",
+   "b": "Congestion revenue reporting and reconciliation",
+   "shared_threads": 11,
+   "jaccard": 0.79
+  },
+  {
+   "a": "Group meeting scheduling and notices",
+   "b": "Meeting scheduling and announcements",
+   "shared_threads": 11,
+   "jaccard": 0.85
+  },
+  {
+   "a": "New hire paperwork and orientation follow-up",
+   "b": "UBS onboarding paperwork and drug test follow-up",
+   "shared_threads": 9,
+   "jaccard": 0.9
+  },
+  {
+   "a": "Hiring, interviews and job openings",
+   "b": "Hiring and interview coordination",
+   "shared_threads": 8,
+   "jaccard": 0.57
+  },
+  {
+   "a": "Month-end prior month adjustment review",
+   "b": "Prior month adjustment review",
+   "shared_threads": 7,
+   "jaccard": 0.64
+  },
+  {
+   "a": "Expense report approval",
+   "b": "Expense report approval",
+   "shared_threads": 6,
+   "jaccard": 1.0
+  },
+  {
+   "a": "El Paso model and schedule reconciliation",
+   "b": "EPE schedule and lending deal maintenance",
+   "shared_threads": 6,
+   "jaccard": 0.3
+  },
+  {
+   "a": "Performance review preparation",
+   "b": "Performance review and feedback preparation",
+   "shared_threads": 6,
+   "jaccard": 0.86
+  },
+  {
+   "a": "El Paso data page location sharing",
+   "b": "El Paso data scrape access and outage handling",
+   "shared_threads": 4,
+   "jaccard": 0.8
+  },
+  {
+   "a": "Hourly price index participation review",
+   "b": "Power index participation evaluation",
+   "shared_threads": 4,
+   "jaccard": 1.0
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   8,
+   "Position manager and SAR variance correction"
+  ],
+  [
+   7,
+   "El Paso lending and parking schedule entry"
+  ],
+  [
+   6,
+   "FERC order and price cap questions"
+  ],
+  [
+   6,
+   "EES daily sheet and spin reporting"
+  ],
+  [
+   6,
+   "Annuity deal entry for adjustments"
+  ],
+  [
+   4,
+   "Training class enrollment"
+  ],
+  [
+   4,
+   "Shift schedule changes"
+  ],
+  [
+   4,
+   "Generator outage notification to CAISO"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   8,
+   "Schedule cut handling"
+  ],
+  [
+   5,
+   "Counterparty trading restriction and booking notices"
+  ],
+  [
+   4,
+   "System maintenance and outage notices"
+  ],
+  [
+   4,
+   "Phone and equipment orders and cost billing"
+  ],
+  [
+   4,
+   "Enpower deal entry conventions"
+  ],
+  [
+   3,
+   "Security badge and card access requests"
+  ],
+  [
+   3,
+   "Daily report distribution list changes"
+  ],
+  [
+   3,
+   "CAISO market redesign comments"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "pass"
+ }
+}

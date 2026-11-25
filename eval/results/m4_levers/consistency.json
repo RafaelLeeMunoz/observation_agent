@@ -1,0 +1,119 @@
+{
+ "I1-I2": {
+  "activities": 50,
+  "found_in_both": 43,
+  "found_in_one_only": [
+   "farmer-d/logistics/3221#2",
+   "farmer-d/logistics/622#2",
+   "farmer-d/logistics/673#2",
+   "farmer-d/logistics/673#5",
+   "farmer-d/logistics/734#2",
+   "farmer-d/logistics/765#3"
+  ],
+  "same_state": "37/43",
+  "same_published_signals": "34/43",
+  "same_claimed_signals": "33/43",
+  "same_evidence_category": "17/30"
+ },
+ "I1-I3": {
+  "activities": 50,
+  "found_in_both": 43,
+  "found_in_one_only": [
+   "farmer-d/logistics/3221#2",
+   "farmer-d/logistics/579#1",
+   "farmer-d/logistics/622#2",
+   "farmer-d/logistics/673#2",
+   "farmer-d/logistics/673#5",
+   "farmer-d/logistics/734#2",
+   "farmer-d/logistics/924#3"
+  ],
+  "same_state": "39/43",
+  "same_published_signals": "37/43",
+  "same_claimed_signals": "36/43",
+  "same_evidence_category": "23/30"
+ },
+ "I2-I3": {
+  "activities": 50,
+  "found_in_both": 45,
+  "found_in_one_only": [
+   "farmer-d/logistics/579#1",
+   "farmer-d/logistics/765#3",
+   "farmer-d/logistics/924#3"
+  ],
+  "same_state": "38/45",
+  "same_published_signals": "36/45",
+  "same_claimed_signals": "35/45",
+  "same_evidence_category": "19/30"
+ },
+ "D1-T1": {
+  "activities": 50,
+  "found_in_both": 43,
+  "found_in_one_only": [
+   "farmer-d/logistics/1056#1",
+   "farmer-d/logistics/622#2",
+   "farmer-d/logistics/673#2",
+   "farmer-d/logistics/673#5",
+   "farmer-d/logistics/734#2",
+   "farmer-d/logistics/765#3",
+   "farmer-d/logistics/924#3"
+  ],
+  "same_state": "37/43",
+  "same_published_signals": "37/43",
+  "same_claimed_signals": "35/43",
+  "same_evidence_category": "20/30"
+ },
+ "M1-M2": {
+  "activities": 50,
+  "found_in_both": 45,
+  "found_in_one_only": [
+   "farmer-d/logistics/1056#2",
+   "farmer-d/logistics/622#2",
+   "farmer-d/logistics/673#2",
+   "farmer-d/logistics/765#3"
+  ],
+  "same_state": "37/45",
+  "same_published_signals": "39/45",
+  "same_claimed_signals": "35/45",
+  "same_evidence_category": "23/30"
+ },
+ "M1-I3": {
+  "activities": 50,
+  "found_in_both": 45,
+  "found_in_one_only": [
+   "farmer-d/logistics/579#1",
+   "farmer-d/logistics/622#2",
+   "farmer-d/logistics/765#3",
+   "farmer-d/logistics/924#3"
+  ],
+  "same_state": "39/45",
+  "same_published_signals": "40/45",
+  "same_claimed_signals": "37/45",
+  "same_evidence_category": "26/30"
+ },
+ "M2-I3": {
+  "activities": 50,
+  "found_in_both": 45,
+  "found_in_one_only": [
+   "farmer-d/logistics/1056#2",
+   "farmer-d/logistics/579#1",
+   "farmer-d/logistics/673#2",
+   "farmer-d/logistics/924#3"
+  ],
+  "same_state": "38/45",
+  "same_published_signals": "39/45",
+  "same_claimed_signals": "37/45",
+  "same_evidence_category": "22/30"
+ },
+ "S1-I3": {
+  "activities": 50,
+  "found_in_both": 46,
+  "found_in_one_only": [
+   "farmer-d/logistics/765#3",
+   "farmer-d/logistics/924#3"
+  ],
+  "same_state": "42/46",
+  "same_published_signals": "37/46",
+  "same_claimed_signals": "35/46",
+  "same_evidence_category": "21/30"
+ }
+}

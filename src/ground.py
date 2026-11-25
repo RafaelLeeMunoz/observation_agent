@@ -4,7 +4,11 @@
                id, move earlier staging aside, print the grounder's instruction
     finalize : verify the staged verdicts against THIS attempt and the packet manifest, map every cited
                sentence id to raw-byte offsets, and write a grounded copy of the extraction where only
-               supported claims are published (data/ground/verified/<run>.json)
+               supported claims are published (data/ground/<slice>/verified/<run>.json)
+
+Folders are per slice (M4 step 1a): the grounder reads data/ground/packets/<slice>/<run>/ and writes
+data/ground/staging/<slice>/ (its frozen prompt says "under data/ground/staging/"); code owns
+data/ground/<slice>/{attempts,verified,results,logs}.
 
 What the grounder decides: supported / unsupported / unsure for each claim, and which sentences show
 it. What code decides: whether the output is well formed and complete (one verdict per claim), whether
@@ -17,8 +21,8 @@ Outcomes per claim: published (supported, 1-3 valid ids); unsupported (the groun
 not show it); unresolved (unsure); rejected (supported with no valid citation, or a malformed verdict).
 Every claim keeps a `signal_outcomes` record, so nothing is dropped silently.
 
-Run:  .venv\\Scripts\\python -m src.ground prepare  --run data/extract/bench_runs/haiku_v8c_b001.json --name I_v8c --packet g001
-      .venv\\Scripts\\python -m src.ground finalize --name I_v8c --packet g001
+Run:  .venv\\Scripts\\python -m src.ground prepare  --slice bench --run data/extract/bench_runs/haiku_v8c_b001.json --name I_v8c --packet g001
+      .venv\\Scripts\\python -m src.ground finalize --slice bench --name I_v8c --packet g001
 """
 from __future__ import annotations
 
@@ -32,9 +36,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import packet, runmodel, schema, store, verify
+from .headless import NO_READBACK, NO_READBACK_SHA256
 
 ROOT = Path(__file__).resolve().parent.parent
-GROUND = ROOT / "data" / "ground"
+GROUND = ROOT / "data" / "ground"          # legacy M3 runs (read-only); new runs use Paths(slice)
 SCHEMA = "grounder-v1"
 PROMPT = ROOT / ".claude" / "agents" / "grounder.md"
 MAX_IDS = 3
@@ -45,6 +50,24 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+class Paths:
+    """One slice's grounding folders (repo-relative names are what the grounder is told)."""
+
+    def __init__(self, root: Path = ROOT, slice_name: str = "bench"):
+        from .extract import SLICES
+        if slice_name not in SLICES:
+            raise ValueError(f"unknown slice {slice_name!r}: the fence admits only {SLICES}")
+        self.root, self.slice = root, slice_name
+        self.packets = root / "data" / "ground" / "packets" / slice_name
+        self.staging = root / "data" / "ground" / "staging" / slice_name
+        self.code = root / "data" / "ground" / slice_name
+        self.attempts, self.verified = self.code / "attempts", self.code / "verified"
+        self.results, self.logs = self.code / "results", self.code / "logs"
+
+    def rel(self, path: Path) -> str:
+        return path.relative_to(self.root).as_posix()
+
+
 def _aside(path: Path, dest: Path, tag: str) -> None:
     if path.exists():
         dest.mkdir(parents=True, exist_ok=True)
@@ -52,28 +75,29 @@ def _aside(path: Path, dest: Path, tag: str) -> None:
 
 
 def prepare(run_file: Path, name: str, packet_id: str, st: store.Store, claim_filter=None,
-            root: Path = GROUND, selection: dict | None = None) -> dict:
+            paths: Paths | None = None, selection: dict | None = None) -> dict:
+    paths = paths or Paths()
     run = json.loads(run_file.read_text(encoding="utf-8"))
     if run.get("status") != "verified":
         raise ValueError(f"{run_file} is not a verified extraction")
     pk = packet.build(run, st, packet_id, name, claim_filter)
-    pk_dir = root / "packets" / name
+    pk_dir = paths.packets / name
     packet.write(pk, pk_dir)
-    att_dir = root / "attempts"
-    att_dir.mkdir(parents=True, exist_ok=True)
-    rec_path = att_dir / f"{name}__{packet_id}.json"
+    paths.attempts.mkdir(parents=True, exist_ok=True)
+    rec_path = paths.attempts / f"{name}__{packet_id}.json"
     prev = json.loads(rec_path.read_text(encoding="utf-8")) if rec_path.exists() else None
     n = prev["attempt_no"] + 1 if prev else 1
     attempt_id = f"{packet_id}-{pk['sha256'][:8]}-{n}"
-    _aside(root / "staging" / f"{packet_id}.json", root / "staging" / "rejected", f"superseded-before-{attempt_id}")
-    (root / "staging").mkdir(parents=True, exist_ok=True)
-    rec = {"name": name, "packet_id": packet_id, "attempt_id": attempt_id, "attempt_no": n,
-           "run_file": str(run_file.relative_to(ROOT) if run_file.is_absolute() and ROOT in run_file.parents else run_file),
-           "run_attempt": run.get("attempt_id"), "packet_sha256": pk["sha256"], "packet_version": pk["version"],
+    _aside(paths.staging / f"{packet_id}.json", paths.staging / "rejected", f"superseded-before-{attempt_id}")
+    paths.staging.mkdir(parents=True, exist_ok=True)
+    rf = Path(run_file)
+    rec = {"name": name, "packet_id": packet_id, "attempt_id": attempt_id, "attempt_no": n, "slice": paths.slice,
+           "run_file": str(rf.relative_to(paths.root) if rf.is_absolute() and paths.root in rf.parents else rf),
+           "run_attempt": run.get("attempt_id"), "packet_sha256": pk["sha256"], "packet_version": pk["version"], "run_note_sha256": NO_READBACK_SHA256,
            "claims": len(pk["claims"]), "est_tokens": pk["est_tokens"], "selection": selection,
            "prompt_sha256": hashlib.sha256(PROMPT.read_bytes()).hexdigest() if PROMPT.exists() else None,
-           "packet_file": f"data/ground/packets/{name}/{packet_id}.txt",
-           "output_file": f"data/ground/staging/{packet_id}.json",
+           "packet_file": paths.rel(pk_dir / f"{packet_id}.txt"),
+           "output_file": paths.rel(paths.staging / f"{packet_id}.json"),
            "started_at_utc": _now(), "started_monotonic": time.time()}
     rec_path.write_text(json.dumps(rec, indent=1) + "\n", encoding="utf-8")
     return rec
@@ -81,7 +105,7 @@ def prepare(run_file: Path, name: str, packet_id: str, st: store.Store, claim_fi
 
 def instruction(rec: dict) -> str:
     return (f"Read the packet file `{rec['packet_file']}`. packet_id is `{rec['packet_id']}`, attempt_id is "
-            f"`{rec['attempt_id']}`. Follow your instructions and write your JSON to `{rec['output_file']}`.")
+            f"`{rec['attempt_id']}`. Follow your instructions and write your JSON to `{rec['output_file']}`. {NO_READBACK}")
 
 
 def check_verdicts(staged_text: str, manifest: dict, attempt_id: str) -> dict:
@@ -186,19 +210,20 @@ def apply(run: dict, manifest: dict, verdicts: dict, st: store.Store, only_selec
     return out
 
 
-def finalize(name: str, packet_id: str, st: store.Store, usage: dict | None = None, root: Path = GROUND,
+def finalize(name: str, packet_id: str, st: store.Store, usage: dict | None = None, paths: Paths | None = None,
              only_selected: bool = False) -> dict:
-    rec = json.loads((root / "attempts" / f"{name}__{packet_id}.json").read_text(encoding="utf-8"))
-    manifest = json.loads((root / "packets" / name / f"{packet_id}.manifest.json").read_text(encoding="utf-8"))
-    staged = root / "staging" / f"{packet_id}.json"
+    paths = paths or Paths()
+    rec = json.loads((paths.attempts / f"{name}__{packet_id}.json").read_text(encoding="utf-8"))
+    manifest = json.loads((paths.packets / name / f"{packet_id}.manifest.json").read_text(encoding="utf-8"))
+    staged = paths.staging / f"{packet_id}.json"
     text = staged.read_text(encoding="utf-8") if staged.exists() else ""
     chk = check_verdicts(text, manifest, rec["attempt_id"])
     if not staged.exists():
         chk["errors"].insert(0, "the grounder wrote no output file for this attempt")
-    run = json.loads((ROOT / rec["run_file"]).read_text(encoding="utf-8"))
+    run = json.loads((paths.root / rec["run_file"]).read_text(encoding="utf-8"))
     res = {"name": name, "packet_id": packet_id, "attempt_id": rec["attempt_id"], "status": chk["status"],
            "errors": chk["errors"], "packet_sha256": rec["packet_sha256"], "prompt_sha256": rec["prompt_sha256"],
-           "schema": SCHEMA, "claims": rec["claims"], "selection": rec.get("selection"),
+           "schema": SCHEMA, "run_note_sha256": rec.get("run_note_sha256"), "claims": rec["claims"], "selection": rec.get("selection"),
            "seconds": round(time.time() - rec["started_monotonic"], 1), "usage": usage, "finished_at_utc": _now(),
            "model_observed": runmodel.from_headless("haiku", (usage or {}).get("models_observed"))}
     if res["model_observed"]["status"] == runmodel.MISMATCH:
@@ -207,17 +232,17 @@ def finalize(name: str, packet_id: str, st: store.Store, usage: dict | None = No
     if chk["status"] == "verified":
         grounded = apply(run, manifest, chk["verdicts"], st, only_selected)
         grounded["grounding"] = {k: res[k] for k in ("name", "packet_id", "attempt_id", "packet_sha256",
-                                                     "prompt_sha256", "schema", "claims", "selection", "usage",
+                                                     "prompt_sha256", "schema", "run_note_sha256", "claims", "selection", "usage",
                                                      "model_observed")}
         outs = [x for o in grounded["observations"] for x in o["signal_outcomes"] if x.get("grounded")]
         res["outcomes"] = {k: sum(x["outcome"] == k for x in outs) for k in (PUBLISHED, UNSUPPORTED, UNRESOLVED, REJECTED)}
-        (root / "verified").mkdir(parents=True, exist_ok=True)
-        (root / "verified" / f"{name}.json").write_text(json.dumps(grounded, indent=1) + "\n", encoding="utf-8")
+        paths.verified.mkdir(parents=True, exist_ok=True)
+        (paths.verified / f"{name}.json").write_text(json.dumps(grounded, indent=1) + "\n", encoding="utf-8")
         res["verdicts"] = chk["verdicts"]
-    _aside(staged, root / "staging" / ("accepted" if chk["status"] == "verified" else "rejected"), rec["attempt_id"])
-    (root / "results").mkdir(parents=True, exist_ok=True)
-    (root / "results" / f"{name}__{rec['attempt_id']}.json").write_text(json.dumps(res, indent=1) + "\n", encoding="utf-8")
-    logs = ROOT / "data" / "logs"
+    _aside(staged, paths.staging / ("accepted" if chk["status"] == "verified" else "rejected"), rec["attempt_id"])
+    paths.results.mkdir(parents=True, exist_ok=True)
+    (paths.results / f"{name}__{rec['attempt_id']}.json").write_text(json.dumps(res, indent=1) + "\n", encoding="utf-8")
+    logs = paths.logs
     logs.mkdir(parents=True, exist_ok=True)
     from .extract import shared_lock          # the same run log as extraction, written by parallel workers
     with shared_lock(logs), (logs / "runlog.jsonl").open("a", encoding="utf-8") as f:
@@ -231,12 +256,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--run", type=Path)
     ap.add_argument("--name", required=True)
     ap.add_argument("--packet", default="g001")
+    ap.add_argument("--slice", default="bench")
     args = ap.parse_args(argv)
     st = store.load()
+    paths = Paths(ROOT, args.slice)
     if args.action == "prepare":
-        print(instruction(prepare(args.run, args.name, args.packet, st)))
+        print(instruction(prepare(args.run, args.name, args.packet, st, paths=paths)))
         return 0
-    res = finalize(args.name, args.packet, st)
+    res = finalize(args.name, args.packet, st, paths=paths)
     print(f"ground {args.name} {args.packet}: {res['status']}; {res.get('outcomes')}; errors {res['errors']}")
     return 0 if res["status"] == "verified" else 1
 

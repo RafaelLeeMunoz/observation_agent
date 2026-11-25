@@ -1,0 +1,57 @@
+{
+ "observations_a": 4767,
+ "observations_b": 4767,
+ "matched_observation_pairs": 4767,
+ "observation_jaccard": 1.0,
+ "messages_with_obs_a": 2273,
+ "messages_with_obs_b": 2273,
+ "messages_both": 2273,
+ "message_level_agreement": 1.0,
+ "message_jaccard": 1.0,
+ "threads_with_obs_a": 1927,
+ "threads_with_obs_b": 1927,
+ "thread_jaccard": 1.0,
+ "threads_found_only_by_a": 0,
+ "threads_found_only_by_b": 0,
+ "per_mailbox": {
+  "farmer-d": {
+   "messages_with_obs_a": 1098,
+   "messages_with_obs_b": 1098,
+   "message_jaccard": 1.0,
+   "thread_jaccard": 1.0,
+   "threads_only_a": 0,
+   "threads_only_b": 0
+  },
+  "giron-d": {
+   "messages_with_obs_a": 541,
+   "messages_with_obs_b": 541,
+   "message_jaccard": 1.0,
+   "thread_jaccard": 1.0,
+   "threads_only_a": 0,
+   "threads_only_b": 0
+  },
+  "lokay-m": {
+   "messages_with_obs_a": 145,
+   "messages_with_obs_b": 145,
+   "message_jaccard": 1.0,
+   "thread_jaccard": 1.0,
+   "threads_only_a": 0,
+   "threads_only_b": 0
+  },
+  "williams-w3": {
+   "messages_with_obs_a": 489,
+   "messages_with_obs_b": 489,
+   "message_jaccard": 1.0,
+   "thread_jaccard": 1.0,
+   "threads_only_a": 0,
+   "threads_only_b": 0
+  }
+ },
+ "examples_only_a": [],
+ "examples_only_b": [],
+ "criteria": {
+  "R2 message-level agreement >= 0.90": "pass",
+  "R3 thread Jaccard >= 0.80": "pass",
+  "R4 observation Jaccard >= 0.60": "pass"
+ }
+}

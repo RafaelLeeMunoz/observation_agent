@@ -1,0 +1,132 @@
+{
+ "name": "D",
+ "workers": 24,
+ "batches": [
+  "b004",
+  "b006",
+  "b009",
+  "b013",
+  "b017",
+  "b020",
+  "b024",
+  "b026",
+  "b029",
+  "b033",
+  "b036",
+  "b040",
+  "b044",
+  "b045",
+  "b049",
+  "b053",
+  "b056",
+  "b060",
+  "b063",
+  "b065",
+  "b069",
+  "b072",
+  "b076",
+  "b080"
+ ],
+ "at": "2026-11-23T22:40:18+00:00",
+ "wall_s": 322.3,
+ "exit_code": 0,
+ "stopped": null,
+ "complete": true,
+ "model_stages": {
+  "n_extracted": 24,
+  "n_grounded": 24,
+  "failed_extract": [],
+  "failed_ground": [],
+  "unfinished": [],
+  "ground_unfinished": [],
+  "peak_in_flight": 1,
+  "session_kinds": {
+   "ok": 2
+  },
+  "fence_self_checks": 0,
+  "fence_self_check_flags": [],
+  "canary": {
+   "batch": "b013",
+   "checked": 85,
+   "verified": 84,
+   "rejected": 1,
+   "tripped": false
+  },
+  "sentinels_checked": {
+   "b013": {
+    "checked": 85,
+    "verified": 84,
+    "rejected": 1,
+    "qualifies": true,
+    "tripped": false
+   }
+  },
+  "cumulative": {
+   "checked": 85,
+   "rejected": 1
+  },
+  "flags": []
+ },
+ "cache_hits": 46,
+ "sessions": {
+  "extract": {
+   "sessions": 1,
+   "kinds": {
+    "ok": 1
+   },
+   "seconds": {
+    "min": 290.6,
+    "max": 290.6,
+    "mean": 290.6,
+    "sum": 290.6
+   },
+   "first_wave_start_spread_s": 0,
+   "measured_over_predicted": {
+    "mean": 1.44,
+    "max": 1.44
+   },
+   "self_checks": 0,
+   "rows": [
+    {
+     "batch": "b013",
+     "seconds": 290.6,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 76671,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    }
+   ]
+  },
+  "ground": {
+   "sessions": 1,
+   "kinds": {
+    "ok": 1
+   },
+   "seconds": {
+    "min": 31.3,
+    "max": 31.3,
+    "mean": 31.3,
+    "sum": 31.3
+   },
+   "first_wave_start_spread_s": 0,
+   "measured_over_predicted": null,
+   "self_checks": 0,
+   "rows": [
+    {
+     "batch": "b013",
+     "seconds": 31.3,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 7152,
+     "self_checks": 0
+    }
+   ]
+  }
+ },
+ "processes": {
+  "samples": 63,
+  "peak_processes": 16,
+  "peak_working_set_mb": 1844
+ }
+}

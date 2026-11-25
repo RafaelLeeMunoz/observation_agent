@@ -1,0 +1,107 @@
+{
+ "mailboxes": [
+  "lokay-m"
+ ],
+ "a": {
+  "events": 86,
+  "processes": 17,
+  "scored": 11,
+  "dollars": "363.0064011870111220672459056"
+ },
+ "b": {
+  "events": 86,
+  "processes": 17,
+  "scored": 11,
+  "dollars": "363.0064011870111220672459056"
+ },
+ "threads_counted_a": 86,
+ "threads_counted_b": 86,
+ "thread_jaccard": 1.0,
+ "events_ratio_b_over_a": 1.0,
+ "dollars_ratio_b_over_a": 1.0,
+ "matched_processes": 17,
+ "processes_a_unmatched": 0,
+ "processes_b_unmatched": 0,
+ "share_of_a_events_in_matched_processes": 1.0,
+ "share_of_b_events_in_matched_processes": 1.0,
+ "matches": [
+  {
+   "a": "Weekly California capacity report",
+   "b": "Weekly California capacity report",
+   "shared_threads": 16,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Contract quantity change and amendment requests",
+   "b": "Contract quantity change and amendment requests",
+   "shared_threads": 11,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Meeting scheduling and calendar coordination",
+   "b": "Meeting scheduling and calendar coordination",
+   "shared_threads": 9,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Firm capacity posting bids and responses",
+   "b": "Firm capacity posting bids and responses",
+   "shared_threads": 7,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Pipeline expansion and facility cost estimates",
+   "b": "Pipeline expansion and facility cost estimates",
+   "shared_threads": 7,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Time report and leave recording",
+   "b": "Time report and leave recording",
+   "shared_threads": 6,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Operational balancing agreement execution and imba",
+   "b": "Operational balancing agreement execution and imba",
+   "shared_threads": 5,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Pipeline volume and imbalance reconciliation",
+   "b": "Pipeline volume and imbalance reconciliation",
+   "shared_threads": 5,
+   "jaccard": 1.0
+  },
+  {
+   "a": "PG&E gas plan briefing call coordination",
+   "b": "PG&E gas plan briefing call coordination",
+   "shared_threads": 3,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Year-end accomplishments and objectives",
+   "b": "Year-end accomplishments and objectives",
+   "shared_threads": 3,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Capacity credit approval requests",
+   "b": "Capacity credit approval requests",
+   "shared_threads": 2,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Past-due and billing query resolution",
+   "b": "Past-due and billing query resolution",
+   "shared_threads": 2,
+   "jaccard": 1.0
+  }
+ ],
+ "unmatched_a_largest": [],
+ "unmatched_b_largest": [],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "pass"
+ }
+}

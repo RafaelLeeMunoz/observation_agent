@@ -1,0 +1,173 @@
+{
+ "mailboxes": [
+  "farmer-d"
+ ],
+ "a": {
+  "events": 560,
+  "processes": 71,
+  "scored": 58,
+  "dollars": "452.9848869863167191895958802"
+ },
+ "b": {
+  "events": 554,
+  "processes": 57,
+  "scored": 51,
+  "dollars": "508.9607779262134588488575795"
+ },
+ "threads_counted_a": 547,
+ "threads_counted_b": 551,
+ "thread_jaccard": 0.765,
+ "events_ratio_b_over_a": 0.989,
+ "dollars_ratio_b_over_a": 1.124,
+ "matched_processes": 47,
+ "processes_a_unmatched": 24,
+ "processes_b_unmatched": 10,
+ "share_of_a_events_in_matched_processes": 0.832,
+ "share_of_b_events_in_matched_processes": 0.843,
+ "matches": [
+  {
+   "a": "Meter flow with no deal: extend or create deal",
+   "b": "Extend or create a deal for meter flow with no val",
+   "shared_threads": 71,
+   "jaccard": 0.81
+  },
+  {
+   "a": "Absence and holiday coverage",
+   "b": "Absence and desk coverage arrangement",
+   "shared_threads": 28,
+   "jaccard": 0.97
+  },
+  {
+   "a": "Strangers gas volume: deal, reallocation or write-",
+   "b": "Unattached meter volume write-off or deal approval",
+   "shared_threads": 27,
+   "jaccard": 0.84
+  },
+  {
+   "a": "Counterparty price discrepancy resolution",
+   "b": "Counterparty invoice or price discrepancy against ",
+   "shared_threads": 20,
+   "jaccard": 0.45
+  },
+  {
+   "a": "Meter shut-in and outage notices",
+   "b": "Meter shut-in and pipeline outage notices",
+   "shared_threads": 18,
+   "jaccard": 0.67
+  },
+  {
+   "a": "Monthly activity and hours survey",
+   "b": "Monthly hours and activity survey return",
+   "shared_threads": 18,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Counterparty nomination file receipt and relay",
+   "b": "Calpine daily gas nomination",
+   "shared_threads": 18,
+   "jaccard": 0.46
+  },
+  {
+   "a": "Meter nomination review and revision",
+   "b": "Nomination versus flow review and revision",
+   "shared_threads": 14,
+   "jaccard": 0.74
+  },
+  {
+   "a": "New well or producer spot deal ticket entry",
+   "b": "New well or wellhead deal ticket entry in Sitara",
+   "shared_threads": 11,
+   "jaccard": 0.85
+  },
+  {
+   "a": "Industrial buyback ticket and treatment",
+   "b": "Buyback, deficiency and force majeure handling for",
+   "shared_threads": 10,
+   "jaccard": 0.59
+  },
+  {
+   "a": "Unaccounted-for and UA4 volume research",
+   "b": "Unallocated gas variance clearing",
+   "shared_threads": 10,
+   "jaccard": 0.67
+  },
+  {
+   "a": "HL&P flow numbers reporting",
+   "b": "Send HL&P flow numbers to the HL&P contact",
+   "shared_threads": 9,
+   "jaccard": 0.9
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   14,
+   "Deal ticket changes"
+  ],
+  [
+   9,
+   "Pipeline volume variance reconciliation"
+  ],
+  [
+   9,
+   "Accounting arrangement setup"
+  ],
+  [
+   7,
+   "Imbalance payback resolution"
+  ],
+  [
+   6,
+   "Meter set-up and assignment"
+  ],
+  [
+   4,
+   "Transport and service rate entry and verification"
+  ],
+  [
+   4,
+   "System access request"
+  ],
+  [
+   4,
+   "Committed reserves firm ticket"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   21,
+   "Customer nomination file intake and change"
+  ],
+  [
+   16,
+   "Deal ticket correction"
+  ],
+  [
+   14,
+   "Set up accounting arrangement so a meter can be allocate"
+  ],
+  [
+   13,
+   "Resolve meter flow with no contract or on strangers gas"
+  ],
+  [
+   6,
+   "Pipeline volume variance and reconciliation"
+  ],
+  [
+   6,
+   "Industrial account handoff and industrial report"
+  ],
+  [
+   4,
+   "Change Sitara ticket and adjust risk assignment"
+  ],
+  [
+   3,
+   "System and server change notices"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "pass"
+ }
+}

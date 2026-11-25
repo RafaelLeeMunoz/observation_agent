@@ -1,0 +1,273 @@
+{
+ "name": "V2",
+ "at": "2026-11-23T22:57:02+00:00",
+ "architecture": "I",
+ "lever": {
+  "token_budget": 24000,
+  "max_messages": null,
+  "env": {},
+  "settings": null,
+  "transcript": false,
+  "effort": null
+ },
+ "effective_config": {
+  "claude_version": "2.1.330 (Claude Code)",
+  "extract_model": "haiku",
+  "prompt_version": "extract-v8c",
+  "schema": "extract-v6",
+  "prompt_sha256": "ef76350212d383ad323cd8b9cd6c49c62e46221c68569691f1703d15fae678f4",
+  "sessions": [
+   {
+    "batch": "b001",
+    "env_extra": {},
+    "instruction_excludes": [
+     "**/CLAUDE.md",
+     "**/CLAUDE.local.md",
+     "**/.claude/rules/**"
+    ],
+    "auto_memory": false,
+    "session_env": "no-project-instructions-v2",
+    "extra_settings": {},
+    "transcript": null,
+    "effort": null,
+    "init": {}
+   }
+  ]
+ },
+ "context": {
+  "batches": 1,
+  "per_batch": [
+   {
+    "batch": "b001",
+    "messages": 41,
+    "threads": 24,
+    "est_tokens": 19448,
+    "pointers": 28,
+    "mailboxes": [
+     "farmer-d",
+     "giron-d",
+     "lokay-m",
+     "williams-w3"
+    ]
+   }
+  ],
+  "threads_split": [],
+  "pointers_crossing_batches": [],
+  "messages_whose_text_changed": 0,
+  "note": "with no split thread and no crossing pointer, every message is shown exactly as in a one-batch layout; only the other threads sharing its batch (its neighbours) differ"
+ },
+ "hard_requirements": {
+  "all_batches_verified": true,
+  "every_message_dispositioned_once": true,
+  "every_model_confirmed": true,
+  "fence_held": true,
+  "citations_all_valid": true,
+  "grounding_verified": true,
+  "all_hold": true
+ },
+ "fence_denials": [],
+ "quality": {
+  "extraction": {
+   "activities_found": 48,
+   "activities": 50,
+   "precision": "58/59",
+   "precision_one_to_one": "48/59",
+   "action_state_agreement": "40/48",
+   "stall_agreement": "36/48",
+   "stall_any_agreement": "42/48",
+   "stall_signals": {
+    "follow_up": {
+     "labelled": 8,
+     "extracted": 9,
+     "both": 8
+    },
+    "waiting": {
+     "labelled": 8,
+     "extracted": 3,
+     "both": 2
+    },
+    "correction": {
+     "labelled": 11,
+     "extracted": 7,
+     "both": 7
+    },
+    "rework": {
+     "labelled": 1,
+     "extracted": 1,
+     "both": 1
+    },
+    "escalation": {
+     "labelled": 1,
+     "extracted": 0,
+     "both": 0
+    }
+   },
+   "unadjudicated_low_meaning": 3,
+   "missed": [
+    "farmer-d/logistics/673#5",
+    "farmer-d/logistics/765#3"
+   ]
+  },
+  "end_to_end_published_signal_recall": "19/30",
+  "published_correct_any_evidence": "19/30",
+  "published_precision": "19/21 (21 activity-signal pairs + 0 on observations matching no label; unlabelled ones count as not correct)",
+  "published_counts": {
+   "claims": 22,
+   "activity_signal_pairs": 21,
+   "on_unlabelled_observations": 0,
+   "counted": 21,
+   "correct": 19,
+   "false_on_labelled_activities": 2
+  },
+  "citations": {
+   "checked": 40,
+   "valid": 40,
+   "invalid": [],
+   "all_valid": true
+  },
+  "freeze": {
+   "evidence_matches": true,
+   "negatives_match": true,
+   "labels_freeze": {
+    "freeze": "bench-v1 r89 / score-v6 / rules-v5",
+    "matches": true,
+    "differs": []
+   }
+  },
+  "by_signal": {
+   "follow_up": {
+    "labelled": 9,
+    "published_correct": 8,
+    "published_supported": 8,
+    "published_total": 9,
+    "published_false": 1,
+    "published_on_unlabelled_obs": 0
+   },
+   "waiting": {
+    "labelled": 8,
+    "published_correct": 2,
+    "published_supported": 2,
+    "published_total": 3,
+    "published_false": 1,
+    "published_on_unlabelled_obs": 0
+   },
+   "correction": {
+    "labelled": 11,
+    "published_correct": 8,
+    "published_supported": 8,
+    "published_total": 8,
+    "published_false": 0,
+    "published_on_unlabelled_obs": 0
+   },
+   "rework": {
+    "labelled": 1,
+    "published_correct": 1,
+    "published_supported": 1,
+    "published_total": 1,
+    "published_false": 0,
+    "published_on_unlabelled_obs": 0
+   },
+   "escalation": {
+    "labelled": 1,
+    "published_correct": 0,
+    "published_supported": 0,
+    "published_total": 0,
+    "published_false": 0,
+    "published_on_unlabelled_obs": 0
+   }
+  }
+ },
+ "quality_detail": {
+  "published_false": [
+   "farmer-d/logistics/670#2 waiting",
+   "farmer-d/logistics/673#2 follow_up"
+  ],
+  "negatives_published": [
+   "farmer-d/logistics/670#2 waiting"
+  ],
+  "categories": {
+   "published_supported": 19,
+   "published_other_passage": 0,
+   "correct_unsupported": 0,
+   "correct_rejected": 0,
+   "correct_unresolved": 0,
+   "correct_not_grounded": 0,
+   "signal_missed": 10,
+   "activity_missed": 1
+  }
+ },
+ "runtime": {
+  "extraction_wall_s": 188.7,
+  "grounding_wall_s": 32.9,
+  "extraction_sessions_s": [
+   187.7
+  ],
+  "grounding_sessions_s": [
+   32.1
+  ]
+ },
+ "tokens": {
+  "extraction": [
+   {
+    "input_tokens": 8,
+    "output_tokens": 49748,
+    "cache_creation_input_tokens": 92869,
+    "cache_read_input_tokens": 92212
+   }
+  ],
+  "grounding": [
+   {
+    "input_tokens": 6,
+    "output_tokens": 7197,
+    "cache_creation_input_tokens": 19439,
+    "cache_read_input_tokens": 24677
+   }
+  ],
+  "extraction_output_total": 49748,
+  "extraction_thinking_total": 35727
+ },
+ "breakdown": [],
+ "batches": [
+  {
+   "batch": "b001",
+   "attempt": "b001-1035c6bd-9",
+   "status": "verified",
+   "errors": [],
+   "quotes": {
+    "checked": 59,
+    "verified": 59,
+    "rejected": 0
+   },
+   "model": "confirmed",
+   "fence": {
+    "records": 3,
+    "allowed_outside": [],
+    "denied": [],
+    "held": true
+   },
+   "archived": "data\\extract\\bench_runs\\V2_b001.json"
+  }
+ ],
+ "grounding": [
+  {
+   "batch": "b001",
+   "status": "verified",
+   "claims": 22,
+   "outcomes": {
+    "published": 22,
+    "unsupported": 0,
+    "unresolved": 0,
+    "rejected": 0
+   },
+   "model": "confirmed",
+   "fence": {
+    "records": 2,
+    "allowed_outside": [],
+    "denied": [],
+    "held": true
+   },
+   "note": null
+  }
+ ],
+ "scored_run": "data\\extract\\bench_runs\\V2_grounded.json"
+}

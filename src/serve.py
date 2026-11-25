@@ -160,10 +160,12 @@ def create_app(slice_name: str = "dev", root: Path = ROOT) -> Flask:
                         f"<td class=num>{claim_link(d, c['events'])}</td><td class=num>{o['emails']}</td><td class=num>{hrs}</td>"
                         f"<td class=num>{money}{rng}</td><td>{escape(o['confidence'])}</td>"
                         f"<td>{_artifact_link(o, 'draft')}</td></tr>")
+        total_range = (f"<div class=muted>range {claim_link(d, 'total_low')} to {claim_link(d, 'total_high')} at the low and high "
+                       f"minutes assumptions</div>" if "total_low" in d["claims"] and "total_high" in d["claims"] else "")
         body = (f"<h1>Where the time goes</h1><p class=muted>Recurring processes found in the email, ranked by estimated "
                 f"monthly savings at a blended $85/hour.</p><div class=hero>"
                 f"<div class=card><div class=label>Running total (events counted once)</div><div class=big>"
-                f"{claim_link(d, 'total')}</div><div class=muted>per month, estimated</div></div>"
+                f"{claim_link(d, 'total')}</div><div class=muted>per month, central estimate</div>{total_range}</div>"
                 f"<div class=card><div class=label>Opportunities with a rate</div><div class=big>{len(scored)}</div>"
                 f"<div class=muted>of {len(d['opportunities'])} processes</div></div>"
                 f"<div class=card><div class=label>Messages read</div><div class=big><a href='/coverage'>{cov['read']}/"
@@ -184,13 +186,18 @@ def create_app(slice_name: str = "dev", root: Path = ROOT) -> Flask:
         mn = o["minutes_per_event"]
         chain = "".join(f"<li>{escape(d['claims'][c]['label'])}: {claim_link(d, c)} {kind(d['claims'][c]['kind'])}</li>"
                         for c in o["claims"].values())
+        dc = d["claims"].get(o["claims"].get("dollars", ""))
+        est = (f"<p>Estimated savings: <strong>{escape(dc['display'])}</strong> per month (central estimate, base minutes); range "
+               f"{escape(_money(dc['low']))} to {escape(_money(dc['high']))} at the low and high minutes.</p>"
+               if dc and dc.get("low") is not None and dc.get("high") is not None else "")
         body = (f"<p><a href='/'>← Opportunities</a></p><h1>{escape(o['name'])}</h1><p>{escape(o['description'])}</p>"
                 f"<div class=grid2><div class=card><div class=label>How it works today</div><p><strong>Trigger:</strong> "
                 f"{escape(o['trigger'])}<br><strong>Output:</strong> {escape(o['output'])}<br><strong>Roles:</strong> "
                 f"{escape(', '.join(o['roles']))}<br><strong>Mailboxes:</strong> {escape(', '.join(o['mailboxes']))}</p></div>"
                 f"<div class=card><div class=label>Automation</div><p>{escape(o['automation']['idea'])}</p><p class=muted>"
                 f"{escape(o['automation']['why'])}</p>{('<p>' + _artifact_link(o, 'Open the drafted ' + o['artifact']['artifact_type'] + ' →') + '</p>') if o.get('artifact') else ''}</div></div>"
-                f"<h2>The numbers</h2><ul>{chain}</ul><p class=muted>Minutes saved per event are an <strong>assumption</strong> "
+                f"<h2>The numbers</h2>{est}"
+                f"<ul>{chain}</ul><p class=muted>Minutes saved per event are an <strong>assumption</strong> "
                 f"({mn['low']}–{mn['high']} min, base {mn['base']}): {escape(mn['rationale'])}</p>"
                 f"{'<p class=muted>' + escape(o.get('why', '')) + '</p>' if o.get('why') else ''}"
                 f"<h2>Events ({len(evs)})</h2><table><tr><th>Event</th><th>Date</th><th>Messages</th><th>Stall signals</th></tr>{ev_rows}</table>")
@@ -302,6 +309,9 @@ def create_app(slice_name: str = "dev", root: Path = ROOT) -> Flask:
                 "<li><strong>Counted</strong>: exact code over observed items (events, months observed, events per month).</li>"
                 "<li><strong>Assumption</strong>: minutes saved per event (proposed with a reason and a range) and the $85/hour rate."
                 "</li><li><strong>Estimated</strong>: hours and dollars, a formula over counted values and assumptions.</li></ul>"
+                "<p>Dollar figures are a <strong>central estimate</strong> (the base minutes per event) with a <strong>range</strong> from the "
+                "low and high minutes proposed with a reason. The range varies only that assumption: the events counted and the $85/hour "
+                "rate are not varied, and no other bound is invented.</p>"
                 "<p>Events: one per process per thread; copies merged at ingest; a quoted text seen in several threads counts once. "
                 "Rates are per month observed in the mailboxes where the events were seen; they are not company-wide facts. "
                 "Waiting time is never counted as work time. Missing replies in a partial archive are never read as work not done.</p>")

@@ -1,0 +1,62 @@
+{
+ "at": "2026-11-24T03:42:07+00:00",
+ "part": "s001",
+ "of": 4,
+ "observations": 2433,
+ "seed_errors": [
+  "coverage: only 83 of 2433 observations count toward a recurring process, the floor is 365 (15 percent): assign every observation that belongs to a recurring process of two or more observations",
+  "P33: observation b009-o35 is already in P25",
+  "coverage: only 158 of 2433 observations count toward a recurring process, the floor is 365 (15 percent): assign every observation that belongs to a recurring process of two or more observations"
+ ],
+ "max_attempts": 1,
+ "status": "verified",
+ "processes": 31,
+ "coverage": {
+  "total": 2433,
+  "assigned_raw": 482,
+  "counted": 482,
+  "share": 0.1981,
+  "floor_share": 0.15,
+  "floor_count": 365,
+  "exempt": false,
+  "catch_all_processes": []
+ },
+ "errors": [],
+ "flags": 3,
+ "model": "confirmed",
+ "wall_s": 149.6,
+ "attempt_log": {
+  "attempt": "s001-a478408c-1",
+  "status": "verified",
+  "seconds": 149.6,
+  "processes": 31,
+  "errors": [],
+  "n_errors": 0,
+  "coverage": {
+   "total": 2433,
+   "assigned_raw": 482,
+   "counted": 482,
+   "share": 0.1981,
+   "floor_share": 0.15,
+   "floor_count": 365,
+   "exempt": false,
+   "catch_all_processes": []
+  },
+  "fed_back_errors": 0,
+  "standing_kinds": 2,
+  "feedback_sha256": "5a0c36a0fc0e",
+  "model": "confirmed"
+ },
+ "usage": {
+  "output_tokens": 22803,
+  "tokens": {
+   "input_tokens": 12,
+   "output_tokens": 22803,
+   "cache_creation_input_tokens": 121124,
+   "cache_read_input_tokens": 172041
+  },
+  "wall_seconds": 149.6,
+  "subagent_tokens": 315980,
+  "notional_cost_usd": 0.7297541
+ }
+}

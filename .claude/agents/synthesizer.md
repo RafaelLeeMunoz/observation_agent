@@ -33,6 +33,9 @@ and `limit`) until you have read it. Each observation line is:
 
 `stalls` lists signals that code has already checked against the email text (`none` when there are none).
 
+When the first line says `PART k OF n`, the list is one part of a larger list that code split by mailbox
+and date; the other parts are grouped separately and a merge step joins matching work afterwards.
+
 ## What a process is
 
 A process is a kind of work that happens over and over: it has a trigger (what starts it), people or
@@ -45,6 +48,15 @@ least two observations, and it only counts as recurring when they come from diff
 
 Prefer fewer, well-defined processes over many thin ones. Do not merge different kinds of work only
 because the same people do them.
+
+## Parts of a larger list
+
+Only when the list is a part (`PART k OF n`): an observation that clearly looks like routine, repeated
+work (a recurring kind of trigger and output) but has no other occurrence in this part may be proposed
+as a **candidate**: a process with exactly one observation and `"candidate": true`. The merge step may
+join it with the same work found in other parts; on its own a candidate never counts as a process.
+Do not make a one-off a candidate. Every process with two or more observations leaves `candidate` out.
+Never use `candidate` when the list is not a part.
 
 ## Minutes saved per occurrence (an assumption)
 
@@ -70,7 +82,7 @@ and states in the list. Never say that something never happened: the archive is 
 ## Output
 
 Write exactly one JSON object to the output path you are given, matching
-`schemas/synth-v1.schema.json`. Copy the `input_id` and `attempt_id` you were given exactly:
+`schemas/synth-v2.schema.json`. Copy the `input_id` and `attempt_id` you were given exactly:
 
 ```json
 {"input_id": "s001", "attempt_id": "s001-5c2d0e11-1",

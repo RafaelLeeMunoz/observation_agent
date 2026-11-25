@@ -1,0 +1,165 @@
+{
+ "mailboxes": [
+  "giron-d"
+ ],
+ "a": {
+  "events": 280,
+  "processes": 43,
+  "scored": 39,
+  "dollars": "420.9044087978951312710196292"
+ },
+ "b": {
+  "events": 246,
+  "processes": 36,
+  "scored": 34,
+  "dollars": "318.6788087122597514839708383"
+ },
+ "threads_counted_a": 277,
+ "threads_counted_b": 241,
+ "thread_jaccard": 0.687,
+ "events_ratio_b_over_a": 0.879,
+ "dollars_ratio_b_over_a": 0.757,
+ "matched_processes": 30,
+ "processes_a_unmatched": 13,
+ "processes_b_unmatched": 6,
+ "share_of_a_events_in_matched_processes": 0.779,
+ "share_of_b_events_in_matched_processes": 0.841,
+ "matches": [
+  {
+   "a": "Move deals to the correct settlement book",
+   "b": "Flip Canadian-entity deals to FT-US/CAND-ERMS book",
+   "shared_threads": 23,
+   "jaccard": 0.79
+  },
+  {
+   "a": "Moving terminated counterparty deals to bankruptcy",
+   "b": "Move terminated counterparty deals to bankruptcy b",
+   "shared_threads": 18,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Deal price and rate corrections after invoice diff",
+   "b": "Sitara price and rate corrections on production de",
+   "shared_threads": 12,
+   "jaccard": 0.6
+  },
+  {
+   "a": "Analyst recruiting and interview scheduling",
+   "b": "Hiring and interview coordination",
+   "shared_threads": 11,
+   "jaccard": 0.85
+  },
+  {
+   "a": "New trading book and region setup requests",
+   "b": "New book, portfolio and counterparty setup request",
+   "shared_threads": 11,
+   "jaccard": 0.69
+  },
+  {
+   "a": "Monthly P&L top sheet and curve shift support for ",
+   "b": "Auditor P&L and deal support requests",
+   "shared_threads": 9,
+   "jaccard": 0.75
+  },
+  {
+   "a": "Daily position report approval and distribution",
+   "b": "Enovate DPR approval",
+   "shared_threads": 8,
+   "jaccard": 0.73
+  },
+  {
+   "a": "Nightly book officialization and post ID run",
+   "b": "Nightly book officialization and post-ID control",
+   "shared_threads": 8,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Performance review and development plan handling",
+   "b": "Performance review and feedback preparation",
+   "shared_threads": 8,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Counterparty credit report rebooking actions",
+   "b": "Counterparty rebooking after credit report",
+   "shared_threads": 7,
+   "jaccard": 0.88
+  },
+  {
+   "a": "Linking deal numbers across Tagg, Sitara, SCI and ",
+   "b": "Linking deals across Tagg, Sitara, SCI and EOL",
+   "shared_threads": 7,
+   "jaccard": 0.88
+  },
+  {
+   "a": "New curve and curve mapping setup",
+   "b": "Curve, pipe and zone mapping setup",
+   "shared_threads": 7,
+   "jaccard": 1.0
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   8,
+   "Forwarding the daily credit report"
+  ],
+  [
+   7,
+   "Netco book requests and system access setup"
+  ],
+  [
+   6,
+   "UBS transition onboarding tasks"
+  ],
+  [
+   6,
+   "P&L file and macro maintenance"
+  ],
+  [
+   6,
+   "Meeting scheduling and attendance"
+  ],
+  [
+   5,
+   "Training enrollment and approval"
+  ],
+  [
+   5,
+   "Month-end NSS and EMW accounting clean-up"
+  ],
+  [
+   5,
+   "EOL product and book mapping"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   16,
+   "Daily credit report forwarding"
+  ],
+  [
+   7,
+   "Deal ticket correction"
+  ],
+  [
+   7,
+   "Daily P&L explanations and top-level amounts"
+  ],
+  [
+   4,
+   "Origination report data entry and reporting"
+  ],
+  [
+   3,
+   "EOL bridge monitoring and fixes"
+  ],
+  [
+   2,
+   "Month-end close and flash completion"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "pass"
+ }
+}

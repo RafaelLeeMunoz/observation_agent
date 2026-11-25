@@ -1,0 +1,24 @@
+{
+ "ledger": {
+  "a": "2d172728ea747abb",
+  "b": "2d172728ea747abb",
+  "identical": true
+ },
+ "batch manifest": {
+  "a": "1120efb34058b2de",
+  "b": "1120efb34058b2de",
+  "identical": true
+ },
+ "ingest messages (key, thread, mailbox)": {
+  "a": [
+   "a5326a70a4e68e0b",
+   3240
+  ],
+  "b": [
+   "a5326a70a4e68e0b",
+   3240
+  ],
+  "identical": true
+ },
+ "verdict": "pass"
+}

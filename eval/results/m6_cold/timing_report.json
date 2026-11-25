@@ -1,0 +1,94 @@
+{
+ "slice": "all",
+ "started_at": "2026-11-24T11:38:14+00:00",
+ "end_to_end_wall_s": 16.0,
+ "pipeline_reported_s": 16.7,
+ "status": "ok",
+ "workers": 24,
+ "stages": {
+  "batch": {
+   "sessions": 1,
+   "first_start_s": 0.0,
+   "last_end_s": 1.0,
+   "wall_s": 1.0,
+   "summed_s": 1.0,
+   "longest_s": 1.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "score": {
+   "sessions": 1,
+   "first_start_s": 2.0,
+   "last_end_s": 2.0,
+   "wall_s": 0.0,
+   "summed_s": 0.0,
+   "longest_s": 0.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "act": {
+   "sessions": 1,
+   "first_start_s": 2.0,
+   "last_end_s": 16.0,
+   "wall_s": 14.0,
+   "summed_s": 14.0,
+   "longest_s": 14.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  }
+ },
+ "overlap": [
+  {
+   "stages": [
+    "act"
+   ],
+   "seconds": 14.0
+  },
+  {
+   "stages": [
+    "batch"
+   ],
+   "seconds": 1.0
+  },
+  {
+   "stages": [
+    "(idle: code between log lines)"
+   ],
+   "seconds": 1.0
+  }
+ ],
+ "synthesis_by_mailbox": [],
+ "dashboard_startup_s": 3.0,
+ "cache_hits": {
+  "extract": 81,
+  "ground": 81,
+  "synth": 8,
+  "merge": 1
+ },
+ "config": {
+  "extraction": [
+   {
+    "analytical_prompt": "ef76350212d3",
+    "run_note": "8e69f34ea063",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 81
+   }
+  ],
+  "grounding": [
+   {
+    "analytical_prompt": "a9bc0940b193",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 81
+   }
+  ]
+ },
+ "audit_trail_counts": {
+  "rejected_quotes": 21,
+  "signals_not_published": 174
+ }
+}

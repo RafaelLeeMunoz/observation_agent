@@ -1,0 +1,123 @@
+{
+ "launch_utc": "2026-11-24T16:50:55Z",
+ "segment_1": {
+  "start_utc": "16:50:55",
+  "stop_utc": "17:03:32",
+  "stop_reason": "fence_denial b081 (scratch file .tmp-unused)",
+  "seconds": 757.0
+ },
+ "resume_one_command": {
+  "start_utc": "17:04:44",
+  "end_utc": "17:13:13",
+  "wall_s": 509.5
+ },
+ "wall_clock_launch_to_final_s": 1338.0,
+ "active_run_s": 1266.5,
+ "stages": {
+  "extract": {
+   "sessions": 90,
+   "verified": 81,
+   "not_verified_attempts": 9,
+   "not_verified_statuses": {
+    "failed": 5,
+    "fence_denial": 1,
+    "terminated": 3
+   },
+   "first_start_s": 8.4,
+   "last_end_s": 1028.0,
+   "longest_s": 306.6,
+   "summed_s": 15008.1
+  },
+  "ground": {
+   "sessions": 84,
+   "verified": 81,
+   "not_verified_attempts": 3,
+   "not_verified_statuses": {
+    "terminated": 3
+   },
+   "first_start_s": 160.6,
+   "last_end_s": 1047.0,
+   "longest_s": 57.6,
+   "summed_s": 1953.7
+  },
+  "synth": {
+   "sessions": 10,
+   "verified": 7,
+   "not_verified_attempts": 3,
+   "not_verified_statuses": {
+    "failed": 3
+   },
+   "first_start_s": 1046.9,
+   "last_end_s": 1251.0,
+   "longest_s": 114.0,
+   "summed_s": 831.7
+  },
+  "merge": {
+   "sessions": 1,
+   "verified": 1,
+   "not_verified_attempts": 0,
+   "not_verified_statuses": {},
+   "first_start_s": 1250.5,
+   "last_end_s": 1308.0,
+   "longest_s": 57.5,
+   "summed_s": 57.5
+  }
+ },
+ "last_grounding_end_s": 1047.0,
+ "subagent_tokens_by_stage": {
+  "extract": 16968963,
+  "ground": 3513947,
+  "synth": 3229119,
+  "merge": 135716
+ },
+ "subagent_tokens_total": 23847745,
+ "cache_hits": 151,
+ "terminated_or_denied": [
+  [
+   "extract",
+   "b081",
+   "fence_denial"
+  ],
+  [
+   "ground",
+   "b080",
+   "terminated"
+  ],
+  [
+   "extract",
+   "b079",
+   "terminated"
+  ],
+  [
+   "extract",
+   "b074",
+   "terminated"
+  ],
+  [
+   "ground",
+   "b076",
+   "terminated"
+  ],
+  [
+   "extract",
+   "b077",
+   "terminated"
+  ],
+  [
+   "ground",
+   "b078",
+   "terminated"
+  ]
+ ],
+ "artifact_selection": {
+  "mode": "top_n",
+  "selected": [
+   "P30",
+   "P37",
+   "P33",
+   "P1",
+   "P17"
+  ],
+  "skipped": []
+ }
+}

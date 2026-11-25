@@ -1,0 +1,60 @@
+{
+ "one_command": "claude -p \"/observe all\" in a clean copy (tools/make_cold_copy.py), nothing cached, 24 workers",
+ "one_command_started_utc": "2026-11-24T11:16:52Z",
+ "one_command_ended_utc": "2026-11-24T11:37:22Z",
+ "one_command_wall_s": 1230.3,
+ "one_command_outcome": "ended before the artifact and report stages: the driver session ended its turn while the pipeline ran as a background task, and the pipeline was killed with it (workspace also untrusted: project permissions ignored)",
+ "pipeline_first_segment_s_to_score": 1195.7,
+ "resume_segment_s": 16.7,
+ "resume_act_s": null,
+ "pipeline_total_s_estimate": 1212.4,
+ "stages": {
+  "extract": {
+   "sessions": 85,
+   "verified": 81,
+   "first_start_s": 0.4,
+   "last_end_s": 847.1,
+   "longest_s": 379.1,
+   "summed_s": 15182.8
+  },
+  "ground": {
+   "sessions": 82,
+   "verified": 81,
+   "first_start_s": 142.4,
+   "last_end_s": 869.4,
+   "longest_s": 50.0,
+   "summed_s": 2013.3
+  },
+  "synth": {
+   "sessions": 11,
+   "verified": 8,
+   "first_start_s": 869.6,
+   "last_end_s": 1135.2,
+   "longest_s": 155.0,
+   "summed_s": 876.1
+  },
+  "merge": {
+   "sessions": 1,
+   "verified": 1,
+   "first_start_s": 1135.2,
+   "last_end_s": 1195.3,
+   "longest_s": 60.1,
+   "summed_s": 60.1
+  }
+ },
+ "last_extraction_end_s": 847.1,
+ "last_grounding_end_s": 869.4,
+ "tail_after_last_grounding_to_score_s": 326.3,
+ "peak_in_flight_sessions": 24,
+ "subagent_tokens_by_stage": {
+  "extract": 16760766,
+  "ground": 3623933,
+  "synth": 3207228,
+  "merge": 149106
+ },
+ "subagent_tokens_total": 23741033,
+ "synthesis_result_flags": {
+  "numbers_lint": 1
+ },
+ "meter": "5-hour 4% -> 62% from the start of the cold run to the end of the offline analysis that followed (includes this session's turns); weekly 28% -> 36%"
+}

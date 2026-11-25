@@ -1,0 +1,173 @@
+{
+ "mailboxes": [
+  "farmer-d"
+ ],
+ "a": {
+  "events": 509,
+  "processes": 55,
+  "scored": 51,
+  "dollars": "445.1297997955998665281106131"
+ },
+ "b": {
+  "events": 674,
+  "processes": 46,
+  "scored": 36,
+  "dollars": "501.8311591215569529020168806"
+ },
+ "threads_counted_a": 507,
+ "threads_counted_b": 658,
+ "thread_jaccard": 0.657,
+ "events_ratio_b_over_a": 1.324,
+ "dollars_ratio_b_over_a": 1.127,
+ "matched_processes": 26,
+ "processes_a_unmatched": 29,
+ "processes_b_unmatched": 20,
+ "share_of_a_events_in_matched_processes": 0.668,
+ "share_of_b_events_in_matched_processes": 0.694,
+ "matches": [
+  {
+   "a": "Extend or create a deal for meter flow with no dea",
+   "b": "Deal coverage for flow without a valid deal",
+   "shared_threads": 70,
+   "jaccard": 0.7
+  },
+  {
+   "a": "Customer nomination file intake",
+   "b": "Gas nomination and volume file intake",
+   "shared_threads": 42,
+   "jaccard": 0.58
+  },
+  {
+   "a": "Unbooked meter volume write-off or deal approval",
+   "b": "Unaccounted-for volume booking or write-off",
+   "shared_threads": 28,
+   "jaccard": 0.74
+  },
+  {
+   "a": "Absence coverage arrangements",
+   "b": "Absence and desk coverage hand-off",
+   "shared_threads": 25,
+   "jaccard": 0.76
+  },
+  {
+   "a": "Deal price and data correction",
+   "b": "Invoice and payment matching to deals",
+   "shared_threads": 23,
+   "jaccard": 0.35
+  },
+  {
+   "a": "Monthly hours and activity survey",
+   "b": "Activity and hours surveys",
+   "shared_threads": 17,
+   "jaccard": 0.85
+  },
+  {
+   "a": "Nomination revision after volume change",
+   "b": "Intramonth nomination revision",
+   "shared_threads": 14,
+   "jaccard": 0.5
+  },
+  {
+   "a": "Meter shut-in and pigging notices",
+   "b": "Pipeline and meter outage notices",
+   "shared_threads": 10,
+   "jaccard": 0.37
+  },
+  {
+   "a": "Monthly cost allocation review",
+   "b": "Cost allocation and expense review",
+   "shared_threads": 9,
+   "jaccard": 0.64
+  },
+  {
+   "a": "HL&P flow number reporting",
+   "b": "Customer volume reporting",
+   "shared_threads": 9,
+   "jaccard": 0.75
+  },
+  {
+   "a": "Spot or new-well deal ticket setup in Sitara",
+   "b": "Entering deal tickets for new wellhead and spot ga",
+   "shared_threads": 9,
+   "jaccard": 0.69
+  },
+  {
+   "a": "Performance review inputs",
+   "b": "Performance review preparation",
+   "shared_threads": 8,
+   "jaccard": 0.89
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   17,
+   "Volume and allocation variance clearing"
+  ],
+  [
+   13,
+   "Meter volume reallocation"
+  ],
+  [
+   11,
+   "Imbalance tracking and payback"
+  ],
+  [
+   9,
+   "Outage and maintenance nomination adjustments"
+  ],
+  [
+   9,
+   "Josey Ranch nomination setup revisions"
+  ],
+  [
+   8,
+   "Feedback and bridgeback error resolution"
+  ],
+  [
+   7,
+   "UA4 unallocated gas resolution"
+  ],
+  [
+   7,
+   "Monthly plant gas nomination"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   48,
+   "Deal ticket term correction"
+  ],
+  [
+   40,
+   "Volume and imbalance reconciliation"
+  ],
+  [
+   36,
+   "Meter volume reallocation"
+  ],
+  [
+   24,
+   "Pipeline cut and off-hours change handling"
+  ],
+  [
+   13,
+   "Deal pathing in the scheduling system"
+  ],
+  [
+   7,
+   "Meter setup and record maintenance"
+  ],
+  [
+   6,
+   "Contract term extension or termination"
+  ],
+  [
+   4,
+   "Transport arrangement and path setup"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "fail",
+  "R6 >= 70 percent of events in matched processes (both runs)": "fail"
+ }
+}

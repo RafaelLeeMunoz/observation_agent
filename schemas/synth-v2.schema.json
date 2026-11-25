@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "synth-v2",
+  "title": "Synthesizer output: recurring processes and minutes-saved assumptions (v2: candidates in parts)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "input_id",
+    "attempt_id",
+    "processes"
+  ],
+  "properties": {
+    "input_id": {
+      "type": "string"
+    },
+    "attempt_id": {
+      "type": "string"
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "process_id",
+          "name",
+          "description",
+          "trigger",
+          "output",
+          "roles",
+          "obs_ids",
+          "automation",
+          "minutes_per_event"
+        ],
+        "properties": {
+          "process_id": {
+            "type": "string",
+            "description": "P1, P2, ..."
+          },
+          "name": {
+            "type": "string",
+            "description": "A short name for the recurring work, no numbers."
+          },
+          "description": {
+            "type": "string",
+            "description": "One or two sentences: what the work is and where it stalls, no numbers."
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "output": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "obs_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "automation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "idea",
+              "artifact_type",
+              "why"
+            ],
+            "properties": {
+              "idea": {
+                "type": "string"
+              },
+              "artifact_type": {
+                "enum": [
+                  "sop",
+                  "checklist",
+                  "email",
+                  "template"
+                ]
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          },
+          "minutes_per_event": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "low",
+              "base",
+              "high",
+              "rationale",
+              "basis_obs_ids"
+            ],
+            "properties": {
+              "low": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "base": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "high": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "basis_obs_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "candidate": {
+            "type": "boolean",
+            "description": "Only in a part of a larger list: true for a single observation that looks like routine work, for the merge to join with other parts; never a process on its own."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+ "mailboxes": null,
+ "a": {
+  "events": 954,
+  "processes": 109,
+  "scored": 97,
+  "dollars": "1202.884430645481995355108374"
+ },
+ "b": {
+  "events": 1301,
+  "processes": 116,
+  "scored": 96,
+  "dollars": "1355.295307165010653220197903"
+ },
+ "threads_counted_a": 943,
+ "threads_counted_b": 1261,
+ "thread_jaccard": 0.634,
+ "events_ratio_b_over_a": 1.364,
+ "dollars_ratio_b_over_a": 1.127,
+ "matched_processes": 69,
+ "processes_a_unmatched": 40,
+ "processes_b_unmatched": 47,
+ "share_of_a_events_in_matched_processes": 0.703,
+ "share_of_b_events_in_matched_processes": 0.65,
+ "matches": [
+  {
+   "a": "Extend or create a deal for meter flow with no dea",
+   "b": "Deal coverage for flow without a valid deal",
+   "shared_threads": 70,
+   "jaccard": 0.7
+  },
+  {
+   "a": "Customer nomination file intake",
+   "b": "Gas nomination and volume file intake",
+   "shared_threads": 42,
+   "jaccard": 0.56
+  },
+  {
+   "a": "Absence coverage arrangements",
+   "b": "Absence and desk coverage hand-off",
+   "shared_threads": 28,
+   "jaccard": 0.76
+  },
+  {
+   "a": "Unbooked meter volume write-off or deal approval",
+   "b": "Unaccounted-for volume booking or write-off",
+   "shared_threads": 28,
+   "jaccard": 0.74
+  },
+  {
+   "a": "Flip deals to the correct book",
+   "b": "Deal flips to the settlement book",
+   "shared_threads": 23,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Performance review inputs",
+   "b": "Performance review preparation",
+   "shared_threads": 18,
+   "jaccard": 0.69
+  },
+  {
+   "a": "Monthly hours and activity survey",
+   "b": "Activity and hours surveys",
+   "shared_threads": 17,
+   "jaccard": 0.85
+  },
+  {
+   "a": "Weekly California capacity and price report",
+   "b": "Weekly California capacity report",
+   "shared_threads": 16,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Hiring and candidate handling",
+   "b": "Hiring and interview scheduling",
+   "shared_threads": 16,
+   "jaccard": 0.57
+  },
+  {
+   "a": "Meeting scheduling",
+   "b": "Meeting scheduling and rooms",
+   "shared_threads": 15,
+   "jaccard": 0.35
+  },
+  {
+   "a": "Curve and mapping setup",
+   "b": "Curve, product and location mapping",
+   "shared_threads": 15,
+   "jaccard": 0.83
+  },
+  {
+   "a": "New book, portfolio and counterparty setup request",
+   "b": "Trading book setup and administration",
+   "shared_threads": 14,
+   "jaccard": 0.58
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   41,
+   "Deal price and data correction"
+  ],
+  [
+   18,
+   "System access requests"
+  ],
+  [
+   17,
+   "Volume and allocation variance clearing"
+  ],
+  [
+   17,
+   "Daily credit report forwarding"
+  ],
+  [
+   13,
+   "Meter volume reallocation"
+  ],
+  [
+   11,
+   "Imbalance tracking and payback"
+  ],
+  [
+   9,
+   "Real-time group meeting scheduling"
+  ],
+  [
+   9,
+   "Outage and maintenance nomination adjustments"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   69,
+   "Deal ticket term correction"
+  ],
+  [
+   59,
+   "Invoice and payment matching to deals"
+  ],
+  [
+   46,
+   "Volume and imbalance reconciliation"
+  ],
+  [
+   36,
+   "Meter volume reallocation"
+  ],
+  [
+   28,
+   "System and access requests"
+  ],
+  [
+   24,
+   "Pipeline cut and off-hours change handling"
+  ],
+  [
+   13,
+   "Desk equipment and IT support requests"
+  ],
+  [
+   13,
+   "Deal pathing in the scheduling system"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "fail",
+  "R6 >= 70 percent of events in matched processes (both runs)": "fail"
+ }
+}

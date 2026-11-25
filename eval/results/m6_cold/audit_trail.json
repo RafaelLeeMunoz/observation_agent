@@ -1,0 +1,1588 @@
+{
+ "rejected_quotes": {
+  "records": 21,
+  "by_reason": {
+   "not found in the raw file": 4,
+   "ambiguous": 15,
+   "too short (under 25 characters)": 2
+  },
+  "by_batch": {
+   "b007": 2,
+   "b002": 1,
+   "b013": 1,
+   "b028": 1,
+   "b040": 1,
+   "b044": 5,
+   "b031": 1,
+   "b048": 2,
+   "b063": 1,
+   "b075": 1,
+   "b077": 1,
+   "b074": 1,
+   "b066": 1,
+   "b076": 1,
+   "b080": 1
+  },
+  "items": [
+   {
+    "batch": "b007",
+    "obs_id": "b007-o42",
+    "msg_key": "farmer-d/logistics/884",
+    "reason": "not found in the raw file",
+    "quote": "The technician was able to control the pressure through the south valve while"
+   },
+   {
+    "batch": "b007",
+    "obs_id": "b007-o81",
+    "msg_key": "farmer-d/logistics/907",
+    "reason": "ambiguous: occurs in 2 different regions ['block:1', 'header']",
+    "quote": "Kn changes upstream on the 60 K to 92155 for the 5,000 and we bring"
+   },
+   {
+    "batch": "b002",
+    "obs_id": "b002-o10",
+    "msg_key": "farmer-d/logistics/627",
+    "reason": "too short (under 25 characters)",
+    "quote": "TECO TAP                 60.000/ ENRON"
+   },
+   {
+    "batch": "b013",
+    "obs_id": "b013-o81",
+    "msg_key": "farmer-d/logistics/3216",
+    "reason": "ambiguous: occurs in 2 different regions ['block:3', 'block:4']",
+    "quote": "The accomplishments by 6/19 is for Directors and above - to Sally."
+   },
+   {
+    "batch": "b028",
+    "obs_id": "b028-o29",
+    "msg_key": "farmer-d/logistics/1539",
+    "reason": "too short (under 25 characters)",
+    "quote": "Will resend the rest"
+   },
+   {
+    "batch": "b040",
+    "obs_id": "b040-o58",
+    "msg_key": "farmer-d/logistics/2123",
+    "reason": "ambiguous: occurs in 2 different regions ['block:0', 'header']",
+    "quote": "Subject: Re: Deal 338634 Meter 985077"
+   },
+   {
+    "batch": "b044",
+    "obs_id": "b044-o13",
+    "msg_key": "giron-d/sent/62",
+    "reason": "ambiguous: occurs in 2 different regions ['block:1', 'header']",
+    "quote": "Subject: Credit Report--4/16/01"
+   },
+   {
+    "batch": "b044",
+    "obs_id": "b044-o22",
+    "msg_key": "giron-d/sent/61",
+    "reason": "ambiguous: occurs in 2 different regions ['block:1', 'header']",
+    "quote": "Subject: Credit Report -4/18/01"
+   },
+   {
+    "batch": "b044",
+    "obs_id": "b044-o28",
+    "msg_key": "giron-d/sent/59",
+    "reason": "ambiguous: occurs in 2 different regions ['block:1', 'header']",
+    "quote": "Subject: Credit Report--4/19/01"
+   },
+   {
+    "batch": "b044",
+    "obs_id": "b044-o36",
+    "msg_key": "giron-d/sent/53",
+    "reason": "ambiguous: occurs in 2 different regions ['block:1', 'header']",
+    "quote": "Subject: Credit Report--4/20/01"
+   },
+   {
+    "batch": "b044",
+    "obs_id": "b044-o37",
+    "msg_key": "giron-d/sent/50",
+    "reason": "ambiguous: occurs in 2 different regions ['block:1', 'header']",
+    "quote": "Subject: Credit Report--4/23/01"
+   },
+   {
+    "batch": "b031",
+    "obs_id": "b031-o50",
+    "msg_key": "farmer-d/logistics/1981",
+    "reason": "not found in the raw file",
+    "quote": "Volume Mgt is trying to clear up these issues."
+   },
+   {
+    "batch": "b048",
+    "obs_id": "b048-o28",
+    "msg_key": "williams-w3/sent_items/477",
+    "reason": "ambiguous: occurs in 2 different regions ['block:0', 'header']",
+    "quote": "Briefing notes for Dr. Lay's visit to DC tonite/tomorrow"
+   },
+   {
+    "batch": "b048",
+    "obs_id": "b048-o51",
+    "msg_key": "farmer-d/logistics/105",
+    "reason": "ambiguous: occurs in 2 different regions ['block:0', 'block:2']",
+    "quote": "Can you help with this one? I don't reflect any 05/01 sales"
+   },
+   {
+    "batch": "b063",
+    "obs_id": "b063-o26",
+    "msg_key": "giron-d/inbox/444",
+    "reason": "ambiguous: occurs in 2 different regions ['block:0', 'header']",
+    "quote": "GIRON/DARRON 13NOV HOU to DAL"
+   },
+   {
+    "batch": "b075",
+    "obs_id": "b075-o5",
+    "msg_key": "williams-w3/inbox/85",
+    "reason": "ambiguous: occurs in 2 different regions ['block:1', 'header']",
+    "quote": "Mtg. to discuss assignment of customers."
+   },
+   {
+    "batch": "b077",
+    "obs_id": "b077-o60",
+    "msg_key": "williams-w3/inbox/36",
+    "reason": "not found in the raw file",
+    "quote": "the ISO will seek confidential treatment for such information"
+   },
+   {
+    "batch": "b074",
+    "obs_id": "b074-o33",
+    "msg_key": "giron-d/inbox/68",
+    "reason": "not found in the raw file",
+    "quote": "tify and within SAP once decisions are determined."
+   },
+   {
+    "batch": "b066",
+    "obs_id": "b066-o34",
+    "msg_key": "giron-d/inbox/278",
+    "reason": "ambiguous: occurs in 2 different regions ['block:0', 'header']",
+    "quote": "FW: Immediate Suspension of Gas Deliveries"
+   },
+   {
+    "batch": "b076",
+    "obs_id": "b076-o11",
+    "msg_key": "lokay-m/sent_items/75",
+    "reason": "ambiguous: occurs in 2 different regions ['block:0', 'header']",
+    "quote": "Time Reports Due Today!!!"
+   },
+   {
+    "batch": "b080",
+    "obs_id": "b080-o27",
+    "msg_key": "lokay-m/sent_items/142",
+    "reason": "ambiguous: occurs in 2 different regions ['block:0', 'header']",
+    "quote": "Time Reports Due Tomorrow"
+   }
+  ]
+ },
+ "signals_not_published": {
+  "count": 174,
+  "by_outcome": {
+   "unresolved": 92,
+   "unsupported": 82
+  },
+  "items": [
+   {
+    "batch": "b001",
+    "obs_id": "b001-o51",
+    "msg_key": "farmer-d/logistics/604",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the counterparty says the deals are booked wrong, but this is an unverified claim and the sender only hopes they are fine"
+   },
+   {
+    "batch": "b001",
+    "obs_id": "b001-o73",
+    "msg_key": "farmer-d/logistics/621",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "flow has no OSS record, which may be a missing entry, but the check found measurement support; a correction is not clearly shown"
+   },
+   {
+    "batch": "b002",
+    "obs_id": "b002-o20",
+    "msg_key": "farmer-d/logistics/640",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the transaction is not on the point-specific contracts and has no rate; this reads as a coverage gap more than an identified error"
+   },
+   {
+    "batch": "b002",
+    "obs_id": "b002-o37",
+    "msg_key": "farmer-d/logistics/648",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the default is to leave the accounts alone; the sender does not wait on a reply before acting"
+   },
+   {
+    "batch": "b002",
+    "obs_id": "b002-o47",
+    "msg_key": "farmer-d/logistics/650",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the sender notes unexplained 'weird changes' in the spreadsheet but does not say what is wrong"
+   },
+   {
+    "batch": "b002",
+    "obs_id": "b002-o58",
+    "msg_key": "farmer-d/logistics/657",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the sheet was already sent ('Here's the sheet'), so the 'once finalized' condition no longer holds"
+   },
+   {
+    "batch": "b002",
+    "obs_id": "b002-o61",
+    "msg_key": "farmer-d/logistics/659",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Valero has accepted the proposal (top message), so the agreement the work waited on has arrived"
+   },
+   {
+    "batch": "b002",
+    "obs_id": "b002-o62",
+    "msg_key": "farmer-d/logistics/659",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the buy-back rule itself states no wait; Valero's acceptance is reported and deal setup follows"
+   },
+   {
+    "batch": "b004",
+    "obs_id": "b004-o8",
+    "msg_key": "farmer-d/logistics/729",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the plan is the requested deliverable; nothing says its next step waits on someone or something"
+   },
+   {
+    "batch": "b004",
+    "obs_id": "b004-o20",
+    "msg_key": "farmer-d/logistics/739",
+    "signal": "follow_up",
+    "outcome": "unresolved",
+    "reason": "the status chase covers UA4 generally; it is not clear it chases the park-and-ride booking question specifically"
+   },
+   {
+    "batch": "b005",
+    "obs_id": "b005-o4",
+    "msg_key": "farmer-d/logistics/770",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the sender cannot create the arrangement because no deal exists for days 1-20; a missing prerequisite, not an explicit wait for a response"
+   },
+   {
+    "batch": "b005",
+    "obs_id": "b005-o38",
+    "msg_key": "farmer-d/logistics/796",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the meter is said not to be disconnected, correcting an earlier status claim, but the zeroing instruction itself is not shown as fixing a wrong volume"
+   },
+   {
+    "batch": "b006",
+    "obs_id": "b006-o14",
+    "msg_key": "farmer-d/logistics/824",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Rita only gives available dates and asks to be told; nothing says the scheduling waits on a condition or a person's input"
+   },
+   {
+    "batch": "b006",
+    "obs_id": "b006-o43",
+    "msg_key": "farmer-d/logistics/838",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "The transport contract is missing from POPS and Path Manager; this is a gap, and it is unclear whether it counts as an erroneous entry or routing"
+   },
+   {
+    "batch": "b006",
+    "obs_id": "b006-o53",
+    "msg_key": "farmer-d/logistics/846",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "Jody says the first answer was right and Daren's data was what was needed; no error in the result is identified or corrected"
+   },
+   {
+    "batch": "b007",
+    "obs_id": "b007-o12",
+    "msg_key": "farmer-d/logistics/866",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a volume change request; the compressor outage duration is not a wait on anyone's response"
+   },
+   {
+    "batch": "b007",
+    "obs_id": "b007-o13",
+    "msg_key": "farmer-d/logistics/866",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the change is proposed and the sender says 'let me know', a request for a decision that is not clearly a hold on the change"
+   },
+   {
+    "batch": "b007",
+    "obs_id": "b007-o14",
+    "msg_key": "farmer-d/logistics/866",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the increase is proposed and the sender says 'let me know', a request for a decision that is not clearly a hold on the change"
+   },
+   {
+    "batch": "b008",
+    "obs_id": "b008-o16",
+    "msg_key": "farmer-d/logistics/923",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a plain request to fill out and return the survey; nothing says the next step waits on anyone"
+   },
+   {
+    "batch": "b008",
+    "obs_id": "b008-o28",
+    "msg_key": "farmer-d/logistics/936",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a future investigation and report; no explicit waiting on an input the next step needs"
+   },
+   {
+    "batch": "b008",
+    "obs_id": "b008-o45",
+    "msg_key": "farmer-d/logistics/932",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "says Ken Seaman should be correct; no error is identified for him"
+   },
+   {
+    "batch": "b008",
+    "obs_id": "b008-o55",
+    "msg_key": "farmer-d/logistics/935",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the fix is pending with programmers, but the time-frame request itself is a plain request to Cheryl"
+   },
+   {
+    "batch": "b009",
+    "obs_id": "b009-o11",
+    "msg_key": "farmer-d/logistics/963",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "only a request to be told the findings soon; nothing says the work is blocked on anyone"
+   },
+   {
+    "batch": "b009",
+    "obs_id": "b009-o12",
+    "msg_key": "farmer-d/logistics/989",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "cash collection is conditioned on proving the deals, but the text does not clearly say this work is waiting on a reply"
+   },
+   {
+    "batch": "b009",
+    "obs_id": "b009-o32",
+    "msg_key": "farmer-d/logistics/972",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "a 6,000 variance is named as an open discrepancy, but nothing says which figure is wrong or asks for a correction"
+   },
+   {
+    "batch": "b009",
+    "obs_id": "b009-o72",
+    "msg_key": "farmer-d/logistics/1000",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the OBA is due by mail from Ray Calles, but the text does not say the work is blocked on it"
+   },
+   {
+    "batch": "b010",
+    "obs_id": "b010-o10",
+    "msg_key": "farmer-d/logistics/1009",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "deal 152638 covers only the 21st-31st, which may be an inconsistency, but the text never calls it an error or asks for a correction"
+   },
+   {
+    "batch": "b010",
+    "obs_id": "b010-o13",
+    "msg_key": "farmer-d/logistics/1011",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "escalation to Ellis Sturn is conditional on the meeting not getting results; it reads as a contingency plan, not clearly a wait"
+   },
+   {
+    "batch": "b010",
+    "obs_id": "b010-o58",
+    "msg_key": "farmer-d/logistics/1039",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Stacey's notice to Sherlyn depends on research Stacey does herself; no external input or response is awaited"
+   },
+   {
+    "batch": "b011",
+    "obs_id": "b011-o8",
+    "msg_key": "farmer-d/logistics/1060",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "Lauri notes the Sitara deal ticket looks missing after 12/99, but whether the gas should flow is only asked, not shown as a corrected error."
+   },
+   {
+    "batch": "b011",
+    "obs_id": "b011-o26",
+    "msg_key": "farmer-d/logistics/1075",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "The reclass is a planned future step; the sender only says he will report back once he finalizes it, with no external input named."
+   },
+   {
+    "batch": "b012",
+    "obs_id": "b012-o17",
+    "msg_key": "farmer-d/logistics/1113",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "A call is out to Jo Williams for meeting info, but the attendance step is not explicitly conditioned on it"
+   },
+   {
+    "batch": "b012",
+    "obs_id": "b012-o28",
+    "msg_key": "farmer-d/logistics/1117",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Later message says stop trying the system and email reviewers to Brenda instead; the wait is superseded by new facts"
+   },
+   {
+    "batch": "b014",
+    "obs_id": "b014-o17",
+    "msg_key": "giron-d/sent/769",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a prerequisite step in the process; nothing says the work is waiting on a response, input or approval"
+   },
+   {
+    "batch": "b014",
+    "obs_id": "b014-o18",
+    "msg_key": "farmer-d/logistics/1206",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "only a request for the reader's view; no statement that the work is held until it arrives"
+   },
+   {
+    "batch": "b015",
+    "obs_id": "b015-o25",
+    "msg_key": "farmer-d/logistics/1626",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the sender is reluctant to open the issue; nothing says the decision waits on someone or something"
+   },
+   {
+    "batch": "b015",
+    "obs_id": "b015-o47",
+    "msg_key": "giron-d/sent/758",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a request for comments from risk experts; no sentence says the next step is held until that feedback arrives"
+   },
+   {
+    "batch": "b015",
+    "obs_id": "b015-o73",
+    "msg_key": "farmer-d/logistics/1251",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a plain need for a list; no sentence says the work is held until someone supplies it"
+   },
+   {
+    "batch": "b015",
+    "obs_id": "b015-o81",
+    "msg_key": "farmer-d/logistics/1253",
+    "signal": "rework",
+    "outcome": "unresolved",
+    "reason": "getting the spreadsheet running again suggests a restart after it lapsed, but no sentence says it must be rebuilt or redone"
+   },
+   {
+    "batch": "b017",
+    "obs_id": "b017-o4",
+    "msg_key": "farmer-d/logistics/1299",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "a volume change was made on an EOL deal without notice and the sender asks for a check; the text does not say the volume is wrong"
+   },
+   {
+    "batch": "b017",
+    "obs_id": "b017-o16",
+    "msg_key": "farmer-d/logistics/1304",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the text makes the invoice depend on the ticket, but nothing says the ticket's own setup waits on a response or input"
+   },
+   {
+    "batch": "b017",
+    "obs_id": "b017-o36",
+    "msg_key": "giron-d/sent/721",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Karie asks to be told when the correction is finished, a request for an update; nothing says the correction itself waits on anyone"
+   },
+   {
+    "batch": "b017",
+    "obs_id": "b017-o40",
+    "msg_key": "farmer-d/logistics/1313",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the flashed fuel estimate differs from actuals, but the text does not clearly call the estimate an error"
+   },
+   {
+    "batch": "b017",
+    "obs_id": "b017-o42",
+    "msg_key": "farmer-d/logistics/1313",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "asks where the projection was missed, but it is not clear that the projection is an identified error rather than a forecast variance"
+   },
+   {
+    "batch": "b018",
+    "obs_id": "b018-o36",
+    "msg_key": "giron-d/sent/703",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "a $20K P&L entry was not added back and is unexplained, but the text does not clearly say it is an error to be corrected, and the state is unclear"
+   },
+   {
+    "batch": "b019",
+    "obs_id": "b019-o17",
+    "msg_key": "farmer-d/logistics/1356",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Gary's approval is conditioned on answers to his questions, but the sentence is a request for answers; it is unclear whether the answering work itself is waitin"
+   },
+   {
+    "batch": "b019",
+    "obs_id": "b019-o51",
+    "msg_key": "giron-d/sent/681",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Darron needs to ask Steve questions and the walkthrough is blocked by his own questions, but no sentence says the work waits for Steve's reply."
+   },
+   {
+    "batch": "b019",
+    "obs_id": "b019-o55",
+    "msg_key": "giron-d/sent/680",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "The text says the difference continues until Darron handles it; no sentence says the work waits on a response, input or approval."
+   },
+   {
+    "batch": "b019",
+    "obs_id": "b019-o65",
+    "msg_key": "farmer-d/logistics/1374",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "The sender doubts that placing the meter volumes on the Strangers Agreement is correct, but does not clearly identify an error."
+   },
+   {
+    "batch": "b021",
+    "obs_id": "b021-o25",
+    "msg_key": "farmer-d/logistics/1409",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the review is sequenced after the sender's own data entry; it reads as a plain plan, not clearly a wait on an input or approval"
+   },
+   {
+    "batch": "b021",
+    "obs_id": "b021-o52",
+    "msg_key": "giron-d/sent/643",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the sender states the monetization end date and asks for confirmation, but does not clearly say an entry is wrong"
+   },
+   {
+    "batch": "b022",
+    "obs_id": "b022-o10",
+    "msg_key": "farmer-d/logistics/1419",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the option to keep the meter whole at 20M is stated as a choice; nothing says the decision waits on anyone or anything"
+   },
+   {
+    "batch": "b022",
+    "obs_id": "b022-o20",
+    "msg_key": "farmer-d/logistics/1428",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "flow exceeds the nom by 68.817 and the nom increase is asked about, but a nom-versus-flow gap may be a normal imbalance rather than an error"
+   },
+   {
+    "batch": "b022",
+    "obs_id": "b022-o32",
+    "msg_key": "giron-d/sent/629",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "a forgotten attachment is identified and the file is to be sent, but an omitted attachment is not clearly an error in data or a wrong entry"
+   },
+   {
+    "batch": "b022",
+    "obs_id": "b022-o35",
+    "msg_key": "giron-d/sent/626",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "same quoted sentences as C11: a forgotten attachment is identified, but it is unclear whether an omission counts as a correction"
+   },
+   {
+    "batch": "b023",
+    "obs_id": "b023-o15",
+    "msg_key": "giron-d/sent/602",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "nothing says the decision by Darron's side is waiting on anything; the reservation waiting belongs to Pat Ryder's message"
+   },
+   {
+    "batch": "b023",
+    "obs_id": "b023-o27",
+    "msg_key": "giron-d/sent/590",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the query is 'not ready now, but should be soon'; no explicit condition or response that the next step waits on is named"
+   },
+   {
+    "batch": "b024",
+    "obs_id": "b024-o6",
+    "msg_key": "giron-d/sent/790",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "only a request for the sender's opinion; nothing says the work is held up waiting on a response"
+   },
+   {
+    "batch": "b024",
+    "obs_id": "b024-o53",
+    "msg_key": "farmer-d/logistics/1472",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "a proposal that asks for Pat's thoughts before proceeding, which could be read as waiting on a response or as only a request"
+   },
+   {
+    "batch": "b025",
+    "obs_id": "b025-o44",
+    "msg_key": "farmer-d/logistics/1489",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "asks whether the request can go back to June 1999 and questions it, but does not say the answer is held for someone else's input"
+   },
+   {
+    "batch": "b025",
+    "obs_id": "b025-o45",
+    "msg_key": "farmer-d/logistics/1489",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a plain request for help; nothing says the work is held until they respond"
+   },
+   {
+    "batch": "b026",
+    "obs_id": "b026-o30",
+    "msg_key": "farmer-d/logistics/1890",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "It says nothing has been decided on the Texas General Land nom move, but does not name what the decision waits on."
+   },
+   {
+    "batch": "b026",
+    "obs_id": "b026-o31",
+    "msg_key": "giron-d/sent/528",
+    "signal": "follow_up",
+    "outcome": "unsupported",
+    "reason": "Anne relays that Phillip called, but Darron's reply is only a promise to fix it on his return; the sender does not chase an update."
+   },
+   {
+    "batch": "b026",
+    "obs_id": "b026-o57",
+    "msg_key": "giron-d/sent/511",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "It notes Christopher Walker is absent from the system, a gap in records, but it is unclear whether this is treated as an incorrect entry."
+   },
+   {
+    "batch": "b026",
+    "obs_id": "b026-o71",
+    "msg_key": "giron-d/sent/508",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Bryce only offers to provide information or meet; nothing says the review is waiting on someone else."
+   },
+   {
+    "batch": "b027",
+    "obs_id": "b027-o33",
+    "msg_key": "farmer-d/logistics/1521",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "a request to Duke with a left message implies awaiting a callback, but no sentence says the next step depends on Duke's reply"
+   },
+   {
+    "batch": "b028",
+    "obs_id": "b028-o9",
+    "msg_key": "farmer-d/logistics/1528",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Tom Acton's absence until after Thanksgiving is noted, but the email never says the deal work is explicitly waiting on his return"
+   },
+   {
+    "batch": "b030",
+    "obs_id": "b030-o49",
+    "msg_key": "giron-d/sent/393",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a conditional personal stance on bringing a guest; nothing shows the decision is waiting on a response or approval it needs"
+   },
+   {
+    "batch": "b031",
+    "obs_id": "b031-o39",
+    "msg_key": "farmer-d/logistics/1977",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a future step by the sender; no condition or response is named as something it waits on"
+   },
+   {
+    "batch": "b031",
+    "obs_id": "b031-o76",
+    "msg_key": "farmer-d/logistics/1992",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the sender asks whether the plan was to wait for Tom's okay; the text does not settle that waiting is the plan"
+   },
+   {
+    "batch": "b031",
+    "obs_id": "b031-o83",
+    "msg_key": "giron-d/sent/382",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the duplicate officialisation is noticed, but the text does not clearly call it an error to be corrected"
+   },
+   {
+    "batch": "b032",
+    "obs_id": "b032-o7",
+    "msg_key": "farmer-d/logistics/2000",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "Items are on an error report and assignment is questioned, but no specific error is shown as corrected."
+   },
+   {
+    "batch": "b032",
+    "obs_id": "b032-o25",
+    "msg_key": "farmer-d/logistics/2008",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "A revision of the January volumes is shown, but the text does not say the earlier figures were wrong or why it changed."
+   },
+   {
+    "batch": "b032",
+    "obs_id": "b032-o27",
+    "msg_key": "giron-d/sent/369",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "The sender defends the untopped amount as intentional and says it will correct itself tomorrow; it is unclear whether an error is being fixed."
+   },
+   {
+    "batch": "b033",
+    "obs_id": "b033-o29",
+    "msg_key": "giron-d/sent/346",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "price discrepancies are identified, but the spreadsheet request is to compare components, not to correct an identified error"
+   },
+   {
+    "batch": "b034",
+    "obs_id": "b034-o19",
+    "msg_key": "giron-d/sent/329",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "Derek's quote flags that leg 4 is in TAGG as a physical swap instead of a physical forward, but Darron's reply only says the deal is physical and does not corre"
+   },
+   {
+    "batch": "b034",
+    "obs_id": "b034-o22",
+    "msg_key": "giron-d/sent/327",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "The reply waits only on Darron's own return on Thursday, a future action, not on an input or decision from someone else."
+   },
+   {
+    "batch": "b035",
+    "obs_id": "b035-o21",
+    "msg_key": "giron-d/sent/294",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "unwinds in TAGG not Sitara caused negative impact, but the stated activity is a forward-looking approval rule rather than a correction of a specific entry"
+   },
+   {
+    "batch": "b036",
+    "obs_id": "b036-o13",
+    "msg_key": "farmer-d/logistics/2065",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "the sentences report that Cleco is invoicing and that no deal was initially in the system; no error is identified or corrected in them"
+   },
+   {
+    "batch": "b036",
+    "obs_id": "b036-o27",
+    "msg_key": "giron-d/sent/270",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the sentence is a request to be told when the deals are fixed; nothing says the sender's next step waits on a reply"
+   },
+   {
+    "batch": "b036",
+    "obs_id": "b036-o40",
+    "msg_key": "giron-d/sent/258",
+    "signal": "follow_up",
+    "outcome": "unsupported",
+    "reason": "a plain request for a reply when the file is complete; not a chase of an earlier request"
+   },
+   {
+    "batch": "b037",
+    "obs_id": "b037-o17",
+    "msg_key": "giron-d/sent/246",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the spreadsheet asks for a book flip, but this email gives no stated error or reason for the Aquila and Engage deals"
+   },
+   {
+    "batch": "b037",
+    "obs_id": "b037-o26",
+    "msg_key": "giron-d/sent/241",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the EnTelligence build has no stated dependency on anyone's input; the 'until' clause only describes the interim manual workaround"
+   },
+   {
+    "batch": "b038",
+    "obs_id": "b038-o2",
+    "msg_key": "farmer-d/logistics/2083",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the counterparty disputes the sale's classification, but the sender only asks for the trader's name; no error is stated by the sender in M1"
+   },
+   {
+    "batch": "b038",
+    "obs_id": "b038-o15",
+    "msg_key": "farmer-d/logistics/2094",
+    "signal": "escalation",
+    "outcome": "unresolved",
+    "reason": "an open plea for anyone to help; no named authority or specialist is brought in, so escalation is not clearly shown"
+   },
+   {
+    "batch": "b038",
+    "obs_id": "b038-o30",
+    "msg_key": "farmer-d/logistics/2095",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the block is answered in the quoted reply (extend with zero volume); only a plain request for suggestions remains"
+   },
+   {
+    "batch": "b039",
+    "obs_id": "b039-o17",
+    "msg_key": "farmer-d/logistics/2104",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "sending is the default plan, to go ahead unless objection is heard; no response is needed for the next step"
+   },
+   {
+    "batch": "b039",
+    "obs_id": "b039-o51",
+    "msg_key": "giron-d/sent/170",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the waiting is Jennifer's memo on the explanations; nothing shows the explanation work itself waiting on a condition"
+   },
+   {
+    "batch": "b039",
+    "obs_id": "b039-o56",
+    "msg_key": "giron-d/sent/168",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a request to be told when the flip is done; a future notice on its own, not a wait on something the notice needs"
+   },
+   {
+    "batch": "b040",
+    "obs_id": "b040-o10",
+    "msg_key": "farmer-d/logistics/2114",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "the report was late because it was missed; nothing identifies an error in its content or results, so it is not a correction"
+   },
+   {
+    "batch": "b040",
+    "obs_id": "b040-o30",
+    "msg_key": "farmer-d/logistics/2121",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the confirmation is said to have evergreen language while the system contract was set up without it, but no one states the entry is wrong or corrects it"
+   },
+   {
+    "batch": "b040",
+    "obs_id": "b040-o35",
+    "msg_key": "farmer-d/logistics/223",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the same evergreen-versus-system-entry discrepancy is noted, but nothing says the entry is wrong or has been corrected"
+   },
+   {
+    "batch": "b041",
+    "obs_id": "b041-o43",
+    "msg_key": "farmer-d/logistics/204",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "Bob's unbilled-purchase complaint is identified, but Gary settles it by keeping the volume on the term deal, so no correction is shown"
+   },
+   {
+    "batch": "b042",
+    "obs_id": "b042-o4",
+    "msg_key": "giron-d/sent/117",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "The text only asks for a rebook to the W&T counterparty and says Done; it never says the original booking was wrong."
+   },
+   {
+    "batch": "b042",
+    "obs_id": "b042-o23",
+    "msg_key": "giron-d/sent/102",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Darron questions whether renaming is needed and asks for views; it is unclear whether the question itself is held up by a reply."
+   },
+   {
+    "batch": "b042",
+    "obs_id": "b042-o29",
+    "msg_key": "farmer-d/logistics/194",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "The February deal is for a different meter, but the text does not say the entry is wrong; it may just be a lookup result."
+   },
+   {
+    "batch": "b043",
+    "obs_id": "b043-o37",
+    "msg_key": "farmer-d/logistics/183",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the payback ticket is for a sale on 4/12, not the 4/1-4/3 flow, so the text does not clearly show it corrects an error"
+   },
+   {
+    "batch": "b045",
+    "obs_id": "b045-o28",
+    "msg_key": "farmer-d/logistics/150",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Julie asks what to do with the outage, but the quoted notice says work proceeds if there is no response, so waiting is unclear"
+   },
+   {
+    "batch": "b046",
+    "obs_id": "b046-o33",
+    "msg_key": "farmer-d/logistics/136",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the sale to AEP/HPL is a recommendation with a request for opinion ('Let me know what you think'); nothing states the sale is held until someone answers"
+   },
+   {
+    "batch": "b047",
+    "obs_id": "b047-o2",
+    "msg_key": "farmer-d/logistics/131",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "the volume change reflects a new customer volume, not an identified error; the nomination change is a routine update"
+   },
+   {
+    "batch": "b047",
+    "obs_id": "b047-o12",
+    "msg_key": "farmer-d/logistics/124",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "payment is held pending a revised invoice, but the send itself is only a request and nothing says it waits on anyone"
+   },
+   {
+    "batch": "b047",
+    "obs_id": "b047-o26",
+    "msg_key": "williams-w3/sent_items/515",
+    "signal": "follow_up",
+    "outcome": "unsupported",
+    "reason": "a status reply sending accomplishments; the apology for delay does not chase an earlier request for an update"
+   },
+   {
+    "batch": "b047",
+    "obs_id": "b047-o60",
+    "msg_key": "farmer-d/logistics/114",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the extension is itself the pending step; nothing says it is held up waiting on a response or condition"
+   },
+   {
+    "batch": "b048",
+    "obs_id": "b048-o12",
+    "msg_key": "williams-w3/sent_items/487",
+    "signal": "follow_up",
+    "outcome": "unresolved",
+    "reason": "a reminder that schedule changes must be called in; it is unclear whether it returns to an earlier pending request"
+   },
+   {
+    "batch": "b048",
+    "obs_id": "b048-o27",
+    "msg_key": "farmer-d/logistics/111",
+    "signal": "follow_up",
+    "outcome": "unsupported",
+    "reason": "the cited sentence is the original quoted question; nothing returns to it for an update"
+   },
+   {
+    "batch": "b048",
+    "obs_id": "b048-o37",
+    "msg_key": "farmer-d/logistics/102",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the path is missing and the sender asks to be told, but a plain request is not clearly a wait"
+   },
+   {
+    "batch": "b048",
+    "obs_id": "b048-o44",
+    "msg_key": "williams-w3/sent_items/469",
+    "signal": "escalation",
+    "outcome": "unresolved",
+    "reason": "the sender asks whether to lodge a complaint, but no escalation has been taken yet"
+   },
+   {
+    "batch": "b049",
+    "obs_id": "b049-o6",
+    "msg_key": "farmer-d/logistics/103",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a plain request for objections; nothing says the entry must wait on Daren's answer"
+   },
+   {
+    "batch": "b050",
+    "obs_id": "b050-o32",
+    "msg_key": "williams-w3/sent_items/420",
+    "signal": "follow_up",
+    "outcome": "unsupported",
+    "reason": "a plain request to come by and meet; nothing returns to an earlier pending request for an update"
+   },
+   {
+    "batch": "b050",
+    "obs_id": "b050-o64",
+    "msg_key": "farmer-d/logistics/98",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the term extension is assigned to Linda's group and is needed to attach the deal, but no waiting is stated"
+   },
+   {
+    "batch": "b050",
+    "obs_id": "b050-o67",
+    "msg_key": "farmer-d/logistics/98",
+    "signal": "follow_up",
+    "outcome": "unresolved",
+    "reason": "'Need your help again' may chase earlier help on 05/01, but the latest email only concerns 06/01 and the 05/01 ask is an initial request"
+   },
+   {
+    "batch": "b051",
+    "obs_id": "b051-o41",
+    "msg_key": "williams-w3/sent_items/381",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "asks Greg to check before taking the position, but says it will go on unless he objects; not clearly waiting on his input"
+   },
+   {
+    "batch": "b052",
+    "obs_id": "b052-o16",
+    "msg_key": "farmer-d/logistics/86",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "volume appeared in two entities, but the actualizing is tied to new information about the upstream move rather than being framed as fixing an error"
+   },
+   {
+    "batch": "b052",
+    "obs_id": "b052-o46",
+    "msg_key": "williams-w3/sent_items/348",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the sender asks who else is needed for the meeting, which may or may not mean the meeting depends on identifying participants"
+   },
+   {
+    "batch": "b053",
+    "obs_id": "b053-o23",
+    "msg_key": "farmer-d/logistics/84",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "a plain request for the team and percentage; no error or inconsistency is identified or corrected"
+   },
+   {
+    "batch": "b053",
+    "obs_id": "b053-o25",
+    "msg_key": "farmer-d/logistics/83",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "a message was left for O'Neal to explain why, which implies a pending reply, but the text does not say the work is waiting on it"
+   },
+   {
+    "batch": "b053",
+    "obs_id": "b053-o50",
+    "msg_key": "farmer-d/logistics/82",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the approval was obtained: the later message says the pipe code was changed per Daren Farmer's authorization, so the wait is over"
+   },
+   {
+    "batch": "b054",
+    "obs_id": "b054-o28",
+    "msg_key": "farmer-d/logistics/76",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "a missing distribution-list entry is stated, which could be a routing error, but it is not clearly an incorrect result"
+   },
+   {
+    "batch": "b054",
+    "obs_id": "b054-o39",
+    "msg_key": "williams-w3/sent_items/298",
+    "signal": "follow_up",
+    "outcome": "unresolved",
+    "reason": "the 'one more time' reminder returns to an earlier instruction, but it does not chase an update or response"
+   },
+   {
+    "batch": "b054",
+    "obs_id": "b054-o40",
+    "msg_key": "williams-w3/sent_items/298",
+    "signal": "follow_up",
+    "outcome": "unsupported",
+    "reason": "a plain instruction to read the dispatch instructions; it does not chase an earlier request"
+   },
+   {
+    "batch": "b055",
+    "obs_id": "b055-o24",
+    "msg_key": "giron-d/inbox/213",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the ranking was left out and the sender says sorry for the confusion, but telling her the ranking is a missed communication rather than a clearly wrong figure"
+   },
+   {
+    "batch": "b055",
+    "obs_id": "b055-o66",
+    "msg_key": "williams-w3/sent_items/280",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the sender is working with IT and will report back; no explicit wait on a response or condition is stated"
+   },
+   {
+    "batch": "b055",
+    "obs_id": "b055-o75",
+    "msg_key": "williams-w3/sent_items/276",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the tape requests are reported as already filled out; nothing says the work waits on anyone"
+   },
+   {
+    "batch": "b055",
+    "obs_id": "b055-o76",
+    "msg_key": "williams-w3/sent_items/276",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "an instruction to assert the sender's own numbers are right; no error in the result is identified or corrected"
+   },
+   {
+    "batch": "b055",
+    "obs_id": "b055-o102",
+    "msg_key": "farmer-d/logistics/69",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the refund is a planned bridging step; the text does not say the refund is held up waiting on a response or decision"
+   },
+   {
+    "batch": "b056",
+    "obs_id": "b056-o2",
+    "msg_key": "williams-w3/sent_items/266",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Questions on the report charges are raised and clearing them waits on Jim or Darren having a moment, but that reads as a meeting request rather than a clear wai"
+   },
+   {
+    "batch": "b056",
+    "obs_id": "b056-o18",
+    "msg_key": "williams-w3/sent_items/261",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "Failure to adjust bids for congestion is identified and a fix is ordered, but it is a process lapse rather than a clear wrong number, entry, deal or routing."
+   },
+   {
+    "batch": "b056",
+    "obs_id": "b056-o41",
+    "msg_key": "williams-w3/sent_items/252",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "Asks for added EPE sales detail on HE 6 and 7; this is missing content, with no error, wrong number or inconsistency identified."
+   },
+   {
+    "batch": "b057",
+    "obs_id": "b057-o15",
+    "msg_key": "williams-w3/sent_items/234",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "Foster flags strange dispatch quantities and asks for a check of a PMAX theory, but the check itself is a verification request rather than a stated correction."
+   },
+   {
+    "batch": "b057",
+    "obs_id": "b057-o21",
+    "msg_key": "williams-w3/sent_items/228",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Bill asks Darren to say when he has time before setting up the sit-in; this could be a scheduling dependency or just an open offer."
+   },
+   {
+    "batch": "b057",
+    "obs_id": "b057-o32",
+    "msg_key": "williams-w3/sent_items/223",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Sending is conditional on Bill finding the language agreeable, but Bill's later sentence says it all looks good, so the condition appears met in the same email."
+   },
+   {
+    "batch": "b057",
+    "obs_id": "b057-o47",
+    "msg_key": "farmer-d/logistics/56",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "The ACT 2000 population is a contingency fallback that is not held up waiting on anyone; it is a future step triggered only if the CRM is not approved or is del"
+   },
+   {
+    "batch": "b058",
+    "obs_id": "b058-o20",
+    "msg_key": "williams-w3/sent_items/207",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the sentence states the generator date changed from 10/1/02 to 11/1/02 without saying it was an error; the CORRECTED label is only in the subject line"
+   },
+   {
+    "batch": "b058",
+    "obs_id": "b058-o55",
+    "msg_key": "giron-d/inbox/243",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Darron's call is expected 'after he has had a chance to get up to speed', which is a timing note that could be read as a condition or as a plain planned call"
+   },
+   {
+    "batch": "b059",
+    "obs_id": "b059-o32",
+    "msg_key": "farmer-d/logistics/44",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "The notice is a future promise tied to the team's own progress on the rewrite; nothing external is awaited and no response is needed."
+   },
+   {
+    "batch": "b060",
+    "obs_id": "b060-o7",
+    "msg_key": "williams-w3/sent_items/163",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "offering alternative times is a plain proposal; nothing says the scheduling waits on anyone's response"
+   },
+   {
+    "batch": "b060",
+    "obs_id": "b060-o16",
+    "msg_key": "lokay-m/inbox/15",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the check awaits TK's answer, which says supplies are not lined up and wait on permits; it is unclear whether that is a wait for this finding-out step"
+   },
+   {
+    "batch": "b061",
+    "obs_id": "b061-o22",
+    "msg_key": "williams-w3/sent_items/145",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "only a request for Bill's preference; nothing says the decision is blocked on someone else"
+   },
+   {
+    "batch": "b061",
+    "obs_id": "b061-o36",
+    "msg_key": "williams-w3/sent_items/135",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "only a request to confirm the choice; no sentence says the decision waits on anyone"
+   },
+   {
+    "batch": "b061",
+    "obs_id": "b061-o50",
+    "msg_key": "farmer-d/logistics/33",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "a deal was killed with no reason found and a valid March 2000 deal is needed, but this reads as filling a gap as much as fixing an error"
+   },
+   {
+    "batch": "b062",
+    "obs_id": "b062-o19",
+    "msg_key": "williams-w3/sent_items/129",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Bill asks Cara for her view on the date; that is a plain request with no stated dependency that the work waits on."
+   },
+   {
+    "batch": "b062",
+    "obs_id": "b062-o23",
+    "msg_key": "williams-w3/sent_items/128",
+    "signal": "correction",
+    "outcome": "unsupported",
+    "reason": "The build route report has technical issues being worked on; no wrong result, date, deal or entry is identified."
+   },
+   {
+    "batch": "b062",
+    "obs_id": "b062-o45",
+    "msg_key": "giron-d/inbox/421",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "A proposal to have dinner plus an availability question; no explicit statement that the plan is held until a reply."
+   },
+   {
+    "batch": "b062",
+    "obs_id": "b062-o60",
+    "msg_key": "williams-w3/sent_items/117",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "A question to Keoni about whether the heuristic run changes the prices; no stated dependency on an answer."
+   },
+   {
+    "batch": "b062",
+    "obs_id": "b062-o61",
+    "msg_key": "williams-w3/sent_items/117",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Bidding instead of published prices is a workaround for incorrect publication, not a step waiting on an input."
+   },
+   {
+    "batch": "b062",
+    "obs_id": "b062-o62",
+    "msg_key": "williams-w3/sent_items/117",
+    "signal": "escalation",
+    "outcome": "unresolved",
+    "reason": "Keoni passes the technical issue to a Market Operations contact, which may be routine routing or a specialist taking over an unresolved problem."
+   },
+   {
+    "batch": "b063",
+    "obs_id": "b063-o10",
+    "msg_key": "williams-w3/sent_items/105",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "'if it works' is a condition on the index, not a clear wait on a response, input or approval"
+   },
+   {
+    "batch": "b064",
+    "obs_id": "b064-o18",
+    "msg_key": "williams-w3/sent_items/91",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "approval is blocked because the sender cannot access the system and asks for help, but the text does not explicitly say the approval waits on that help; the wai"
+   },
+   {
+    "batch": "b064",
+    "obs_id": "b064-o33",
+    "msg_key": "lokay-m/inbox/44",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the sentence is a plain request to be told the marketing counterpart; nothing shows the work is blocked on that answer"
+   },
+   {
+    "batch": "b065",
+    "obs_id": "b065-o10",
+    "msg_key": "farmer-d/logistics/18",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the El Paso meeting is conditional on the unresolved DUNS issue, but the text does not say the meeting itself is blocked on a response"
+   },
+   {
+    "batch": "b065",
+    "obs_id": "b065-o21",
+    "msg_key": "williams-w3/sent_items/82",
+    "signal": "rework",
+    "outcome": "unsupported",
+    "reason": "the sender asks for a different document type; this is a change of request, not a repeat caused by a problem"
+   },
+   {
+    "batch": "b065",
+    "obs_id": "b065-o41",
+    "msg_key": "farmer-d/logistics/17",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a request to get in touch after returning to the office; no sentence says the walkthrough is blocked on anything"
+   },
+   {
+    "batch": "b065",
+    "obs_id": "b065-o44",
+    "msg_key": "farmer-d/logistics/17",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "a plain request to review the changes and reply; no waiting condition is stated"
+   },
+   {
+    "batch": "b065",
+    "obs_id": "b065-o62",
+    "msg_key": "farmer-d/logistics/16",
+    "signal": "follow_up",
+    "outcome": "unresolved",
+    "reason": "the quoted request asks to be told when the change is made, which could be a first request or a chase; it is not clearly a return to an earlier request"
+   },
+   {
+    "batch": "b066",
+    "obs_id": "b066-o17",
+    "msg_key": "williams-w3/sent_items/70",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "says approvals could not be made and access is needed, but names no input or condition the approval is waiting on"
+   },
+   {
+    "batch": "b066",
+    "obs_id": "b066-o31",
+    "msg_key": "williams-w3/sent_items/69",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the cuts database entry got errors and is unconfirmed, but no specific wrong entry is identified"
+   },
+   {
+    "batch": "b066",
+    "obs_id": "b066-o65",
+    "msg_key": "farmer-d/logistics/14",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the reconciliation is in progress; the text says the unaccounted amount waits on it, not that the reconciliation waits on anything"
+   },
+   {
+    "batch": "b067",
+    "obs_id": "b067-o25",
+    "msg_key": "williams-w3/sent_items/53",
+    "signal": "follow_up",
+    "outcome": "unsupported",
+    "reason": "no earlier request or pending item on the visits is chased; the follow-up sentence only refers to yesterday's conversation"
+   },
+   {
+    "batch": "b068",
+    "obs_id": "b068-o3",
+    "msg_key": "williams-w3/sent_items/51",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Amy's planned chase is a future action on its own; nothing says the chase itself waits on a condition"
+   },
+   {
+    "batch": "b068",
+    "obs_id": "b068-o5",
+    "msg_key": "lokay-m/sent_items/12",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Michelle asks Audrey 'What do you think?' before deciding, which may be input-waiting, but it reads as a plain request for opinion"
+   },
+   {
+    "batch": "b072",
+    "obs_id": "b072-o20",
+    "msg_key": "lokay-m/sent_items/45",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the discussion is a future step timed to the billing cycle; no explicit wait on a response, approval or condition"
+   },
+   {
+    "batch": "b073",
+    "obs_id": "b073-o16",
+    "msg_key": "giron-d/inbox/103",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "reconciliation is the sender's own ongoing work; the supplemental send is only conditional on it ('assuming that I can do so'), which may or may not count as wa"
+   },
+   {
+    "batch": "b074",
+    "obs_id": "b074-o1",
+    "msg_key": "williams-w3/sent_items/16",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the meeting is delayed and the sender is waiting on UBS information, but the text does not say the delay depends on that information"
+   },
+   {
+    "batch": "b074",
+    "obs_id": "b074-o66",
+    "msg_key": "williams-w3/inbox/91",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "the regulatory timing condition in M6.S20 applies to gas and power physical products, not to the financial launch"
+   },
+   {
+    "batch": "b075",
+    "obs_id": "b075-o3",
+    "msg_key": "williams-w3/sent_items/12",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the check went to MPC, which does not know why, but no sentence calls the payment an error or says it is being corrected"
+   },
+   {
+    "batch": "b075",
+    "obs_id": "b075-o29",
+    "msg_key": "giron-d/inbox/42",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "the sender asks why EH6453.2 is missing, but no sentence says the omission is an error; the sender may be asking for an explanation only"
+   },
+   {
+    "batch": "b076",
+    "obs_id": "b076-o21",
+    "msg_key": "giron-d/inbox/36",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "only says the desk may need to design its own report and offers help; nothing says the work waits on anyone"
+   },
+   {
+    "batch": "b078",
+    "obs_id": "b078-o40",
+    "msg_key": "giron-d/inbox/2",
+    "signal": "follow_up",
+    "outcome": "unsupported",
+    "reason": "the orientation sentences give the schedule and ask people to attend; they do not chase an earlier pending request"
+   },
+   {
+    "batch": "b080",
+    "obs_id": "b080-o13",
+    "msg_key": "lokay-m/sent_items/127",
+    "signal": "correction",
+    "outcome": "unresolved",
+    "reason": "February is said to have been revised from the earlier $1.86 figure to $2.07, but no reason is given, so it may be an ordinary update rather than a correction."
+   },
+   {
+    "batch": "b080",
+    "obs_id": "b080-o16",
+    "msg_key": "lokay-m/sent_items/126",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "Moore asks for confirmation of the March billing start, but this reads mostly as a request; it is unclear whether the billing is actually held until she replies"
+   },
+   {
+    "batch": "b080",
+    "obs_id": "b080-o31",
+    "msg_key": "lokay-m/sent_items/149",
+    "signal": "waiting",
+    "outcome": "unsupported",
+    "reason": "Burlington's agreement depends on the name change, but the sentences only request the update; nothing says the update itself is waiting on someone."
+   },
+   {
+    "batch": "b081",
+    "obs_id": "b081-o19",
+    "msg_key": "lokay-m/inbox/37",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the line says 'Need CAF' under PROCESSING; it names a missing input but does not explicitly say the work is waiting for it"
+   },
+   {
+    "batch": "b081",
+    "obs_id": "b081-o20",
+    "msg_key": "lokay-m/inbox/37",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "the line says 'Need CAF' under PROCESSING; it names a missing input but does not explicitly say the work is waiting for it"
+   },
+   {
+    "batch": "b081",
+    "obs_id": "b081-o27",
+    "msg_key": "williams-w3/inbox/142",
+    "signal": "waiting",
+    "outcome": "unresolved",
+    "reason": "'still working through with the operator' implies dependence on the operator but does not explicitly say the work is waiting for a response"
+   }
+  ]
+ },
+ "known_coverage_issues": [
+  {
+   "issue": "credit_report_subject_ambiguity",
+   "what": "Quotes that are only a 'Subject: Credit Report...' line occur in two regions of their message, so the verifier rejects them as ambiguous (the safe direction); a likely recurring process (the daily credit report) loses those observations",
+   "rejected": 5,
+   "by_batch": {
+    "b044": 5
+   },
+   "status": "documented, not changed (analytical prompt and verifier frozen for the performance validation)"
+  }
+ ]
+}

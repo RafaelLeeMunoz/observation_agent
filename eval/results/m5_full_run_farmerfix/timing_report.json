@@ -1,0 +1,95 @@
+{
+ "slice": "all",
+ "started_at": "2026-11-24T03:45:56+00:00",
+ "end_to_end_wall_s": 25.0,
+ "pipeline_reported_s": 25.7,
+ "status": "ok",
+ "workers": 24,
+ "stages": {
+  "batch": {
+   "sessions": 1,
+   "first_start_s": 0.0,
+   "last_end_s": 0.0,
+   "wall_s": 0.0,
+   "summed_s": 0.0,
+   "longest_s": 0.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "merge": {
+   "sessions": 1,
+   "first_start_s": 1.0,
+   "last_end_s": 25.0,
+   "wall_s": 24.0,
+   "summed_s": 24.0,
+   "longest_s": 24.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "score": {
+   "sessions": 1,
+   "first_start_s": 25.0,
+   "last_end_s": 25.0,
+   "wall_s": 0.0,
+   "summed_s": 0.0,
+   "longest_s": 0.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  }
+ },
+ "overlap": [
+  {
+   "stages": [
+    "merge"
+   ],
+   "seconds": 24.0
+  },
+  {
+   "stages": [
+    "(idle: code between log lines)"
+   ],
+   "seconds": 1.0
+  }
+ ],
+ "synthesis_by_mailbox": [],
+ "dashboard_startup_s": 1.21,
+ "cache_hits": {
+  "extract": 81,
+  "ground": 81,
+  "synth": 4,
+  "act": 1
+ },
+ "config": {
+  "extraction": [
+   {
+    "analytical_prompt": "ef76350212d3",
+    "run_note": "none",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 60
+   },
+   {
+    "analytical_prompt": "ef76350212d3",
+    "run_note": "8e69f34ea063",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 21
+   }
+  ],
+  "grounding": [
+   {
+    "analytical_prompt": "a9bc0940b193",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 81
+   }
+  ]
+ },
+ "audit_trail_counts": {
+  "rejected_quotes": 24,
+  "signals_not_published": 180
+ }
+}

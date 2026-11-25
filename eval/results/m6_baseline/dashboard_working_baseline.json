@@ -1,0 +1,32 @@
+{
+ "tag": "working_baseline",
+ "slice": "all",
+ "opportunities_scored": 93,
+ "pages_requested": 173,
+ "quote_pages_opened": 62,
+ "data_file_mb": 10.2,
+ "data_load_s": 0.05,
+ "app_start_s": 0.02,
+ "median_page_ms": 55.3,
+ "p95_page_ms": 65.7,
+ "slowest_page_ms": 84.7,
+ "slowest_page": "/event/E0644",
+ "message_pages_with_raw_tags_checked": 12,
+ "problems": {
+  "D1": [],
+  "D2": [],
+  "D3": [],
+  "D4": [],
+  "D5": [],
+  "D7": []
+ },
+ "criteria": {
+  "D1 ranked list and running total (hard)": "pass",
+  "D2 every sampled claim drills through to a highlighted quote (hard)": "pass",
+  "D3 original corpus names shown as written (hard)": "pass",
+  "D4 coverage page states every count (hard)": "pass",
+  "D5 report has the ranked table, labels and method (hard)": "pass",
+  "D6 median page <= 100 ms, slowest <= 2 s, data load <= 15 s (provisional)": "pass",
+  "D7 message text is escaped (hard)": "pass"
+ }
+}

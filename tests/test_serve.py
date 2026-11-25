@@ -30,8 +30,13 @@ def client(tmp_path):
                      "kind": "estimated", "inputs": ["P1:epm", "P1:minutes"], "evidence": []},
         "P1:dollars": {"id": "P1:dollars", "label": "Dollars", "value": "14.17", "display": "$14.17", "formula": "hours x rate",
                        "kind": "estimated", "inputs": ["P1:hours", "rate"], "evidence": []},
+        "total_low": {"id": "total_low", "label": "Total, low", "value": "4", "display": "$4.00", "formula": "sum at low minutes",
+                      "kind": "estimated", "inputs": ["P1:dollars"], "evidence": []},
+        "total_high": {"id": "total_high", "label": "Total, high", "value": "19", "display": "$19.00", "formula": "sum at high minutes",
+                       "kind": "estimated", "inputs": ["P1:dollars"], "evidence": []},
         "total": {"id": "total", "label": "Total", "value": "14.17", "display": "$14.17", "formula": "sum", "kind": "estimated",
                   "inputs": ["P1:dollars"], "evidence": []}}
+    claims["P1:dollars"].update(low="4.0", high="19.0")
     data = {"label": "pipeline test, not a finding", "claims": claims, "total": claims["total"],
             "opportunities": [{"process_id": "P1", "name": "Meter fixes", "description": "d", "trigger": "t", "output": "o",
                                "roles": ["r"], "mailboxes": ["mb"], "automation": {"idea": "i", "why": "w", "artifact_type": "sop"},
@@ -94,6 +99,16 @@ def test_every_dollar_figure_drills_through_to_a_highlighted_raw_email(client):
         todo += re.findall(r"href=\"/claim/([^\"]+)\"", html)
     assert reached_quote and {"rate", "P1:minutes"} <= assumptions
     assert {"P1:dollars", "P1:hours", "P1:epm", "P1:events", "P1:months", "total"} <= seen
+
+
+def test_the_total_is_a_labelled_central_estimate_with_a_range_that_is_itself_a_drillable_claim(client):
+    home = client.get("/").get_data(as_text=True)
+    assert "central estimate" in home and re.search(r'range <a href="/claim/total_low"[^>]*>\$4\.00</a> to <a href="/claim/total_high"[^>]*>\$19\.00</a>', home)
+    assert "low and high" in home and client.get("/claim/total_low").status_code == 200
+    page = client.get("/opportunity/P1").get_data(as_text=True)
+    assert "Estimated savings" in page and "central estimate" in page and "$4.00 to $19.00" in page         # the opportunity's own range
+    method = client.get("/method").get_data(as_text=True)
+    assert "central estimate" in method and "no other bound is invented" in method
 
 
 def test_pages_render_and_unknown_items_404(client):

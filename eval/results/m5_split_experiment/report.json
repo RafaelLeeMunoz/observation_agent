@@ -1,0 +1,129 @@
+{
+ "baseline_processes": 31,
+ "experiment_processes": 71,
+ "baseline": {
+  "processes": 31,
+  "assigned_obs": 482,
+  "events_build": 221,
+  "events_sum_of_process_threads": 221,
+  "scored_processes": 31,
+  "events_in_scored_processes": 221,
+  "threads_covered": 211,
+  "total_dollars_per_month": "214.107698"
+ },
+ "experiment": {
+  "processes": 71,
+  "assigned_obs": 1064,
+  "events_build": 560,
+  "events_sum_of_process_threads": 564,
+  "scored_processes": 58,
+  "events_in_scored_processes": 534,
+  "threads_covered": 547,
+  "total_dollars_per_month": "452.984886"
+ },
+ "criterion_1_events": {
+  "events_build": {
+   "baseline": 221,
+   "experiment": 560,
+   "change_percent": 153.4
+  },
+  "events_sum_of_process_threads": {
+   "baseline": 221,
+   "experiment": 564,
+   "change_percent": 155.2
+  },
+  "events_in_scored_processes": {
+   "baseline": 221,
+   "experiment": 534,
+   "change_percent": 141.6
+  },
+  "assigned_obs": {
+   "baseline": 482,
+   "experiment": 1064,
+   "change_percent": 120.7
+  }
+ },
+ "criterion_2_joins": {
+  "denominator_baseline_processes_spanning_2plus_chunks": 0,
+  "joined_at_least_once": 0,
+  "fully_joined": 0,
+  "not_joined": 0,
+  "join_rate_percent": 0.0,
+  "missed_joins_separations": 0,
+  "limitation": "The baseline's processes lie entirely in chunk 1 (it assigned nothing from the other two thirds), so this baseline-identity denominator is 0 and carries no information. The join counts that are reported (docs/M5_SPLIT_EXPERIMENT.md) are a reader's judgment of the merged processes: 17 same-theme joins of 18 (1 missed, 0 clear incorrect and 2 borderline, 0 clear duplicates)."
+ },
+ "duplicates_same_dominant_baseline_process": {
+  "Industrial customer buyback and outage h": 2,
+  "Counterparty and global contract record ": 2,
+  "Monthly allocation percentages and RC re": 2,
+  "New well and production ticket setup in ": 2
+ },
+ "criterion_3_classes": {
+  "continuation_of_a_baseline_process": 25,
+  "mostly_new_observations": 39,
+  "mixed": 7,
+  "events_in_new": 184,
+  "events_in_continuation": 160,
+  "events_in_mixed": 216
+ },
+ "near_duplicate_name_pairs": [],
+ "runtime_tokens": {
+  "wall_s": 401.2,
+  "chunk_stage_wall_s": 361.2,
+  "merge_wall_s": 40.0,
+  "sessions": 8,
+  "failed_attempts": 4,
+  "subagent_tokens": 2882214,
+  "output_tokens": 116572
+ },
+ "chunk_coverage": [
+  [
+   "s202",
+   "failed",
+   0.179,
+   0
+  ],
+  [
+   "s203",
+   "failed",
+   0.4305,
+   0
+  ],
+  [
+   "s201",
+   "failed",
+   0.2518,
+   0
+  ],
+  [
+   "s202",
+   "verified",
+   0.2768,
+   29
+  ],
+  [
+   "s203",
+   "verified",
+   0.4183,
+   28
+  ],
+  [
+   "s201",
+   "failed",
+   0.5059,
+   0
+  ],
+  [
+   "s201",
+   "verified",
+   0.6141,
+   38
+  ],
+  [
+   "m201",
+   "verified",
+   null,
+   71
+  ]
+ ]
+}

@@ -6,7 +6,7 @@ import pytest
 
 from src import events, score
 
-CFG = {"hourly_rate": 85, "min_emails": 3, "min_threads": 2, "min_months": 1}
+CFG = {"hourly_rate": 85, "min_events": 2, "min_emails": 3, "min_threads": 2, "min_months": 1}
 
 
 class M:                      # the few StoredMessage fields events.py reads

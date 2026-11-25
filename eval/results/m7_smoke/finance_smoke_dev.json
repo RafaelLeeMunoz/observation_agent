@@ -1,0 +1,71 @@
+{
+ "tag": "smoke_dev",
+ "slice": "dev",
+ "opportunities": 10,
+ "events": 30,
+ "F1_arithmetic": {
+  "scored_opportunities": 10,
+  "recomputed_total": "45.64450785067874675798343294",
+  "published_total": "45.64450785067874675798343294",
+  "mismatches": 0
+ },
+ "F2_recount": {
+  "independent_pairs": 30,
+  "events_in_data": 30
+ },
+ "F3_thresholds": {
+  "violations": 0
+ },
+ "F4_report": {
+  "table_rows_found": 10,
+  "scored": 10,
+  "mismatches": 0
+ },
+ "F5_double_counting": {
+  "sum_of_opportunity_dollars": "45.64",
+  "running_total": "45.64",
+  "thread_overlap_upper_bound_events": 0,
+  "thread_overlap_upper_bound_dollars": "0.00",
+  "thread_overlap_upper_bound_share_of_total": 0.0,
+  "overlap_deduction": "0.00",
+  "deduction_share": 0.0,
+  "threads_in_two_or_more_scored_processes": 0,
+  "events_sharing_such_threads": 0,
+  "near_duplicate_scored_pairs": [],
+  "n_near_duplicate_pairs": 0
+ },
+ "F6_assumptions": {
+  "total_at_low_minutes": "22.35",
+  "total_at_base": "45.64",
+  "total_at_high_minutes": "84.25",
+  "dollars_by_confidence": {
+   "high": "12.37",
+   "low": "17.82",
+   "medium": "15.46"
+  },
+  "low_confidence_share": 0.3903,
+  "largest_opportunity_share": 0.2709,
+  "top5_share": 0.7904,
+  "minutes_per_event_base": {
+   "min": 6,
+   "median": 20,
+   "max": 30
+  },
+  "opportunities_with_base_minutes_over_60": [],
+  "total_events_counted_once": 30
+ },
+ "criteria": {
+  "F1 arithmetic matches an independent recomputation (hard)": "pass",
+  "F2 event recount equals the events in the data (hard)": "pass",
+  "F3 evidence thresholds hold for every scored opportunity (hard)": "pass",
+  "F4 report equals the data (hard)": "pass",
+  "F5 overlap deduction <= 10 percent and no near-duplicate pair (provisional)": "pass",
+  "F6 low-confidence <= 15, largest <= 15, top five <= 50 percent (provisional)": "fail"
+ },
+ "problems": {
+  "F1": [],
+  "F3": [],
+  "F4": [],
+  "F2": []
+ }
+}

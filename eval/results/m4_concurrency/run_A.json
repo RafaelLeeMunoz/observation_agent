@@ -1,0 +1,263 @@
+{
+ "name": "A",
+ "workers": 8,
+ "batches": [
+  "b005",
+  "b014",
+  "b025",
+  "b034",
+  "b046",
+  "b055",
+  "b066",
+  "b075"
+ ],
+ "at": "2026-11-23T19:10:09+00:00",
+ "wall_s": 299.9,
+ "exit_code": 0,
+ "stopped": null,
+ "complete": true,
+ "model_stages": {
+  "n_extracted": 8,
+  "n_grounded": 8,
+  "failed_extract": [],
+  "failed_ground": [],
+  "unfinished": [],
+  "ground_unfinished": [],
+  "peak_in_flight": 8,
+  "session_kinds": {
+   "ok": 16
+  },
+  "fence_self_checks": 2,
+  "fence_self_check_flags": [],
+  "canary": {
+   "batch": "b075",
+   "checked": 34,
+   "verified": 33,
+   "rejected": 1,
+   "tripped": false
+  },
+  "sentinels_checked": {
+   "b025": {
+    "checked": 55,
+    "verified": 55,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b046": {
+    "checked": 46,
+    "verified": 46,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b014": {
+    "checked": 52,
+    "verified": 52,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b066": {
+    "checked": 65,
+    "verified": 65,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b005": {
+    "checked": 87,
+    "verified": 87,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   }
+  },
+  "cumulative": {
+   "checked": 487,
+   "rejected": 3
+  },
+  "flags": []
+ },
+ "cache_hits": 0,
+ "sessions": {
+  "extract": {
+   "sessions": 8,
+   "kinds": {
+    "ok": 8
+   },
+   "seconds": {
+    "min": 132.5,
+    "max": 257.0,
+    "mean": 194.0,
+    "sum": 1552.1
+   },
+   "first_wave_start_spread_s": 0.0,
+   "measured_over_predicted": {
+    "mean": 0.96,
+    "max": 1.28
+   },
+   "self_checks": 2,
+   "rows": [
+    {
+     "batch": "b075",
+     "seconds": 132.5,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 32673,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b034",
+     "seconds": 168.7,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 42662,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b025",
+     "seconds": 170.7,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 43042,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b046",
+     "seconds": 183.0,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 45823,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b014",
+     "seconds": 192.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 49284,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b066",
+     "seconds": 213.9,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 54363,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b005",
+     "seconds": 234.2,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 59873,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b055",
+     "seconds": 257.0,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 65922,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    }
+   ]
+  },
+  "ground": {
+   "sessions": 8,
+   "kinds": {
+    "ok": 8
+   },
+   "seconds": {
+    "min": 13.9,
+    "max": 42.4,
+    "mean": 25.6,
+    "sum": 204.9
+   },
+   "first_wave_start_spread_s": 125.0,
+   "measured_over_predicted": null,
+   "self_checks": 0,
+   "rows": [
+    {
+     "batch": "b075",
+     "seconds": 13.9,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 2471,
+     "self_checks": 0
+    },
+    {
+     "batch": "b034",
+     "seconds": 25.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5169,
+     "self_checks": 0
+    },
+    {
+     "batch": "b025",
+     "seconds": 27.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5678,
+     "self_checks": 0
+    },
+    {
+     "batch": "b046",
+     "seconds": 21.9,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 4678,
+     "self_checks": 0
+    },
+    {
+     "batch": "b014",
+     "seconds": 17.4,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 3468,
+     "self_checks": 0
+    },
+    {
+     "batch": "b066",
+     "seconds": 21.4,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 4299,
+     "self_checks": 0
+    },
+    {
+     "batch": "b005",
+     "seconds": 35.0,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 7731,
+     "self_checks": 0
+    },
+    {
+     "batch": "b055",
+     "seconds": 42.4,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 9158,
+     "self_checks": 0
+    }
+   ]
+  }
+ },
+ "processes": {
+  "samples": 59,
+  "peak_processes": 25,
+  "peak_working_set_mb": 4543
+ }
+}

@@ -136,11 +136,13 @@ def make_batches(st: store.Store, keys: list[str], cfg: dict, prompt_version: st
     first = lambda tid: min((st.messages[k].date_utc or "9999", k) for k in st.threads[tid])
     tids.sort(key=lambda t: (first(t), t))
     budget, cpt = cfg["token_budget"], cfg["chars_per_token"]
+    cap = cfg.get("max_messages")                # M4 2a: optional; extraction time follows the work in a batch
     batches, cur = [], []
     for tid in tids:
         for u in thread_units(tid, st.threads[tid], st, cfg):
             size = len(u.text) / cpt
-            if cur and sum(len(x.text) for x in cur) / cpt + size > budget:
+            over_cap = cap is not None and sum(len(x.parts) for x in cur) + len(u.parts) > cap   # never splits a thread
+            if cur and (sum(len(x.text) for x in cur) / cpt + size > budget or over_cap):
                 batches.append(cur)
                 cur = []
             cur.append(u)

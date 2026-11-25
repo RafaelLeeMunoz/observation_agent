@@ -2,10 +2,15 @@
 
     prepare  : new attempt id; earlier staging/verified output for this batch is moved aside
                (never reused); prints the instruction for the extractor subagent
-    finalize : verifies the staged file against *this* attempt, writes data/extract/verified/
-               only if it passes (failures go to data/extract/failed/), moves the staged file to
-               staging/accepted/ or staging/rejected/, updates the analysis status (R8) and the
-               run log
+    finalize : verifies the staged file against *this* attempt, writes data/extract/<slice>/verified/
+               only if it passes (failures go to data/extract/<slice>/failed/), moves the staged file
+               to its staging folder's accepted/ or rejected/, updates the slice's analysis status (R8)
+               and its run log
+
+Every slice has its own folders (M4 step 1a, PLAN 5.1): batch ids restart at b001 in every slice, so a
+shared folder let a bench run displace a dev result in M3. The extractor writes to
+data/extract/staging/<slice>/: its frozen prompt says "under data/extract/staging/", so its output stays
+there; everything code owns is under data/extract/<slice>/.
 
 Run:  .venv\\Scripts\\python -m src.extract prepare  --slice bench --batch b001
       .venv\\Scripts\\python -m src.extract finalize --slice bench --batch b001 --first
@@ -27,18 +32,32 @@ from .filelock import SharedFileLock, write_atomic
 ROOT = Path(__file__).resolve().parent.parent
 
 
+# The slices a model stage may run on; tools/fence_hook.py SLICES must say the same (a test checks it).
+SLICES = ("dev", "bench", "all", "holdout")
+
+
 class Paths:
-    def __init__(self, root: Path = ROOT):
-        self.root = root
-        self.extract = root / "data" / "extract"
-        self.staging = self.extract / "staging"
+    """One slice's extraction folders: code's data/extract/<slice>/{verified,failed,attempts,logs,status.json} and
+    the model's data/extract/staging/<slice>/."""
+
+    def __init__(self, root: Path = ROOT, slice_name: str = "dev"):
+        if slice_name not in SLICES:
+            raise ValueError(f"unknown slice {slice_name!r}: the fence admits only {SLICES}")
+        self.root, self.slice = root, slice_name
+        self.extract = root / "data" / "extract" / slice_name
+        self.staging = root / "data" / "extract" / "staging" / slice_name
         self.verified = self.extract / "verified"
         self.failed = self.extract / "failed"
         self.attempts = self.extract / "attempts"
         self.status = self.extract / "status.json"
-        self.logs = root / "data" / "logs"
-        self.fence = self.logs / "fence"
+        self.logs = self.extract / "logs"
+        self.fence = root / "data" / "logs" / "fence"     # in-session subagents' fence records (runmodel.observe)
         self.batches = root / "data" / "batches"
+
+
+def _check_slice(p: Paths, slice_name: str) -> None:
+    if slice_name != p.slice:
+        raise ValueError(f"these paths are for slice {p.slice!r}, not {slice_name!r}")
 
 
 def _now() -> str:
@@ -58,6 +77,7 @@ def load_batch(p: Paths, slice_name: str, batch_id: str) -> dict:
 
 def prepare(p: Paths, slice_name: str, batch_id: str, model: str, prompt_version: str,
             schema_name: str = "extract-v7") -> dict:
+    _check_slice(p, slice_name)
     batch = load_batch(p, slice_name, batch_id)
     p.attempts.mkdir(parents=True, exist_ok=True)
     rec_path = p.attempts / f"{batch_id}.json"
@@ -80,24 +100,37 @@ def prepare(p: Paths, slice_name: str, batch_id: str, model: str, prompt_version
            "schema": schema_name,                # the output schema this attempt is verified against
            # the exact prompt text this attempt ran with, not only its version label
            "prompt_sha256": hashlib.sha256(prompt.read_bytes()).hexdigest() if prompt.exists() else None,
+           "run_note_version": RUN_NOTE_VERSION, "run_note_sha256": RUN_NOTE_SHA256,
            "batch_file": f"data/batches/{slice_name}/{batch_id}.txt",
-           "output_file": f"data/extract/staging/{batch_id}.json",
+           "output_file": f"data/extract/staging/{slice_name}/{batch_id}.json",
            "started_at_utc": _now(), "started_monotonic": time.time()}
     rec_path.write_text(json.dumps(rec, indent=1) + "\n", encoding="utf-8")
     p.staging.mkdir(parents=True, exist_ok=True)
     return rec
 
 
+# The run instruction's file-handling rule (user, 23 Nov 2026, after set D: an extractor wrote its output, then tried to Write
+# `b013.json.tmp-check`). It belongs to the RUN instruction, never to the frozen analytical prompt (extractor.md), and it
+# grants nothing: the fence still allows exactly one output file and a stray write is still a critical denial. Its version and
+# SHA-256 are recorded in every attempt; they are NOT part of the cache key (it restricts auxiliary file use only, so earlier
+# verified outputs stay valid; records made before it carry no run_note_sha256).
+RUN_NOTE = ("Write only your exact assigned output file. Do not create scratch files, temporary check files, backup copies, "
+            "or other files. Do not read your output back after writing it; the pipeline independently validates the final result.")
+RUN_NOTE_VERSION = "extractor-run-note-v1"
+RUN_NOTE_SHA256 = hashlib.sha256(RUN_NOTE.encode("utf-8")).hexdigest()
+
+
 def instruction(rec: dict) -> str:
     """What the orchestrator hands the extractor subagent for this attempt."""
     return (f"Read the batch file `{rec['batch_file']}`. batch_id is `{rec['batch_id']}`, attempt_id is "
-            f"`{rec['attempt_id']}`. Follow your instructions and write your JSON to `{rec['output_file']}`.")
+            f"`{rec['attempt_id']}`. Follow your instructions and write your JSON to `{rec['output_file']}`. {RUN_NOTE}")
 
 
 def finalize(p: Paths, slice_name: str, batch_id: str, st: store.Store, vcfg: dict, first: bool = False,
              usage: dict | None = None) -> dict:
     """`usage` is what the harness reported for the subagent run (tokens, tool calls, duration); the
     subagent cannot see it, so the orchestrator passes it in and it is stored as reported."""
+    _check_slice(p, slice_name)
     batch = load_batch(p, slice_name, batch_id)
     rec = json.loads((p.attempts / f"{batch_id}.json").read_text(encoding="utf-8"))
     staged = p.staging / f"{batch_id}.json"
@@ -108,13 +141,15 @@ def finalize(p: Paths, slice_name: str, batch_id: str, st: store.Store, vcfg: di
         res["errors"].insert(0, "the extractor wrote no output file for this attempt")
     finished = time.time()
     res.update(model=rec["model"], prompt_version=rec["prompt_version"], prompt_sha256=rec.get("prompt_sha256"),
-               attempt_no=rec["attempt_no"],
+               run_note_sha256=rec.get("run_note_sha256"), attempt_no=rec["attempt_no"],
                seconds=round(finished - rec["started_monotonic"], 1),
                usage={**usage, "source": "harness report for the subagent"} if usage else None)
-    # `model` is what was asked for; `model_observed` is what answered, from the subagent's transcript
-    res["model_observed"] = runmodel.observe(p.fence, p.root / rec["batch_file"], rec["model"], root=p.root)
-    if res["model_observed"]["status"] == runmodel.UNKNOWN and usage and "models_observed" in usage:
-        res["model_observed"] = runmodel.from_headless(rec["model"], usage["models_observed"])   # claude -p run
+    # `model` is what was asked for; `model_observed` is what answered: the CLI's own report for a headless
+    # `claude -p` session, else the in-session subagent's transcript found through the fence log
+    if usage and "models_observed" in usage:
+        res["model_observed"] = runmodel.from_headless(rec["model"], usage["models_observed"])
+    else:
+        res["model_observed"] = runmodel.observe(p.fence, p.root / rec["batch_file"], rec["model"], root=p.root)
     res["canary_tripped"] = bool(first and res["status"] == "verified" and verify.canary_tripped(res, vcfg))
     ok = res["status"] == "verified"
     out_dir = p.verified if ok else p.failed
@@ -151,7 +186,7 @@ def _finish_shared(p: Paths, batch: dict, batch_id: str, rec: dict, res: dict) -
                             "model": rec["model"],
                             "model_observed": {k: res["model_observed"][k] for k in ("status", "models", "why")},
                             "prompt_version": rec["prompt_version"], "prompt_sha256": rec.get("prompt_sha256"),
-                            "status": res["status"],
+                            "run_note_sha256": rec.get("run_note_sha256"), "status": res["status"],
                             "quotes": res.get("quotes"), "evidence": res.get("evidence"), "errors": len(res["errors"]),
                             "canary_tripped": res["canary_tripped"], "started_at_utc": rec["started_at_utc"],
                             "finished_at_utc": _now(), "seconds": res["seconds"],
@@ -174,7 +209,7 @@ def main(argv: list[str] | None = None) -> int:
     usage = {k: v for k, v in (("subagent_tokens", args.subagent_tokens), ("tool_uses", args.tool_uses),
                                ("duration_ms", args.duration_ms)) if v is not None} or None
     cfg = config.load()
-    p = Paths()
+    p = Paths(ROOT, args.slice)
     if args.action == "prepare":
         rec = prepare(p, args.slice, args.batch, args.model or cfg["extract"]["model"],
                       args.prompt_version or cfg["extract"]["prompt_version"], args.schema or cfg["extract"]["schema"])

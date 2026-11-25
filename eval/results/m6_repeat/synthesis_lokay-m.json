@@ -1,0 +1,125 @@
+{
+ "mailboxes": [
+  "lokay-m"
+ ],
+ "a": {
+  "events": 86,
+  "processes": 17,
+  "scored": 11,
+  "dollars": "363.0064011870111220672459056"
+ },
+ "b": {
+  "events": 75,
+  "processes": 15,
+  "scored": 11,
+  "dollars": "271.8960989128008206788264786"
+ },
+ "threads_counted_a": 86,
+ "threads_counted_b": 73,
+ "thread_jaccard": 0.787,
+ "events_ratio_b_over_a": 0.872,
+ "dollars_ratio_b_over_a": 0.749,
+ "matched_processes": 14,
+ "processes_a_unmatched": 3,
+ "processes_b_unmatched": 1,
+ "share_of_a_events_in_matched_processes": 0.93,
+ "share_of_b_events_in_matched_processes": 0.973,
+ "matches": [
+  {
+   "a": "Weekly California capacity report",
+   "b": "Weekly California capacity report",
+   "shared_threads": 16,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Firm capacity posting bids and responses",
+   "b": "Firm capacity posting and bid reminders",
+   "shared_threads": 7,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Contract quantity change and amendment requests",
+   "b": "Short-term transport contract amendment approval",
+   "shared_threads": 7,
+   "jaccard": 0.64
+  },
+  {
+   "a": "Pipeline expansion and facility cost estimates",
+   "b": "Expansion and project cost estimate delivery",
+   "shared_threads": 7,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Time report and leave recording",
+   "b": "Time report submission",
+   "shared_threads": 6,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Meeting scheduling and calendar coordination",
+   "b": "Meeting scheduling and announcements",
+   "shared_threads": 5,
+   "jaccard": 0.45
+  },
+  {
+   "a": "Pipeline volume and imbalance reconciliation",
+   "b": "Mojave and CIG volume imbalance reconciliation",
+   "shared_threads": 5,
+   "jaccard": 0.83
+  },
+  {
+   "a": "Operational balancing agreement execution and imba",
+   "b": "Imbalance cash-out and OBA settlement",
+   "shared_threads": 3,
+   "jaccard": 0.6
+  },
+  {
+   "a": "PG&E gas plan briefing call coordination",
+   "b": "PG&E gas plan briefing coordination",
+   "shared_threads": 3,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Year-end accomplishments and objectives",
+   "b": "Performance review and feedback preparation",
+   "shared_threads": 3,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Capacity credit approval requests",
+   "b": "Capacity credit approval requests",
+   "shared_threads": 2,
+   "jaccard": 1.0
+  },
+  {
+   "a": "CAS system training sign-up",
+   "b": "System training session scheduling",
+   "shared_threads": 2,
+   "jaccard": 1.0
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   2,
+   "Past-due and billing query resolution"
+  ],
+  [
+   2,
+   "New customer and tie-in marketing contact assignment"
+  ],
+  [
+   2,
+   "Gas sales confirmation distribution"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   2,
+   "Commercial activity bullets to manager"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "pass"
+ }
+}

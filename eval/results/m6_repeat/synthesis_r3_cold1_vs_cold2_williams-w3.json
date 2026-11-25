@@ -1,0 +1,173 @@
+{
+ "mailboxes": [
+  "williams-w3"
+ ],
+ "a": {
+  "events": 203,
+  "processes": 31,
+  "scored": 29,
+  "dollars": "364.8396049312385505238952574"
+ },
+ "b": {
+  "events": 144,
+  "processes": 21,
+  "scored": 21,
+  "dollars": "260.9127505020912328285428547"
+ },
+ "threads_counted_a": 200,
+ "threads_counted_b": 140,
+ "thread_jaccard": 0.498,
+ "events_ratio_b_over_a": 0.709,
+ "dollars_ratio_b_over_a": 0.715,
+ "matched_processes": 13,
+ "processes_a_unmatched": 18,
+ "processes_b_unmatched": 8,
+ "share_of_a_events_in_matched_processes": 0.655,
+ "share_of_b_events_in_matched_processes": 0.743,
+ "matches": [
+  {
+   "a": "Misdirected email for the wrong Bill Williams",
+   "b": "Correcting misdirected email for the namesake",
+   "shared_threads": 13,
+   "jaccard": 0.62
+  },
+  {
+   "a": "Daily position reporting and coverage",
+   "b": "Daily short and long position coverage",
+   "shared_threads": 12,
+   "jaccard": 0.52
+  },
+  {
+   "a": "Congestion revenue reporting and reconciliation",
+   "b": "Congestion revenue reporting and settlement",
+   "shared_threads": 10,
+   "jaccard": 0.77
+  },
+  {
+   "a": "Meeting scheduling and announcements",
+   "b": "Real-time group meeting scheduling",
+   "shared_threads": 9,
+   "jaccard": 0.75
+  },
+  {
+   "a": "UBS onboarding paperwork and drug test follow-up",
+   "b": "New hire onboarding paperwork",
+   "shared_threads": 7,
+   "jaccard": 0.7
+  },
+  {
+   "a": "EPE schedule and lending deal maintenance",
+   "b": "El Paso Electric lending and shortfall deals",
+   "shared_threads": 6,
+   "jaccard": 0.3
+  },
+  {
+   "a": "Hiring and interview coordination",
+   "b": "Hiring and candidate handling",
+   "shared_threads": 6,
+   "jaccard": 0.67
+  },
+  {
+   "a": "Expense report approval",
+   "b": "Expense report handling",
+   "shared_threads": 6,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Prior month adjustment review",
+   "b": "Prior month adjustment review",
+   "shared_threads": 5,
+   "jaccard": 0.5
+  },
+  {
+   "a": "Schedule cut handling",
+   "b": "Contractual cut handling",
+   "shared_threads": 5,
+   "jaccard": 0.56
+  },
+  {
+   "a": "Trade dispute tape pulls",
+   "b": "Tape pull for trade disputes",
+   "shared_threads": 3,
+   "jaccard": 0.33
+  },
+  {
+   "a": "Day-ahead and hour-ahead finals import",
+   "b": "Day-ahead and hour-ahead finals creation",
+   "shared_threads": 3,
+   "jaccard": 0.5
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   7,
+   "Performance review and feedback preparation"
+  ],
+  [
+   7,
+   "Absence and desk coverage arrangement"
+  ],
+  [
+   6,
+   "Real-time deal entry in Enpower and CAPS"
+  ],
+  [
+   5,
+   "System and trader access setup"
+  ],
+  [
+   5,
+   "El Paso data scrape access and outage handling"
+  ],
+  [
+   5,
+   "Counterparty trading restriction and booking notices"
+  ],
+  [
+   4,
+   "System maintenance and outage notices"
+  ],
+  [
+   4,
+   "Power index participation evaluation"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   7,
+   "Deal entry and position corrections"
+  ],
+  [
+   6,
+   "El Paso model delivery and reconciliation"
+  ],
+  [
+   6,
+   "Annuity deals to true up books"
+  ],
+  [
+   4,
+   "System access requests"
+  ],
+  [
+   4,
+   "Real-time shift schedule changes"
+  ],
+  [
+   4,
+   "EES daily sheet distribution"
+  ],
+  [
+   3,
+   "BPA hourly generator checkout"
+  ],
+  [
+   3,
+   "Absence coverage arrangements"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "fail",
+  "R6 >= 70 percent of events in matched processes (both runs)": "fail"
+ }
+}

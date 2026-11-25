@@ -1,0 +1,93 @@
+[
+ {
+  "stage": "ground",
+  "name": "b045",
+  "attempt": "g145-0d2304ba-2",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:07:58Z",
+  "finished_at_utc": "2026-11-23T22:08:22Z",
+  "wall_seconds": 23.7,
+  "output_tokens": 4509,
+  "fence_records": 2
+ },
+ {
+  "stage": "ground",
+  "name": "b017",
+  "attempt": "g117-788a3e56-2",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:07:58Z",
+  "finished_at_utc": "2026-11-23T22:08:42Z",
+  "wall_seconds": 44.0,
+  "output_tokens": 9403,
+  "fence_records": 2
+ },
+ {
+  "stage": "extract",
+  "name": "b040",
+  "attempt": "b040-7ace21de-2",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:07:58Z",
+  "finished_at_utc": "2026-11-23T22:10:45Z",
+  "wall_seconds": 167.4,
+  "output_tokens": 42815,
+  "fence_records": 3
+ },
+ {
+  "stage": "ground",
+  "name": "b040",
+  "attempt": "g140-b7cde304-1",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:10:46Z",
+  "finished_at_utc": "2026-11-23T22:11:02Z",
+  "wall_seconds": 16.6,
+  "output_tokens": 2917,
+  "fence_records": 2
+ },
+ {
+  "stage": "extract",
+  "name": "b006",
+  "attempt": "b006-aac6ac65-3",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:07:58Z",
+  "finished_at_utc": "2026-11-23T22:11:42Z",
+  "wall_seconds": 223.8,
+  "output_tokens": 57516,
+  "fence_records": 2
+ },
+ {
+  "stage": "ground",
+  "name": "b006",
+  "attempt": "g106-b0aead53-1",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:11:42Z",
+  "finished_at_utc": "2026-11-23T22:12:06Z",
+  "wall_seconds": 23.7,
+  "output_tokens": 4909,
+  "fence_records": 2
+ },
+ {
+  "stage": "extract",
+  "name": "b013",
+  "attempt": "b013-d85af55c-2",
+  "kind": "ok",
+  "self_checks": 0,
+  "instructions_loaded": 0,
+  "started_at_utc": "2026-11-23T22:07:58Z",
+  "finished_at_utc": "2026-11-23T22:12:47Z",
+  "wall_seconds": 289.2,
+  "output_tokens": 75833,
+  "fence_records": 5
+ }
+]

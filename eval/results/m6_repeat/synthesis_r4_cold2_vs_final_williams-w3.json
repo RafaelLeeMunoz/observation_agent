@@ -1,0 +1,149 @@
+{
+ "mailboxes": [
+  "williams-w3"
+ ],
+ "a": {
+  "events": 144,
+  "processes": 21,
+  "scored": 21,
+  "dollars": "260.9127505020912328285428547"
+ },
+ "b": {
+  "events": 276,
+  "processes": 39,
+  "scored": 36,
+  "dollars": "430.2634379905511691935598724"
+ },
+ "threads_counted_a": 140,
+ "threads_counted_b": 262,
+ "thread_jaccard": 0.483,
+ "events_ratio_b_over_a": 1.917,
+ "dollars_ratio_b_over_a": 1.649,
+ "matched_processes": 19,
+ "processes_a_unmatched": 2,
+ "processes_b_unmatched": 20,
+ "share_of_a_events_in_matched_processes": 0.931,
+ "share_of_b_events_in_matched_processes": 0.572,
+ "matches": [
+  {
+   "a": "Correcting misdirected email for the namesake",
+   "b": "Misdirected email and address correction",
+   "shared_threads": 13,
+   "jaccard": 0.59
+  },
+  {
+   "a": "Congestion revenue reporting and settlement",
+   "b": "Congestion revenue reporting and reconciliation",
+   "shared_threads": 9,
+   "jaccard": 0.75
+  },
+  {
+   "a": "Daily short and long position coverage",
+   "b": "Position and length notices to the shift",
+   "shared_threads": 8,
+   "jaccard": 0.38
+  },
+  {
+   "a": "Tape pull for trade disputes",
+   "b": "Counterparty dispute checks and tape review",
+   "shared_threads": 7,
+   "jaccard": 0.7
+  },
+  {
+   "a": "New hire onboarding paperwork",
+   "b": "New employer onboarding paperwork",
+   "shared_threads": 7,
+   "jaccard": 0.88
+  },
+  {
+   "a": "Real-time group meeting scheduling",
+   "b": "Meeting scheduling and rooms",
+   "shared_threads": 7,
+   "jaccard": 0.41
+  },
+  {
+   "a": "Hiring and candidate handling",
+   "b": "Hiring and interview scheduling",
+   "shared_threads": 7,
+   "jaccard": 0.54
+  },
+  {
+   "a": "Deal entry and position corrections",
+   "b": "Deal and report variance correction",
+   "shared_threads": 6,
+   "jaccard": 0.55
+  },
+  {
+   "a": "El Paso Electric lending and shortfall deals",
+   "b": "El Paso lending schedule execution",
+   "shared_threads": 6,
+   "jaccard": 0.6
+  },
+  {
+   "a": "Expense report handling",
+   "b": "Expense report filing and approval",
+   "shared_threads": 6,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Day-ahead and hour-ahead finals creation",
+   "b": "Day-ahead and hour-ahead finals processing",
+   "shared_threads": 5,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Contractual cut handling",
+   "b": "Schedule cut handling",
+   "shared_threads": 5,
+   "jaccard": 0.5
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   6,
+   "Annuity deals to true up books"
+  ],
+  [
+   4,
+   "System access requests"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   14,
+   "System and access requests"
+  ],
+  [
+   11,
+   "Desk trading and deal entry rule updates"
+  ],
+  [
+   10,
+   "Short position coverage and booking"
+  ],
+  [
+   10,
+   "Real-time deal capture and entry"
+  ],
+  [
+   10,
+   "Desk equipment and IT support requests"
+  ],
+  [
+   9,
+   "Market rule and regulatory review"
+  ],
+  [
+   7,
+   "Performance review preparation"
+  ],
+  [
+   6,
+   "Outage notification to the grid operator"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "fail",
+  "R6 >= 70 percent of events in matched processes (both runs)": "fail"
+ }
+}

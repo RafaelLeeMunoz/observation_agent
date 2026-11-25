@@ -1,0 +1,4055 @@
+{
+ "mailbox": "farmer-d",
+ "observations": 1178,
+ "est_tokens": 85157,
+ "parts": [
+  621,
+  557
+ ],
+ "seconds": {
+  "whole": 105.4,
+  "parts_parallel": 74.0,
+  "merge": 16.1,
+  "split_total": 90.1
+ },
+ "models": {
+  "whole": "confirmed",
+  "parts": [
+   "confirmed",
+   "confirmed"
+  ]
+ },
+ "merge_flags": [],
+ "merged": [
+  "P1",
+  "P2",
+  "P3",
+  "P4"
+ ],
+ "comparison": {
+  "whole_processes": 26,
+  "split_processes": 29,
+  "recovered_at_half_overlap": 15,
+  "lost": [
+   {
+    "whole": "P2",
+    "name": "Accounting arrangement and meter reallocation",
+    "observations": 9,
+    "events": 6,
+    "quotes": 9,
+    "split": "P15",
+    "jaccard": 0.462,
+    "split_events": 7,
+    "split_quotes_shared": 6,
+    "observations_went": {
+     "P15": 6,
+     "unassigned": 2,
+     "P11": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P3",
+    "name": "Stranger's gas and unattached meter volume resolution",
+    "observations": 16,
+    "events": 13,
+    "quotes": 19,
+    "split": "P2",
+    "jaccard": 0.469,
+    "split_events": 17,
+    "split_quotes_shared": 18,
+    "observations_went": {
+     "P2": 15,
+     "unassigned": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P5",
+    "name": "Plant monthly nomination submission",
+    "observations": 13,
+    "events": 7,
+    "quotes": 19,
+    "split": "P3",
+    "jaccard": 0.25,
+    "split_events": 21,
+    "split_quotes_shared": 8,
+    "observations_went": {
+     "P3": 8,
+     "P10": 3,
+     "unassigned": 2
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P7",
+    "name": "Daily flow and volume change notices",
+    "observations": 12,
+    "events": 7,
+    "quotes": 12,
+    "split": "P10",
+    "jaccard": 0.333,
+    "split_events": 6,
+    "split_quotes_shared": 6,
+    "observations_went": {
+     "P10": 6,
+     "unassigned": 6
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P11",
+    "name": "Transport usage ticket and rate maintenance",
+    "observations": 20,
+    "events": 5,
+    "quotes": 26,
+    "split": "P7",
+    "jaccard": 0.391,
+    "split_events": 4,
+    "split_quotes_shared": 12,
+    "observations_went": {
+     "P25": 11,
+     "P7": 9
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P17",
+    "name": "HR and budget questionnaires",
+    "observations": 13,
+    "events": 6,
+    "quotes": 13,
+    "split": "P21",
+    "jaccard": 0.429,
+    "split_events": 2,
+    "split_quotes_shared": 6,
+    "observations_went": {
+     "P21": 6,
+     "unassigned": 4,
+     "P14": 3
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P19",
+    "name": "Pipeline cut reporting",
+    "observations": 5,
+    "events": 4,
+    "quotes": 5,
+    "split": "P29",
+    "jaccard": 0.176,
+    "split_events": 6,
+    "split_quotes_shared": 3,
+    "observations_went": {
+     "P29": 3,
+     "unassigned": 2
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P20",
+    "name": "Weekend on-call notes",
+    "observations": 5,
+    "events": 4,
+    "quotes": 5,
+    "split": "P29",
+    "jaccard": 0.25,
+    "split_events": 6,
+    "split_quotes_shared": 4,
+    "observations_went": {
+     "P29": 4,
+     "unassigned": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P23",
+    "name": "Sitara deal ticket correction and repathing",
+    "observations": 8,
+    "events": 6,
+    "quotes": 24,
+    "split": "P9",
+    "jaccard": 0.0,
+    "split_events": 5,
+    "split_quotes_shared": 0,
+    "observations_went": {
+     "unassigned": 8
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P24",
+    "name": "Meeting scheduling and attendance confirmation",
+    "observations": 7,
+    "events": 3,
+    "quotes": 7,
+    "split": "P9",
+    "jaccard": 0.0,
+    "split_events": 5,
+    "split_quotes_shared": 0,
+    "observations_went": {
+     "unassigned": 7
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P26",
+    "name": "Month-end close schedule",
+    "observations": 5,
+    "events": 3,
+    "quotes": 5,
+    "split": "P9",
+    "jaccard": 0.0,
+    "split_events": 5,
+    "split_quotes_shared": 0,
+    "observations_went": {
+     "unassigned": 5
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   }
+  ],
+  "split_only": [
+   "P10",
+   "P11",
+   "P12",
+   "P14",
+   "P15",
+   "P2",
+   "P21",
+   "P22",
+   "P23",
+   "P24",
+   "P25",
+   "P29",
+   "P7",
+   "P9"
+  ],
+  "assigned": {
+   "whole": 345,
+   "split": 458
+  },
+  "events_in_recurring_processes": {
+   "whole": 215,
+   "split": 231
+  },
+  "rows": [
+   {
+    "whole": "P1",
+    "name": "Extend or create a deal for meter flow with no deal",
+    "observations": 47,
+    "events": 39,
+    "quotes": 62,
+    "split": "P1",
+    "jaccard": 0.714,
+    "split_events": 48,
+    "split_quotes_shared": 60,
+    "observations_went": {
+     "P1": 45,
+     "unassigned": 2
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P2",
+    "name": "Accounting arrangement and meter reallocation",
+    "observations": 9,
+    "events": 6,
+    "quotes": 9,
+    "split": "P15",
+    "jaccard": 0.462,
+    "split_events": 7,
+    "split_quotes_shared": 6,
+    "observations_went": {
+     "P15": 6,
+     "unassigned": 2,
+     "P11": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P3",
+    "name": "Stranger's gas and unattached meter volume resolution",
+    "observations": 16,
+    "events": 13,
+    "quotes": 19,
+    "split": "P2",
+    "jaccard": 0.469,
+    "split_events": 17,
+    "split_quotes_shared": 18,
+    "observations_went": {
+     "P2": 15,
+     "unassigned": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P4",
+    "name": "Counterparty daily and monthly nomination files",
+    "observations": 14,
+    "events": 14,
+    "quotes": 14,
+    "split": "P3",
+    "jaccard": 0.519,
+    "split_events": 21,
+    "split_quotes_shared": 14,
+    "observations_went": {
+     "P3": 14
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P5",
+    "name": "Plant monthly nomination submission",
+    "observations": 13,
+    "events": 7,
+    "quotes": 19,
+    "split": "P3",
+    "jaccard": 0.25,
+    "split_events": 21,
+    "split_quotes_shared": 8,
+    "observations_went": {
+     "P3": 8,
+     "P10": 3,
+     "unassigned": 2
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P6",
+    "name": "HL&P flow numbers reporting",
+    "observations": 6,
+    "events": 6,
+    "quotes": 10,
+    "split": "P17",
+    "jaccard": 0.714,
+    "split_events": 5,
+    "split_quotes_shared": 5,
+    "observations_went": {
+     "P17": 5,
+     "unassigned": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P7",
+    "name": "Daily flow and volume change notices",
+    "observations": 12,
+    "events": 7,
+    "quotes": 12,
+    "split": "P10",
+    "jaccard": 0.333,
+    "split_events": 6,
+    "split_quotes_shared": 6,
+    "observations_went": {
+     "P10": 6,
+     "unassigned": 6
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P8",
+    "name": "Meter shut-in and restoration notices",
+    "observations": 21,
+    "events": 9,
+    "quotes": 28,
+    "split": "P18",
+    "jaccard": 0.522,
+    "split_events": 6,
+    "split_quotes_shared": 17,
+    "observations_went": {
+     "P18": 12,
+     "unassigned": 8,
+     "P5": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P9",
+    "name": "New production Sitara ticket setup",
+    "observations": 17,
+    "events": 10,
+    "quotes": 22,
+    "split": "P16",
+    "jaccard": 0.727,
+    "split_events": 11,
+    "split_quotes_shared": 21,
+    "observations_went": {
+     "P16": 16,
+     "unassigned": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P10",
+    "name": "Out-of-office coverage hand-off",
+    "observations": 19,
+    "events": 12,
+    "quotes": 19,
+    "split": "P4",
+    "jaccard": 0.75,
+    "split_events": 12,
+    "split_quotes_shared": 18,
+    "observations_went": {
+     "P4": 18,
+     "unassigned": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P11",
+    "name": "Transport usage ticket and rate maintenance",
+    "observations": 20,
+    "events": 5,
+    "quotes": 26,
+    "split": "P7",
+    "jaccard": 0.391,
+    "split_events": 4,
+    "split_quotes_shared": 12,
+    "observations_went": {
+     "P25": 11,
+     "P7": 9
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P12",
+    "name": "Interconnect and pipeline volume variance reconciliation",
+    "observations": 18,
+    "events": 8,
+    "quotes": 36,
+    "split": "P6",
+    "jaccard": 0.857,
+    "split_events": 9,
+    "split_quotes_shared": 36,
+    "observations_went": {
+     "P6": 18
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P13",
+    "name": "UA4 unaccounted-for volume resolution",
+    "observations": 15,
+    "events": 7,
+    "quotes": 21,
+    "split": "P8",
+    "jaccard": 0.765,
+    "split_events": 6,
+    "split_quotes_shared": 18,
+    "observations_went": {
+     "P8": 13,
+     "unassigned": 2
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P14",
+    "name": "Counterparty invoice and price discrepancy check",
+    "observations": 22,
+    "events": 18,
+    "quotes": 58,
+    "split": "P28",
+    "jaccard": 0.68,
+    "split_events": 15,
+    "split_quotes_shared": 44,
+    "observations_went": {
+     "P28": 17,
+     "unassigned": 5
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P15",
+    "name": "OPM hours and activity survey",
+    "observations": 13,
+    "events": 7,
+    "quotes": 19,
+    "split": "P26",
+    "jaccard": 0.647,
+    "split_events": 6,
+    "split_quotes_shared": 16,
+    "observations_went": {
+     "P26": 11,
+     "unassigned": 2
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P16",
+    "name": "Monthly cost allocation and RC charge review",
+    "observations": 12,
+    "events": 7,
+    "quotes": 18,
+    "split": "P19",
+    "jaccard": 0.632,
+    "split_events": 7,
+    "split_quotes_shared": 18,
+    "observations_went": {
+     "P19": 12
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P17",
+    "name": "HR and budget questionnaires",
+    "observations": 13,
+    "events": 6,
+    "quotes": 13,
+    "split": "P21",
+    "jaccard": 0.429,
+    "split_events": 2,
+    "split_quotes_shared": 6,
+    "observations_went": {
+     "P21": 6,
+     "unassigned": 4,
+     "P14": 3
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P18",
+    "name": "Monthly volumetric explanation for investor relations",
+    "observations": 6,
+    "events": 2,
+    "quotes": 6,
+    "split": "P27",
+    "jaccard": 1.0,
+    "split_events": 2,
+    "split_quotes_shared": 6,
+    "observations_went": {
+     "P27": 6
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P19",
+    "name": "Pipeline cut reporting",
+    "observations": 5,
+    "events": 4,
+    "quotes": 5,
+    "split": "P29",
+    "jaccard": 0.176,
+    "split_events": 6,
+    "split_quotes_shared": 3,
+    "observations_went": {
+     "P29": 3,
+     "unassigned": 2
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P20",
+    "name": "Weekend on-call notes",
+    "observations": 5,
+    "events": 4,
+    "quotes": 5,
+    "split": "P29",
+    "jaccard": 0.25,
+    "split_events": 6,
+    "split_quotes_shared": 4,
+    "observations_went": {
+     "P29": 4,
+     "unassigned": 1
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P21",
+    "name": "Buyback and deficiency status review",
+    "observations": 12,
+    "events": 6,
+    "quotes": 15,
+    "split": "P5",
+    "jaccard": 0.706,
+    "split_events": 8,
+    "split_quotes_shared": 15,
+    "observations_went": {
+     "P5": 12
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P22",
+    "name": "Application access approvals",
+    "observations": 3,
+    "events": 3,
+    "quotes": 3,
+    "split": "P20",
+    "jaccard": 1.0,
+    "split_events": 3,
+    "split_quotes_shared": 3,
+    "observations_went": {
+     "P20": 3
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P23",
+    "name": "Sitara deal ticket correction and repathing",
+    "observations": 8,
+    "events": 6,
+    "quotes": 24,
+    "split": "P9",
+    "jaccard": 0.0,
+    "split_events": 5,
+    "split_quotes_shared": 0,
+    "observations_went": {
+     "unassigned": 8
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P24",
+    "name": "Meeting scheduling and attendance confirmation",
+    "observations": 7,
+    "events": 3,
+    "quotes": 7,
+    "split": "P9",
+    "jaccard": 0.0,
+    "split_events": 5,
+    "split_quotes_shared": 0,
+    "observations_went": {
+     "unassigned": 7
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P25",
+    "name": "Customer meeting and trip planning",
+    "observations": 7,
+    "events": 3,
+    "quotes": 7,
+    "split": "P13",
+    "jaccard": 1.0,
+    "split_events": 3,
+    "split_quotes_shared": 7,
+    "observations_went": {
+     "P13": 7
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   },
+   {
+    "whole": "P26",
+    "name": "Month-end close schedule",
+    "observations": 5,
+    "events": 3,
+    "quotes": 5,
+    "split": "P9",
+    "jaccard": 0.0,
+    "split_events": 5,
+    "split_quotes_shared": 0,
+    "observations_went": {
+     "unassigned": 5
+    },
+    "recurring_whole": true,
+    "recurring_split": true
+   }
+  ],
+  "unknown_obs": []
+ },
+ "whole": {
+  "processes": [
+   {
+    "process_id": "P1",
+    "name": "Extend or create a deal for meter flow with no deal",
+    "description": "Allocation exceptions show gas flowing at a meter after a Sitara deal expired or with no deal; logistics ask for the deal to be extended, rolled or newly set up so volume management can allocate. Requests often need correction or follow-up, and flow is sometimes parked on stranger's gas meanwhile.",
+    "trigger": "allocation exception or flow at a meter outside the deal dates",
+    "output": "extended, rolled or new deal covering the flow",
+    "roles": [
+     "logistics analyst",
+     "scheduler",
+     "deal owner"
+    ],
+    "obs_ids": [
+     "b007-o22",
+     "b007-o23",
+     "b007-o24",
+     "b007-o31",
+     "b007-o34",
+     "b007-o56",
+     "b007-o61",
+     "b007-o60",
+     "b007-o67",
+     "b010-o2",
+     "b010-o30",
+     "b010-o31",
+     "b010-o39",
+     "b010-o35",
+     "b010-o36",
+     "b010-o46",
+     "b005-o71",
+     "b010-o79",
+     "b014-o1",
+     "b016-o32",
+     "b016-o40",
+     "b016-o50",
+     "b021-o14",
+     "b023-o9",
+     "b025-o31",
+     "b025-o32",
+     "b025-o33",
+     "b025-o36",
+     "b037-o7",
+     "b041-o1",
+     "b046-o4",
+     "b034-o38",
+     "b005-o60",
+     "b001-o22",
+     "b030-o34",
+     "b030-o38",
+     "b037-o1",
+     "b041-o7",
+     "b041-o8",
+     "b041-o9",
+     "b041-o25",
+     "b012-o54",
+     "b014-o52",
+     "b016-o35",
+     "b021-o15",
+     "b019-o73",
+     "b012-o15"
+    ],
+    "automation": {
+     "idea": "a standard deal-extension request that is pre-filled from the allocation exception line, with meter, deal number and dates",
+     "artifact_type": "template",
+     "why": "the same request is typed by hand for each meter"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 20,
+     "rationale": "looking up the expired deal and dates and writing the extension request",
+     "basis_obs_ids": [
+      "b010-o30",
+      "b010-o31",
+      "b016-o32",
+      "b021-o14"
+     ]
+    },
+    "threads_seen": 39
+   },
+   {
+    "process_id": "P2",
+    "name": "Accounting arrangement and meter reallocation",
+    "description": "Logistics ask for accounting arrangements, tracking IDs and a reallocation of a meter so production is paid or billed correctly. Deal numbers are sometimes wrong and need correcting.",
+    "trigger": "production at a meter with no accounting arrangement or wrong contract",
+    "output": "accounting arrangement with tracking ID and reallocated meter",
+    "roles": [
+     "logistics analyst",
+     "volume management"
+    ],
+    "obs_ids": [
+     "b005-o61",
+     "b005-o62",
+     "b005-o4",
+     "b007-o62",
+     "b016-o39",
+     "b012-o10",
+     "b012-o8",
+     "b003-o14",
+     "b005-o66"
+    ],
+    "automation": {
+     "idea": "a checklist of what volume management needs for an accounting arrangement",
+     "artifact_type": "checklist",
+     "why": "requests miss the contract, deal number or dates and bounce back"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 15,
+     "high": 25,
+     "rationale": "gathering deal and contract details and writing the request",
+     "basis_obs_ids": [
+      "b007-o62",
+      "b016-o39"
+     ]
+    },
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P3",
+    "name": "Stranger's gas and unattached meter volume resolution",
+    "description": "Volume booked to the strangers gas contract with no deal is reviewed and either attached to a deal or approved for write-off to unaccounted-for gas. Several meters wait on replies and follow-ups.",
+    "trigger": "volume on the strangers gas contract or a meter with no deal",
+    "output": "deal for the volume or approved write-off",
+    "roles": [
+     "volume management analyst",
+     "logistics",
+     "deal owner"
+    ],
+    "obs_ids": [
+     "b032-o8",
+     "b032-o17",
+     "b032-o18",
+     "b032-o19",
+     "b032-o40",
+     "b032-o47",
+     "b032-o52",
+     "b032-o54",
+     "b032-o55",
+     "b032-o56",
+     "b030-o35",
+     "b030-o36",
+     "b034-o16",
+     "b010-o8",
+     "b012-o100",
+     "b012-o98"
+    ],
+    "automation": {
+     "idea": "a standard write-off or attach-deal request listing meter, month, volume and expired deal",
+     "artifact_type": "template",
+     "why": "each meter request repeats the same fields and choices"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 20,
+     "rationale": "researching the meter and drafting the request",
+     "basis_obs_ids": [
+      "b032-o18",
+      "b032-o19"
+     ]
+    },
+    "threads_seen": 14
+   },
+   {
+    "process_id": "P4",
+    "name": "Counterparty daily and monthly nomination files",
+    "description": "Counterparties such as Calpine, TXU and Reliant send daily or monthly gas nomination files by email, usually after a phone call, for the desk to load.",
+    "trigger": "counterparty nomination due for the gas day or month",
+    "output": "nomination file received and loaded",
+    "roles": [
+     "scheduler",
+     "counterparty nominator"
+    ],
+    "obs_ids": [
+     "b001-o13",
+     "b001-o70",
+     "b007-o33",
+     "b007-o82",
+     "b010-o42",
+     "b019-o45",
+     "b021-o26",
+     "b028-o26",
+     "b043-o21",
+     "b001-o68",
+     "b002-o12",
+     "b003-o37",
+     "b003-o40",
+     "b001-o69"
+    ],
+    "automation": {
+     "idea": "a shared intake mailbox rule that files nomination attachments and acknowledges them",
+     "artifact_type": "email",
+     "why": "attachments are handled one by one"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 5,
+     "high": 10,
+     "rationale": "opening, checking and filing the nomination attachment",
+     "basis_obs_ids": [
+      "b007-o33",
+      "b043-o21"
+     ]
+    },
+    "threads_seen": 14
+   },
+   {
+    "process_id": "P5",
+    "name": "Plant monthly nomination submission",
+    "description": "Monthly natural gas nominations for the Methanol and MTBE plants and ranch setups are submitted and sometimes revised.",
+    "trigger": "start of a new month or a change in plant takes",
+    "output": "monthly nomination",
+    "roles": [
+     "scheduler",
+     "plant contact"
+    ],
+    "obs_ids": [
+     "b001-o55",
+     "b001-o56",
+     "b003-o89",
+     "b003-o90",
+     "b003-o92",
+     "b003-o91",
+     "b019-o42",
+     "b019-o43",
+     "b019-o44",
+     "b001-o17",
+     "b001-o19",
+     "b005-o53",
+     "b032-o25"
+    ],
+    "automation": {
+     "idea": "a monthly nomination checklist with last month's volumes pre-filled",
+     "artifact_type": "checklist",
+     "why": "revisions come from missed details"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 15,
+     "rationale": "preparing figures and sending the nomination or revision",
+     "basis_obs_ids": [
+      "b003-o89",
+      "b001-o17"
+     ]
+    },
+    "threads_seen": 7
+   },
+   {
+    "process_id": "P6",
+    "name": "HL&P flow numbers reporting",
+    "description": "Flow numbers for HL&P are sent to the commercial contact on request, daily or monthly, with corrected versions when wrong.",
+    "trigger": "request for latest HL&P numbers",
+    "output": "HL&P numbers spreadsheet",
+    "roles": [
+     "scheduler",
+     "commercial contact"
+    ],
+    "obs_ids": [
+     "b002-o4",
+     "b002-o36",
+     "b002-o53",
+     "b002-o69",
+     "b003-o15",
+     "b014-o47"
+    ],
+    "automation": {
+     "idea": "a standard report email built from the latest numbers",
+     "artifact_type": "email",
+     "why": "the same file is sent repeatedly"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 8,
+     "high": 15,
+     "rationale": "pulling the latest numbers and sending",
+     "basis_obs_ids": [
+      "b002-o4",
+      "b014-o47"
+     ]
+    },
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P7",
+    "name": "Daily flow and volume change notices",
+    "description": "Producers and customers change nominated volumes at wells and meters; the desk updates nominations and confirmations.",
+    "trigger": "producer or customer volume change",
+    "output": "changed nomination or confirmation",
+    "roles": [
+     "scheduler",
+     "producer",
+     "customer"
+    ],
+    "obs_ids": [
+     "b007-o8",
+     "b007-o9",
+     "b007-o10",
+     "b007-o55",
+     "b012-o103",
+     "b005-o57",
+     "b005-o59",
+     "b010-o50",
+     "b010-o37",
+     "b007-o51",
+     "b007-o49",
+     "b007-o50"
+    ],
+    "automation": {
+     "idea": "a standard volume-change request form",
+     "artifact_type": "template",
+     "why": "changes arrive in free text"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 8,
+     "high": 15,
+     "rationale": "reading the change and updating nominations",
+     "basis_obs_ids": [
+      "b007-o9",
+      "b012-o103"
+     ]
+    },
+    "threads_seen": 7
+   },
+   {
+    "process_id": "P8",
+    "name": "Meter shut-in and restoration notices",
+    "description": "Field staff shut in meters for leaks, off-spec gas or work, notify groups and later restore service.",
+    "trigger": "leak, dew point problem or planned work",
+    "output": "meter shut in or restored and notice sent",
+    "roles": [
+     "field operations",
+     "scheduler"
+    ],
+    "obs_ids": [
+     "b001-o38",
+     "b001-o39",
+     "b002-o7",
+     "b002-o8",
+     "b002-o9",
+     "b002-o10",
+     "b002-o85",
+     "b002-o86",
+     "b005-o78",
+     "b005-o79",
+     "b005-o41",
+     "b005-o47",
+     "b005-o48",
+     "b012-o70",
+     "b012-o71",
+     "b014-o29",
+     "b014-o28",
+     "b014-o30",
+     "b016-o24",
+     "b016-o25",
+     "b016-o26"
+    ],
+    "automation": {
+     "idea": "a standard shut-in notice for affected groups",
+     "artifact_type": "template",
+     "why": "each notice repeats the same details"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 8,
+     "high": 15,
+     "rationale": "writing the notice and updating volumes",
+     "basis_obs_ids": [
+      "b005-o78",
+      "b014-o29"
+     ]
+    },
+    "threads_seen": 9
+   },
+   {
+    "process_id": "P9",
+    "name": "New production Sitara ticket setup",
+    "description": "Spot or committed reserves tickets in Sitara are created when new wells flow; the committed reserves ticket waits for reserve forecasts.",
+    "trigger": "new well or production flowing",
+    "output": "Sitara spot or committed reserves ticket",
+    "roles": [
+     "gas supply",
+     "logistics"
+    ],
+    "obs_ids": [
+     "b003-o36",
+     "b003-o77",
+     "b003-o78",
+     "b003-o82",
+     "b003-o83",
+     "b003-o84",
+     "b005-o38",
+     "b005-o39",
+     "b005-o36",
+     "b010-o33",
+     "b010-o34",
+     "b010-o32",
+     "b003-o57",
+     "b002-o15",
+     "b016-o12",
+     "b016-o13",
+     "b016-o14"
+    ],
+    "automation": {
+     "idea": "a new-well ticket request with required fields",
+     "artifact_type": "template",
+     "why": "requests arrive with fields missing"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 15,
+     "rationale": "collecting terms and keying the ticket",
+     "basis_obs_ids": [
+      "b003-o77",
+      "b010-o33"
+     ]
+    },
+    "threads_seen": 9
+   },
+   {
+    "process_id": "P10",
+    "name": "Out-of-office coverage hand-off",
+    "description": "People announce absences and name backups for scheduling, confirmations and questions.",
+    "trigger": "planned absence",
+    "output": "named backup contacts",
+    "roles": [
+     "scheduler",
+     "manager"
+    ],
+    "obs_ids": [
+     "b001-o36",
+     "b001-o63",
+     "b001-o64",
+     "b003-o79",
+     "b005-o12",
+     "b010-o82",
+     "b010-o83",
+     "b016-o29",
+     "b016-o30",
+     "b016-o31",
+     "b016-o44",
+     "b016-o45",
+     "b023-o1",
+     "b023-o2",
+     "b037-o2",
+     "b037-o3",
+     "b046-o19",
+     "b046-o20",
+     "b001-o57"
+    ],
+    "automation": {
+     "idea": "an absence notice with duties and backups",
+     "artifact_type": "template",
+     "why": "the notice is rewritten every time"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 8,
+     "high": 12,
+     "rationale": "listing duties and backups",
+     "basis_obs_ids": [
+      "b016-o29",
+      "b037-o2"
+     ]
+    },
+    "threads_seen": 12
+   },
+   {
+    "process_id": "P11",
+    "name": "Transport usage ticket and rate maintenance",
+    "description": "Monthly transport usage tickets are updated and rates checked against matrices; missing service rates are cleared.",
+    "trigger": "new month or missing-rates report",
+    "output": "updated tickets and rates",
+    "roles": [
+     "economics analyst",
+     "scheduler"
+    ],
+    "obs_ids": [
+     "b007-o11",
+     "b007-o12",
+     "b007-o13",
+     "b007-o15",
+     "b012-o81",
+     "b012-o82",
+     "b012-o83",
+     "b012-o84",
+     "b012-o85",
+     "b012-o86",
+     "b012-o87",
+     "b016-o1",
+     "b016-o2",
+     "b016-o3",
+     "b016-o4",
+     "b007-o25",
+     "b002-o31",
+     "b002-o35",
+     "b002-o30",
+     "b002-o32"
+    ],
+    "automation": {
+     "idea": "a month-start checklist for ticket and rate updates",
+     "artifact_type": "checklist",
+     "why": "steps and rate sources are repeated each month"
+    },
+    "minutes_per_event": {
+     "low": 15,
+     "base": 30,
+     "high": 60,
+     "rationale": "updating rates and volumes across tickets",
+     "basis_obs_ids": [
+      "b012-o83",
+      "b016-o1"
+     ]
+    },
+    "threads_seen": 5
+   },
+   {
+    "process_id": "P12",
+    "name": "Interconnect and pipeline volume variance reconciliation",
+    "description": "Volumes are compared with pipelines such as PG&E and Oasis and intercompany deals; variances are researched and corrected, often with waiting on others.",
+    "trigger": "variance report or invoice difference",
+    "output": "corrected volumes or explanation",
+    "roles": [
+     "settlements analyst",
+     "logistics"
+    ],
+    "obs_ids": [
+     "b007-o16",
+     "b007-o17",
+     "b007-o28",
+     "b007-o27",
+     "b012-o2",
+     "b012-o3",
+     "b012-o1",
+     "b012-o4",
+     "b012-o5",
+     "b010-o61",
+     "b010-o62",
+     "b010-o65",
+     "b012-o72",
+     "b012-o73",
+     "b012-o74",
+     "b007-o26",
+     "b003-o26",
+     "b005-o43"
+    ],
+    "automation": {
+     "idea": "an automatic variance list by day and contract",
+     "artifact_type": "checklist",
+     "why": "matching is done by hand"
+    },
+    "minutes_per_event": {
+     "low": 15,
+     "base": 30,
+     "high": 60,
+     "rationale": "comparing figures and chasing the correct side",
+     "basis_obs_ids": [
+      "b012-o72",
+      "b007-o16"
+     ]
+    },
+    "threads_seen": 8
+   },
+   {
+    "process_id": "P13",
+    "name": "UA4 unaccounted-for volume resolution",
+    "description": "Unallocated or unaccounted volumes are researched across contracts and prior months to assign deals or adjust.",
+    "trigger": "UA4 report or unallocated volume",
+    "output": "allocation, deal or adjustment",
+    "roles": [
+     "volume management analyst"
+    ],
+    "obs_ids": [
+     "b001-o27",
+     "b001-o28",
+     "b001-o29",
+     "b001-o30",
+     "b001-o31",
+     "b001-o32",
+     "b001-o71",
+     "b001-o72",
+     "b001-o73",
+     "b001-o74",
+     "b002-o84",
+     "b007-o83",
+     "b007-o84",
+     "b021-o37",
+     "b021-o36"
+    ],
+    "automation": {
+     "idea": "a research checklist for old unallocated meters",
+     "artifact_type": "checklist",
+     "why": "the same lookups repeat"
+    },
+    "minutes_per_event": {
+     "low": 20,
+     "base": 45,
+     "high": 90,
+     "rationale": "researching prior months",
+     "basis_obs_ids": [
+      "b001-o29",
+      "b001-o72"
+     ]
+    },
+    "threads_seen": 7
+   },
+   {
+    "process_id": "P14",
+    "name": "Counterparty invoice and price discrepancy check",
+    "description": "Counterparties dispute prices or invoices versus Sitara; staff check deal records and correct or confirm, with escalation when unresolved.",
+    "trigger": "counterparty invoice or price query",
+    "output": "verified price or corrected deal",
+    "roles": [
+     "settlements analyst",
+     "trader",
+     "logistics"
+    ],
+    "obs_ids": [
+     "b043-o46",
+     "b046-o6",
+     "b046-o15",
+     "b046-o21",
+     "b046-o30",
+     "b046-o33",
+     "b046-o44",
+     "b046-o45",
+     "b046-o46",
+     "b048-o28",
+     "b050-o76",
+     "b050-o75",
+     "b052-o11",
+     "b055-o23",
+     "b055-o93",
+     "b041-o3",
+     "b041-o35",
+     "b048-o26",
+     "b007-o77",
+     "b007-o78",
+     "b032-o1",
+     "b012-o55"
+    ],
+    "automation": {
+     "idea": "a discrepancy check template with deal, invoice and Sitara price",
+     "artifact_type": "template",
+     "why": "each query repeats the lookup"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 25,
+     "high": 45,
+     "rationale": "finding deal and invoice and confirming the price",
+     "basis_obs_ids": [
+      "b046-o44",
+      "b046-o6"
+     ]
+    },
+    "threads_seen": 18
+   },
+   {
+    "process_id": "P15",
+    "name": "OPM hours and activity survey",
+    "description": "Staff are asked to complete monthly hours or activity surveys and reminders follow.",
+    "trigger": "survey sent",
+    "output": "completed survey",
+    "roles": [
+     "manager",
+     "survey coordinator"
+    ],
+    "obs_ids": [
+     "b012-o107",
+     "b012-o108",
+     "b012-o114",
+     "b012-o117",
+     "b021-o41",
+     "b021-o42",
+     "b023-o5",
+     "b023-o8",
+     "b023-o6",
+     "b032-o53",
+     "b037-o5",
+     "b037-o4",
+     "b021-o8"
+    ],
+    "automation": {
+     "idea": "a reminder with survey steps",
+     "artifact_type": "email",
+     "why": "responses come late"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 15,
+     "high": 30,
+     "rationale": "filling the survey and chasing responses",
+     "basis_obs_ids": [
+      "b012-o117",
+      "b023-o5"
+     ]
+    },
+    "threads_seen": 7
+   },
+   {
+    "process_id": "P16",
+    "name": "Monthly cost allocation and RC charge review",
+    "description": "Allocation percentages and RC report charges are updated monthly; errors in files need correction.",
+    "trigger": "new month or plan change",
+    "output": "updated allocation percentages",
+    "roles": [
+     "finance analyst",
+     "manager"
+    ],
+    "obs_ids": [
+     "b003-o67",
+     "b003-o69",
+     "b003-o41",
+     "b003-o44",
+     "b003-o45",
+     "b003-o61",
+     "b003-o65",
+     "b003-o81",
+     "b007-o1",
+     "b007-o2",
+     "b007-o3",
+     "b007-o5"
+    ],
+    "automation": {
+     "idea": "a monthly allocation checklist",
+     "artifact_type": "checklist",
+     "why": "files are reworked repeatedly"
+    },
+    "minutes_per_event": {
+     "low": 20,
+     "base": 40,
+     "high": 60,
+     "rationale": "updating percentages and fixing file errors",
+     "basis_obs_ids": [
+      "b003-o41",
+      "b003-o61"
+     ]
+    },
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P17",
+    "name": "HR and budget questionnaires",
+    "description": "Managers complete salary surveys, budget questionnaires and performance reviewer lists on set deadlines.",
+    "trigger": "questionnaire or review cycle",
+    "output": "completed submission",
+    "roles": [
+     "manager",
+     "HR coordinator"
+    ],
+    "obs_ids": [
+     "b007-o41",
+     "b007-o40",
+     "b021-o10",
+     "b021-o11",
+     "b021-o12",
+     "b021-o13",
+     "b021-o21",
+     "b021-o22",
+     "b012-o32",
+     "b012-o33",
+     "b012-o40",
+     "b021-o27",
+     "b021-o28"
+    ],
+    "automation": {
+     "idea": "a due-date checklist",
+     "artifact_type": "checklist",
+     "why": "requirements repeat each cycle"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 25,
+     "high": 45,
+     "rationale": "gathering figures and filling forms",
+     "basis_obs_ids": [
+      "b021-o12",
+      "b012-o32"
+     ]
+    },
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P18",
+    "name": "Monthly volumetric explanation for investor relations",
+    "description": "Material wholesale volume changes are explained for Investor Relations each month on a deadline.",
+    "trigger": "monthly request",
+    "output": "volume verification and explanations",
+    "roles": [
+     "analyst",
+     "investor relations"
+    ],
+    "obs_ids": [
+     "b014-o32",
+     "b014-o33",
+     "b014-o34",
+     "b021-o45",
+     "b021-o46",
+     "b021-o47"
+    ],
+    "automation": {
+     "idea": "a reusable explanation template",
+     "artifact_type": "template",
+     "why": "the same drivers are rewritten"
+    },
+    "minutes_per_event": {
+     "low": 15,
+     "base": 30,
+     "high": 50,
+     "rationale": "comparing volumes and writing drivers",
+     "basis_obs_ids": [
+      "b014-o32",
+      "b021-o47"
+     ]
+    },
+    "threads_seen": 2
+   },
+   {
+    "process_id": "P19",
+    "name": "Pipeline cut reporting",
+    "description": "Cuts from pipelines such as El Paso and PG&E are logged and reported so nominations are changed.",
+    "trigger": "pipeline cut notice",
+    "output": "cut report",
+    "roles": [
+     "scheduler"
+    ],
+    "obs_ids": [
+     "b012-o57",
+     "b012-o58",
+     "b014-o4",
+     "b014-o48",
+     "b032-o21"
+    ],
+    "automation": {
+     "idea": "a cut-log template",
+     "artifact_type": "template",
+     "why": "cuts are written up in free text"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 8,
+     "high": 12,
+     "rationale": "logging cuts and informing others",
+     "basis_obs_ids": [
+      "b014-o4",
+      "b014-o48"
+     ]
+    },
+    "threads_seen": 4
+   },
+   {
+    "process_id": "P20",
+    "name": "Weekend on-call notes",
+    "description": "On-call staff log weekend gas control events and nomination changes for the desk.",
+    "trigger": "weekend on-call",
+    "output": "on-call notes",
+    "roles": [
+     "on-call scheduler"
+    ],
+    "obs_ids": [
+     "b010-o43",
+     "b019-o49",
+     "b041-o34",
+     "b039-o39",
+     "b039-o40"
+    ],
+    "automation": {
+     "idea": "an on-call notes template",
+     "artifact_type": "template",
+     "why": "notes are rebuilt each weekend"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 20,
+     "high": 30,
+     "rationale": "summarizing weekend events",
+     "basis_obs_ids": [
+      "b019-o49",
+      "b010-o43"
+     ]
+    },
+    "threads_seen": 4
+   },
+   {
+    "process_id": "P21",
+    "name": "Buyback and deficiency status review",
+    "description": "Industrial buyback deals are reviewed when plants have outages or do not take gas; status is chased and documentation awaited.",
+    "trigger": "plant outage or non-take",
+    "output": "buyback status or treatment decision",
+    "roles": [
+     "scheduler",
+     "commercial"
+    ],
+    "obs_ids": [
+     "b001-o24",
+     "b001-o25",
+     "b001-o44",
+     "b001-o45",
+     "b001-o46",
+     "b002-o38",
+     "b007-o72",
+     "b007-o73",
+     "b007-o75",
+     "b003-o71",
+     "b003-o72",
+     "b001-o26"
+    ],
+    "automation": {
+     "idea": "a checklist for outages and buyback treatment",
+     "artifact_type": "checklist",
+     "why": "same questions each time"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 20,
+     "high": 40,
+     "rationale": "reviewing deals and contacting counterparties",
+     "basis_obs_ids": [
+      "b001-o45",
+      "b007-o72"
+     ]
+    },
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P22",
+    "name": "Application access approvals",
+    "description": "Automated requests ask the manager to approve access for staff to systems.",
+    "trigger": "access request",
+    "output": "approval or denial",
+    "roles": [
+     "manager"
+    ],
+    "obs_ids": [
+     "b019-o34",
+     "b021-o19",
+     "b052-o58"
+    ],
+    "automation": {
+     "idea": "a standard approval criteria checklist",
+     "artifact_type": "checklist",
+     "why": "each request is reviewed alike"
+    },
+    "minutes_per_event": {
+     "low": 2,
+     "base": 4,
+     "high": 8,
+     "rationale": "reading and approving",
+     "basis_obs_ids": [
+      "b021-o19"
+     ]
+    },
+    "threads_seen": 3
+   },
+   {
+    "process_id": "P23",
+    "name": "Sitara deal ticket correction and repathing",
+    "description": "Deal tickets with wrong entity, price or path are corrected and volumes repathed.",
+    "trigger": "incorrect ticket found",
+    "output": "corrected ticket and repath",
+    "roles": [
+     "logistics",
+     "deal owner"
+    ],
+    "obs_ids": [
+     "b043-o24",
+     "b043-o25",
+     "b043-o26",
+     "b043-o22",
+     "b061-o49",
+     "b061-o50",
+     "b050-o73",
+     "b010-o58"
+    ],
+    "automation": {
+     "idea": "a correction checklist for ticket changes",
+     "artifact_type": "checklist",
+     "why": "repath steps get missed"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 20,
+     "high": 40,
+     "rationale": "re-entering tickets and repathing",
+     "basis_obs_ids": [
+      "b043-o25",
+      "b061-o49"
+     ]
+    },
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P24",
+    "name": "Meeting scheduling and attendance confirmation",
+    "description": "Meetings are scheduled, rescheduled and attendance confirmed.",
+    "trigger": "meeting request",
+    "output": "booked meeting",
+    "roles": [
+     "assistant",
+     "attendee"
+    ],
+    "obs_ids": [
+     "b003-o75",
+     "b003-o76",
+     "b003-o73",
+     "b003-o74",
+     "b012-o20",
+     "b012-o18",
+     "b016-o11"
+    ],
+    "automation": {
+     "idea": "a standard meeting invite",
+     "artifact_type": "email",
+     "why": "confirmations repeat"
+    },
+    "minutes_per_event": {
+     "low": 2,
+     "base": 5,
+     "high": 10,
+     "rationale": "scheduling and confirming",
+     "basis_obs_ids": [
+      "b003-o75"
+     ]
+    },
+    "threads_seen": 3
+   },
+   {
+    "process_id": "P25",
+    "name": "Customer meeting and trip planning",
+    "description": "Invitations, guest lists and RSVP forms are prepared for customer trips.",
+    "trigger": "annual customer event",
+    "output": "guest list and invitations",
+    "roles": [
+     "coordinator",
+     "commercial"
+    ],
+    "obs_ids": [
+     "b007-o52",
+     "b007-o53",
+     "b007-o54",
+     "b012-o31",
+     "b012-o30",
+     "b012-o42",
+     "b012-o43"
+    ],
+    "automation": {
+     "idea": "an event checklist and invitation template",
+     "artifact_type": "checklist",
+     "why": "steps repeat"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 20,
+     "high": 30,
+     "rationale": "compiling lists and forms",
+     "basis_obs_ids": [
+      "b007-o52",
+      "b012-o42"
+     ]
+    },
+    "threads_seen": 3
+   },
+   {
+    "process_id": "P26",
+    "name": "Month-end close schedule",
+    "description": "Close timing and cut-off rules are communicated and supported.",
+    "trigger": "month-end or year-end close",
+    "output": "close schedule",
+    "roles": [
+     "accounting",
+     "scheduler"
+    ],
+    "obs_ids": [
+     "b001-o20",
+     "b001-o21",
+     "b055-o72",
+     "b055-o73",
+     "b002-o34"
+    ],
+    "automation": {
+     "idea": "a close calendar and reminder",
+     "artifact_type": "checklist",
+     "why": "the same timeline repeats"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 20,
+     "rationale": "writing the schedule",
+     "basis_obs_ids": [
+      "b001-o20",
+      "b055-o72"
+     ]
+    },
+    "threads_seen": 3
+   }
+  ],
+  "assignment": {
+   "b007-o22": "P1",
+   "b007-o23": "P1",
+   "b007-o24": "P1",
+   "b007-o31": "P1",
+   "b007-o34": "P1",
+   "b007-o56": "P1",
+   "b007-o61": "P1",
+   "b007-o60": "P1",
+   "b007-o67": "P1",
+   "b010-o2": "P1",
+   "b010-o30": "P1",
+   "b010-o31": "P1",
+   "b010-o39": "P1",
+   "b010-o35": "P1",
+   "b010-o36": "P1",
+   "b010-o46": "P1",
+   "b005-o71": "P1",
+   "b010-o79": "P1",
+   "b014-o1": "P1",
+   "b016-o32": "P1",
+   "b016-o40": "P1",
+   "b016-o50": "P1",
+   "b021-o14": "P1",
+   "b023-o9": "P1",
+   "b025-o31": "P1",
+   "b025-o32": "P1",
+   "b025-o33": "P1",
+   "b025-o36": "P1",
+   "b037-o7": "P1",
+   "b041-o1": "P1",
+   "b046-o4": "P1",
+   "b034-o38": "P1",
+   "b005-o60": "P1",
+   "b001-o22": "P1",
+   "b030-o34": "P1",
+   "b030-o38": "P1",
+   "b037-o1": "P1",
+   "b041-o7": "P1",
+   "b041-o8": "P1",
+   "b041-o9": "P1",
+   "b041-o25": "P1",
+   "b012-o54": "P1",
+   "b014-o52": "P1",
+   "b016-o35": "P1",
+   "b021-o15": "P1",
+   "b019-o73": "P1",
+   "b012-o15": "P1",
+   "b005-o61": "P2",
+   "b005-o62": "P2",
+   "b005-o4": "P2",
+   "b007-o62": "P2",
+   "b016-o39": "P2",
+   "b012-o10": "P2",
+   "b012-o8": "P2",
+   "b003-o14": "P2",
+   "b005-o66": "P2",
+   "b032-o8": "P3",
+   "b032-o17": "P3",
+   "b032-o18": "P3",
+   "b032-o19": "P3",
+   "b032-o40": "P3",
+   "b032-o47": "P3",
+   "b032-o52": "P3",
+   "b032-o54": "P3",
+   "b032-o55": "P3",
+   "b032-o56": "P3",
+   "b030-o35": "P3",
+   "b030-o36": "P3",
+   "b034-o16": "P3",
+   "b010-o8": "P3",
+   "b012-o100": "P3",
+   "b012-o98": "P3",
+   "b001-o13": "P4",
+   "b001-o70": "P4",
+   "b007-o33": "P4",
+   "b007-o82": "P4",
+   "b010-o42": "P4",
+   "b019-o45": "P4",
+   "b021-o26": "P4",
+   "b028-o26": "P4",
+   "b043-o21": "P4",
+   "b001-o68": "P4",
+   "b002-o12": "P4",
+   "b003-o37": "P4",
+   "b003-o40": "P4",
+   "b001-o69": "P4",
+   "b001-o55": "P5",
+   "b001-o56": "P5",
+   "b003-o89": "P5",
+   "b003-o90": "P5",
+   "b003-o92": "P5",
+   "b003-o91": "P5",
+   "b019-o42": "P5",
+   "b019-o43": "P5",
+   "b019-o44": "P5",
+   "b001-o17": "P5",
+   "b001-o19": "P5",
+   "b005-o53": "P5",
+   "b032-o25": "P5",
+   "b002-o4": "P6",
+   "b002-o36": "P6",
+   "b002-o53": "P6",
+   "b002-o69": "P6",
+   "b003-o15": "P6",
+   "b014-o47": "P6",
+   "b007-o8": "P7",
+   "b007-o9": "P7",
+   "b007-o10": "P7",
+   "b007-o55": "P7",
+   "b012-o103": "P7",
+   "b005-o57": "P7",
+   "b005-o59": "P7",
+   "b010-o50": "P7",
+   "b010-o37": "P7",
+   "b007-o51": "P7",
+   "b007-o49": "P7",
+   "b007-o50": "P7",
+   "b001-o38": "P8",
+   "b001-o39": "P8",
+   "b002-o7": "P8",
+   "b002-o8": "P8",
+   "b002-o9": "P8",
+   "b002-o10": "P8",
+   "b002-o85": "P8",
+   "b002-o86": "P8",
+   "b005-o78": "P8",
+   "b005-o79": "P8",
+   "b005-o41": "P8",
+   "b005-o47": "P8",
+   "b005-o48": "P8",
+   "b012-o70": "P8",
+   "b012-o71": "P8",
+   "b014-o29": "P8",
+   "b014-o28": "P8",
+   "b014-o30": "P8",
+   "b016-o24": "P8",
+   "b016-o25": "P8",
+   "b016-o26": "P8",
+   "b003-o36": "P9",
+   "b003-o77": "P9",
+   "b003-o78": "P9",
+   "b003-o82": "P9",
+   "b003-o83": "P9",
+   "b003-o84": "P9",
+   "b005-o38": "P9",
+   "b005-o39": "P9",
+   "b005-o36": "P9",
+   "b010-o33": "P9",
+   "b010-o34": "P9",
+   "b010-o32": "P9",
+   "b003-o57": "P9",
+   "b002-o15": "P9",
+   "b016-o12": "P9",
+   "b016-o13": "P9",
+   "b016-o14": "P9",
+   "b001-o36": "P10",
+   "b001-o63": "P10",
+   "b001-o64": "P10",
+   "b003-o79": "P10",
+   "b005-o12": "P10",
+   "b010-o82": "P10",
+   "b010-o83": "P10",
+   "b016-o29": "P10",
+   "b016-o30": "P10",
+   "b016-o31": "P10",
+   "b016-o44": "P10",
+   "b016-o45": "P10",
+   "b023-o1": "P10",
+   "b023-o2": "P10",
+   "b037-o2": "P10",
+   "b037-o3": "P10",
+   "b046-o19": "P10",
+   "b046-o20": "P10",
+   "b001-o57": "P10",
+   "b007-o11": "P11",
+   "b007-o12": "P11",
+   "b007-o13": "P11",
+   "b007-o15": "P11",
+   "b012-o81": "P11",
+   "b012-o82": "P11",
+   "b012-o83": "P11",
+   "b012-o84": "P11",
+   "b012-o85": "P11",
+   "b012-o86": "P11",
+   "b012-o87": "P11",
+   "b016-o1": "P11",
+   "b016-o2": "P11",
+   "b016-o3": "P11",
+   "b016-o4": "P11",
+   "b007-o25": "P11",
+   "b002-o31": "P11",
+   "b002-o35": "P11",
+   "b002-o30": "P11",
+   "b002-o32": "P11",
+   "b007-o16": "P12",
+   "b007-o17": "P12",
+   "b007-o28": "P12",
+   "b007-o27": "P12",
+   "b012-o2": "P12",
+   "b012-o3": "P12",
+   "b012-o1": "P12",
+   "b012-o4": "P12",
+   "b012-o5": "P12",
+   "b010-o61": "P12",
+   "b010-o62": "P12",
+   "b010-o65": "P12",
+   "b012-o72": "P12",
+   "b012-o73": "P12",
+   "b012-o74": "P12",
+   "b007-o26": "P12",
+   "b003-o26": "P12",
+   "b005-o43": "P12",
+   "b001-o27": "P13",
+   "b001-o28": "P13",
+   "b001-o29": "P13",
+   "b001-o30": "P13",
+   "b001-o31": "P13",
+   "b001-o32": "P13",
+   "b001-o71": "P13",
+   "b001-o72": "P13",
+   "b001-o73": "P13",
+   "b001-o74": "P13",
+   "b002-o84": "P13",
+   "b007-o83": "P13",
+   "b007-o84": "P13",
+   "b021-o37": "P13",
+   "b021-o36": "P13",
+   "b043-o46": "P14",
+   "b046-o6": "P14",
+   "b046-o15": "P14",
+   "b046-o21": "P14",
+   "b046-o30": "P14",
+   "b046-o33": "P14",
+   "b046-o44": "P14",
+   "b046-o45": "P14",
+   "b046-o46": "P14",
+   "b048-o28": "P14",
+   "b050-o76": "P14",
+   "b050-o75": "P14",
+   "b052-o11": "P14",
+   "b055-o23": "P14",
+   "b055-o93": "P14",
+   "b041-o3": "P14",
+   "b041-o35": "P14",
+   "b048-o26": "P14",
+   "b007-o77": "P14",
+   "b007-o78": "P14",
+   "b032-o1": "P14",
+   "b012-o55": "P14",
+   "b012-o107": "P15",
+   "b012-o108": "P15",
+   "b012-o114": "P15",
+   "b012-o117": "P15",
+   "b021-o41": "P15",
+   "b021-o42": "P15",
+   "b023-o5": "P15",
+   "b023-o8": "P15",
+   "b023-o6": "P15",
+   "b032-o53": "P15",
+   "b037-o5": "P15",
+   "b037-o4": "P15",
+   "b021-o8": "P15",
+   "b003-o67": "P16",
+   "b003-o69": "P16",
+   "b003-o41": "P16",
+   "b003-o44": "P16",
+   "b003-o45": "P16",
+   "b003-o61": "P16",
+   "b003-o65": "P16",
+   "b003-o81": "P16",
+   "b007-o1": "P16",
+   "b007-o2": "P16",
+   "b007-o3": "P16",
+   "b007-o5": "P16",
+   "b007-o41": "P17",
+   "b007-o40": "P17",
+   "b021-o10": "P17",
+   "b021-o11": "P17",
+   "b021-o12": "P17",
+   "b021-o13": "P17",
+   "b021-o21": "P17",
+   "b021-o22": "P17",
+   "b012-o32": "P17",
+   "b012-o33": "P17",
+   "b012-o40": "P17",
+   "b021-o27": "P17",
+   "b021-o28": "P17",
+   "b014-o32": "P18",
+   "b014-o33": "P18",
+   "b014-o34": "P18",
+   "b021-o45": "P18",
+   "b021-o46": "P18",
+   "b021-o47": "P18",
+   "b012-o57": "P19",
+   "b012-o58": "P19",
+   "b014-o4": "P19",
+   "b014-o48": "P19",
+   "b032-o21": "P19",
+   "b010-o43": "P20",
+   "b019-o49": "P20",
+   "b041-o34": "P20",
+   "b039-o39": "P20",
+   "b039-o40": "P20",
+   "b001-o24": "P21",
+   "b001-o25": "P21",
+   "b001-o44": "P21",
+   "b001-o45": "P21",
+   "b001-o46": "P21",
+   "b002-o38": "P21",
+   "b007-o72": "P21",
+   "b007-o73": "P21",
+   "b007-o75": "P21",
+   "b003-o71": "P21",
+   "b003-o72": "P21",
+   "b001-o26": "P21",
+   "b019-o34": "P22",
+   "b021-o19": "P22",
+   "b052-o58": "P22",
+   "b043-o24": "P23",
+   "b043-o25": "P23",
+   "b043-o26": "P23",
+   "b043-o22": "P23",
+   "b061-o49": "P23",
+   "b061-o50": "P23",
+   "b050-o73": "P23",
+   "b010-o58": "P23",
+   "b003-o75": "P24",
+   "b003-o76": "P24",
+   "b003-o73": "P24",
+   "b003-o74": "P24",
+   "b012-o20": "P24",
+   "b012-o18": "P24",
+   "b016-o11": "P24",
+   "b007-o52": "P25",
+   "b007-o53": "P25",
+   "b007-o54": "P25",
+   "b012-o31": "P25",
+   "b012-o30": "P25",
+   "b012-o42": "P25",
+   "b012-o43": "P25",
+   "b001-o20": "P26",
+   "b001-o21": "P26",
+   "b055-o72": "P26",
+   "b055-o73": "P26",
+   "b002-o34": "P26"
+  }
+ },
+ "split": {
+  "processes": [
+   {
+    "process_id": "P1",
+    "name": "Deal extension or setup for meter flow without a deal",
+    "description": "Schedulers and volume management find meters that flowed with no deal or an expired deal and get the deal owner to extend, roll or create a deal covering the flow days so allocation exceptions clear.",
+    "trigger": "flow on a meter with no valid deal or outside deal dates, shown on an allocation exception",
+    "output": "extended or new deal covering the flow dates",
+    "roles": [
+     "scheduler",
+     "volume management analyst",
+     "deal owner"
+    ],
+    "automation": {
+     "idea": "a standard request to the deal owner with meter, flow dates and expired deal prefilled",
+     "artifact_type": "template",
+     "why": "the same request is written by hand for each meter and followed up repeatedly"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 20,
+     "rationale": "looking up the meter and deal and writing the request to the deal owner",
+     "basis_obs_ids": [
+      "b010-o30",
+      "b016-o35"
+     ]
+    },
+    "obs_ids": [
+     "b001-o22",
+     "b001-o53",
+     "b001-o54",
+     "b003-o46",
+     "b003-o48",
+     "b003-o51",
+     "b003-o52",
+     "b003-o59",
+     "b003-o60",
+     "b005-o55",
+     "b005-o60",
+     "b005-o71",
+     "b007-o22",
+     "b007-o23",
+     "b007-o24",
+     "b007-o31",
+     "b007-o34",
+     "b007-o35",
+     "b007-o56",
+     "b007-o60",
+     "b007-o61",
+     "b007-o67",
+     "b010-o2",
+     "b010-o30",
+     "b010-o31",
+     "b010-o35",
+     "b010-o36",
+     "b010-o39",
+     "b010-o46",
+     "b010-o79",
+     "b012-o54",
+     "b014-o1",
+     "b014-o52",
+     "b016-o32",
+     "b016-o35",
+     "b016-o40",
+     "b016-o50",
+     "b019-o73",
+     "b021-o14",
+     "b021-o15",
+     "b023-o9",
+     "b025-o1",
+     "b025-o31",
+     "b025-o33",
+     "b025-o36",
+     "b030-o34",
+     "b030-o38",
+     "b030-o39",
+     "b034-o38",
+     "b037-o1",
+     "b037-o7",
+     "b039-o12",
+     "b039-o13",
+     "b041-o1",
+     "b041-o25",
+     "b041-o7",
+     "b041-o8",
+     "b041-o9",
+     "b043-o45",
+     "b046-o34",
+     "b046-o4"
+    ],
+    "parts": [
+     "s102.P1",
+     "s103.P1"
+    ],
+    "made_by": "merged",
+    "merge_reason": "same work of extending or creating a deal for a meter that flowed with no valid deal, in two date ranges",
+    "threads_seen": 48
+   },
+   {
+    "process_id": "P2",
+    "name": "Stranger's gas resolution",
+    "description": "Volume parked on Stranger's Gas for meters with no deal is sent to the deal owner for a deal, extension or write-off so the meter can be reallocated.",
+    "trigger": "meter volume allocated to Stranger's Gas after a missing or expired deal",
+    "output": "meter reallocated to a deal or contract, or approved write-off",
+    "roles": [
+     "volume management analyst",
+     "settlement",
+     "deal owner"
+    ],
+    "automation": {
+     "idea": "a checklist and standard decision request listing meter, dates and options",
+     "artifact_type": "checklist",
+     "why": "the same steps and follow-ups repeat for each meter"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 15,
+     "rationale": "writing the request and following up with the deal owner",
+     "basis_obs_ids": [
+      "b010-o11",
+      "b032-o8"
+     ]
+    },
+    "obs_ids": [
+     "b005-o6",
+     "b007-o32",
+     "b007-o65",
+     "b010-o10",
+     "b010-o11",
+     "b010-o7",
+     "b010-o8",
+     "b010-o9",
+     "b012-o100",
+     "b012-o102",
+     "b012-o104",
+     "b012-o105",
+     "b012-o106",
+     "b012-o94",
+     "b012-o95",
+     "b012-o96",
+     "b012-o97",
+     "b012-o98",
+     "b012-o99",
+     "b030-o35",
+     "b032-o17",
+     "b032-o18",
+     "b032-o19",
+     "b032-o40",
+     "b032-o47",
+     "b032-o52",
+     "b032-o54",
+     "b032-o55",
+     "b032-o56",
+     "b032-o8",
+     "b034-o16"
+    ],
+    "parts": [
+     "s102.P3",
+     "s103.P2"
+    ],
+    "made_by": "merged",
+    "merge_reason": "both resolve volume parked on Stranger's Gas by getting a deal assigned or a write-off decision",
+    "threads_seen": 17
+   },
+   {
+    "process_id": "P3",
+    "name": "Customer nomination files",
+    "description": "Daily or monthly nominations for plants and customers are exchanged by email as attachments, logged, passed on and revised when volumes change.",
+    "trigger": "new gas day or month nomination cycle, or a counterparty sending its file",
+    "output": "nomination sent or logged for scheduling",
+    "roles": [
+     "scheduler",
+     "customer contact"
+    ],
+    "automation": {
+     "idea": "a standard nomination email with the attachment and period filled in",
+     "artifact_type": "template",
+     "why": "the message is repeated with only dates and volumes changed"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 7,
+     "high": 12,
+     "rationale": "preparing the attachment and sending or logging it",
+     "basis_obs_ids": [
+      "b001-o13",
+      "b019-o45"
+     ]
+    },
+    "obs_ids": [
+     "b001-o13",
+     "b001-o55",
+     "b001-o56",
+     "b001-o68",
+     "b001-o69",
+     "b001-o70",
+     "b002-o11",
+     "b002-o12",
+     "b002-o54",
+     "b002-o55",
+     "b003-o37",
+     "b003-o40",
+     "b003-o89",
+     "b003-o90",
+     "b007-o33",
+     "b007-o82",
+     "b010-o42",
+     "b019-o42",
+     "b019-o43",
+     "b019-o44",
+     "b019-o45",
+     "b021-o26",
+     "b028-o26",
+     "b028-o27",
+     "b028-o28",
+     "b032-o25",
+     "b043-o21"
+    ],
+    "parts": [
+     "s102.P5",
+     "s103.P5"
+    ],
+    "made_by": "merged",
+    "merge_reason": "both are preparing or handling daily and monthly nomination files with customers",
+    "threads_seen": 21
+   },
+   {
+    "process_id": "P4",
+    "name": "Absence coverage handoff",
+    "description": "Before an absence or reassignment, a note names the backups who cover scheduling, confirmations and support and tells contacts.",
+    "trigger": "planned absence or reassignment",
+    "output": "coverage note naming backups",
+    "roles": [
+     "manager",
+     "scheduler",
+     "backup scheduler"
+    ],
+    "automation": {
+     "idea": "a coverage note template listing duties and backups",
+     "artifact_type": "template",
+     "why": "each note repeats the same structure"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 15,
+     "rationale": "listing duties and backups and sending the note",
+     "basis_obs_ids": [
+      "b001-o36",
+      "b016-o29"
+     ]
+    },
+    "obs_ids": [
+     "b001-o36",
+     "b001-o63",
+     "b001-o64",
+     "b003-o79",
+     "b005-o12",
+     "b010-o82",
+     "b010-o83",
+     "b012-o75",
+     "b012-o76",
+     "b012-o77",
+     "b012-o78",
+     "b012-o79",
+     "b016-o29",
+     "b016-o30",
+     "b016-o31",
+     "b016-o44",
+     "b016-o45",
+     "b023-o1",
+     "b023-o2",
+     "b037-o2",
+     "b037-o3",
+     "b046-o19",
+     "b046-o20"
+    ],
+    "parts": [
+     "s102.P8",
+     "s103.P7"
+    ],
+    "made_by": "merged",
+    "merge_reason": "both are handoff notes naming who covers duties during an absence",
+    "threads_seen": 12
+   },
+   {
+    "process_id": "P5",
+    "name": "Buyback and deficiency handling",
+    "description": "Schedulers decide buyback treatment, set up buyback paths and report status when customers do not take gas or plants are out.",
+    "trigger": "customer not taking gas or outage affecting a buyback",
+    "output": "buyback decision or pathing",
+    "roles": [
+     "scheduler",
+     "commercial manager"
+    ],
+    "automation": {
+     "idea": "a buyback decision checklist with pathing rules",
+     "artifact_type": "checklist",
+     "why": "decisions follow the same questions each time"
+    },
+    "minutes_per_event": {
+     "low": 8,
+     "base": 15,
+     "high": 25,
+     "rationale": "checking the contract, deciding and writing the status",
+     "basis_obs_ids": [
+      "b007-o72",
+      "b001-o45"
+     ]
+    },
+    "obs_ids": [
+     "b001-o24",
+     "b001-o25",
+     "b001-o26",
+     "b001-o39",
+     "b001-o44",
+     "b001-o45",
+     "b001-o46",
+     "b002-o38",
+     "b003-o71",
+     "b003-o72",
+     "b005-o13",
+     "b005-o14",
+     "b007-o72",
+     "b007-o73",
+     "b007-o74",
+     "b007-o75",
+     "b007-o76"
+    ],
+    "parts": [
+     "s102.P10"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 8
+   },
+   {
+    "process_id": "P6",
+    "name": "Volume variance reconciliation with pipelines and intercompany",
+    "description": "Analysts compare HPL volumes with pipeline or intercompany counterparts, find missing sides, and correct deals or allocations. Replies and follow-ups stall it.",
+    "trigger": "variance or discrepancy found at an interconnect or intercompany deal",
+    "output": "corrected volumes or explained variance",
+    "roles": [
+     "settlement analyst",
+     "scheduler",
+     "logistics"
+    ],
+    "automation": {
+     "idea": "a variance log with a standard question to the counterpart",
+     "artifact_type": "template",
+     "why": "each variance is chased with a new email"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 25,
+     "high": 40,
+     "rationale": "comparing figures, researching the missing side and writing the correction",
+     "basis_obs_ids": [
+      "b012-o72",
+      "b007-o27"
+     ]
+    },
+    "obs_ids": [
+     "b007-o28",
+     "b007-o27",
+     "b007-o16",
+     "b007-o17",
+     "b003-o26",
+     "b010-o61",
+     "b010-o62",
+     "b010-o63",
+     "b010-o65",
+     "b012-o1",
+     "b012-o2",
+     "b012-o3",
+     "b012-o4",
+     "b012-o5",
+     "b012-o72",
+     "b012-o73",
+     "b012-o74",
+     "b007-o26",
+     "b012-o49",
+     "b012-o50",
+     "b005-o43"
+    ],
+    "parts": [
+     "s102.P11"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 9
+   },
+   {
+    "process_id": "P7",
+    "name": "Transport and service rate clean-up",
+    "description": "Rates missing or wrong on transport usage tickets and service contracts are located and entered.",
+    "trigger": "missing service rates report or rate questions",
+    "output": "rates entered and verified",
+    "roles": [
+     "economics analyst",
+     "logistics"
+    ],
+    "automation": {
+     "idea": "a rate verification checklist against the rate matrix",
+     "artifact_type": "checklist",
+     "why": "rates are checked by hand against the same sources"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 20,
+     "high": 30,
+     "rationale": "looking up rates and re-entering them",
+     "basis_obs_ids": [
+      "b007-o13",
+      "b002-o31"
+     ]
+    },
+    "obs_ids": [
+     "b002-o31",
+     "b002-o35",
+     "b002-o30",
+     "b002-o32",
+     "b002-o33",
+     "b007-o11",
+     "b007-o12",
+     "b007-o13",
+     "b007-o15",
+     "b007-o25",
+     "b010-o66",
+     "b010-o67"
+    ],
+    "parts": [
+     "s102.P12"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 4
+   },
+   {
+    "process_id": "P8",
+    "name": "Unaccounted-for volume research",
+    "description": "Analysts research meters with unallocated or unaccounted-for volume across prior periods, with no deal or record in the systems.",
+    "trigger": "meter flow with no deal in OSS or CPR",
+    "output": "research summary and corrected allocation",
+    "roles": [
+     "gas accounting analyst"
+    ],
+    "automation": {
+     "idea": "a research checklist of systems to check per meter",
+     "artifact_type": "checklist",
+     "why": "the same lookup sequence is repeated"
+    },
+    "minutes_per_event": {
+     "low": 15,
+     "base": 30,
+     "high": 60,
+     "rationale": "searching several systems for history",
+     "basis_obs_ids": [
+      "b001-o29",
+      "b001-o72"
+     ]
+    },
+    "obs_ids": [
+     "b001-o27",
+     "b001-o32",
+     "b001-o28",
+     "b001-o29",
+     "b001-o30",
+     "b001-o31",
+     "b001-o71",
+     "b001-o72",
+     "b001-o73",
+     "b001-o74",
+     "b002-o84",
+     "b007-o83",
+     "b007-o84",
+     "b007-o85",
+     "b007-o86"
+    ],
+    "parts": [
+     "s102.P13"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P9",
+    "name": "Counterparty and contract record maintenance",
+    "description": "Records for counterparties and contracts (names, DUNS, termination, Global entries) are updated after mergers or notices.",
+    "trigger": "name change, merger or termination notice",
+    "output": "updated counterparty or contract record",
+    "roles": [
+     "contract administrator",
+     "deal validation"
+    ],
+    "automation": {
+     "idea": "a change checklist covering Unify, Sitara and Global",
+     "artifact_type": "checklist",
+     "why": "each change touches the same systems"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 15,
+     "high": 25,
+     "rationale": "updating records in multiple systems",
+     "basis_obs_ids": [
+      "b007-o70",
+      "b010-o45"
+     ]
+    },
+    "obs_ids": [
+     "b001-o12",
+     "b007-o70",
+     "b007-o71",
+     "b010-o24",
+     "b010-o25",
+     "b010-o19",
+     "b010-o21",
+     "b010-o44",
+     "b010-o45",
+     "b010-o80"
+    ],
+    "parts": [
+     "s102.P14"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 5
+   },
+   {
+    "process_id": "P10",
+    "name": "Producer volume and nomination revisions",
+    "description": "Producers or operations ask to change nominated volume at a meter or well because flow changed; the scheduler updates the nomination.",
+    "trigger": "producer flow change",
+    "output": "revised nomination",
+    "roles": [
+     "scheduler",
+     "producer"
+    ],
+    "automation": {
+     "idea": "a standard volume change email with meter and effective date",
+     "artifact_type": "template",
+     "why": "each change repeats the same details"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 8,
+     "high": 15,
+     "rationale": "writing and entering the revised nomination",
+     "basis_obs_ids": [
+      "b007-o8",
+      "b005-o53"
+     ]
+    },
+    "obs_ids": [
+     "b007-o8",
+     "b007-o9",
+     "b007-o10",
+     "b007-o55",
+     "b005-o57",
+     "b005-o58",
+     "b005-o59",
+     "b005-o53",
+     "b005-o54",
+     "b001-o17",
+     "b001-o19",
+     "b001-o18"
+    ],
+    "parts": [
+     "s102.P15"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P11",
+    "name": "Meter volume reallocation to the correct contract",
+    "description": "Volumes are moved between deals or contracts after misallocation. Corrections and follow-ups on who does the fix stall the work.",
+    "trigger": "volume allocated to the wrong contract or deal",
+    "output": "volume moved and meter reallocated",
+    "roles": [
+     "volume management",
+     "scheduler"
+    ],
+    "automation": {
+     "idea": "a correction request form with from and to contract and months",
+     "artifact_type": "template",
+     "why": "each correction needs the same fields"
+    },
+    "minutes_per_event": {
+     "low": 8,
+     "base": 15,
+     "high": 25,
+     "rationale": "identifying the right contract and writing the correction",
+     "basis_obs_ids": [
+      "b001-o51",
+      "b010-o55"
+     ]
+    },
+    "obs_ids": [
+     "b001-o7",
+     "b001-o8",
+     "b001-o51",
+     "b001-o50",
+     "b001-o52",
+     "b003-o14",
+     "b003-o35",
+     "b010-o4",
+     "b010-o5",
+     "b010-o55",
+     "b010-o56",
+     "b010-o57",
+     "b005-o64"
+    ],
+    "parts": [
+     "s102.P16"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 7
+   },
+   {
+    "process_id": "P12",
+    "name": "Unpathed gas cleanup",
+    "description": "At period end schedulers list and assign unpathed deals, shippers and transport and chase open items.",
+    "trigger": "unpathed gas found at period end",
+    "output": "deals pathed or assigned",
+    "roles": [
+     "scheduler",
+     "logistics"
+    ],
+    "automation": {
+     "idea": "an unpathed gas report with a daily open-items checklist",
+     "artifact_type": "checklist",
+     "why": "the same list is rewritten and chased"
+    },
+    "minutes_per_event": {
+     "low": 15,
+     "base": 30,
+     "high": 45,
+     "rationale": "listing unpathed items and chasing assignments",
+     "basis_obs_ids": [
+      "b002-o16",
+      "b003-o10"
+     ]
+    },
+    "obs_ids": [
+     "b002-o16",
+     "b002-o17",
+     "b002-o18",
+     "b002-o19",
+     "b002-o20",
+     "b002-o21",
+     "b002-o22",
+     "b002-o26",
+     "b003-o2",
+     "b003-o3",
+     "b003-o4",
+     "b003-o5",
+     "b003-o6",
+     "b003-o7",
+     "b003-o8",
+     "b003-o9",
+     "b003-o10"
+    ],
+    "parts": [
+     "s102.P17"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 2
+   },
+   {
+    "process_id": "P13",
+    "name": "Customer trip and meeting planning",
+    "description": "Planning customer trips and meetings with proposals, guest lists, invitations and RSVPs.",
+    "trigger": "customer trip or meeting planning cycle",
+    "output": "proposal, guest list and invitations",
+    "roles": [
+     "administrative coordinator",
+     "managers"
+    ],
+    "automation": {
+     "idea": "an invitation and RSVP mailing template with a deadline checklist",
+     "artifact_type": "template",
+     "why": "the same documents are produced each time"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 20,
+     "high": 30,
+     "rationale": "compiling guest lists and preparing the mailing",
+     "basis_obs_ids": [
+      "b007-o52",
+      "b012-o42"
+     ]
+    },
+    "obs_ids": [
+     "b007-o52",
+     "b007-o53",
+     "b007-o54",
+     "b012-o31",
+     "b012-o30",
+     "b012-o42",
+     "b012-o43"
+    ],
+    "parts": [
+     "s102.P18"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 3
+   },
+   {
+    "process_id": "P14",
+    "name": "Performance review reviewer selection",
+    "description": "Employees choose and submit reviewer lists for the performance system, with workarounds when the system fails.",
+    "trigger": "review cycle opens",
+    "output": "approved reviewer list",
+    "roles": [
+     "employee",
+     "manager"
+    ],
+    "automation": {
+     "idea": "a reviewer selection checklist with deadline reminders",
+     "artifact_type": "checklist",
+     "why": "the same steps repeat each cycle"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 15,
+     "rationale": "picking reviewers and sending the list",
+     "basis_obs_ids": [
+      "b012-o40",
+      "b012-o32"
+     ]
+    },
+    "obs_ids": [
+     "b012-o33",
+     "b012-o34",
+     "b012-o35",
+     "b012-o32",
+     "b012-o40",
+     "b012-o41"
+    ],
+    "parts": [
+     "s102.P19"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 2
+   },
+   {
+    "process_id": "P15",
+    "name": "Accounting arrangement setup for meters",
+    "description": "Logistics asks for accounting arrangements or tracking IDs so that production at a meter can be allocated and paid. Requests depend on the right deal numbers and sometimes wait for the deal owner.",
+    "trigger": "production flows at a meter with no accounting arrangement or contract",
+    "output": "accounting arrangement with tracking ID",
+    "roles": [
+     "logistics analyst",
+     "volume management",
+     "gas accounting"
+    ],
+    "automation": {
+     "idea": "a standard request form capturing meter, months, contract and deal number",
+     "artifact_type": "template",
+     "why": "requests are rebuilt from scratch with the same fields each time"
+    },
+    "minutes_per_event": {
+     "low": 8,
+     "base": 15,
+     "high": 25,
+     "rationale": "gathering meter, month and deal numbers and writing the setup request",
+     "basis_obs_ids": [
+      "b005-o4",
+      "b007-o62",
+      "b012-o16"
+     ]
+    },
+    "obs_ids": [
+     "b005-o4",
+     "b007-o62",
+     "b007-o63",
+     "b001-o6",
+     "b005-o61",
+     "b005-o62",
+     "b005-o66",
+     "b007-o66",
+     "b012-o10",
+     "b012-o16"
+    ],
+    "parts": [
+     "s102.P2"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P16",
+    "name": "Sitara ticket entry for new wells and production",
+    "description": "Deal makers and logistics request Sitara spot, baseload or committed reserves tickets when a well starts flowing or production is missing in the system. Committed reserves tickets wait on reserve forecasts.",
+    "trigger": "a well comes on line or production appears with no ticket",
+    "output": "Sitara deal ticket",
+    "roles": [
+     "deal maker",
+     "logistics analyst"
+    ],
+    "automation": {
+     "idea": "a ticket request form with meter, counterparty, price, dates and ticket type",
+     "artifact_type": "template",
+     "why": "each request restates the same fields and corrections of price or dates follow"
+    },
+    "minutes_per_event": {
+     "low": 8,
+     "base": 15,
+     "high": 25,
+     "rationale": "writing the ticket request, correcting price or dates and passing the ticket number back",
+     "basis_obs_ids": [
+      "b003-o77",
+      "b003-o78",
+      "b010-o33"
+     ]
+    },
+    "obs_ids": [
+     "b003-o36",
+     "b003-o77",
+     "b003-o78",
+     "b003-o82",
+     "b003-o84",
+     "b003-o57",
+     "b005-o38",
+     "b005-o39",
+     "b005-o36",
+     "b005-o37",
+     "b005-o40",
+     "b010-o33",
+     "b010-o34",
+     "b010-o32",
+     "b002-o15",
+     "b002-o45",
+     "b002-o46",
+     "b002-o47",
+     "b016-o14",
+     "b016-o12",
+     "b016-o13"
+    ],
+    "parts": [
+     "s102.P4"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 10
+   },
+   {
+    "process_id": "P17",
+    "name": "HL&P flow numbers reporting",
+    "description": "The scheduler sends the latest HL&P flow numbers and monthly split to the commercial contact on request.",
+    "trigger": "request for the latest HL&P flow numbers",
+    "output": "spreadsheet of HL&P flow numbers",
+    "roles": [
+     "scheduler",
+     "commercial analyst"
+    ],
+    "automation": {
+     "idea": "a standard weekly send of the flow numbers workbook",
+     "artifact_type": "email",
+     "why": "the same attachment is sent repeatedly"
+    },
+    "minutes_per_event": {
+     "low": 3,
+     "base": 8,
+     "high": 15,
+     "rationale": "pulling the numbers and attaching them",
+     "basis_obs_ids": [
+      "b002-o4",
+      "b002-o36"
+     ]
+    },
+    "obs_ids": [
+     "b002-o4",
+     "b002-o36",
+     "b002-o37",
+     "b002-o53",
+     "b002-o69",
+     "b003-o15"
+    ],
+    "parts": [
+     "s102.P6"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 5
+   },
+   {
+    "process_id": "P18",
+    "name": "Producer meter shut-in and restore notices",
+    "description": "Field operations shut in meters for repairs, pigging, tie-ins or off-spec gas and notify schedulers and producers; restoring waits for repairs.",
+    "trigger": "leak, pigging, tie-in, off-spec gas or free liquids at a meter",
+    "output": "meter shut in notice, later restored",
+    "roles": [
+     "field operations",
+     "scheduler",
+     "deal maker"
+    ],
+    "automation": {
+     "idea": "a shut-in notice template with meter, reason, expected restore and producer contact",
+     "artifact_type": "template",
+     "why": "notices repeat the same facts"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 20,
+     "rationale": "writing the notice and notifying the people affected",
+     "basis_obs_ids": [
+      "b002-o85",
+      "b012-o70"
+     ]
+    },
+    "obs_ids": [
+     "b014-o38",
+     "b014-o39",
+     "b002-o7",
+     "b002-o8",
+     "b002-o9",
+     "b002-o10",
+     "b002-o85",
+     "b002-o86",
+     "b005-o78",
+     "b005-o79",
+     "b005-o47",
+     "b005-o48",
+     "b012-o70",
+     "b012-o71"
+    ],
+    "parts": [
+     "s102.P7"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P19",
+    "name": "Monthly cost allocation percentages",
+    "description": "Management and analysts update plan and monthly allocation percentages by group; corrections and reworked spreadsheets are common.",
+    "trigger": "monthly or plan allocation request",
+    "output": "updated allocation percentages",
+    "roles": [
+     "manager",
+     "financial analyst"
+    ],
+    "automation": {
+     "idea": "a locked allocation spreadsheet template with a sum check",
+     "artifact_type": "template",
+     "why": "errors and re-sent files repeat each month"
+    },
+    "minutes_per_event": {
+     "low": 15,
+     "base": 30,
+     "high": 45,
+     "rationale": "reworking percentages and fixing sheet errors",
+     "basis_obs_ids": [
+      "b003-o41",
+      "b003-o42",
+      "b003-o61"
+     ]
+    },
+    "obs_ids": [
+     "b003-o67",
+     "b003-o68",
+     "b003-o69",
+     "b003-o70",
+     "b003-o41",
+     "b003-o42",
+     "b003-o43",
+     "b003-o44",
+     "b003-o45",
+     "b003-o61",
+     "b003-o64",
+     "b003-o65",
+     "b003-o66",
+     "b003-o81",
+     "b007-o1",
+     "b007-o2",
+     "b007-o3",
+     "b007-o5",
+     "b007-o4"
+    ],
+    "parts": [
+     "s102.P9"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P20",
+    "name": "System access request approval",
+    "description": "Managers get automated requests to approve access to deal and scheduling systems.",
+    "trigger": "access request submitted for an employee",
+    "output": "approved or denied access",
+    "roles": [
+     "manager"
+    ],
+    "automation": {
+     "idea": "a short checklist of the access criteria for approval",
+     "artifact_type": "checklist",
+     "why": "approvals follow the same rules"
+    },
+    "minutes_per_event": {
+     "low": 2,
+     "base": 4,
+     "high": 8,
+     "rationale": "reading the request and confirming the need",
+     "basis_obs_ids": [
+      "b021-o19"
+     ]
+    },
+    "obs_ids": [
+     "b019-o34",
+     "b021-o19",
+     "b052-o58"
+    ],
+    "parts": [
+     "s103.P10"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 3
+   },
+   {
+    "process_id": "P21",
+    "name": "Annual budget and staffing submission",
+    "description": "Managers supply budget questionnaires, staff lists, training needs and staffing for review.",
+    "trigger": "annual budget cycle",
+    "output": "completed budget and staffing information",
+    "roles": [
+     "manager",
+     "finance contact"
+    ],
+    "automation": {
+     "idea": "a budget input checklist with staff and class lists prefilled",
+     "artifact_type": "checklist",
+     "why": "inputs are gathered by hand"
+    },
+    "minutes_per_event": {
+     "low": 20,
+     "base": 40,
+     "high": 70,
+     "rationale": "collecting staff and training data and filling forms",
+     "basis_obs_ids": [
+      "b021-o12",
+      "b021-o22"
+     ]
+    },
+    "obs_ids": [
+     "b021-o10",
+     "b021-o11",
+     "b021-o12",
+     "b021-o13",
+     "b021-o21",
+     "b021-o22",
+     "b021-o23"
+    ],
+    "parts": [
+     "s103.P11"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 2
+   },
+   {
+    "process_id": "P22",
+    "name": "Plant election and processing notice recording",
+    "description": "The desk records monthly plant elections such as ethane keep-whole shrinkage and sends processing notices.",
+    "trigger": "monthly plant election window",
+    "output": "recorded election notice",
+    "roles": [
+     "scheduler",
+     "plant contact"
+    ],
+    "automation": {
+     "idea": "a standard election notice with the shrinkage and fuel fields prefilled",
+     "artifact_type": "template",
+     "why": "the notice is the same each month"
+    },
+    "minutes_per_event": {
+     "low": 5,
+     "base": 10,
+     "high": 15,
+     "rationale": "writing the notice and confirming figures",
+     "basis_obs_ids": [
+      "b028-o18"
+     ]
+    },
+    "obs_ids": [
+     "b019-o41",
+     "b028-o18",
+     "b028-o19"
+    ],
+    "parts": [
+     "s103.P12"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 2
+   },
+   {
+    "process_id": "P23",
+    "name": "Blue Dolphin invoice and volume responsibility routing",
+    "description": "Questions on which entity owns Blue Dolphin volumes and invoices are resolved by pathing volumes and routing invoices to the right party. Follow-ups are needed.",
+    "trigger": "Blue Dolphin monthly invoice or volume question",
+    "output": "confirmed responsible entity and routed invoice",
+    "roles": [
+     "scheduler",
+     "accounting contact"
+    ],
+    "automation": {
+     "idea": "a standing routing instruction for each invoice type",
+     "artifact_type": "sop",
+     "why": "the same question is re-asked each month"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 20,
+     "high": 30,
+     "rationale": "researching responsibility and writing updates",
+     "basis_obs_ids": [
+      "b052-o17",
+      "b059-o69"
+     ]
+    },
+    "obs_ids": [
+     "b052-o14",
+     "b052-o15",
+     "b052-o17",
+     "b052-o18",
+     "b052-o19",
+     "b052-o20",
+     "b052-o16",
+     "b059-o69",
+     "b059-o70",
+     "b059-o66",
+     "b059-o67",
+     "b059-o68"
+    ],
+    "parts": [
+     "s103.P13"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 2
+   },
+   {
+    "process_id": "P24",
+    "name": "Sitara deal cleanup and bankruptcy book moves",
+    "description": "Large batches of deals are killed, zeroed or moved to other books, and teams check the impact on pathing and volume management.",
+    "trigger": "contract termination or deal cleanup decision",
+    "output": "deals zeroed or moved with lists sent to teams",
+    "roles": [
+     "deal system analyst",
+     "volume management"
+    ],
+    "automation": {
+     "idea": "a checklist for zeroing instead of killing with a list of affected paths",
+     "artifact_type": "checklist",
+     "why": "the same impact checks are repeated"
+    },
+    "minutes_per_event": {
+     "low": 15,
+     "base": 30,
+     "high": 60,
+     "rationale": "building deal lists and checking path impacts",
+     "basis_obs_ids": [
+      "b068-o19",
+      "b068-o24"
+     ]
+    },
+    "obs_ids": [
+     "b068-o11",
+     "b068-o12",
+     "b068-o13",
+     "b068-o14",
+     "b068-o15",
+     "b068-o16",
+     "b068-o17",
+     "b068-o18",
+     "b068-o19",
+     "b068-o20",
+     "b068-o24",
+     "b068-o25",
+     "b068-o26",
+     "b068-o22",
+     "b068-o23"
+    ],
+    "parts": [
+     "s103.P14"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 3
+   },
+   {
+    "process_id": "P25",
+    "name": "Transport usage ticket setup and rate update",
+    "description": "Each month transport usage tickets are set up or copied, rates refreshed and volumes attached and checked across pipes. Third-party rates and baseload agreements are awaited from others.",
+    "trigger": "start of a new gas month",
+    "output": "updated transport usage tickets with current rates and volumes",
+    "roles": [
+     "scheduler",
+     "transport analyst"
+    ],
+    "automation": {
+     "idea": "a monthly checklist of tickets to copy forward, rates to refresh and reports to run",
+     "artifact_type": "checklist",
+     "why": "the same steps repeat each month and are tracked from memory"
+    },
+    "minutes_per_event": {
+     "low": 20,
+     "base": 45,
+     "high": 90,
+     "rationale": "re-entering rates, copying prior tickets and checking volumes by pipe",
+     "basis_obs_ids": [
+      "b012-o83",
+      "b012-o88",
+      "b016-o1"
+     ]
+    },
+    "obs_ids": [
+     "b012-o81",
+     "b012-o82",
+     "b012-o83",
+     "b012-o84",
+     "b012-o85",
+     "b012-o86",
+     "b012-o87",
+     "b012-o88",
+     "b012-o89",
+     "b012-o90",
+     "b016-o1",
+     "b016-o2",
+     "b016-o3",
+     "b016-o4",
+     "b021-o2",
+     "b021-o3",
+     "b021-o4",
+     "b039-o36",
+     "b039-o37",
+     "b039-o38"
+    ],
+    "parts": [
+     "s103.P3"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 4
+   },
+   {
+    "process_id": "P26",
+    "name": "Monthly activity and hours survey completion",
+    "description": "Staff are asked each month to complete activity and hours surveys for the operations performance process. Responses are slow and reminders are needed.",
+    "trigger": "monthly survey distribution",
+    "output": "completed survey returned by the due date",
+    "roles": [
+     "desk manager",
+     "survey coordinator"
+    ],
+    "automation": {
+     "idea": "a prefilled survey from last month's allocations with a reminder email",
+     "artifact_type": "template",
+     "why": "answers are largely the same each month"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 25,
+     "high": 40,
+     "rationale": "selecting activities, entering hours and responding to reminders",
+     "basis_obs_ids": [
+      "b012-o108",
+      "b023-o5"
+     ]
+    },
+    "obs_ids": [
+     "b012-o107",
+     "b012-o108",
+     "b012-o109",
+     "b012-o114",
+     "b012-o115",
+     "b012-o117",
+     "b012-o118",
+     "b012-o119",
+     "b021-o41",
+     "b021-o42",
+     "b023-o5",
+     "b023-o8",
+     "b032-o53",
+     "b037-o4",
+     "b037-o5"
+    ],
+    "parts": [
+     "s103.P4"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 6
+   },
+   {
+    "process_id": "P27",
+    "name": "Monthly volumetric variance explanation",
+    "description": "Business reporting asks for verification of wholesale volumes and explanations of material month, quarter and year changes, due on a fixed day.",
+    "trigger": "monthly request from reporting for volumetric analysis",
+    "output": "verified volumes and written variance explanations",
+    "roles": [
+     "analyst",
+     "reporting contact"
+    ],
+    "automation": {
+     "idea": "a variance table prefilled with changes over the threshold and a column for reasons",
+     "artifact_type": "template",
+     "why": "figures are looked up by hand each month"
+    },
+    "minutes_per_event": {
+     "low": 20,
+     "base": 45,
+     "high": 90,
+     "rationale": "looking up volume changes and writing explanations",
+     "basis_obs_ids": [
+      "b014-o32",
+      "b021-o47"
+     ]
+    },
+    "obs_ids": [
+     "b014-o32",
+     "b014-o33",
+     "b014-o34",
+     "b021-o45",
+     "b021-o46",
+     "b021-o47"
+    ],
+    "parts": [
+     "s103.P6"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 2
+   },
+   {
+    "process_id": "P28",
+    "name": "Price and invoice discrepancy check against deal record",
+    "description": "Counterparty invoices or statements that differ from the deal price, volume or entity are checked against the deal system, then the price is corrected or the discrepancy is explained. Resolution often stalls with unanswered requests and escalation.",
+    "trigger": "counterparty invoice or statement disagrees with the deal record",
+    "output": "corrected deal price or confirmed explanation",
+    "roles": [
+     "settlements analyst",
+     "deal owner",
+     "counterparty"
+    ],
+    "automation": {
+     "idea": "a discrepancy checklist and request that pulls invoice and deal price side by side",
+     "artifact_type": "checklist",
+     "why": "each case repeats the same lookups and questions"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 25,
+     "high": 45,
+     "rationale": "looking up the deal and invoice and writing follow-up messages",
+     "basis_obs_ids": [
+      "b046-o6",
+      "b046-o44"
+     ]
+    },
+    "obs_ids": [
+     "b046-o6",
+     "b046-o44",
+     "b046-o45",
+     "b046-o46",
+     "b046-o33",
+     "b046-o21",
+     "b046-o30",
+     "b046-o15",
+     "b043-o46",
+     "b048-o26",
+     "b048-o25",
+     "b048-o28",
+     "b050-o76",
+     "b050-o75",
+     "b052-o11",
+     "b041-o4",
+     "b041-o3",
+     "b041-o35",
+     "b055-o93",
+     "b050-o78"
+    ],
+    "parts": [
+     "s103.P8"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 15
+   },
+   {
+    "process_id": "P29",
+    "name": "Daily gas control and pipeline cut reporting",
+    "description": "Desk members report pipeline cuts, outages and weekend gas control events, then update meter volumes and nominations. Follow-ups verify that meters were updated.",
+    "trigger": "pipeline cut call or weekend gas control event",
+    "output": "logged cuts and updated nominations or volumes",
+    "roles": [
+     "scheduler",
+     "gas control"
+    ],
+    "automation": {
+     "idea": "a weekend log of cuts, meters and nomination changes",
+     "artifact_type": "template",
+     "why": "the same events are rewritten in prose each time"
+    },
+    "minutes_per_event": {
+     "low": 10,
+     "base": 20,
+     "high": 35,
+     "rationale": "typing out cuts and meter changes and updating the records",
+     "basis_obs_ids": [
+      "b019-o49",
+      "b014-o48"
+     ]
+    },
+    "obs_ids": [
+     "b014-o4",
+     "b014-o48",
+     "b019-o49",
+     "b019-o50",
+     "b019-o53",
+     "b019-o54",
+     "b019-o58",
+     "b019-o62",
+     "b032-o20",
+     "b032-o21",
+     "b032-o22",
+     "b032-o24",
+     "b039-o39",
+     "b039-o40",
+     "b041-o34"
+    ],
+    "parts": [
+     "s103.P9"
+    ],
+    "made_by": "passed_through",
+    "merge_reason": "",
+    "threads_seen": 6
+   }
+  ],
+  "assignment": {
+   "b001-o22": "P1",
+   "b001-o53": "P1",
+   "b001-o54": "P1",
+   "b003-o46": "P1",
+   "b003-o48": "P1",
+   "b003-o51": "P1",
+   "b003-o52": "P1",
+   "b003-o59": "P1",
+   "b003-o60": "P1",
+   "b005-o55": "P1",
+   "b005-o60": "P1",
+   "b005-o71": "P1",
+   "b007-o22": "P1",
+   "b007-o23": "P1",
+   "b007-o24": "P1",
+   "b007-o31": "P1",
+   "b007-o34": "P1",
+   "b007-o35": "P1",
+   "b007-o56": "P1",
+   "b007-o60": "P1",
+   "b007-o61": "P1",
+   "b007-o67": "P1",
+   "b010-o2": "P1",
+   "b010-o30": "P1",
+   "b010-o31": "P1",
+   "b010-o35": "P1",
+   "b010-o36": "P1",
+   "b010-o39": "P1",
+   "b010-o46": "P1",
+   "b010-o79": "P1",
+   "b012-o54": "P1",
+   "b014-o1": "P1",
+   "b014-o52": "P1",
+   "b016-o32": "P1",
+   "b016-o35": "P1",
+   "b016-o40": "P1",
+   "b016-o50": "P1",
+   "b019-o73": "P1",
+   "b021-o14": "P1",
+   "b021-o15": "P1",
+   "b023-o9": "P1",
+   "b025-o1": "P1",
+   "b025-o31": "P1",
+   "b025-o33": "P1",
+   "b025-o36": "P1",
+   "b030-o34": "P1",
+   "b030-o38": "P1",
+   "b030-o39": "P1",
+   "b034-o38": "P1",
+   "b037-o1": "P1",
+   "b037-o7": "P1",
+   "b039-o12": "P1",
+   "b039-o13": "P1",
+   "b041-o1": "P1",
+   "b041-o25": "P1",
+   "b041-o7": "P1",
+   "b041-o8": "P1",
+   "b041-o9": "P1",
+   "b043-o45": "P1",
+   "b046-o34": "P1",
+   "b046-o4": "P1",
+   "b005-o6": "P2",
+   "b007-o32": "P2",
+   "b007-o65": "P2",
+   "b010-o10": "P2",
+   "b010-o11": "P2",
+   "b010-o7": "P2",
+   "b010-o8": "P2",
+   "b010-o9": "P2",
+   "b012-o100": "P2",
+   "b012-o102": "P2",
+   "b012-o104": "P2",
+   "b012-o105": "P2",
+   "b012-o106": "P2",
+   "b012-o94": "P2",
+   "b012-o95": "P2",
+   "b012-o96": "P2",
+   "b012-o97": "P2",
+   "b012-o98": "P2",
+   "b012-o99": "P2",
+   "b030-o35": "P2",
+   "b032-o17": "P2",
+   "b032-o18": "P2",
+   "b032-o19": "P2",
+   "b032-o40": "P2",
+   "b032-o47": "P2",
+   "b032-o52": "P2",
+   "b032-o54": "P2",
+   "b032-o55": "P2",
+   "b032-o56": "P2",
+   "b032-o8": "P2",
+   "b034-o16": "P2",
+   "b001-o13": "P3",
+   "b001-o55": "P3",
+   "b001-o56": "P3",
+   "b001-o68": "P3",
+   "b001-o69": "P3",
+   "b001-o70": "P3",
+   "b002-o11": "P3",
+   "b002-o12": "P3",
+   "b002-o54": "P3",
+   "b002-o55": "P3",
+   "b003-o37": "P3",
+   "b003-o40": "P3",
+   "b003-o89": "P3",
+   "b003-o90": "P3",
+   "b007-o33": "P3",
+   "b007-o82": "P3",
+   "b010-o42": "P3",
+   "b019-o42": "P3",
+   "b019-o43": "P3",
+   "b019-o44": "P3",
+   "b019-o45": "P3",
+   "b021-o26": "P3",
+   "b028-o26": "P3",
+   "b028-o27": "P3",
+   "b028-o28": "P3",
+   "b032-o25": "P3",
+   "b043-o21": "P3",
+   "b001-o36": "P4",
+   "b001-o63": "P4",
+   "b001-o64": "P4",
+   "b003-o79": "P4",
+   "b005-o12": "P4",
+   "b010-o82": "P4",
+   "b010-o83": "P4",
+   "b012-o75": "P4",
+   "b012-o76": "P4",
+   "b012-o77": "P4",
+   "b012-o78": "P4",
+   "b012-o79": "P4",
+   "b016-o29": "P4",
+   "b016-o30": "P4",
+   "b016-o31": "P4",
+   "b016-o44": "P4",
+   "b016-o45": "P4",
+   "b023-o1": "P4",
+   "b023-o2": "P4",
+   "b037-o2": "P4",
+   "b037-o3": "P4",
+   "b046-o19": "P4",
+   "b046-o20": "P4",
+   "b001-o24": "P5",
+   "b001-o25": "P5",
+   "b001-o26": "P5",
+   "b001-o39": "P5",
+   "b001-o44": "P5",
+   "b001-o45": "P5",
+   "b001-o46": "P5",
+   "b002-o38": "P5",
+   "b003-o71": "P5",
+   "b003-o72": "P5",
+   "b005-o13": "P5",
+   "b005-o14": "P5",
+   "b007-o72": "P5",
+   "b007-o73": "P5",
+   "b007-o74": "P5",
+   "b007-o75": "P5",
+   "b007-o76": "P5",
+   "b007-o28": "P6",
+   "b007-o27": "P6",
+   "b007-o16": "P6",
+   "b007-o17": "P6",
+   "b003-o26": "P6",
+   "b010-o61": "P6",
+   "b010-o62": "P6",
+   "b010-o63": "P6",
+   "b010-o65": "P6",
+   "b012-o1": "P6",
+   "b012-o2": "P6",
+   "b012-o3": "P6",
+   "b012-o4": "P6",
+   "b012-o5": "P6",
+   "b012-o72": "P6",
+   "b012-o73": "P6",
+   "b012-o74": "P6",
+   "b007-o26": "P6",
+   "b012-o49": "P6",
+   "b012-o50": "P6",
+   "b005-o43": "P6",
+   "b002-o31": "P7",
+   "b002-o35": "P7",
+   "b002-o30": "P7",
+   "b002-o32": "P7",
+   "b002-o33": "P7",
+   "b007-o11": "P7",
+   "b007-o12": "P7",
+   "b007-o13": "P7",
+   "b007-o15": "P7",
+   "b007-o25": "P7",
+   "b010-o66": "P7",
+   "b010-o67": "P7",
+   "b001-o27": "P8",
+   "b001-o32": "P8",
+   "b001-o28": "P8",
+   "b001-o29": "P8",
+   "b001-o30": "P8",
+   "b001-o31": "P8",
+   "b001-o71": "P8",
+   "b001-o72": "P8",
+   "b001-o73": "P8",
+   "b001-o74": "P8",
+   "b002-o84": "P8",
+   "b007-o83": "P8",
+   "b007-o84": "P8",
+   "b007-o85": "P8",
+   "b007-o86": "P8",
+   "b001-o12": "P9",
+   "b007-o70": "P9",
+   "b007-o71": "P9",
+   "b010-o24": "P9",
+   "b010-o25": "P9",
+   "b010-o19": "P9",
+   "b010-o21": "P9",
+   "b010-o44": "P9",
+   "b010-o45": "P9",
+   "b010-o80": "P9",
+   "b007-o8": "P10",
+   "b007-o9": "P10",
+   "b007-o10": "P10",
+   "b007-o55": "P10",
+   "b005-o57": "P10",
+   "b005-o58": "P10",
+   "b005-o59": "P10",
+   "b005-o53": "P10",
+   "b005-o54": "P10",
+   "b001-o17": "P10",
+   "b001-o19": "P10",
+   "b001-o18": "P10",
+   "b001-o7": "P11",
+   "b001-o8": "P11",
+   "b001-o51": "P11",
+   "b001-o50": "P11",
+   "b001-o52": "P11",
+   "b003-o14": "P11",
+   "b003-o35": "P11",
+   "b010-o4": "P11",
+   "b010-o5": "P11",
+   "b010-o55": "P11",
+   "b010-o56": "P11",
+   "b010-o57": "P11",
+   "b005-o64": "P11",
+   "b002-o16": "P12",
+   "b002-o17": "P12",
+   "b002-o18": "P12",
+   "b002-o19": "P12",
+   "b002-o20": "P12",
+   "b002-o21": "P12",
+   "b002-o22": "P12",
+   "b002-o26": "P12",
+   "b003-o2": "P12",
+   "b003-o3": "P12",
+   "b003-o4": "P12",
+   "b003-o5": "P12",
+   "b003-o6": "P12",
+   "b003-o7": "P12",
+   "b003-o8": "P12",
+   "b003-o9": "P12",
+   "b003-o10": "P12",
+   "b007-o52": "P13",
+   "b007-o53": "P13",
+   "b007-o54": "P13",
+   "b012-o31": "P13",
+   "b012-o30": "P13",
+   "b012-o42": "P13",
+   "b012-o43": "P13",
+   "b012-o33": "P14",
+   "b012-o34": "P14",
+   "b012-o35": "P14",
+   "b012-o32": "P14",
+   "b012-o40": "P14",
+   "b012-o41": "P14",
+   "b005-o4": "P15",
+   "b007-o62": "P15",
+   "b007-o63": "P15",
+   "b001-o6": "P15",
+   "b005-o61": "P15",
+   "b005-o62": "P15",
+   "b005-o66": "P15",
+   "b007-o66": "P15",
+   "b012-o10": "P15",
+   "b012-o16": "P15",
+   "b003-o36": "P16",
+   "b003-o77": "P16",
+   "b003-o78": "P16",
+   "b003-o82": "P16",
+   "b003-o84": "P16",
+   "b003-o57": "P16",
+   "b005-o38": "P16",
+   "b005-o39": "P16",
+   "b005-o36": "P16",
+   "b005-o37": "P16",
+   "b005-o40": "P16",
+   "b010-o33": "P16",
+   "b010-o34": "P16",
+   "b010-o32": "P16",
+   "b002-o15": "P16",
+   "b002-o45": "P16",
+   "b002-o46": "P16",
+   "b002-o47": "P16",
+   "b016-o14": "P16",
+   "b016-o12": "P16",
+   "b016-o13": "P16",
+   "b002-o4": "P17",
+   "b002-o36": "P17",
+   "b002-o37": "P17",
+   "b002-o53": "P17",
+   "b002-o69": "P17",
+   "b003-o15": "P17",
+   "b014-o38": "P18",
+   "b014-o39": "P18",
+   "b002-o7": "P18",
+   "b002-o8": "P18",
+   "b002-o9": "P18",
+   "b002-o10": "P18",
+   "b002-o85": "P18",
+   "b002-o86": "P18",
+   "b005-o78": "P18",
+   "b005-o79": "P18",
+   "b005-o47": "P18",
+   "b005-o48": "P18",
+   "b012-o70": "P18",
+   "b012-o71": "P18",
+   "b003-o67": "P19",
+   "b003-o68": "P19",
+   "b003-o69": "P19",
+   "b003-o70": "P19",
+   "b003-o41": "P19",
+   "b003-o42": "P19",
+   "b003-o43": "P19",
+   "b003-o44": "P19",
+   "b003-o45": "P19",
+   "b003-o61": "P19",
+   "b003-o64": "P19",
+   "b003-o65": "P19",
+   "b003-o66": "P19",
+   "b003-o81": "P19",
+   "b007-o1": "P19",
+   "b007-o2": "P19",
+   "b007-o3": "P19",
+   "b007-o5": "P19",
+   "b007-o4": "P19",
+   "b019-o34": "P20",
+   "b021-o19": "P20",
+   "b052-o58": "P20",
+   "b021-o10": "P21",
+   "b021-o11": "P21",
+   "b021-o12": "P21",
+   "b021-o13": "P21",
+   "b021-o21": "P21",
+   "b021-o22": "P21",
+   "b021-o23": "P21",
+   "b019-o41": "P22",
+   "b028-o18": "P22",
+   "b028-o19": "P22",
+   "b052-o14": "P23",
+   "b052-o15": "P23",
+   "b052-o17": "P23",
+   "b052-o18": "P23",
+   "b052-o19": "P23",
+   "b052-o20": "P23",
+   "b052-o16": "P23",
+   "b059-o69": "P23",
+   "b059-o70": "P23",
+   "b059-o66": "P23",
+   "b059-o67": "P23",
+   "b059-o68": "P23",
+   "b068-o11": "P24",
+   "b068-o12": "P24",
+   "b068-o13": "P24",
+   "b068-o14": "P24",
+   "b068-o15": "P24",
+   "b068-o16": "P24",
+   "b068-o17": "P24",
+   "b068-o18": "P24",
+   "b068-o19": "P24",
+   "b068-o20": "P24",
+   "b068-o24": "P24",
+   "b068-o25": "P24",
+   "b068-o26": "P24",
+   "b068-o22": "P24",
+   "b068-o23": "P24",
+   "b012-o81": "P25",
+   "b012-o82": "P25",
+   "b012-o83": "P25",
+   "b012-o84": "P25",
+   "b012-o85": "P25",
+   "b012-o86": "P25",
+   "b012-o87": "P25",
+   "b012-o88": "P25",
+   "b012-o89": "P25",
+   "b012-o90": "P25",
+   "b016-o1": "P25",
+   "b016-o2": "P25",
+   "b016-o3": "P25",
+   "b016-o4": "P25",
+   "b021-o2": "P25",
+   "b021-o3": "P25",
+   "b021-o4": "P25",
+   "b039-o36": "P25",
+   "b039-o37": "P25",
+   "b039-o38": "P25",
+   "b012-o107": "P26",
+   "b012-o108": "P26",
+   "b012-o109": "P26",
+   "b012-o114": "P26",
+   "b012-o115": "P26",
+   "b012-o117": "P26",
+   "b012-o118": "P26",
+   "b012-o119": "P26",
+   "b021-o41": "P26",
+   "b021-o42": "P26",
+   "b023-o5": "P26",
+   "b023-o8": "P26",
+   "b032-o53": "P26",
+   "b037-o4": "P26",
+   "b037-o5": "P26",
+   "b014-o32": "P27",
+   "b014-o33": "P27",
+   "b014-o34": "P27",
+   "b021-o45": "P27",
+   "b021-o46": "P27",
+   "b021-o47": "P27",
+   "b046-o6": "P28",
+   "b046-o44": "P28",
+   "b046-o45": "P28",
+   "b046-o46": "P28",
+   "b046-o33": "P28",
+   "b046-o21": "P28",
+   "b046-o30": "P28",
+   "b046-o15": "P28",
+   "b043-o46": "P28",
+   "b048-o26": "P28",
+   "b048-o25": "P28",
+   "b048-o28": "P28",
+   "b050-o76": "P28",
+   "b050-o75": "P28",
+   "b052-o11": "P28",
+   "b041-o4": "P28",
+   "b041-o3": "P28",
+   "b041-o35": "P28",
+   "b055-o93": "P28",
+   "b050-o78": "P28",
+   "b014-o4": "P29",
+   "b014-o48": "P29",
+   "b019-o49": "P29",
+   "b019-o50": "P29",
+   "b019-o53": "P29",
+   "b019-o54": "P29",
+   "b019-o58": "P29",
+   "b019-o62": "P29",
+   "b032-o20": "P29",
+   "b032-o21": "P29",
+   "b032-o22": "P29",
+   "b032-o24": "P29",
+   "b039-o39": "P29",
+   "b039-o40": "P29",
+   "b041-o34": "P29"
+  }
+ }
+}

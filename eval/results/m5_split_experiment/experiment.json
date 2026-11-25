@@ -1,0 +1,281 @@
+{
+ "at": "2026-11-24T04:09:59+00:00",
+ "observations": 2433,
+ "est_tokens": 175624,
+ "chunks": [
+  850,
+  849,
+  734
+ ],
+ "max_attempts": 3,
+ "status": "merged",
+ "chunk_stage_wall_s": 361.2,
+ "merge_wall_s": 40.0,
+ "final_processes": 71,
+ "merged": 17,
+ "merge_flags": [
+  {
+   "kind": "numbers_lint",
+   "process_id": "P11",
+   "field": "name"
+  },
+  {
+   "kind": "numbers_lint",
+   "process_id": "P11",
+   "field": "description"
+  },
+  {
+   "kind": "numbers_lint",
+   "process_id": "P11",
+   "field": "trigger"
+  }
+ ],
+ "wall_s": 401.2,
+ "sessions": [
+  {
+   "stage": "synth",
+   "input": "s202",
+   "attempt": "s202-c4452450-1",
+   "status": "failed",
+   "seconds": 84.2,
+   "n_errors": 7,
+   "coverage": {
+    "total": 849,
+    "assigned_raw": 152,
+    "counted": 152,
+    "share": 0.179,
+    "floor_share": 0.15,
+    "floor_count": 128,
+    "exempt": false,
+    "catch_all_processes": []
+   },
+   "processes": 0,
+   "fed_back_errors": 0,
+   "errors": [
+    "P10: basis_obs_ids must be observations of this process",
+    "P11: basis_obs_ids must be observations of this process",
+    "P16: basis_obs_ids must be observations of this process",
+    "P17: basis_obs_ids must be observations of this process",
+    "P19: basis_obs_ids must be observations of this process",
+    "P21: basis_obs_ids must be observations of this process",
+    "P24: basis_obs_ids must be observations of this process"
+   ],
+   "tokens": {
+    "input_tokens": 14,
+    "output_tokens": 11586,
+    "cache_creation_input_tokens": 115832,
+    "cache_read_input_tokens": 342990
+   },
+   "subagent_tokens": 470422,
+   "started_at_utc": "2026-11-24T04:09:59Z",
+   "finished_at_utc": "2026-11-24T04:11:24Z"
+  },
+  {
+   "stage": "synth",
+   "input": "s203",
+   "attempt": "s203-c5c8be7c-1",
+   "status": "failed",
+   "seconds": 103.3,
+   "n_errors": 1,
+   "coverage": {
+    "total": 734,
+    "assigned_raw": 316,
+    "counted": 316,
+    "share": 0.4305,
+    "floor_share": 0.15,
+    "floor_count": 111,
+    "exempt": false,
+    "catch_all_processes": []
+   },
+   "processes": 0,
+   "fed_back_errors": 0,
+   "errors": [
+    "P9: unknown observation ids ['b043-o40']"
+   ],
+   "tokens": {
+    "input_tokens": 12,
+    "output_tokens": 14428,
+    "cache_creation_input_tokens": 107259,
+    "cache_read_input_tokens": 255095
+   },
+   "subagent_tokens": 376794,
+   "started_at_utc": "2026-11-24T04:09:59Z",
+   "finished_at_utc": "2026-11-24T04:11:43Z"
+  },
+  {
+   "stage": "synth",
+   "input": "s201",
+   "attempt": "s201-40ccbfe0-1",
+   "status": "failed",
+   "seconds": 104.5,
+   "n_errors": 1,
+   "coverage": {
+    "total": 850,
+    "assigned_raw": 214,
+    "counted": 214,
+    "share": 0.2518,
+    "floor_share": 0.15,
+    "floor_count": 128,
+    "exempt": false,
+    "catch_all_processes": []
+   },
+   "processes": 0,
+   "fed_back_errors": 0,
+   "errors": [
+    "P4: basis_obs_ids must be observations of this process"
+   ],
+   "tokens": {
+    "input_tokens": 14,
+    "output_tokens": 15333,
+    "cache_creation_input_tokens": 120302,
+    "cache_read_input_tokens": 291824
+   },
+   "subagent_tokens": 427473,
+   "started_at_utc": "2026-11-24T04:09:59Z",
+   "finished_at_utc": "2026-11-24T04:11:44Z"
+  },
+  {
+   "stage": "synth",
+   "input": "s202",
+   "attempt": "s202-c4452450-2",
+   "status": "verified",
+   "seconds": 99.8,
+   "n_errors": 0,
+   "coverage": {
+    "total": 849,
+    "assigned_raw": 235,
+    "counted": 235,
+    "share": 0.2768,
+    "floor_share": 0.15,
+    "floor_count": 128,
+    "exempt": false,
+    "catch_all_processes": []
+   },
+   "processes": 29,
+   "fed_back_errors": 7,
+   "errors": [],
+   "tokens": {
+    "input_tokens": 10,
+    "output_tokens": 15108,
+    "cache_creation_input_tokens": 119341,
+    "cache_read_input_tokens": 208489
+   },
+   "subagent_tokens": 342948,
+   "started_at_utc": "2026-11-24T04:11:24Z",
+   "finished_at_utc": "2026-11-24T04:13:03Z"
+  },
+  {
+   "stage": "synth",
+   "input": "s203",
+   "attempt": "s203-c5c8be7c-2",
+   "status": "verified",
+   "seconds": 91.9,
+   "n_errors": 0,
+   "coverage": {
+    "total": 734,
+    "assigned_raw": 307,
+    "counted": 307,
+    "share": 0.4183,
+    "floor_share": 0.15,
+    "floor_count": 111,
+    "exempt": false,
+    "catch_all_processes": []
+   },
+   "processes": 28,
+   "fed_back_errors": 1,
+   "errors": [],
+   "tokens": {
+    "input_tokens": 8,
+    "output_tokens": 13828,
+    "cache_creation_input_tokens": 106625,
+    "cache_read_input_tokens": 129302
+   },
+   "subagent_tokens": 249763,
+   "started_at_utc": "2026-11-24T04:11:43Z",
+   "finished_at_utc": "2026-11-24T04:13:15Z"
+  },
+  {
+   "stage": "synth",
+   "input": "s201",
+   "attempt": "s201-40ccbfe0-2",
+   "status": "failed",
+   "seconds": 109.9,
+   "n_errors": 1,
+   "coverage": {
+    "total": 850,
+    "assigned_raw": 430,
+    "counted": 430,
+    "share": 0.5059,
+    "floor_share": 0.15,
+    "floor_count": 128,
+    "exempt": false,
+    "catch_all_processes": []
+   },
+   "processes": 0,
+   "fed_back_errors": 1,
+   "errors": [
+    "P14: unknown observation ids ['b003-o99']"
+   ],
+   "tokens": {
+    "input_tokens": 14,
+    "output_tokens": 17172,
+    "cache_creation_input_tokens": 122017,
+    "cache_read_input_tokens": 346585
+   },
+   "subagent_tokens": 485788,
+   "started_at_utc": "2026-11-24T04:11:44Z",
+   "finished_at_utc": "2026-11-24T04:13:34Z"
+  },
+  {
+   "stage": "synth",
+   "input": "s201",
+   "attempt": "s201-40ccbfe0-3",
+   "status": "verified",
+   "seconds": 146.8,
+   "n_errors": 0,
+   "coverage": {
+    "total": 850,
+    "assigned_raw": 522,
+    "counted": 522,
+    "share": 0.6141,
+    "floor_share": 0.15,
+    "floor_count": 128,
+    "exempt": false,
+    "catch_all_processes": []
+   },
+   "processes": 38,
+   "fed_back_errors": 1,
+   "errors": [],
+   "tokens": {
+    "input_tokens": 12,
+    "output_tokens": 23305,
+    "cache_creation_input_tokens": 127998,
+    "cache_read_input_tokens": 277781
+   },
+   "subagent_tokens": 429096,
+   "started_at_utc": "2026-11-24T04:13:34Z",
+   "finished_at_utc": "2026-11-24T04:16:01Z"
+  },
+  {
+   "stage": "merge",
+   "input": "m201",
+   "attempt": "m201-cce68c5d-1",
+   "status": "verified",
+   "seconds": 39.9,
+   "n_errors": 0,
+   "coverage": null,
+   "processes": 71,
+   "fed_back_errors": 0,
+   "errors": [],
+   "tokens": {
+    "input_tokens": 8,
+    "output_tokens": 5812,
+    "cache_creation_input_tokens": 32372,
+    "cache_read_input_tokens": 61738
+   },
+   "subagent_tokens": 99930,
+   "started_at_utc": "2026-11-24T04:16:01Z",
+   "finished_at_utc": "2026-11-24T04:16:40Z"
+  }
+ ]
+}

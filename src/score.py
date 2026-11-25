@@ -13,8 +13,9 @@ assumptions; `check_chains` proves it (no cycles, no dangling inputs).
 Rules (all in config/settings.yaml `score`):
   * months observed = union of the date windows of the mailboxes the process's events were seen in
     (R7); a denominator under `min_months` is refused, never divided;
-  * a rate is published only with minimum evidence: at least `min_emails` verified emails from at least
-    `min_threads` threads; below that the process is listed with "insufficient evidence", no rate;
+  * a rate is published only with minimum evidence: at least `min_events` distinct events (M4, user decision 4:
+    a singleton is never recurring) and `min_emails` verified emails from at least `min_threads` threads; below
+    that the process is listed with "insufficient evidence", no rate;
   * waiting time is never work time: stall counts are reported as stall metrics only;
   * overlap: an event counted by a higher-ranked opportunity is not counted again in the running total;
   * confidence (code rule): high when events >= 6, threads >= 4 and people >= 3; medium when events >= 3
@@ -98,10 +99,11 @@ def score(processes: list[dict], events: list[dict], mailbox_windows: dict[str, 
         opp = {"process_id": pid, "name": p["name"], "events": len(evs), "emails": len(msgs), "threads": len(threads),
                "people": len(people), "mailboxes": mbs, "event_ids": ev_ids, "claims": {"events": c_events},
                "stall_claims": stall_claims, "confidence": confidence(len(evs), len(threads), len(people))}
-        if len(msgs) < cfg["min_emails"] or len(threads) < cfg["min_threads"]:
+        if len(evs) < cfg["min_events"] or len(msgs) < cfg["min_emails"] or len(threads) < cfg["min_threads"]:
             opp["status"] = "insufficient_evidence"
-            opp["why"] = (f"{len(msgs)} verified email(s) in {len(threads)} thread(s); a rate needs at least "
-                          f"{cfg['min_emails']} emails in {cfg['min_threads']} threads")
+            opp["why"] = (f"{len(evs)} distinct event(s), {len(msgs)} verified email(s) in {len(threads)} thread(s); "
+                          f"a rate needs at least {cfg['min_events']} events and {cfg['min_emails']} emails in "
+                          f"{cfg['min_threads']} threads")
             opps.append(opp)
             continue
         months = windows.months_observed(mailbox_windows, mbs)
@@ -141,11 +143,14 @@ def score(processes: list[dict], events: list[dict], mailbox_windows: dict[str, 
     rest = sorted((o for o in opps if o["status"] != "scored"), key=lambda o: (-o["events"], o["process_id"]))
     # overlap: an event already counted by a higher-ranked opportunity is not counted again in the total
     counted, total, parts = set(), Decimal(0), []
+    low_total = high_total = Decimal(0)
     for rank, o in enumerate(scored, start=1):
         o["rank"] = rank
         new = [e for e in o["event_ids"] if e not in counted]
         share = Decimal(len(new)) / Decimal(len(o["event_ids"])) if o["event_ids"] else Decimal(0)
         alloc = Decimal(o["dollars_per_month"]) * share
+        low_total += Decimal(o["dollars_low"]) * share
+        high_total += Decimal(o["dollars_high"]) * share
         counted |= set(new)
         o["allocated_dollars"] = str(alloc)
         c_alloc = _claim(claims, f"{o['process_id']}:allocated", "Dollars counted in the running total", alloc,
@@ -154,9 +159,20 @@ def score(processes: list[dict], events: list[dict], mailbox_windows: dict[str, 
         o["claims"]["allocated"] = c_alloc
         parts.append(c_alloc)
         total += alloc
-    c_total = _claim(claims, "total", "Running total, dollars per month", total, money(total),
-                     "sum of each opportunity's allocated dollars (events counted once)", "estimated", inputs=parts)
-    return {"version": SCORE_VERSION, "opportunities": scored + rest, "claims": claims, "total": c_total}
+    basis = ("minutes saved per event only: the low and high values proposed with a reason; the events counted and the "
+             "hourly rate are not varied")
+    dollar_claims = [o["claims"]["dollars"] for o in scored]
+    c_low = _claim(claims, "total_low", "Running total at the low end of every minutes assumption, dollars per month", low_total,
+                   money(low_total), "sum of each opportunity's dollars at its low minutes per event x share of its events not "
+                   "counted by a higher-ranked opportunity", "estimated", inputs=dollar_claims, range_basis=basis)
+    c_high = _claim(claims, "total_high", "Running total at the high end of every minutes assumption, dollars per month", high_total,
+                    money(high_total), "sum of each opportunity's dollars at its high minutes per event x share of its events not "
+                    "counted by a higher-ranked opportunity", "estimated", inputs=dollar_claims, range_basis=basis)
+    c_total = _claim(claims, "total", "Running total, dollars per month (central estimate)", total, money(total),
+                     "sum of each opportunity's allocated dollars (events counted once), at the base minutes per event",
+                     "estimated", inputs=parts, low=str(low_total), high=str(high_total), range_basis=basis)
+    return {"version": SCORE_VERSION, "opportunities": scored + rest, "claims": claims, "total": c_total,
+            "total_range": {"low": c_low, "high": c_high}}
 
 
 def check_chains(claims: dict, verified_quote_ids: set[str]) -> list[str]:

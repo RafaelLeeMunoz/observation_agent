@@ -146,3 +146,25 @@ def test_write_puts_text_and_manifest_on_disk(ingested, tmp_path):
     assert [b["batch_id"] for b in manifest["batches"]] == ["b001"] and "text" not in manifest["batches"][0]
     # read raw bytes: text mode would turn the emails' CRLF into LF
     assert (tmp_path / "batches" / "b001.txt").read_bytes().decode("utf-8") == out[0]["text"]
+
+
+def test_an_optional_message_cap_starts_new_batches_but_never_splits_a_thread_and_off_changes_nothing(ingested):
+    """M4 2a: extraction time follows the work in a batch, so a batch may also be capped by messages."""
+    from src import batch
+    from conftest import email
+    files = {f"mb/inbox/{i}": email(subject=f"Topic {i}", body=f"Please confirm meter {i} volumes today.\r\n",
+                                    message_id=f"<{i}@x>", date=f"Mon, {i} Jan 2001 09:00:00 -0800") for i in range(1, 8)}
+    files["mb/inbox/8"] = email(subject="Re: Topic 1", body="Done, thanks.\r\n", message_id="<8@x>",
+                                date="Tue, 9 Jan 2001 09:00:00 -0800")
+    st = ingested(files)
+    keys = [m.key for m in st.unique()]
+    base = {"chars_per_token": 4, "token_budget": 24000, "hard_cap_tokens": 40000, "recipients_shown": 10}
+    off = batch.make_batches(st, keys, base, "p")
+    assert [b["fingerprint"] for b in off] == [b["fingerprint"] for b in batch.make_batches(st, keys, {**base, "max_messages": None}, "p")]
+    capped = batch.make_batches(st, keys, {**base, "max_messages": 3}, "p")
+    assert len(off) == 1 and len(capped) >= 3
+    assert all(len(b["keys"]) <= 3 or len(b["threads"]) == 1 for b in capped)
+    where = {k: b["batch_id"] for b in capped for k in b["keys"]}
+    for tid in {st.messages[k].thread_id for k in keys}:                   # every thread whole
+        assert len({where[k] for k in st.threads[tid]}) == 1
+    assert sorted(k for b in capped for k in b["keys"]) == sorted(keys)

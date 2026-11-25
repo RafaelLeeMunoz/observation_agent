@@ -1,0 +1,2 @@
+﻿resume_start_utc=2026-11-24T17:04:44Z
+resume_end_utc=2026-11-24T17:13:13Z wall_s=509.5

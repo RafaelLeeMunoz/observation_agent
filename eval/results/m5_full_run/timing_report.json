@@ -1,0 +1,236 @@
+{
+ "slice": "all",
+ "started_at": "2026-11-23T22:58:33+00:00",
+ "end_to_end_wall_s": 603.0,
+ "pipeline_reported_s": null,
+ "status": null,
+ "workers": 24,
+ "stages": {
+  "batch": {
+   "sessions": 1,
+   "first_start_s": 0.0,
+   "last_end_s": 0.0,
+   "wall_s": 0.0,
+   "summed_s": 0.0,
+   "longest_s": 0.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "extract": {
+   "sessions": 22,
+   "first_start_s": 1.0,
+   "last_end_s": 293.0,
+   "wall_s": 292.0,
+   "summed_s": 3748.0,
+   "longest_s": 276.0,
+   "not_ok_attempts": 2,
+   "not_ok_seconds": 289.0,
+   "not_ok_statuses": {
+    "failed": 2
+   }
+  },
+  "ground": {
+   "sessions": 20,
+   "first_start_s": 74.0,
+   "last_end_s": 334.0,
+   "wall_s": 260.0,
+   "summed_s": 461.0,
+   "longest_s": 58.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "synth": {
+   "sessions": 9,
+   "first_start_s": 334.0,
+   "last_end_s": 603.0,
+   "wall_s": 269.0,
+   "summed_s": 873.0,
+   "longest_s": 146.0,
+   "not_ok_attempts": 6,
+   "not_ok_seconds": 569.0,
+   "not_ok_statuses": {
+    "failed": 6
+   }
+  }
+ },
+ "overlap": [
+  {
+   "stages": [
+    "synth"
+   ],
+   "seconds": 269.0
+  },
+  {
+   "stages": [
+    "extract",
+    "ground"
+   ],
+   "seconds": 175.0
+  },
+  {
+   "stages": [
+    "extract"
+   ],
+   "seconds": 117.0
+  },
+  {
+   "stages": [
+    "ground"
+   ],
+   "seconds": 41.0
+  },
+  {
+   "stages": [
+    "(idle: code between log lines)"
+   ],
+   "seconds": 1.0
+  }
+ ],
+ "synthesis_by_mailbox": [
+  {
+   "part": [
+    3,
+    4
+   ],
+   "mailboxes": [
+    "lokay-m"
+   ],
+   "seconds": 50.0,
+   "status": "failed",
+   "attempt": "s003-166ed1c9-1"
+  },
+  {
+   "part": [
+    3,
+    4
+   ],
+   "mailboxes": [
+    "lokay-m"
+   ],
+   "seconds": 52.0,
+   "status": "verified",
+   "attempt": "s003-166ed1c9-2"
+  },
+  {
+   "part": [
+    1,
+    4
+   ],
+   "mailboxes": [
+    "farmer-d"
+   ],
+   "seconds": 116.0,
+   "status": "failed",
+   "attempt": "s001-a478408c-1"
+  },
+  {
+   "part": [
+    2,
+    4
+   ],
+   "mailboxes": [
+    "giron-d"
+   ],
+   "seconds": 126.0,
+   "status": "failed",
+   "attempt": "s002-cc352c03-1"
+  },
+  {
+   "part": [
+    4,
+    4
+   ],
+   "mailboxes": [
+    "williams-w3"
+   ],
+   "seconds": 146.0,
+   "status": "failed",
+   "attempt": "s004-d176bb45-1"
+  },
+  {
+   "part": [
+    1,
+    4
+   ],
+   "mailboxes": [
+    "farmer-d"
+   ],
+   "seconds": 51.0,
+   "status": "failed",
+   "attempt": "s001-a478408c-2"
+  },
+  {
+   "part": [
+    1,
+    4
+   ],
+   "mailboxes": [
+    "farmer-d"
+   ],
+   "seconds": 80.0,
+   "status": "failed",
+   "attempt": "s001-a478408c-3"
+  },
+  {
+   "part": [
+    2,
+    4
+   ],
+   "mailboxes": [
+    "giron-d"
+   ],
+   "seconds": 129.0,
+   "status": "verified",
+   "attempt": "s002-cc352c03-2"
+  },
+  {
+   "part": [
+    4,
+    4
+   ],
+   "mailboxes": [
+    "williams-w3"
+   ],
+   "seconds": 123.0,
+   "status": "verified",
+   "attempt": "s004-d176bb45-2"
+  }
+ ],
+ "dashboard_startup_s": null,
+ "cache_hits": {
+  "extract": 61,
+  "ground": 61
+ },
+ "config": {
+  "extraction": [
+   {
+    "analytical_prompt": "ef76350212d3",
+    "run_note": "none",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 60
+   },
+   {
+    "analytical_prompt": "ef76350212d3",
+    "run_note": "8e69f34ea063",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 21
+   }
+  ],
+  "grounding": [
+   {
+    "analytical_prompt": "a9bc0940b193",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 81
+   }
+  ]
+ },
+ "audit_trail_counts": {
+  "rejected_quotes": 24,
+  "signals_not_published": 180
+ }
+}

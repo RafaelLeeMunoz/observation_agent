@@ -1,12 +1,23 @@
 """Pipeline stages offline: retries, partial failure, cache hits, restart adoption. headless.run is faked: no model."""
 import json
 import re
+from pathlib import Path
 
 import pytest
 
 from src import batch, headless, pipeline
 
 from conftest import email
+
+
+def fence_record(log_dir, path, decision="allow"):
+    """What a session's fence hook writes for one call (tools/fence_hook.py), so the pipeline's check sees it."""
+    if log_dir:
+        d = Path(log_dir)
+        d.mkdir(parents=True, exist_ok=True)
+        n = len(list(d.glob("*.json")))
+        (d / f"{n:04d}.json").write_text(json.dumps({"tool": "Read", "path": path, "decision": decision,
+                                                     "reason": "test", "mode": "session"}))
 
 
 DATES = ["Mon, 4 Feb 2002 09:00:00 -0800", "Tue, 5 Feb 2002 09:00:00 -0800", "Wed, 6 Feb 2002 09:00:00 -0800",
@@ -33,13 +44,16 @@ def env(ingested, tmp_path, monkeypatch):
     calls = []
 
     def fake(behaviour):
-        def run(agent, prompt, model, timeout=0, cwd=None):
+        def run(agent, prompt, model, timeout=0, cwd=None, read=None, write=None, log_dir=None):
             bid = re.search(r"batch_id is `(b\d+)`", prompt).group(1)
             att = re.search(r"attempt_id is `([^`]+)`", prompt).group(1)
             calls.append((bid, att))
             b = next(x for x in bs if x["batch_id"] == bid)
             mode = behaviour(bid, sum(c[0] == bid for c in calls))
-            out = root / "data" / "extract" / "staging" / f"{bid}.json"
+            out = root / "data" / "extract" / "staging" / "dev" / f"{bid}.json"
+            if read is not None:                                                # the pipeline names both files
+                assert (read, write) == (f"data/batches/dev/{bid}.txt", f"data/extract/staging/dev/{bid}.json")
+            fence_record(log_dir, read)                                         # what the session's hook logs
             if mode == "good":
                 out.write_text(json.dumps({"batch_id": bid, "attempt_id": att, "observations": [],
                                            "messages": [{"msg_key": k, "disposition": "business_no_process_signal",
@@ -62,10 +76,10 @@ def test_a_failed_attempt_is_retried_and_a_batch_failing_every_attempt_is_never_
     done = pipeline.stage_extract(r, st, bs, workers=2)
     assert first in done and last not in done                                 # retried once, then verified
     assert [c[0] for c in calls].count(first) == 2 and [c[0] for c in calls].count(last) == 2   # 1 + retries
-    status = json.loads((r.root / "data" / "extract" / "status.json").read_text())
+    status = json.loads((r.root / "data" / "extract" / "dev" / "status.json").read_text())
     assert all(status[k] == "read" for k in bs[0]["keys"])
     assert all(status[k] != "read" for k in bs[-1]["keys"])                   # a failed batch never counts as read
-    assert len(list((r.root / "data" / "extract" / "failed").glob(f"{last}-*.json"))) == 2
+    assert len(list((r.root / "data" / "extract" / "dev" / "failed").glob(f"{last}-*.json"))) == 2
     log = [json.loads(l) for l in r.log_path.read_text().splitlines()]
     assert {x["status"] for x in log if x.get("batch") == first} == {"failed", "verified"}
 
@@ -93,6 +107,22 @@ def test_an_interrupted_run_adopts_a_batch_that_was_already_verified(env):
     n = len(calls)
     done = pipeline.stage_extract(r, st, bs[:1], workers=1)
     assert len(calls) == n and bs[0]["batch_id"] in done
+
+
+def test_an_interrupted_run_never_adopts_a_batch_made_under_another_session_configuration(env):
+    """2b: four set-A batches verified with CLAUDE.md in the worker's context were adopted into the isolated rerun."""
+    st, r, bs, calls, fake, mp = env
+    mp.setattr(headless, "run", fake(lambda bid, n: "good"))
+    pipeline.stage_extract(r, st, bs[:1], workers=1)
+    for f in (r.cache / "extract").glob("*.json"):
+        f.unlink()
+    v_file = r.ex.verified / f"{bs[0]['batch_id']}.json"
+    v = json.loads(v_file.read_text(encoding="utf-8"))
+    v["usage"].pop("session_env")                                                # an output made before the isolation
+    v_file.write_text(json.dumps(v), encoding="utf-8")
+    n = len(calls)
+    pipeline.stage_extract(r, st, bs[:1], workers=1)
+    assert len(calls) == n + 1                                                   # run again, not adopted
 
 
 def test_the_headless_runner_refuses_to_start_with_an_api_key(monkeypatch):
@@ -125,7 +155,7 @@ def test_parallel_finalizes_never_lose_or_tear_the_shared_status_file(env):
     mp.setattr(headless, "run", fake(lambda bid, n: "good"))
     from concurrent.futures import ThreadPoolExecutor
     from src import extract
-    p = extract.Paths(r.root)
+    p = extract.Paths(r.root, "dev")
 
     def one(b):                                     # as the pipeline does: one attempt per batch at a time
         rec = extract.prepare(p, "dev", b["batch_id"], "haiku", "extract-v8c", "extract-v6")
@@ -134,6 +164,6 @@ def test_parallel_finalizes_never_lose_or_tear_the_shared_status_file(env):
     for _ in range(10):                             # rounds of distinct batches finalized at the same time
         with ThreadPoolExecutor(max_workers=len(bs)) as ex:
             assert all(res["status"] == "verified" for res in ex.map(one, bs))
-    status = json.loads((r.root / "data" / "extract" / "status.json").read_text())
+    status = json.loads((r.root / "data" / "extract" / "dev" / "status.json").read_text())
     assert all(status[k] == "read" for b in bs for k in b["keys"])
-    assert not list((r.root / "data" / "extract").glob("*.tmp"))
+    assert not list((r.root / "data" / "extract" / "dev").glob("*.tmp"))

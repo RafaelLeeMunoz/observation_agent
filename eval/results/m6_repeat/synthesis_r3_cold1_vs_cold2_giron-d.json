@@ -1,0 +1,153 @@
+{
+ "mailboxes": [
+  "giron-d"
+ ],
+ "a": {
+  "events": 246,
+  "processes": 36,
+  "scored": 34,
+  "dollars": "318.6788087122597514839708383"
+ },
+ "b": {
+  "events": 221,
+  "processes": 30,
+  "scored": 27,
+  "dollars": "274.4703962663136556084462468"
+ },
+ "threads_counted_a": 241,
+ "threads_counted_b": 216,
+ "thread_jaccard": 0.686,
+ "events_ratio_b_over_a": 0.898,
+ "dollars_ratio_b_over_a": 0.861,
+ "matched_processes": 27,
+ "processes_a_unmatched": 9,
+ "processes_b_unmatched": 3,
+ "share_of_a_events_in_matched_processes": 0.882,
+ "share_of_b_events_in_matched_processes": 0.95,
+ "matches": [
+  {
+   "a": "Flip Canadian-entity deals to FT-US/CAND-ERMS book",
+   "b": "Flip deals to the correct book",
+   "shared_threads": 23,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Move terminated counterparty deals to bankruptcy b",
+   "b": "Bulk deal move after terminations",
+   "shared_threads": 15,
+   "jaccard": 0.83
+  },
+  {
+   "a": "New book, portfolio and counterparty setup request",
+   "b": "New book, portfolio and counterparty setup request",
+   "shared_threads": 11,
+   "jaccard": 0.73
+  },
+  {
+   "a": "Auditor P&L and deal support requests",
+   "b": "Auditor document requests",
+   "shared_threads": 11,
+   "jaccard": 0.92
+  },
+  {
+   "a": "Daily credit report forwarding",
+   "b": "Daily credit report forwarding",
+   "shared_threads": 9,
+   "jaccard": 0.38
+  },
+  {
+   "a": "Enovate DPR approval",
+   "b": "Enovate DPR approval and distribution",
+   "shared_threads": 8,
+   "jaccard": 0.89
+  },
+  {
+   "a": "Hiring and interview coordination",
+   "b": "Hiring and candidate handling",
+   "shared_threads": 8,
+   "jaccard": 0.53
+  },
+  {
+   "a": "Counterparty rebooking after credit report",
+   "b": "Counterparty rebooking from credit report",
+   "shared_threads": 8,
+   "jaccard": 0.89
+  },
+  {
+   "a": "Nightly book officialization and post-ID control",
+   "b": "Nightly book officialization and post ID checks",
+   "shared_threads": 7,
+   "jaccard": 0.88
+  },
+  {
+   "a": "Curve, pipe and zone mapping setup",
+   "b": "Curve and mapping setup",
+   "shared_threads": 7,
+   "jaccard": 0.39
+  },
+  {
+   "a": "Performance review and feedback preparation",
+   "b": "Performance review inputs",
+   "shared_threads": 7,
+   "jaccard": 0.88
+  },
+  {
+   "a": "Deal ticket correction",
+   "b": "Deal price and data correction",
+   "shared_threads": 7,
+   "jaccard": 1.0
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   7,
+   "Daily P&L explanations and top-level amounts"
+  ],
+  [
+   4,
+   "Origination report data entry and reporting"
+  ],
+  [
+   3,
+   "Schedule C cash movements"
+  ],
+  [
+   3,
+   "Hub deal reconciliation"
+  ],
+  [
+   3,
+   "EOL bridge monitoring and fixes"
+  ],
+  [
+   3,
+   "Deal valuation summary files"
+  ],
+  [
+   2,
+   "Post ID lookups"
+  ],
+  [
+   2,
+   "PEP and HR supervisor record maintenance"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   5,
+   "Meeting scheduling"
+  ],
+  [
+   4,
+   "Agave monthly pricing and file"
+  ],
+  [
+   2,
+   "Month-end basis and index position roll-off"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "pass"
+ }
+}

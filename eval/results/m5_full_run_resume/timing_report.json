@@ -1,0 +1,141 @@
+{
+ "slice": "all",
+ "started_at": "2026-11-24T02:45:28+00:00",
+ "end_to_end_wall_s": 77.0,
+ "pipeline_reported_s": 77.3,
+ "status": "ok",
+ "workers": 24,
+ "stages": {
+  "batch": {
+   "sessions": 1,
+   "first_start_s": 0.0,
+   "last_end_s": 1.0,
+   "wall_s": 1.0,
+   "summed_s": 1.0,
+   "longest_s": 1.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "synth": {
+   "sessions": 1,
+   "first_start_s": 1.0,
+   "last_end_s": 39.0,
+   "wall_s": 38.0,
+   "summed_s": 38.0,
+   "longest_s": 38.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "merge": {
+   "sessions": 1,
+   "first_start_s": 39.0,
+   "last_end_s": 65.0,
+   "wall_s": 26.0,
+   "summed_s": 26.0,
+   "longest_s": 26.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "score": {
+   "sessions": 1,
+   "first_start_s": 65.0,
+   "last_end_s": 65.0,
+   "wall_s": 0.0,
+   "summed_s": 0.0,
+   "longest_s": 0.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  },
+  "act": {
+   "sessions": 1,
+   "first_start_s": 65.0,
+   "last_end_s": 77.0,
+   "wall_s": 12.0,
+   "summed_s": 12.0,
+   "longest_s": 12.0,
+   "not_ok_attempts": 0,
+   "not_ok_seconds": 0,
+   "not_ok_statuses": {}
+  }
+ },
+ "overlap": [
+  {
+   "stages": [
+    "synth"
+   ],
+   "seconds": 38.0
+  },
+  {
+   "stages": [
+    "merge"
+   ],
+   "seconds": 26.0
+  },
+  {
+   "stages": [
+    "act"
+   ],
+   "seconds": 12.0
+  },
+  {
+   "stages": [
+    "batch"
+   ],
+   "seconds": 1.0
+  }
+ ],
+ "synthesis_by_mailbox": [
+  {
+   "part": [
+    1,
+    4
+   ],
+   "mailboxes": [
+    "farmer-d"
+   ],
+   "seconds": 38.0,
+   "status": "verified",
+   "attempt": "s001-a478408c-1"
+  }
+ ],
+ "dashboard_startup_s": 1.68,
+ "cache_hits": {
+  "extract": 81,
+  "ground": 81,
+  "synth": 3
+ },
+ "config": {
+  "extraction": [
+   {
+    "analytical_prompt": "ef76350212d3",
+    "run_note": "none",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 60
+   },
+   {
+    "analytical_prompt": "ef76350212d3",
+    "run_note": "8e69f34ea063",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 21
+   }
+  ],
+  "grounding": [
+   {
+    "analytical_prompt": "a9bc0940b193",
+    "session_env": "no-project-instructions-v2",
+    "model": "confirmed",
+    "batches": 81
+   }
+  ]
+ },
+ "audit_trail_counts": {
+  "rejected_quotes": 24,
+  "signals_not_published": 180
+ }
+}

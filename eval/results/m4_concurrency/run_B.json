@@ -1,0 +1,342 @@
+{
+ "name": "B",
+ "workers": 12,
+ "batches": [
+  "b003",
+  "b010",
+  "b016",
+  "b023",
+  "b030",
+  "b037",
+  "b043",
+  "b050",
+  "b057",
+  "b064",
+  "b070",
+  "b077"
+ ],
+ "at": "2026-11-23T19:16:15+00:00",
+ "wall_s": 354.5,
+ "exit_code": 0,
+ "stopped": null,
+ "complete": true,
+ "model_stages": {
+  "n_extracted": 12,
+  "n_grounded": 12,
+  "failed_extract": [],
+  "failed_ground": [],
+  "unfinished": [],
+  "ground_unfinished": [],
+  "peak_in_flight": 12,
+  "session_kinds": {
+   "ok": 24
+  },
+  "fence_self_checks": 1,
+  "fence_self_check_flags": [],
+  "canary": {
+   "batch": "b070",
+   "checked": 38,
+   "verified": 38,
+   "rejected": 0,
+   "tripped": false
+  },
+  "sentinels_checked": {
+   "b064": {
+    "checked": 40,
+    "verified": 40,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b043": {
+    "checked": 46,
+    "verified": 46,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b023": {
+    "checked": 40,
+    "verified": 40,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b016": {
+    "checked": 64,
+    "verified": 64,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b050": {
+    "checked": 90,
+    "verified": 89,
+    "rejected": 1,
+    "qualifies": true,
+    "tripped": false
+   },
+   "b003": {
+    "checked": 92,
+    "verified": 92,
+    "rejected": 0,
+    "qualifies": true,
+    "tripped": false
+   }
+  },
+  "cumulative": {
+   "checked": 690,
+   "rejected": 1
+  },
+  "flags": []
+ },
+ "cache_hits": 0,
+ "sessions": {
+  "extract": {
+   "sessions": 12,
+   "kinds": {
+    "ok": 12
+   },
+   "seconds": {
+    "min": 111.0,
+    "max": 313.2,
+    "mean": 172.8,
+    "sum": 2073.4
+   },
+   "first_wave_start_spread_s": 0.0,
+   "measured_over_predicted": {
+    "mean": 0.86,
+    "max": 1.56
+   },
+   "self_checks": 1,
+   "rows": [
+    {
+     "batch": "b070",
+     "seconds": 111.0,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 28699,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b064",
+     "seconds": 121.0,
+     "messages": 36,
+     "kind": "ok",
+     "output_tokens": 30281,
+     "self_checks": 0,
+     "predicted_s": 182.2
+    },
+    {
+     "batch": "b037",
+     "seconds": 131.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 32421,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b043",
+     "seconds": 135.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 33364,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b030",
+     "seconds": 142.9,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 35076,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b057",
+     "seconds": 145.0,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 36730,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b077",
+     "seconds": 162.2,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 41804,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b023",
+     "seconds": 162.5,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 39597,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b016",
+     "seconds": 185.2,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 46454,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b050",
+     "seconds": 219.8,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 57753,
+     "self_checks": 1,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b003",
+     "seconds": 243.7,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 62996,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    },
+    {
+     "batch": "b010",
+     "seconds": 313.2,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 81494,
+     "self_checks": 0,
+     "predicted_s": 201.3
+    }
+   ]
+  },
+  "ground": {
+   "sessions": 12,
+   "kinds": {
+    "ok": 12
+   },
+   "seconds": {
+    "min": 9.8,
+    "max": 40.9,
+    "mean": 24.2,
+    "sum": 290.3
+   },
+   "first_wave_start_spread_s": 202.0,
+   "measured_over_predicted": null,
+   "self_checks": 0,
+   "rows": [
+    {
+     "batch": "b070",
+     "seconds": 10.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 1513,
+     "self_checks": 0
+    },
+    {
+     "batch": "b064",
+     "seconds": 9.8,
+     "messages": 36,
+     "kind": "ok",
+     "output_tokens": 1306,
+     "self_checks": 0
+    },
+    {
+     "batch": "b037",
+     "seconds": 12.5,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 2017,
+     "self_checks": 0
+    },
+    {
+     "batch": "b043",
+     "seconds": 27.9,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5893,
+     "self_checks": 0
+    },
+    {
+     "batch": "b030",
+     "seconds": 21.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 4172,
+     "self_checks": 0
+    },
+    {
+     "batch": "b057",
+     "seconds": 23.3,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 4621,
+     "self_checks": 0
+    },
+    {
+     "batch": "b077",
+     "seconds": 17.6,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 3477,
+     "self_checks": 0
+    },
+    {
+     "batch": "b023",
+     "seconds": 27.0,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5550,
+     "self_checks": 0
+    },
+    {
+     "batch": "b016",
+     "seconds": 27.5,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 5681,
+     "self_checks": 0
+    },
+    {
+     "batch": "b050",
+     "seconds": 33.5,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 7433,
+     "self_checks": 0
+    },
+    {
+     "batch": "b003",
+     "seconds": 39.1,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 8911,
+     "self_checks": 0
+    },
+    {
+     "batch": "b010",
+     "seconds": 40.9,
+     "messages": 40,
+     "kind": "ok",
+     "output_tokens": 9623,
+     "self_checks": 0
+    }
+   ]
+  }
+ },
+ "processes": {
+  "samples": 70,
+  "peak_processes": 29,
+  "peak_working_set_mb": 5144
+ }
+}

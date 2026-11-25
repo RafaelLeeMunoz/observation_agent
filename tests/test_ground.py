@@ -225,3 +225,27 @@ def test_a_table_message_shows_only_its_prose_lines_as_its_batch_does():
     pk = packet.build({"observations": [o]}, st, "g001", "t")
     assert "31/01/2001" not in pk["text"] and "40 table rows are not shown" in pk["text"]
     assert all(not text[s["start"]:s["end"]].startswith("00") for s in pk["sentences"].values())
+
+
+def test_the_final_staged_file_is_what_is_validated_after_a_write_read_write_sequence(grounded, tmp_path):
+    """Set D, b017: the grounder wrote, tried to read its file back (denied), and wrote again. Only the file on disk when
+    the pipeline finalizes is checked, so a good first write cannot carry a bad rewrite, nor the reverse."""
+    _, _, m = grounded
+    f = tmp_path / "g001.json"
+    good = verdicts(m, [("C1", "unsure", []), ("C2", "unsure", [])])
+    bad = verdicts(m, [("C1", "unsure", [])])                                                       # C2 has no verdict
+    f.write_text(good, encoding="utf-8")
+    f.write_text(bad, encoding="utf-8")                                                             # the rewrite
+    assert ground.check_verdicts(f.read_text(encoding="utf-8"), m, "g001-a-1")["status"] == "failed"
+    f.write_text(bad, encoding="utf-8")
+    f.write_text(good, encoding="utf-8")
+    assert ground.check_verdicts(f.read_text(encoding="utf-8"), m, "g001-a-1")["status"] == "verified"
+
+
+def test_the_grounder_run_instruction_asks_for_no_read_back_and_its_analytical_prompt_is_untouched():
+    from src import headless
+    rec = {"packet_file": "data/ground/packets/all/r/g001.txt", "packet_id": "g001", "attempt_id": "g001-a-1",
+           "output_file": "data/ground/staging/all/g001.json"}
+    text = ground.instruction(rec)
+    assert text.endswith(headless.NO_READBACK) and text.count("`") == 8                              # the four fields it parses
+    assert "read your output" not in ground.PROMPT.read_text(encoding="utf-8").lower()

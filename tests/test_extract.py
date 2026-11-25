@@ -15,7 +15,7 @@ QUOTE = "Please confirm the nominations for the Katy hub by noon tomorrow."
 def env(ingested, tmp_path):
     st = ingested({"mb/inbox/1": email(subject="Katy noms", body=QUOTE + "\r\n")})
     batch.write(make_batches(st, ["mb/inbox/1"], BATCH_CFG, "p1"), tmp_path / "data" / "batches" / "bench")
-    return st, extract.Paths(tmp_path)
+    return st, extract.Paths(tmp_path, "bench")
 
 
 def staged(p, attempt_id, quote=QUOTE):
@@ -33,7 +33,7 @@ def test_a_successful_attempt_is_verified_filed_and_logged(env):
     st, p = env
     rec = extract.prepare(p, "bench", "b001", "haiku", "extract-v2")
     assert rec["attempt_id"].startswith("b001-") and rec["attempt_no"] == 1
-    assert rec["attempt_id"] in extract.instruction(rec) and "data/extract/staging/b001.json" in extract.instruction(rec)
+    assert rec["attempt_id"] in extract.instruction(rec) and "data/extract/staging/bench/b001.json" in extract.instruction(rec)
     staged(p, rec["attempt_id"])
     res = extract.finalize(p, "bench", "b001", st, VERIFY_CFG)
     assert res["status"] == "verified" and res["model"] == "haiku" and res["prompt_version"] == "extract-v2"
@@ -138,3 +138,26 @@ def test_no_output_file_is_a_failed_attempt(env):
     extract.prepare(p, "bench", "b001", "haiku", "extract-v2")
     res = extract.finalize(p, "bench", "b001", st, VERIFY_CFG)
     assert res["status"] == "failed" and res["errors"][0] == "the extractor wrote no output file for this attempt"
+
+
+def test_the_run_note_is_in_the_extractors_run_instruction_hashed_per_attempt_and_not_in_the_cache_key(env):
+    """2b: set D's b013 extractor tried to Write a scratch file. The note is run-instruction text only: the frozen analytical
+    prompt is untouched, the attempt records the note's version and SHA-256, and the cache key does not carry it."""
+    import hashlib
+    import inspect
+    from pathlib import Path
+    from src import pipeline
+    st, p = env
+    rec = extract.prepare(p, "bench", "b001", "haiku", "extract-v2")
+    note = ("Write only your exact assigned output file. Do not create scratch files, temporary check files, backup copies, "
+            "or other files. Do not read your output back after writing it; the pipeline independently validates the final result.")
+    text = extract.instruction(rec)
+    assert text.endswith(note) and extract.RUN_NOTE == note and text.count("`") == 8          # the four fields it parses
+    assert rec["run_note_version"] == "extractor-run-note-v1" and rec["run_note_sha256"] == hashlib.sha256(note.encode()).hexdigest()
+    staged(p, rec["attempt_id"])
+    res = extract.finalize(p, "bench", "b001", st, VERIFY_CFG)
+    assert res["run_note_sha256"] == rec["run_note_sha256"]
+    root = Path(__file__).resolve().parent.parent
+    prompt = (root / ".claude" / "agents" / "extractor.md").read_text(encoding="utf-8").lower()
+    assert "scratch" not in prompt and "read your output back" not in prompt                  # the analytical prompt is untouched
+    assert "run_note" not in inspect.getsource(pipeline._extract_key)                         # earlier outputs stay compatible

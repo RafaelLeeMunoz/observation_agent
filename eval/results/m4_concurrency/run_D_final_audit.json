@@ -1,0 +1,307 @@
+{
+ "batches": 24,
+ "coverage": {
+  "messages": 954,
+  "unique": 954,
+  "dispositions": {
+   "read": 954
+  }
+ },
+ "batches_not_verified_and_grounded_with_confirmed_models": [],
+ "quotes_byte_exact": {
+  "observation_quotes": 1342,
+  "mismatches": []
+ },
+ "published_evidence": {
+  "items": 433,
+  "mismatched_or_for_an_unpublished_signal": [],
+  "stall_signals_without_published_grounding": []
+ },
+ "grounding_outcomes": {
+  "published": 249,
+  "unresolved": 20,
+  "unsupported": 27
+ },
+ "rejected_quotes": {
+  "records": 16,
+  "by_batch": {
+   "b029": 1,
+   "b036": 8,
+   "b044": 5,
+   "b060": 1,
+   "b013": 1
+  },
+  "reasons": {
+   "ambiguous: occurs in 2 differe": 15,
+   "too short (under 25 characters": 1
+  }
+ },
+ "run_note_by_batch": {
+  "b004": null,
+  "b006": null,
+  "b009": null,
+  "b013": "8e69f34ea063",
+  "b017": null,
+  "b020": null,
+  "b024": null,
+  "b026": null,
+  "b029": null,
+  "b033": null,
+  "b036": null,
+  "b040": null,
+  "b044": null,
+  "b045": null,
+  "b049": null,
+  "b053": null,
+  "b056": null,
+  "b060": null,
+  "b063": null,
+  "b065": null,
+  "b069": null,
+  "b072": null,
+  "b076": null,
+  "b080": null
+ },
+ "rows": [
+  {
+   "batch": "b004",
+   "extract_status": "verified",
+   "attempt": "b004-12ffaec6-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g104-3876c314-1",
+   "grounder_model": "confirmed",
+   "observations": 51
+  },
+  {
+   "batch": "b006",
+   "extract_status": "verified",
+   "attempt": "b006-aac6ac65-3",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g106-b0aead53-1",
+   "grounder_model": "confirmed",
+   "observations": 80
+  },
+  {
+   "batch": "b009",
+   "extract_status": "verified",
+   "attempt": "b009-873020da-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g109-68a8cff2-1",
+   "grounder_model": "confirmed",
+   "observations": 67
+  },
+  {
+   "batch": "b013",
+   "extract_status": "verified",
+   "attempt": "b013-d85af55c-3",
+   "model_observed": "confirmed",
+   "run_note_sha256": "8e69f34ea063",
+   "grounded_attempt": "g113-c937d9ea-1",
+   "grounder_model": "confirmed",
+   "observations": 84
+  },
+  {
+   "batch": "b017",
+   "extract_status": "verified",
+   "attempt": "b017-6fb41e06-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g117-788a3e56-2",
+   "grounder_model": "confirmed",
+   "observations": 57
+  },
+  {
+   "batch": "b020",
+   "extract_status": "verified",
+   "attempt": "b020-fad00e3e-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g120-4b2795d0-1",
+   "grounder_model": "confirmed",
+   "observations": 66
+  },
+  {
+   "batch": "b024",
+   "extract_status": "verified",
+   "attempt": "b024-275a41e1-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g124-8639a502-1",
+   "grounder_model": "confirmed",
+   "observations": 52
+  },
+  {
+   "batch": "b026",
+   "extract_status": "verified",
+   "attempt": "b026-d8d37d01-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g126-fc1f857c-1",
+   "grounder_model": "confirmed",
+   "observations": 66
+  },
+  {
+   "batch": "b029",
+   "extract_status": "verified",
+   "attempt": "b029-8df80794-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g129-7f093900-1",
+   "grounder_model": "confirmed",
+   "observations": 53
+  },
+  {
+   "batch": "b033",
+   "extract_status": "verified",
+   "attempt": "b033-d08424af-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g133-1b2d1c80-1",
+   "grounder_model": "confirmed",
+   "observations": 47
+  },
+  {
+   "batch": "b036",
+   "extract_status": "verified",
+   "attempt": "b036-f7bf8cc3-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g136-50e2af4a-1",
+   "grounder_model": "confirmed",
+   "observations": 44
+  },
+  {
+   "batch": "b040",
+   "extract_status": "verified",
+   "attempt": "b040-7ace21de-2",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g140-b7cde304-1",
+   "grounder_model": "confirmed",
+   "observations": 53
+  },
+  {
+   "batch": "b044",
+   "extract_status": "verified",
+   "attempt": "b044-62cdc3e1-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g144-f8ad162d-1",
+   "grounder_model": "confirmed",
+   "observations": 41
+  },
+  {
+   "batch": "b045",
+   "extract_status": "verified",
+   "attempt": "b045-b3bac949-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g145-0d2304ba-2",
+   "grounder_model": "confirmed",
+   "observations": 44
+  },
+  {
+   "batch": "b049",
+   "extract_status": "verified",
+   "attempt": "b049-fc6dd388-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g149-4c8a9162-1",
+   "grounder_model": "confirmed",
+   "observations": 58
+  },
+  {
+   "batch": "b053",
+   "extract_status": "verified",
+   "attempt": "b053-1fe705d6-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g153-c1a52f36-1",
+   "grounder_model": "confirmed",
+   "observations": 59
+  },
+  {
+   "batch": "b056",
+   "extract_status": "verified",
+   "attempt": "b056-559d0000-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g156-456b69ad-1",
+   "grounder_model": "confirmed",
+   "observations": 59
+  },
+  {
+   "batch": "b060",
+   "extract_status": "verified",
+   "attempt": "b060-0e6a2dc1-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g160-97598e1f-1",
+   "grounder_model": "confirmed",
+   "observations": 67
+  },
+  {
+   "batch": "b063",
+   "extract_status": "verified",
+   "attempt": "b063-07847ea5-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g163-333725a9-1",
+   "grounder_model": "confirmed",
+   "observations": 48
+  },
+  {
+   "batch": "b065",
+   "extract_status": "verified",
+   "attempt": "b065-fa90ceb6-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g165-5e579715-1",
+   "grounder_model": "confirmed",
+   "observations": 77
+  },
+  {
+   "batch": "b069",
+   "extract_status": "verified",
+   "attempt": "b069-831f3bcb-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g169-9ea5fb47-1",
+   "grounder_model": "confirmed",
+   "observations": 34
+  },
+  {
+   "batch": "b072",
+   "extract_status": "verified",
+   "attempt": "b072-e0ca345a-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g172-ec8ecf5b-1",
+   "grounder_model": "confirmed",
+   "observations": 49
+  },
+  {
+   "batch": "b076",
+   "extract_status": "verified",
+   "attempt": "b076-7830e651-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g176-8d64c738-1",
+   "grounder_model": "confirmed",
+   "observations": 50
+  },
+  {
+   "batch": "b080",
+   "extract_status": "verified",
+   "attempt": "b080-7a87a350-1",
+   "model_observed": "confirmed",
+   "run_note_sha256": null,
+   "grounded_attempt": "g180-19ed1c48-1",
+   "grounder_model": "confirmed",
+   "observations": 36
+  }
+ ]
+}

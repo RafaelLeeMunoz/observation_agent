@@ -1,0 +1,249 @@
+{
+ "observations": 1178,
+ "quotes_total": 1667,
+ "assigned": {
+  "whole": 345,
+  "split": 458,
+  "both": 285,
+  "whole_only": 60,
+  "split_only": 173
+ },
+ "quotes_behind_assigned_observations": {
+  "whole": 482,
+  "split": 650,
+  "in_whole_but_unassigned_in_split": 97,
+  "in_split_but_unassigned_in_whole": 265
+ },
+ "processes": {
+  "whole": 26,
+  "split": 29,
+  "whole_recurring": 26,
+  "recovered_jaccard_ge_0.5": 15,
+  "recovered_and_recurring_in_both": 15,
+  "recurring_in_whole_not_recovered_as_recurring": [
+   {
+    "whole": "P2",
+    "name": "Accounting arrangement and meter reallocation",
+    "obs": 9,
+    "events": 6,
+    "jaccard": 0.462
+   },
+   {
+    "whole": "P3",
+    "name": "Stranger's gas and unattached meter volume resolution",
+    "obs": 16,
+    "events": 13,
+    "jaccard": 0.469
+   },
+   {
+    "whole": "P5",
+    "name": "Plant monthly nomination submission",
+    "obs": 13,
+    "events": 7,
+    "jaccard": 0.25
+   },
+   {
+    "whole": "P7",
+    "name": "Daily flow and volume change notices",
+    "obs": 12,
+    "events": 7,
+    "jaccard": 0.333
+   },
+   {
+    "whole": "P11",
+    "name": "Transport usage ticket and rate maintenance",
+    "obs": 20,
+    "events": 5,
+    "jaccard": 0.391
+   },
+   {
+    "whole": "P17",
+    "name": "HR and budget questionnaires",
+    "obs": 13,
+    "events": 6,
+    "jaccard": 0.429
+   },
+   {
+    "whole": "P19",
+    "name": "Pipeline cut reporting",
+    "obs": 5,
+    "events": 4,
+    "jaccard": 0.176
+   },
+   {
+    "whole": "P20",
+    "name": "Weekend on-call notes",
+    "obs": 5,
+    "events": 4,
+    "jaccard": 0.25
+   },
+   {
+    "whole": "P23",
+    "name": "Sitara deal ticket correction and repathing",
+    "obs": 8,
+    "events": 6,
+    "jaccard": 0.0
+   },
+   {
+    "whole": "P24",
+    "name": "Meeting scheduling and attendance confirmation",
+    "obs": 7,
+    "events": 3,
+    "jaccard": 0.0
+   },
+   {
+    "whole": "P26",
+    "name": "Month-end close schedule",
+    "obs": 5,
+    "events": 3,
+    "jaccard": 0.0
+   }
+  ]
+ },
+ "events_in_recurring_processes": {
+  "whole": 215,
+  "split": 231
+ },
+ "whole_processes_mostly_unassigned_in_split": [
+  {
+   "whole": "P7",
+   "name": "Daily flow and volume change notices",
+   "obs": 12,
+   "unassigned_in_split": 6,
+   "events": 7,
+   "quotes": 12
+  },
+  {
+   "whole": "P23",
+   "name": "Sitara deal ticket correction and repathing",
+   "obs": 8,
+   "unassigned_in_split": 8,
+   "events": 6,
+   "quotes": 24
+  },
+  {
+   "whole": "P24",
+   "name": "Meeting scheduling and attendance confirmation",
+   "obs": 7,
+   "unassigned_in_split": 7,
+   "events": 3,
+   "quotes": 7
+  },
+  {
+   "whole": "P26",
+   "name": "Month-end close schedule",
+   "obs": 5,
+   "unassigned_in_split": 5,
+   "events": 3,
+   "quotes": 5
+  }
+ ],
+ "whole_observations_unassigned_in_split": 60,
+ "split_only_processes": [
+  {
+   "id": "P10",
+   "name": "Producer volume and nomination revisions",
+   "obs": 12,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P11",
+   "name": "Meter volume reallocation to the correct contract",
+   "obs": 13,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P12",
+   "name": "Unpathed gas cleanup",
+   "obs": 17,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P14",
+   "name": "Performance review reviewer selection",
+   "obs": 6,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P15",
+   "name": "Accounting arrangement setup for meters",
+   "obs": 10,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P2",
+   "name": "Stranger's gas resolution",
+   "obs": 31,
+   "made_by": "merged"
+  },
+  {
+   "id": "P21",
+   "name": "Annual budget and staffing submission",
+   "obs": 7,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P22",
+   "name": "Plant election and processing notice recording",
+   "obs": 3,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P23",
+   "name": "Blue Dolphin invoice and volume responsibility routing",
+   "obs": 12,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P24",
+   "name": "Sitara deal cleanup and bankruptcy book moves",
+   "obs": 15,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P25",
+   "name": "Transport usage ticket setup and rate update",
+   "obs": 20,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P29",
+   "name": "Daily gas control and pipeline cut reporting",
+   "obs": 15,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P7",
+   "name": "Transport and service rate clean-up",
+   "obs": 12,
+   "made_by": "passed_through"
+  },
+  {
+   "id": "P9",
+   "name": "Counterparty and contract record maintenance",
+   "obs": 10,
+   "made_by": "passed_through"
+  }
+ ],
+ "seconds": {
+  "whole": 105.4,
+  "parts_parallel": 74.0,
+  "merge": 16.1,
+  "split_total": 90.1
+ },
+ "merged_processes": [
+  "P1",
+  "P2",
+  "P3",
+  "P4"
+ ],
+ "merge_flags": [],
+ "candidates": {
+  "whole": 0,
+  "split": 0
+ },
+ "share_of_each_whole_process_kept_together_in_one_split_process": {
+  "median": 0.85,
+  "below_0.5": 4
+ }
+}

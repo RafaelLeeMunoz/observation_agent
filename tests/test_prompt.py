@@ -78,7 +78,8 @@ def test_the_prompt_states_the_audited_stall_rules_and_their_history_leads_there
 
 
 @pytest.mark.parametrize("path", [".claude/agents/grounder.md", ".claude/agents/synthesizer.md",
-                                  ".claude/agents/artifact-writer.md", "eval/prompts/extract-v8h.md"])
+                                  ".claude/agents/merger.md", ".claude/agents/artifact-writer.md",
+                                  "eval/prompts/extract-v8h.md"])
 def test_the_other_agent_prompts_hold_no_benchmark_or_dev_slice_text(path):
     """The same leak rules for every other agent: no benchmark or holdout key, label quote, line or sentence of
     their text, and no 4-word window shared with a benchmark or dev-slice message beyond the reviewed generic

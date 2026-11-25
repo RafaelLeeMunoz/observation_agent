@@ -102,11 +102,11 @@ def test_finalize_run_as_separate_processes_keeps_the_shared_files_whole(ingeste
     for p in procs:
         out, err = p.communicate(timeout=300)
         assert p.returncode == 0, err.decode()[-1500:]
-    status = json.loads((root / "data" / "extract" / "status.json").read_text(encoding="utf-8"))
+    status = json.loads((root / "data" / "extract" / "dev" / "status.json").read_text(encoding="utf-8"))   # the slice's own
     assert all(status[k] == "read" for b in bs for k in b["keys"])          # no process lost another's marks
-    log = (root / "data" / "logs" / "runlog.jsonl").read_text(encoding="utf-8").splitlines()
+    log = (root / "data" / "extract" / "dev" / "logs" / "runlog.jsonl").read_text(encoding="utf-8").splitlines()
     assert len(log) == len(bs) * rounds and all(json.loads(line)["status"] == "verified" for line in log)
-    assert not list((root / "data" / "extract").glob("*.tmp"))
+    assert not list((root / "data" / "extract" / "dev").glob("*.tmp"))
 
 
 def test_finalize_writes_every_shared_file_only_while_holding_the_cross_process_lock(ingested, tmp_path, monkeypatch):

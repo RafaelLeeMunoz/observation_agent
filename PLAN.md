@@ -281,14 +281,123 @@ Every stage saves its output under a fingerprint of its inputs plus the prompt v
 | M2 | **Ingest + ledger + tests** (`src/ingest.py`, `dates.py`, `dedupe.py`, `quoted.py`, `tables.py`, `threads.py`, `windows.py`, `ledger.py`, `rawio.py`, `textutil.py`; run with `.venv\Scripts\python -m src.ingest`) | The ledger shows 3,240/3,240; `pytest` passes; the giant message's 3,600 rows are parsed |
 | M3 | **Thin slice, end to end, on one batch** (revised 21 Nov 2026). Dev slice of ~200 messages in whole threads (hard cases, ordinary threads, negatives) plus a ~40-message benchmark whose labels the user reviews → batcher (token budget, pointers, manifest) → extractor subagent (schema, dispositions, staging) → verifier (match types, ambiguity, canary with a minimum sample) → mini synthesis → events and scoring as provenance claims → 1 artifact (citations + quality checklist) → basic dashboard (detached launcher, escaped raw text, byte-offset highlighting). Haiku and a stronger model both run on the benchmark. Run log with model, tokens, time, retries and cache per call; headless lifecycle test. Slice numbers are labelled "pipeline test, not a finding". **Added after the M3 review (21 Nov 2026):** five outcomes and `action_state`; attempt ids and staging quarantine; evidence attribution; table distribution; benchmark labels with semantic dimensions and quote spans, scored by code (`src/bench.py`); labels drafted before any extractor run, all reviewed by the user, plus ~10 blind labels by the user first (agreement measured); a 30-message holdout outside the slice, labelled and run once in M4; an **early runtime benchmark** right after the benchmark runs: the 4 dev batches in parallel on the cheaper model, to project 50 batches against 30 minutes before building further | Clicking the opportunity's dollar figure shows its formula with every input labelled by kind and leads to a highlighted raw email; a crawler test proves every chain ends in verified quotes or documented assumptions; offline partial-failure tests pass; model, tokens and time per batch are in `private/DEVLOG.md`; the user has approved the benchmark labels |
 | | **M3 status (23 Nov 2026), approved by the user:** thin slice runs end to end, unattended (`claude -p "/observe dev"`, 511.6 s, no prompts, dashboard detached). Evidence design measured on the frozen benchmark: clean-C + a fenced grounder on every claimed signal (design I) is the M3 configuration and the M4 baseline (user's decision); H + grounder is kept as the quality benchmark and backup (`eval/prompts/extract-v8h.md`, switch in `config/settings.yaml`), to be adopted only if further tests confirm its gain and a full run under 30 minutes. Orchestration: every model stage is a fenced headless Claude Code session started by `src/pipeline.py` (the 3.2 fallback): it measures each call, retries, caches per batch, and does not depend on agent files loaded at session start. Full-run runtime NOT yet shown under 30 minutes (needs at least 12 parallel sessions at the measured mean rate). Report: `docs/M3_VALIDATION.md` | |
-| M4 | **Budget decision.** From the M3 numbers, set batch size, model per agent and concurrency; estimate the full run against the Pro window | The estimate and decision are written in `private/DEVLOG.md` (go or adjust) |
-| M5 | **Full pipeline.** All batches in parallel, caching, canary, retries, verify hook | A cold run covers every batch; an immediate rerun skips them all |
+| M4 | **Scalability, performance and configuration validation** (plan approved 23 Nov 2026, section 5.1). Isolation of slices and sessions, the canary with sentinel checks, a clean stop and resume at the Pro usage limit, per-mailbox synthesis with a merge, per-batch levers on the benchmark, 8/12/16-way concurrency on real full-corpus batches, then the budget decision; the holdout once, after the production configuration is frozen | Step 1 offline tests and mutants pass; levers judged against the frozen clean-C baseline; the concurrency levels measured on cached full-corpus batches; batch size, model per agent, concurrency and the full-run estimate written in `private/DEVLOG.md` (go or adjust); the holdout scored once |
+| M5 | **Full-corpus execution** (section 5.1). The remaining batches, grounding, per-mailbox synthesis and merge, events, scoring, artifacts and report on the full corpus, with the full-run correctness audit | The ledger shows 3,240 with every unique message read; the audit finds 0 problems (no duplicate in a batch or event, an independent event recount matches, every finding's evidence trail re-reads byte-exact); an immediate rerun skips every model stage |
 | M6 | **Synthesis, scoring, review.** Processes, assumptions table, confidence, overlap rule, reviewer before artifacts | The ranked list is fully computed by code and every claim has verified evidence |
 | M7 | **Artifacts.** Set the threshold and draft the artifacts | 3–6 artifacts exist and all of their citations pass |
 | M8 | **Dashboard polish** | Every number drills through to a raw email, and it looks client-ready |
 | M9 | **One command + unattended.** `/observe`, `claude -p "/observe"`, permissions, server, timing | A full run finishes in under 30 minutes with no prompts |
 | M10 | **Self-audit + fresh checkout.** `src/audit.py` picks 20 random claims and re-checks them against the raw files; test a fresh clone, including the original trailing-dot names | The audit passes 20/20; a fresh clone runs |
 | M11 | **Real run + NOTES.md + push.** Do the official run in a fresh five-hour window; commit outputs and logs | Everything in section 1 is pushed |
+
+### 5.1 M4 and M5 plan (approved by the user, 23 Nov 2026)
+
+The baseline stays design I: clean-C `extract-v8c` (schema `extract-v6`, Haiku), every claimed signal grounded by the Haiku grounder, synthesis and artifacts on Sonnet. H + grounder stays the backup. M3 prompt tuning is not reopened unless a material defect requires it. Frozen labels, rules and evidence files never change. Every full-corpus model run needs the user's explicit go-ahead and a fresh 5-hour window, and the plan meter is read before and after every model run. The goal is a reliable path to an unattended full run in under 30 minutes, without losing quality or evidence integrity.
+
+**The user's decisions on the five proposed choices:**
+1. **Milestone split.** M4 is scalability, performance and configuration validation, and M5 is the full-corpus execution. The untouched holdout runs only after the production architecture, prompt and settings are frozen, and after any budget decision that could affect them.
+2. **Canary.** The first completed qualifying batch is the initial safety check, without delaying parallel work. Representative later batches are checked too, so one unusually easy batch cannot establish overall success. No further work is scheduled once a critical validation fails.
+3. **Pass criteria.** All correctness, evidence, coverage and security invariants are hard requirements. Activity recall of 46/50 is the baseline target. Classification quality and run-to-run variability are judged against the frozen clean-C baseline, not by requiring every measure of both runs to sit inside a narrow historical range.
+4. **Synthesis split.** Singleton findings may reach the merge. They are not classified as recurring and add no savings until the merged evidence shows distinct repeated events. Provenance is preserved and nothing is double counted.
+5. **Output fields.** Removing `confidence` or `limitations` is a conditional optimization only and needs the user's approval. Useful uncertainty information is preserved, and the schema is versioned if it changes.
+
+**Facts this plan rests on (checked in code, 23 Nov 2026):**
+- Extraction, grounding, synthesis and act write to staging, verified and attempt paths that every slice shares, and batch ids restart at b001 in each slice. That is how a bench run displaced a dev result in M3.
+- `src/pipeline.py` calls `finalize(first=False)`, so the canary never runs in a pipeline run.
+- A failed headless session costs a retry whatever the cause. At the usage limit, every queued batch would burn its retries, and synthesis would then run on partial data.
+- Grounding waits for every extraction to finish.
+- At the dev slice's rate (303 observations, about 72 tokens a line, 1.5 observations per message), the full synthesis input is about 345k tokens: farmer-d and giron-d about 124k each, williams-w3 about 70k, lokay-m about 23k.
+- 0 of 2,736 threads span mailboxes, but quoted-copy anchors can link observations across mailboxes.
+- The full corpus is 49 batches of 20.7k to 24.1k estimated tokens, most of them mixing mailboxes.
+
+**M4 step 1: isolation and resilience** (code, offline tests and mutants first)
+- **1a. Per-slice folders and a per-session fence.**
+  - Every model stage reads and writes under its slice (`dev`, `bench`, `all`, later `holdout`): `data/extract/<slice>/`, `data/ground/<slice>/`, `data/synth/<slice>/` and `data/act/<slice>/`, including staging, verified, failed, attempts, the analysis status and the logs.
+  - Earlier files stay where they are, read-only.
+  - The fence's pattern check moves to the per-slice paths, for a fixed list of slices. Each headless session's hook is also given its own exact input and output file, and a call must pass every registration that fires.
+  - Tests: two slices with the same batch id cannot displace each other; another slice's file and a sibling batch's file are both denied; the dev slice reruns `--offline` with every model stage a cache hit.
+  - Spend: one live fence probe (Haiku, under 1% of a window).
+- **1b. Canary and sentinels.**
+  - The canary is the first batch of the run to finish with at least 5 checked quotes, held to the 3.3 rule (more than 20% rejected stops the run).
+  - **Sentinel batches** are chosen by code before the run and logged: the first batch, by id, holding each mailbox's messages, plus the batches at a quarter, half and three quarters of the id order. Each is held to the same rule when it finishes.
+  - After every finished batch, the **cumulative** rejection rate is held to the same rule.
+  - Any **fence denial** or **model mismatch** in a session is a critical failure too.
+  - On a critical failure, nothing more is scheduled, sessions in flight are stopped, no downstream stage runs, nothing unfinished is marked read, the run log names the check, and the exit code is 2.
+  - Other batches above the threshold are flagged, not stopped.
+  - Spend: none.
+- **1c. Clean stop and resume.**
+  - Each failed session is classed as `usage_limit` (the CLI's limit message), `rate_limited` (a temporary refusal, retried with backoff and not counted as a retry), `timeout` or `bad_output` (the 2 retries of R8).
+  - A breaker that does not depend on the limit message's wording also stops the run: K sessions in a row ending in an error with almost no output (K in `settings.yaml`).
+  - On a usage limit or the breaker, no new session is started and no retry is spent. Unfinished batches stay `batched`, never `failed`. The run records the stop and any reset time, runs no downstream stage, and exits 4.
+  - To resume, run the same command again. Finished work is a cache hit and only unfinished batches start new attempts.
+  - The limit is never hit on purpose. If a run meets it, its raw text is saved and becomes a test fixture.
+  - Spend: none.
+- **1d. Per-mailbox synthesis with a merge.**
+  - Code splits the verified observations by their message's mailbox. A mailbox over `synth.chunk_token_budget` is split into date-ordered chunks of whole threads, and the chunks are synthesized in parallel.
+  - A chunk may propose **singleton candidates**.
+  - A new fenced `merger` agent (Sonnet) reads only code-written summaries of each chunk's processes and candidates. It proposes which ones are the same process, with a minutes assumption and a reason citing observations.
+  - Code checks every part is used at most once, every observation sits in at most one final process, and the basis ids belong to the process. It records each merged process's parts and the merge reason.
+  - Code then builds events once, after the merge: one per process per thread, with quoted copies counted once through their anchor.
+  - A process is recurring, and gets a rate or savings, only when code finds at least 2 distinct events in at least 2 threads, plus the minimum evidence of 3.6 and R7.
+  - A slice that fits one chunk runs exactly the M3 single-pass path.
+  - Tests: one process seen in two mailboxes becomes one process with one event per thread and the union of both windows; two singletons merge, or stay non-recurring if not merged; a part used twice is rejected; a cross-mailbox anchor gives one event.
+  - Spend: the dev slice with the chunk budget forced low, so 4 chunk syntheses and 1 merge on Sonnet (about 1–2% of a window). The result is compared with the M3 single-pass dev synthesis.
+- **1e. Run controls.**
+  - `pipeline run --batches <list>` runs a subset, and `--stop-after extract|ground` stops there, so a measurement never synthesizes partial data.
+  - Each batch's grounder starts as soon as its extraction is verified, in the same pool of N sessions.
+  - The run log records every session's start, end, failure kind, tokens and the peak number of sessions.
+
+**M4 step 2: performance** (cheapest levers first)
+- **2a. Per-batch levers on the benchmark batch.** The frozen labels and scorers are used throughout.
+  - **Levers, in order:**
+    1. Diagnose Haiku's 50–66k output tokens per batch, against about 25k of JSON, from one transcript-kept run: thinking, rewrites of the output file, or the JSON itself.
+    2. Turn thinking off or cap it, if that is the cause. It is a runtime setting, but it enters the cache key and is judged like a prompt change.
+    3. Use smaller batches, about 12k tokens, to cut the tail.
+    4. Only with the user's approval: `confidence` and `limitations` (decision 5).
+  - **Judging a lever (decision 3):**
+    - Every hard invariant must hold: quotes and evidence re-read byte-exact, every message dispositioned, the schema valid, the model confirmed, the fence held.
+    - Found is judged against the 46/50 target.
+    - State, stall classification, published signals with approved evidence, false and negative signals published, and run-to-run variability are compared with the frozen clean-C baseline: C1, C2 and C3h, grounded as I1, I2 and I3.
+  - **Runs:** two per lever, about 6–8 bench runs in all (about 10% of a window).
+  - **Safeguards (user, 23 Nov 2026, approving 2a):**
+    1. Smaller batches keep whole threads, and every change in the context a message is given is recorded (threads split, quoted-text pointers that cross batches, neighbouring threads), so that a loss of context is never mistaken for a batch-size effect.
+    2. For thinking settings, the effective model configuration (CLI version, model, the settings and environment passed, and whether thinking blocks appear) and the measured token usage are recorded for every run.
+    3. Quality is compared with the frozen clean-C baseline, and every hard evidence, coverage, schema and security requirement holds.
+    4. First runs are screening runs: a promising configuration is repeated before it is adopted, and a clearly inferior one is not repeated.
+    5. `confidence` and `limitations` stay unless the user approves removing them.
+  - Each lever's best configuration is recommended to the user with its quality, runtime and token trade-offs before it becomes the default.
+  - **2a results and decisions (user, 23 Nov 2026).**
+    - **Measured:** thinking is 69–73% of extractor output. `--effort low` loses recall (43/50); medium brings no gain. Batch time follows messages, not tokens.
+    - **Batches for 2b:** a provisional **soft cap of 40 messages per batch** on the production slice, with default effort and the 24k token budget. Whole threads and quoted-message links are kept; a thread over the cap is a documented exception.
+    - **Before the cap becomes the production default:** the provisional benchmark matches are adjudicated, and 40 is validated on representative live batches (runtime, quality, overhead, projected end-to-end). The simulation is not production validation.
+    - **Effort:** low effort is NOT an automatic fallback. `confidence` and `limitations` stay.
+    - **Fence-denial rule:** a narrow exception for documented self-checks. An exact agent, operation and target is still denied and fully logged, and it does not stop the run. Any other denial stops the session and the run. Repeated self-checks are flagged, and their prompt causes are fixed where possible. The fence is not weakened, and file access is not broadened.
+- **2b. 8, 12 and 16 parallel sessions on real full-corpus batches.**
+  - Code picks the batch sets by a fixed rule that mixes mailboxes: 8, then 12, then 16 distinct batches. Each set is extracted and grounded with `--stop-after ground` and launched from PowerShell, not from inside a long session.
+  - Every measured batch is cached and reused by the full run.
+  - **Measured:** wall time, each session's duration, start stagger, throttling and retries, peak memory, and the plan meter before and after.
+  - **Spend:** a full-corpus model run, so it needs the go-ahead and a fresh window. 36 batches cost about 26–40% of a window at M3 rates.
+  - **Synthesis split (user, 23 Nov 2026, "Yes, measure in 2b").** The step 1 live check showed that a date split inside one mailbox fragments processes: on the dev slice at a forced 8k budget, 5 of 7 M3 processes were recovered, against 7 of 7 between two single passes. On the observations of the 2b batches, synthesize farmer-d once whole and once as 2 date parts, compare the processes and the session times, and set `synth.chunk_token_budget` from that. A mailbox split alone is not the problem. The comparison judges process identity, evidence preservation, distinct events and where each lost process went, not just the final process count (user, 23 Nov 2026). **The date split is not approved for the full-corpus production run until 2b validates its quality:** until then `synth.date_split` is false, and an over-budget mailbox is synthesized whole. **Update (user, 24 Nov 2026): size-triggered splitting is approved** (`synth.size_split`: a mailbox over 1,000 observations is synthesized as date chunks of whole threads of at most about 850, joined by the existing merger; whole-mailbox synthesis stays as the fallback when `size_split.enabled` is false; `date_split` stays false). The farmer-d experiment found the whole-mailbox synthesis assigned nothing from the last two thirds of its input, so `synth.positional` now checks that every third of a part's input is looked at. See `docs/M5_SPLIT_EXPERIMENT.md` and `docs/M5_SIZE_SPLIT.md`.
+- **2c. Budget decision.**
+  - Batch size, model per agent, concurrency, and the full-run estimate (with its pessimistic case) are re-derived from the measured rates by `tools/runtime_estimate.py`, then written to `private/DEVLOG.md`: go or adjust.
+  - If 16-way does not fit 30 minutes, the options go to the user with pros and cons.
+
+**M4 step 3: holdout** (only after 2c freezes the architecture, prompt and settings)
+- Label the 30 holdout messages as the benchmark was labelled: a frozen draft, the user's review and approval. No model reads them first.
+- Freeze the scorer versions and hashes.
+- Run the production configuration once and report it beside the benchmark (about 1.5% of a window). It is never used for tuning.
+
+**M5: full-corpus execution**
+- Run the remaining batches, then grounding, per-mailbox synthesis and the merge, events, scoring, artifacts and the report on slice `all`. This is a full-corpus run, so it needs the go-ahead and a fresh window.
+- `tools/audit_dashboard.py` gains these checks:
+  - the ledger holds 3,240 rows: 3,200 unique, all `read` with a disposition, and 40 duplicates with reasons;
+  - no duplicate appears in any batch or event;
+  - an independent recount of events from the stored observations, assignment, threads and anchors equals `events.build`;
+  - per process, events never exceed threads, and no observation belongs to two processes;
+  - every published quote re-reads byte-exact, and every claim chains to verified quotes or documented assumptions;
+  - every dollar figure recomputes in Decimal, and every page loads.
+- Report figures stop being labelled "pipeline test".
+- **Open, not decided in M4:** `data/` is git-ignored, so the grader's run is cold. The under-30-minute claim needs one cold timed run (M9), unless that run is also the official M11 run.
 
 ---
 

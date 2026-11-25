@@ -1,0 +1,137 @@
+{
+ "mailboxes": [
+  "lokay-m"
+ ],
+ "a": {
+  "events": 80,
+  "processes": 16,
+  "scored": 11,
+  "dollars": "292.2225443020603367366103403"
+ },
+ "b": {
+  "events": 87,
+  "processes": 19,
+  "scored": 10,
+  "dollars": "262.5698474989052780170197656"
+ },
+ "threads_counted_a": 80,
+ "threads_counted_b": 83,
+ "thread_jaccard": 0.772,
+ "events_ratio_b_over_a": 1.087,
+ "dollars_ratio_b_over_a": 0.899,
+ "matched_processes": 14,
+ "processes_a_unmatched": 2,
+ "processes_b_unmatched": 5,
+ "share_of_a_events_in_matched_processes": 0.95,
+ "share_of_b_events_in_matched_processes": 0.874,
+ "matches": [
+  {
+   "a": "Weekly California capacity and price report",
+   "b": "Weekly California capacity report",
+   "shared_threads": 16,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Pipeline project cost estimate and scenario reques",
+   "b": "Pipeline project cost estimates and scenarios",
+   "shared_threads": 8,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Meeting scheduling",
+   "b": "Meeting scheduling and rooms",
+   "shared_threads": 6,
+   "jaccard": 0.46
+  },
+  {
+   "a": "Firm capacity posting and bid reminders",
+   "b": "Capacity posting and bid reminders",
+   "shared_threads": 6,
+   "jaccard": 0.86
+  },
+  {
+   "a": "Short-term capacity or MDQ increase approval",
+   "b": "Transport contract change request and approval",
+   "shared_threads": 6,
+   "jaccard": 0.67
+  },
+  {
+   "a": "Time report and leave submission",
+   "b": "Time report and absence submission",
+   "shared_threads": 6,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Mojave and CIG imbalance reconciliation with the i",
+   "b": "Volume and imbalance reconciliation",
+   "shared_threads": 5,
+   "jaccard": 0.83
+  },
+  {
+   "a": "PPL Red Rock receipts and contract amendments",
+   "b": "Contract and amendment signature routing",
+   "shared_threads": 4,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Performance review inputs",
+   "b": "Performance review preparation",
+   "shared_threads": 3,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Credit approval for capacity contracts",
+   "b": "Capacity credit approval request",
+   "shared_threads": 2,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Contract status report",
+   "b": "Contract status tracking and reporting",
+   "shared_threads": 2,
+   "jaccard": 1.0
+  },
+  {
+   "a": "Gas sales confirmation distribution",
+   "b": "Gas sales confirmation execution and distribution",
+   "shared_threads": 2,
+   "jaccard": 1.0
+  }
+ ],
+ "unmatched_a_largest": [
+  [
+   2,
+   "System training session scheduling"
+  ],
+  [
+   2,
+   "Imbalance cash receipt follow-up"
+  ]
+ ],
+ "unmatched_b_largest": [
+  [
+   4,
+   "Balancing agreement drafting and execution"
+  ],
+  [
+   2,
+   "Regulatory order and filing review"
+  ],
+  [
+   2,
+   "Receipt and delivery point setup"
+  ],
+  [
+   2,
+   "Manual billing adjustments for surcharges and credits"
+  ],
+  [
+   1,
+   "Pipeline and meter outage notices"
+  ]
+ ],
+ "criteria": {
+  "R5 thread Jaccard >= 0.60 and events within 25 percent": "pass",
+  "R6 >= 70 percent of events in matched processes (both runs)": "pass"
+ }
+}

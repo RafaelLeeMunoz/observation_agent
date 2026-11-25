@@ -1,0 +1,324 @@
+{
+ "mailbox": "giron-d",
+ "observations": 1085,
+ "baseline": {
+  "processes": 30,
+  "assigned_obs": 332,
+  "events_build": 216,
+  "events_sum_of_process_threads": 216,
+  "scored_processes": 28,
+  "events_in_scored_processes": 212,
+  "threads_covered": 216,
+  "dollars_per_month": "288.567738"
+ },
+ "split": {
+  "processes": 43,
+  "assigned_obs": 538,
+  "events_build": 280,
+  "events_sum_of_process_threads": 279,
+  "scored_processes": 39,
+  "events_in_scored_processes": 272,
+  "threads_covered": 277,
+  "dollars_per_month": "420.904408"
+ },
+ "change_percent": {
+  "events_build": 29.6,
+  "events_in_scored_processes": 28.3,
+  "assigned_obs": 62.0,
+  "processes": 43.3
+ },
+ "positional_percent_counted": {
+  "baseline_thirds": [
+   41.0,
+   41.2,
+   9.7
+  ],
+  "split_thirds": [
+   49.0,
+   49.2,
+   50.6
+  ],
+  "baseline_tenths": [
+   39.8,
+   35.8,
+   43.5,
+   41.3,
+   40.7,
+   48.6,
+   25.9,
+   8.3,
+   13.9,
+   8.3
+  ],
+  "split_tenths": [
+   49.1,
+   51.4,
+   43.5,
+   47.7,
+   45.4,
+   61.5,
+   35.2,
+   50.5,
+   62.0,
+   49.5
+  ]
+ },
+ "joins": {
+  "denominator_baseline_processes_spanning_chunks": 4,
+  "joined_at_least_once": 2,
+  "fully_joined": 2,
+  "not_joined": 2,
+  "join_rate_percent": 50.0,
+  "separations": 2,
+  "merger_joined_groups": 7,
+  "merged_processes": 3,
+  "chunk_groups": 47
+ },
+ "duplicates_same_dominant_baseline_process": {
+  "Nightly book officialization and post ID con": 2,
+  "Monthly auditor P&L and deal testing support": 2
+ },
+ "classes": {
+  "continuation_of_a_baseline_process": 26,
+  "mostly_new_observations": 13,
+  "mixed": 4,
+  "events_in_new": 60,
+  "events_in_continuation": 188,
+  "events_in_mixed": 32,
+  "new_threads_vs_baseline": 78,
+  "threads_in_two_or_more_processes": 2
+ },
+ "near_duplicate_name_pairs": [],
+ "sample_newly_assigned": [
+  {
+   "obs_id": "b063-o40",
+   "process": "Meeting scheduling and attendance",
+   "task": "meet with the group tomorrow at 2:00"
+  },
+  {
+   "obs_id": "b028-o30",
+   "process": "Move deals to the correct settlement book",
+   "task": "check for ECC deals with a third counterparty and flip them to FT-US/CAND-ERMS"
+  },
+  {
+   "obs_id": "b036-o29",
+   "process": "Move deals to the correct settlement book",
+   "task": "report when all January deals are fixed so invoicing can start"
+  },
+  {
+   "obs_id": "b013-o85",
+   "process": "Performance review and development plan handling",
+   "task": "send list of accomplishments for the last six months by Friday"
+  },
+  {
+   "obs_id": "b072-o35",
+   "process": "Moving terminated counterparty deals to bankruptcy books",
+   "task": "add deals from Cyndie's sheets"
+  },
+  {
+   "obs_id": "b066-o9",
+   "process": "Post ID and report access lookup",
+   "task": "provide wellhead ID 1416535 if needed"
+  },
+  {
+   "obs_id": "b077-o11",
+   "process": "Month-end NSS and EMW accounting clean-up",
+   "task": "discuss the annuity problem with Giron once the information is pulled together"
+  },
+  {
+   "obs_id": "b041-o13",
+   "process": "Training enrollment and approval",
+   "task": "approve course registration order 13291 (Derivatives I)"
+  },
+  {
+   "obs_id": "b074-o47",
+   "process": "Moving terminated counterparty deals to bankruptcy books",
+   "task": "move financial deals from NG-PR-OPT to ENA-WT-SOCAL for the same counterparties"
+  },
+  {
+   "obs_id": "b039-o52",
+   "process": "Monthly gas curve validation questions",
+   "task": "send the January curve validation memo"
+  },
+  {
+   "obs_id": "b062-o39",
+   "process": "Office move preparation",
+   "task": "take home portable devices before the move"
+  },
+  {
+   "obs_id": "b073-o18",
+   "process": "Moving terminated counterparty deals to bankruptcy books",
+   "task": "confirm whether the list is the last one"
+  },
+  {
+   "obs_id": "b077-o14",
+   "process": "Month-end NSS and EMW accounting clean-up",
+   "task": "look into the unwind problem"
+  },
+  {
+   "obs_id": "b071-o7",
+   "process": "P&L file and macro maintenance",
+   "task": "save copies of each NGP&L P&L to the Netco region folder"
+  },
+  {
+   "obs_id": "b076-o4",
+   "process": "Moving terminated counterparty deals to bankruptcy books",
+   "task": "apply rules for bankruptcy book moves (CAD logic, NG-Price to bankruptcy, financial only, cutoff 1/1/2002)"
+  },
+  {
+   "obs_id": "b076-o3",
+   "process": "Moving terminated counterparty deals to bankruptcy books",
+   "task": "confirm deal moves completed and retranslated"
+  },
+  {
+   "obs_id": "b031-o99",
+   "process": "Linking deal numbers across Tagg, Sitara, SCI and EOL",
+   "task": "review deals in Tagg and Sitara"
+  },
+  {
+   "obs_id": "b076-o44",
+   "process": "P&L file and macro maintenance",
+   "task": "assign P&L responsibility by region and desk"
+  },
+  {
+   "obs_id": "b042-o8",
+   "process": "Training enrollment and approval",
+   "task": "get information on the ethics course"
+  },
+  {
+   "obs_id": "b070-o14",
+   "process": "Netco book requests and system access setup",
+   "task": "add the control group to book requests"
+  },
+  {
+   "obs_id": "b021-o57",
+   "process": "Hub deal reconciliation and valuation",
+   "task": "call Darron Giron about HUB deals"
+  },
+  {
+   "obs_id": "b077-o40",
+   "process": "Deal valuation summary review",
+   "task": "ask whether the Peoples figures are quantities at price or calculations"
+  },
+  {
+   "obs_id": "b076-o18",
+   "process": "P&L file and macro maintenance",
+   "task": "review east desk P&L summary"
+  },
+  {
+   "obs_id": "b070-o21",
+   "process": "Netco book requests and system access setup",
+   "task": "send a new risk matrix for each desk"
+  },
+  {
+   "obs_id": "b070-o32",
+   "process": "Netco curve file setup and curve lists",
+   "task": "help sort through the central and Ontario curve lists"
+  },
+  {
+   "obs_id": "b030-o42",
+   "process": "Sitara and Tagg deal number lookups",
+   "task": "route the TAGG number request for deal 307287 to Patrick Ryder"
+  },
+  {
+   "obs_id": "b071-o12",
+   "process": "Month-end NSS and EMW accounting clean-up",
+   "task": "exclude UA4 and FTA from 12/01 general ledger booking"
+  },
+  {
+   "obs_id": "b042-o26",
+   "process": "Book admin and trading group setup",
+   "task": "rename the Denver trading books to remove Denver from the title"
+  },
+  {
+   "obs_id": "b071-o2",
+   "process": "Netco curve file setup and curve lists",
+   "task": "list curves by risk type"
+  },
+  {
+   "obs_id": "b051-o15",
+   "process": "Book admin and trading group setup",
+   "task": "back office sets up new books for each trader"
+  }
+ ],
+ "newly_assigned_total": 240,
+ "runtime_tokens": {
+  "wall_s": 281.0,
+  "chunk_stage_wall_s": 263.3,
+  "merge_wall_s": 17.6,
+  "sessions": 6,
+  "failed_attempts": 3,
+  "subagent_tokens": 1297744,
+  "output_tokens": 62245,
+  "seconds_per_session": [
+   [
+    "s021",
+    "failed",
+    55.1
+   ],
+   [
+    "s022",
+    "failed",
+    71.0
+   ],
+   [
+    "s021",
+    "verified",
+    77.6
+   ],
+   [
+    "s022",
+    "failed",
+    119.2
+   ],
+   [
+    "s022",
+    "verified",
+    73.2
+   ],
+   [
+    "m210",
+    "verified",
+    17.6
+   ]
+  ]
+ },
+ "chunk_coverage": [
+  [
+   "s021",
+   "failed",
+   0.2343,
+   0
+  ],
+  [
+   "s022",
+   "failed",
+   0.5342,
+   0
+  ],
+  [
+   "s021",
+   "verified",
+   0.4687,
+   22
+  ],
+  [
+   "s022",
+   "failed",
+   0.6084,
+   0
+  ],
+  [
+   "s022",
+   "verified",
+   0.5247,
+   25
+  ],
+  [
+   "m210",
+   "verified",
+   null,
+   43
+  ]
+ ]
+}
